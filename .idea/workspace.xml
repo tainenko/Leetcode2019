@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4dbfc8d-b6a9-45df-9f8c-eec7fcedbeda" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lc/leetcode/cache/problems.json" beforeDir="false" afterPath="$PROJECT_DIR$/.lc/leetcode/cache/problems.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lc/leetcode/user.json" beforeDir="false" afterPath="$PROJECT_DIR$/.lc/leetcode/user.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/118.pascals-triangle.py" beforeDir="false" afterPath="$PROJECT_DIR$/118.pascals-triangle.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,15 +16,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2.add-two-numbers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/3.longest-substring-without-repeating-characters.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -63,11 +52,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/168.excel-sheet-column-title.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+            <state relative-caret-position="715">
+              <caret line="48" column="33" lean-forward="true" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/118.pascals-triangle.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -106,6 +104,7 @@
         <option value="$PROJECT_DIR$/1.two-sum.java" />
         <option value="$PROJECT_DIR$/7.reverse-integer.java" />
         <option value="$PROJECT_DIR$/168.excel-sheet-column-title.py" />
+        <option value="$PROJECT_DIR$/118.pascals-triangle.py" />
       </list>
     </option>
   </component>
@@ -213,12 +212,12 @@
       <updated>1549594061573</updated>
       <workItem from="1549594063893" duration="2528000" />
       <workItem from="1549629766693" duration="8113000" />
-      <workItem from="1554477385134" duration="2939000" />
+      <workItem from="1554477385134" duration="4416000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13580000" />
+    <option name="totallyTimeSpent" value="15057000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="944" extended-state="6" />
@@ -302,8 +301,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/168.excel-sheet-column-title.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+        <state relative-caret-position="715">
+          <caret line="48" column="33" lean-forward="true" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/118.pascals-triangle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
         </state>
       </provider>
     </entry>
