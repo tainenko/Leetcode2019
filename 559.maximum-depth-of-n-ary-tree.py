@@ -35,4 +35,11 @@ class Solution(object):
             The total number of nodes is at most 5000.
 
         """
-        
+        if not root:
+            return 0
+        if not root.children:
+            return 1
+        height=1
+        for child in root.children:
+            height=max(height,self.maxDepth(child)+1)
+        return height
