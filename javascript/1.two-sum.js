@@ -39,7 +39,8 @@ var twoSum = function(nums, target) {
 };
 
 var solution2 = function(nums,target){
-    //暴力破解，時間雜複度O(n)，空間複雜度O(1)
+    //暴力破解，時間雜複度O(n^2)，空間複雜度O(1)
+    //相當於用兩層for loop
     return nums.reduce((results,value,index)=>{
         for(let i =index+1;i<length;i++) {
             if (nums[i] + value === target) {
