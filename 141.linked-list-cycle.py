@@ -48,10 +48,10 @@ class Solution(object):
         """
         visited=set()
         while head:
-            if head.val in tmp:
+            if head in visited:
                 return True
             else:
-                visited.add(head.val)
+                visited.add(head)
                 head=head.next
         return False
 
