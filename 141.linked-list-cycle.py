@@ -46,4 +46,27 @@ class Solution(object):
 
         Can you solve it using O(1) (i.e. constant) memory?
         """
-        
+        visited=set()
+        while head:
+            if head.val in tmp:
+                return True
+            else:
+                visited.add(head.val)
+                head=head.next
+        return False
+
+    def hasCycle2(self, head):
+        '''
+        方法二，用分別用快慢指針去traverse linked list，快指針(fast)每次走兩個節點，慢指針(slow)每次走一個節點，
+        如果有circle則快指針會追上慢指針，return True，如果沒有circle則遍歷到Null時while loop會停止，return False
+        :param head:
+        :return:
+        '''
+        fast=head.next
+        slow=head
+        while fast and slow:
+            if fast == slow:
+                return True
+            fast=fast.next.next
+            slow=slow.next
+        return head
