@@ -11,3 +11,6 @@
 ### 已解題目
  1.two-sum   
 922.sort-array-by-parity-ii
+## 其他
+### Github串接Line群組
+[[教學] 如何快速建置一個 LINE Notify 的服務](http://www.evanlin.com/go-line-notify/)
