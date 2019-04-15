@@ -48,23 +48,20 @@
  * @return {number[]}
  */
 var sumEvenAfterQueries = function(A, queries) {
-    var total=0
-    for(let i=0;i<A.length;i++){
-        if(A[i]%2===0){
-            total+=A[i];
+    //解題思路
+    //先求出所有A中偶數之和
+    //再traverse queries，若A中異動的元素為偶數則從總和中減去，若元素異動和為偶數則加到總和中。
+    //計算完後將結果加到res的array裡題。
+    var total=A.reduce((acc, value) => value%2 == 0 ? acc + value : acc,0);
+    return queries.map((q)=>{
+        if(A[q[1]]%2===0){
+            total-=A[q[1]];
         }
-    }
-    var res=[];
-    queries.forEach((value)=>{
-        if(A[value[1]]%2===0){
-            total-=A[value[1]];
+        A[q[1]]+=q[0];
+        if(A[q[1]]%2==0){
+            total+=A[q[1]];
         }
-        A[value[1]]+=value[0];
-        if(A[value[1]]%2==0){
-            total+=A[value[1]];
-        }
-        res.push(total);
+        return total;
     });
-    return res;
     
 };

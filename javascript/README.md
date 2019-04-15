@@ -14,3 +14,5 @@
 ## 其他
 ### Github串接Line群組
 [[教學] 如何快速建置一個 LINE Notify 的服務](http://www.evanlin.com/go-line-notify/)
+### 前端面試心得
+[前端面試心得 (2018/11) KKstream, Oath, MIT jobs 快速面試](https://linyencheng.github.io/2018/11/12/thinking-interview/)   
