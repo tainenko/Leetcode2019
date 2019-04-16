@@ -72,4 +72,10 @@ class Solution(object):
         :type B: List[int]
         :rtype: List[int]
         """
+        A_total=sum(A)
+        B_total=sum(B)
+        setB=set(B)
+        for x in A:
+            if x+(B_total-A_total)/2 in setB:
+                return [x,x+(B_total-A_total)/2]
         

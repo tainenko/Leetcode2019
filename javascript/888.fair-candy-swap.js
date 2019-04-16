@@ -64,10 +64,35 @@
             It is guaranteed that Alice and Bob have different total amounts of candy.
             It is guaranteed there exists an answer.
 
+ 解題思路：
+ 兩邊平衡的狀態
+ Sa-x+y=Sb-y+x
+ y=x+(Sb-Sa)/2
+ 因此求出Sa和Sb後，再用一個回圈遍歷A中的x元素在B中否存在對應的y元素
+ 時間複雜度:O(2m+2n)
+ 空間複雜度:O(1)
+
  * @param {number[]} A
  * @param {number[]} B
  * @return {number[]}
  */
+
 var fairCandySwap = function(A, B) {
+    let Sa=A.reduce((accu,value)=>{
+        return accu+=value;
+    });
+    let Sb=B.reduce((accu,value)=> {
+        return accu += value;
+    });
+    let setB=new Set(B);
+    let res=new Array();
+    A.every((value)=>{
+        if(setB.has(value+(Sb-Sa)/2)){
+            res.push(value);
+            res.push(value+(Sb-Sa)/2);
+            return false;
+        }
+    });
+    return res;
     
 };
