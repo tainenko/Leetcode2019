@@ -52,7 +52,34 @@ Note:
 class Solution(object):
     def middleNode(self, head):
         """
+        解題思路：暴力法。
+        從頭開始遍歷並計算linked list的長度，找完後再回頭遍歷middle node
         :type head: ListNode
         :rtype: ListNode
         """
-        
+        node=head
+        count=0
+        while node:
+            count+=1
+            node=node.next
+        node=head
+        for _ in range(count//2):
+            node=node.next
+
+        return node
+
+    def middleNode2(self,head):
+        """
+        解題思路：
+        例用兩個指標fast和slow從頭遍歷，當fast走完linked list時，slow會剛好停在middle node
+        時間複雜度: O(N)
+        空間複雜度: O(1)
+
+        :param head:
+        :return:
+        """
+        fast=slow=head
+        while fast and fast.next:
+            slow=slow.next
+            fast=fast.next.next
+        return slow

@@ -41,5 +41,12 @@
  * @return {ListNode}
  */
 var middleNode = function(head) {
-    
+    //解題思路
+    //兩個指標fast和slow一起遍歷，則fast遍歷完linked list時，slow剛好位於middle node
+    let fast=slow=head;
+    while(fast && fast.next){
+        slow=slow.next;
+        fast=fast.next.next;
+    }
+    return slow;
 };
