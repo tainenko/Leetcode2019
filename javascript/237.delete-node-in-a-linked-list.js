@@ -57,6 +57,13 @@ Note:
 
  */
 var deleteNode = function(node) {
-
-    
+    // 解題思路
+    // 題目已給定欲刪除的node，所以不用再遍歷linked list
+    // 我們想要把當前節點刪掉，有兩個方法
+    // 第一、將前一個節點的next指向欲刪除的節點後面的那一個，再將當前節點刪除
+    // 第二、將欲刪除的節點val覆蓋成下一節點的val，然後把下一節點刪除。
+    let tmp=node;
+    node.val=node.next.val;
+    node.next=node.next.next;
+    delete tmp;
 };
