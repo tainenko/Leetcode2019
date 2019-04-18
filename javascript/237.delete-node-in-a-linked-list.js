@@ -1,10 +1,16 @@
-# Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-'''
-[237] Delete Node in a Linked List
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} node
+ * @return {void} Do not return anything, modify node in-place instead.
+ */
+/**
+ * [237] Delete Node in a Linked List
 
 https://leetcode.com/problems/delete-node-in-a-linked-list/description/
 
@@ -49,11 +55,8 @@ Note:
         The given node will not be the tail and it will always be a valid node of the linked list.
         Do not return anything from your function.
 
-'''
-class Solution(object):
-    def deleteNode(self, node):
-        """
-        :type node: ListNode
-        :rtype: void Do not return anything, modify node in-place instead.
-        """
-        
+ */
+var deleteNode = function(node) {
+
+    
+};
