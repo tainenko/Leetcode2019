@@ -16,3 +16,6 @@
 [[教學] 如何快速建置一個 LINE Notify 的服務](http://www.evanlin.com/go-line-notify/)
 ### 前端面試心得
 [前端面試心得 (2018/11) KKstream, Oath, MIT jobs 快速面試](https://linyencheng.github.io/2018/11/12/thinking-interview/)   
+[2018 前端工程師面試心得](https://medium.com/@weihanglo/2018-%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB%E9%9D%A2%E8%A9%A6%E5%BF%83%E5%BE%97-125e633db3a2)   
+[The Best Frontend JavaScript Interview Questions (written by a Frontend Engineer)](https://performancejs.com/post/hde6d32/The-Best-List-of-Frontend-JavaScript-Interview-Questions-(written-by-a-Frontend-Engineer))   
+[Overreacted (Dan's blog)](https://overreacted.io/)   
