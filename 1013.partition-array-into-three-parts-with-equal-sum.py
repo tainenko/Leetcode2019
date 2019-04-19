@@ -53,9 +53,50 @@ Note:
 
 '''
 class Solution(object):
-    def canThreePartsEqualSum(self, A):
+    def canThreePartsEqualSum2(self, A):
         """
         :type A: List[int]
         :rtype: bool
         """
+        # 解題思路
+        # 兩個指標從前後開始掃，如果Sum of left和Sum of right不相等就移動指標，直接左右的Sum一樣
+        # 最後再檢查中間的Sum是否和左右一樣
+        # 問題：
+        # 沒有目標值，並且Array裡頭有正有負，依照左右的Sum比較結果去決定哪個指標需要移動不合理。
+        left=0
+        right=len(A)-1
+        Sl=A[left]
+        Sr=A[right]
+        while left<right:
+            if Sl==Sr:
+                break
+            elif Sl<Sr:
+                left+=1
+                Sl+=A[left]
+            else:
+                right-=1
+                Sr+=A[right]
+        return True if Sl==Sr==sum(A[left+1:right]) else False
+    def canThreePartsEqualSum(self, A):
+        # 解題思路2
+        # 先求Sum(A)，則partial Array Sum應為Sum(A)//3
+        # 求到目標值後停下
+        if sum(A)%3:
+            return False
+        target=sum(A)//3
+        left=0
+        right=len(A)-1
+        Sl=A[left]
+        Sr=A[right]
+        while left<right:
+            if Sl!=target:
+                left+=1
+                Sl+=A[left]
+            if Sr!=target:
+                right-=1
+                Sr+=A[right]
+            if Sr==Sl==target:
+                break
+        return True if Sl==Sr else False
+
         
