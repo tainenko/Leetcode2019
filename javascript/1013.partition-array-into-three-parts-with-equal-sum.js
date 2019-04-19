@@ -55,5 +55,27 @@ Note:
  * @return {boolean}
  */
 var canThreePartsEqualSum = function(A) {
+    var Sa=A.reduce((prev,curr)=>{
+        return prev+curr;
+    });
+    if(Sa%3){
+        return false;
+    };
+    var target=Sa/3;
+    var S1=0;
+    var S2=0;
+    for(i=0;i<A.length;i++){
+        if(S1===target){
+            for(j=i;j<A.length;j++){
+                if(S2===target){
+                    return true;
+                }
+                S2+=A[j];
+            }
+            return false;
+        }
+        S1+=A[i];
+    };
+    return false;
     
 };
