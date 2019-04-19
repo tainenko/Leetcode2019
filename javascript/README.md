@@ -9,8 +9,19 @@
 - 利用空間換時間 HashTable: Map()
 - 利用雙指標定位內部元素
 ### 已解題目
- 1.two-sum   
+- Array   
+1.two-sum   
 922.sort-array-by-parity-ii
+888.fair-candy-swap
+922.sort-array-by-parity-ii
+987.sum-of-even-numbers-after-queries
+1013.partition-array-into-three-parts-with-equal-sum
+
+- Linked List   
+2.add-two-number
+237.delete-node-in-linked-list
+876.middle-of-the-linked-list
+
 ## 其他
 ### Github串接Line群組
 [[教學] 如何快速建置一個 LINE Notify 的服務](http://www.evanlin.com/go-line-notify/)
