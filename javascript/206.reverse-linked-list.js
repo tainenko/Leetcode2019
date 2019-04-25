@@ -34,5 +34,19 @@ A linked list can be reversed either iteratively or recursively. Could you imple
  * @return {ListNode}
  */
 var reverseList = function(head) {
-    
+    if(head===null){
+        return head;
+    }
+    let curr=head;
+    let prev=null;
+    let prec=head.next;
+
+    while(prec!=null) {
+        curr.next = prev;
+        prev = curr;
+        curr = prec;
+        prec = prec.next;
+    }
+    curr.next=prev;
+    return curr;
 };
