@@ -35,4 +35,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        if not nums:
+            return 0
+        n=len(nums)
+        res=[1]*n
+        for i in range(n):
+            for j in range(i,n):
+                if nums[i]<nums[j]:
+                    res[j]=max(res[i]+1,res[j])
+        return max(res)
+
         

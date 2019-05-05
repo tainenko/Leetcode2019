@@ -2,9 +2,11 @@
 ### Example user template template
 ### Example user template
 
+# leetcode-cli files
+.lc
+
 # IntelliJ project files
 .idea
-.lc
 *.iml
 out
 gen
