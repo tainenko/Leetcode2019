@@ -87,10 +87,29 @@ Note:
         A[i][j] is a lowercase letter
 
 '''
+from collections import Counter
 class Solution(object):
     def commonChars(self, A):
         """
         :type A: List[str]
         :rtype: List[str]
         """
-        
+        res=Counter(A[0])
+        for i in range(1,len(A)):
+            res&=Counter(A[i])
+        return res
+
+
+    def commonChars2(self, A: List[str]) -> List[str]:
+        dct = dict()
+        for word in A:
+            for letter in word:
+                dct[letter] = dct.get(letter, 0) + 1
+        res = []
+        for key, value in dct.items():
+            value //= 3
+            while value > 0:
+                res.append(key)
+                value -= 1
+        return res
+
