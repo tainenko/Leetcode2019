@@ -52,3 +52,17 @@ var peakIndexInMountainArray = function(A) {
     }
     
 };
+
+var peakIndexInMountainArray2 = function(A){
+    let left=0;
+    let right=A.length-1;
+    while(left<right){
+        let mid=left+(right-left)/2;
+        if(A[mid]>A[mid-1]) {
+            left = mid;
+        }else{
+            right=mid;
+        }
+    }
+    return left;
+}
