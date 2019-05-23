@@ -40,7 +40,7 @@ Note:
 '''
 class RecentCounter(object):
 
-    def __init__(self):
+    def __init__(self):lee
         
 
     def ping(self, t):

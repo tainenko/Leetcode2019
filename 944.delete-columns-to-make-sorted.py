@@ -66,4 +66,10 @@ class Solution(object):
         :type A: List[str]
         :rtype: int
         """
-        
+        res=0
+        for i in range(len(A[0])):
+            for j in range(len(A)-1):
+                if A[j][i]>A[j+1][i]:
+                    res+=1
+                    break
+        return res
