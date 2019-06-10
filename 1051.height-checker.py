@@ -6,7 +6,7 @@ https://leetcode.com/problems/height-checker/description/
 
 * algorithms
 * Easy (70.44%)
-* Source Code:       1051.height-checker.0.py
+* Source Code:       1051.height-checker.py
 * Total Accepted:    6.2K
 * Total Submissions: 8.9K
 * Testcase Example:  '[1,1,4,2,1,3]'
@@ -41,4 +41,10 @@ class Solution(object):
         :type heights: List[int]
         :rtype: int
         """
+        tmp=sorted(heights)
+        count=0
+        for i in range(len(heights)):
+            if tmp[i]!=heights[i]:
+                count+=1
+        return count
         
