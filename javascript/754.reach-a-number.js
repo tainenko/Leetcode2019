@@ -49,5 +49,27 @@ target will be a non-zero integer in the range [-10^9, 10^9].
  * @return {number}
  */
 var reachNumber = function(target) {
+    if(target<0){
+        target=(-target);
+    }
+    let n=0;
+    while(n*(n+1)/2<target){
+        n+=1;
+    }
+    if(n*(n+1)/2===target){
+        return n;
+    }else{
+        if((n*(n+1)/2-target)%2===0){
+            return n;
+        }else{
+            if(n%2==0){
+                return n+1;
+            }
+            else{
+                return n+2;
+            }
+
+        }
+    }
     
 };
