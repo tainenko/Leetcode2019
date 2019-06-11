@@ -5,7 +5,7 @@ https://leetcode.com/problems/groups-of-special-equivalent-strings/description/
 
 * algorithms
 * Easy (61.93%)
-* Source Code:       893.groups-of-special-equivalent-strings.js
+* Source Code:       893.groups-of-special-equivalent-strings.py
 * Total Accepted:    14.2K
 * Total Submissions: 22.8K
 * Testcase Example:  '["abcd","cdab","cbad","xyzz","zzxy","zzyx"]'
