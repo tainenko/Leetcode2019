@@ -56,4 +56,11 @@ class Solution(object):
         :type B: str
         :rtype: List[str]
         """
-        
+        A_list=A.split(" ")
+        B_list=B.split(" ")
+        res={}
+        for word in A_list:
+            res[word]=res.get(word,0)+1
+        for word in B_list:
+            res[word]=res.get(word,0)+1
+        return [x for x in res if res[x]==1]
