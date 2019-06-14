@@ -42,3 +42,13 @@ class Solution(object):
         :type S: str
         :rtype: str
         """
+        i = 0
+        S_list=list(S)
+        while i<len(S_list)-1:
+            if S_list[i]==S_list[i+1]:
+                S_list.pop(i+1)
+                S_list.pop(i)
+                i=0 if i-1<0 else i-1
+                continue
+            i+=1
+        return ''.join(S_list)
