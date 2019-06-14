@@ -49,3 +49,27 @@ class Solution(object):
         :type stones: List[int]
         :rtype: int
         """
+        _sorted=sorted(stones)
+        while len(_sorted)>1:
+            x=_sorted.pop()
+            y=_sorted.pop()
+            if x==y:
+                continue
+            else:
+                tmp=x-y
+                _sorted=self.insert_to_sorted(tmp,_sorted)
+        if _sorted:
+            return _sorted[0]
+        else:
+            return 0
+
+    def insert_to_sorted(self,n,lst):
+        index=len(lst)
+        for i in range(len(lst)):
+            if lst[i] > n:
+                index = i
+                break
+            # Inserting n in the list
+        lst = lst[:index] + [n] + lst[index:]
+        return lst
+
