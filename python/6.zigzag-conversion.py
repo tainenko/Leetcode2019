@@ -52,7 +52,7 @@ class Solution(object):
         :type numRows: int
         :rtype: str
         """
-        if len(s)<=1:
+        if numRows==1:
             return s
         mod=2*numRows-2
         res=['']*numRows
