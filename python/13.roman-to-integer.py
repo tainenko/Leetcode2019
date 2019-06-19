@@ -74,4 +74,22 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        num = 0
+        dct = {
+            'M': 1000,
+            'D': 500,
+            'C': 100,
+            'L': 50,
+            'X': 10,
+            'V': 5,
+            'I': 1
+        }
+        for i in range(len(s)-1):
+            if dct[s[i]]<dct[s[i+1]]:
+                num-=dct[s[i]]
+            else:
+                num+=dct[s[i]]
+        num+=dct[s[-1]]
+        return num
+
         
