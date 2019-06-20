@@ -54,3 +54,10 @@ class Solution(object):
         :type str2: str
         :rtype: str
         """
+        if len(str1)<len(str2):
+            str1,str2=str2,str1
+        if str2  not in str1:
+            return ""
+        elif not str1.replace(str2,''):
+            return str2
+        return self.gcdOfStrings(str2,str1.replace(str2,'',1))
