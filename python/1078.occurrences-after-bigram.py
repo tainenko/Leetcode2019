@@ -49,3 +49,13 @@ class Solution(object):
         :type second: str
         :rtype: List[str]
         """
+        ret=[]
+        index=0
+        target=text.split(" ")
+        while index < len(target)-2:
+            if target[index]==first and target[index+1]==second:
+                ret.append(target[index+2])
+                index+=2
+                continue
+            index+=1
+        return ret
