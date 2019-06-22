@@ -64,3 +64,17 @@ class Solution(object):
         :type paths: List[List[int]]
         :rtype: List[int]
         """
+        ret = [0]*N
+        graph = [[] for _ in range(N)]
+        for path in paths:
+            graph[path[0] - 1].append(path[1] - 1)
+            graph[path[1] - 1].append(path[0] - 1)
+        for i in range(N):
+            neighber_color=[]
+            for neighber in graph[i]:
+                neighber_color.append(ret[neighber])
+            for color in range(1,5):
+                if color not in neighber_color:
+                    ret[i]=color
+                    break
+        return ret
