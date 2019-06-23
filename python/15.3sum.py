@@ -34,4 +34,25 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        
+        res=[]
+        nums=sorted(nums)
+        found=set()
+        for idx in range(len(nums)):
+            if nums[idx] in found:
+                continue
+            found.add(nums[idx])
+            tmp=self.twoSum(nums[idx+1:],-nums[idx])
+            if tmp and tmp not in res:
+                res+=tmp
+        return res
+
+    def twoSum(self,nums,target):
+        tmp={}
+        res=[]
+        for idx,num in enumerate(nums):
+            if num not in tmp:
+                tmp[target-num]=idx
+            else:
+                if [-target,nums[tmp[num]],num] not in res:
+                    res.append([-target,nums[tmp[num]],num])
+        return res
