@@ -51,5 +51,23 @@ P     I
  * @return {string}
  */
 var convert = function(s, numRows) {
-    
+    if(numRows===1){
+        return s;
+    }
+    let ret = new Array(numRows).fill('');
+    let n = 2*numRows-2;
+    let half = n/2+1;
+
+    for(let i=0;i<s.length;i++){
+        let j = i%n;
+        if(j>numRows-1){
+            j=n-j;
+        }
+        ret[j]+=s[i];
+    }
+    let res= '';
+    for(let j=0;j<ret.length;j++){
+        res+=ret[j];
+    }
+    return res;
 };
