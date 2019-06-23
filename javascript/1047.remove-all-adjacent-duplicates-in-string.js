@@ -41,5 +41,17 @@ Note:
  * @return {string}
  */
 var removeDuplicates = function(S) {
-    
+    let arr=S.split('');
+    let i=0
+    while(i < arr.length){
+        if(arr[i]===arr[i+1]){
+            arr.splice(i,2);
+            if(i-1>=0){
+                i--;
+            }
+            continue
+        }
+        i++;
+    }
+    return arr.join('');
 };
