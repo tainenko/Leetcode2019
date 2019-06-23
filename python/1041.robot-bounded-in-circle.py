@@ -67,4 +67,15 @@ class Solution(object):
         :type instructions: str
         :rtype: bool
         """
-        
+        step=[(0,1),(-1,0),(0,-1),(1,0)]
+        x=y=0
+        curt=0
+        for chr in instructions:
+            if chr=="G":
+                x+=step[curt][0]
+                y+=step[curt][1]
+            elif chr=='L':
+                curt = (curt - 1) % 4
+            elif chr=='R':
+                curt = (curt + 1) % 4
+        return (x==0 and y==0) or curt!=0
