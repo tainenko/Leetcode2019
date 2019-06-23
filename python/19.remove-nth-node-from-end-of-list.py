@@ -27,8 +27,8 @@ Given n will always be valid.
 Follow up:
 
 Could you do this in one pass?
-''''' \
-'# Definition for singly-linked list.
+'''
+# Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, x):
 #         self.val = x
@@ -41,4 +41,15 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
+        fast=head
+        for _ in range(n):
+            fast=fast.next
+        if not fast:
+            return head.next
+        slow=head
+        while fast.next:
+            slow=slow.next
+            fast=fast.next
+        slow.next=slow.next.next
+        return head
         
