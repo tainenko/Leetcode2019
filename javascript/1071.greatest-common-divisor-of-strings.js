@@ -53,5 +53,16 @@ Note:
  * @return {string}
  */
 var gcdOfStrings = function(str1, str2) {
+    if(str1.length<str2.length){
+        [str1,str2]=[str2,str1];
+    }
+    if(str1.replace(str2,'')===str1){
+        return ''
+    }
+    if(str1.replace(str2,'')===''){
+        return str2;
+    }else{
+        return gcdOfStrings(str2,str1.replace(str2,''));
+    }
     
 };
