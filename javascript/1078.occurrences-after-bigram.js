@@ -49,5 +49,13 @@ Note:
  * @return {string[]}
  */
 var findOcurrences = function(text, first, second) {
+    let arr = text.split(' ');
+    let ret = new Array();
+    for(let i=0; i<arr.length-2;i++){
+        if(arr[i]===first && arr[i+1]===second){
+            ret.push(arr[i+2]);
+        }
+    }
+    return ret;
     
 };
