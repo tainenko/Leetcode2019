@@ -34,4 +34,17 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+
+        first=ListNode(0)
+        first.next=head
+        prev=first
+        curr=head
+        while curr and curr.next:
+            keep = curr.next.next
+            curr.next.next=curr
+            prev.next=curr.next
+            curr.next=keep
+            prev=curr
+            curr=curr.next
+        return first.next
         
