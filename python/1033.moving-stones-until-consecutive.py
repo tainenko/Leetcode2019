@@ -66,4 +66,24 @@ class Solution(object):
         :type c: int
         :rtype: List[int]
         """
+        a,b,c=sorted([a,b,c])
+        min,max=0,0
+        # there are three senarios in min step
+        # the first one, all of them are already consecutive, we don't need to move.
+        # the min step is zero
+        if a+1==b and b+1==c:
+            min=0
+        # the second one, two of the nums are consecutive or they are difference by two.
+        # we can move the third num to the consecutive positive or insert into the others.
+        # the min step would be 1.
+        elif b-a<=2 or c-b <=2:
+            min=1
+        # else, we need to move two of the nums.
+        else:
+            min=2
+        # the max step is we move the lowest and highest position stone to the middle and move one step in a time.
+        # the highest position need (c-b-1) steps. the lowest position need (b-a-1) steps.
+        max=(c-b-1)+(b-a-1)
+        return [min,max]
+
         
