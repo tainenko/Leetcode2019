@@ -60,4 +60,21 @@ class Solution(object):
         :type num_people: int
         :rtype: List[int]
         """
+        ret = [0] * num_people
+        n=1
+        idx=0
+        while candies > 0:
+            if idx == num_people:
+                idx = 0
+            if candies >=n:
+                ret[idx]+=n
+                candies-=n
+            else:
+                ret[idx]+=candies
+                break
+            n+=1
+            idx+=1
+        return ret
+
+
         
