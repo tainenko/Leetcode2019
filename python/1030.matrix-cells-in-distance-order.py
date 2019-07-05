@@ -76,17 +76,14 @@ class Solution(object):
         while q:
             r,c=q.pop(0)
             ret.append([r,c])
-            if r0>r-1>=0 and not visited[r-1][c]:
+            visited[r][c]=True
+            if r-1>=0 and not visited[r-1][c]:
                 q.append([r-1,c])
-                visited[r - 1][c]=True
-            if r0<r+1<R and not visited[r+1][c]:
+            if r+1<R and not visited[r+1][c]:
                 q.append([r+1,c])
-                visited[r + 1][c]=True
-            if c0>c-1>=0 and not visited[r][c-1]:
+            if c-1>=0 and not visited[r][c-1]:
                 q.append([r,c-1])
-                visited[r][c - 1]=True
-            if c0<c+1<C and not visited[r][c+1]:
+            if c+1<C and not visited[r][c+1]:
                 q.append([r,c+1])
-                visited[r][c + 1]=True
         return ret
         
