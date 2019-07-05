@@ -14,7 +14,9 @@ We are given a matrix with R rows and C columns has cells with integer coordinat
 
 Additionally, we are given a cell in that matrix with coordinates (r0, c0).
 
-Return the coordinates of all cells in the matrix, sorted by their distance from (r0, c0) from smallest distance to largest distance.  Here, the distance between two cells (r1, c1) and (r2, c2) is the Manhattan distance, |r1 - r2| + |c1 - c2|.  (You may return the answer in any order that satisfies this condition.)
+Return the coordinates of all cells in the matrix, sorted by their distance from (r0, c0) from smallest distance to largest distance. 
+Here, the distance between two cells (r1, c1) and (r2, c2) is the Manhattan distance, |r1 - r2| + |c1 - c2|. 
+(You may return the answer in any order that satisfies this condition.)
 
  
 
@@ -67,4 +69,24 @@ class Solution(object):
         :type c0: int
         :rtype: List[List[int]]
         """
+        ret=[]
+        visited=[ [None] * C for i in range(R) ]
+        q=[[r0,c0]]
+        visited[r0][c0]=True
+        while q:
+            r,c=q.pop(0)
+            ret.append([r,c])
+            if r0>r-1>=0 and not visited[r-1][c]:
+                q.append([r-1,c])
+                visited[r - 1][c]=True
+            if r0<r+1<R and not visited[r+1][c]:
+                q.append([r+1,c])
+                visited[r + 1][c]=True
+            if c0>c-1>=0 and not visited[r][c-1]:
+                q.append([r,c-1])
+                visited[r][c - 1]=True
+            if c0<c+1<C and not visited[r][c+1]:
+                q.append([r,c+1])
+                visited[r][c + 1]=True
+        return ret
         
