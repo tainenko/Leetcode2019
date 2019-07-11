@@ -72,9 +72,10 @@ class Solution(object):
         ret=[]
         visited=[ [None] * C for i in range(R) ]
         q=[[r0,c0]]
-        visited[r0][c0]=True
         while q:
             r,c=q.pop(0)
+            if visited[r][c]:
+                continue
             ret.append([r,c])
             visited[r][c]=True
             if r-1>=0 and not visited[r-1][c]:
