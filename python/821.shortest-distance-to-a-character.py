@@ -48,4 +48,19 @@ class Solution(object):
                 lst[i]=min([abs(i-x) for x in targets])
         return lst
 
+    def shortestToChar(self, S, C):
+        """
+
+        :param S:
+        :param C:
+        :return:
+        """
+        lst=[n]*len(S)
+        pos = -n
+        for i in range(n)+range(n,0,-1):
+            if S[i]==C:
+                pos=i
+            lst[i]=min(lst[i],abs(i-pos))
+        return lst
+
         
