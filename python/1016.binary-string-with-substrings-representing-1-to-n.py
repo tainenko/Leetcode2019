@@ -44,4 +44,11 @@ class Solution(object):
         :type N: int
         :rtype: bool
         """
+        n=1
+        while n<=N:
+            if "{0:b}".format(n) not in S:
+                return False
+            n+=1
+        return True
+
         
