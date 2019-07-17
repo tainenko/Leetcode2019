@@ -53,4 +53,13 @@ class Solution(object):
         :type cpdomains: List[str]
         :rtype: List[str]
         """
+        res={}
+        for cpdomain in cpdomains:
+            lst = cpdomain.split(' ')
+            num = int(lst[0])
+            subs = lst[1].split('.')
+            for i in range(len(subs)):
+                sub ='.'.join(subs[i:])
+                res[sub]=res.get(sub,0)+num
+        return [str(val)+' '+key for key, val in res.items()]
         
