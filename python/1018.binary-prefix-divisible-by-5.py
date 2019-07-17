@@ -59,4 +59,25 @@ class Solution(object):
         :type A: List[int]
         :rtype: List[bool]
         """
-        
+        prefix=0
+        res=[]
+        for a in A:
+            prefix = (2*prefix+a) % 5
+            res.append(prefix==0)
+        return res
+
+
+    def prefixesDivBy5_2(self, A):
+        """
+        :type A: List[int]
+        :rtype: List[bool]
+        """
+        num=""
+        res=[]
+        for bit in A:
+            num+=str(bit)
+            if int(num,2) % 5 ==0:
+                res.append(True)
+            else:
+                res.append(False)
+        return res
