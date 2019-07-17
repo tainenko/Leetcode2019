@@ -58,4 +58,16 @@ class Solution(object):
         :type S: str
         :rtype: List[int]
         """
+        line = 1
+        plus = 0
+        for s in S:
+            width = widths[ord(s)-ord('a')]
+            if plus+width>100:
+                plus = width
+                line += 1
+            else:
+                plus+=width
+        return [line, plus]
+
+
         
