@@ -76,21 +76,32 @@ class Solution(object):
         :type A: List[int]
         :rtype: bool
         """
-        return self.increase(A) or self.decrease(A)
+        def increase(A):
+            for i in range(1, len(A)):
+                if A[i] > A[i - 1]:
+                    return False
+            return True
 
+        def decrease(A):
+            for i in range(1, len(A)):
+                if A[i] < A[i - 1]:
+                    return False
+            return True
+        return increase(A) or decrease(A)
 
-    def increase(self,A):
-
+    def isMonotonic2(self,A):
+        """
+        :param A:
+        :return:
+        """
+        inc = True
+        dec = True
         for i in range(1,len(A)):
-            if A[i]>A[i-1]:
-                return False
-        return True
+            inc = inc and A[i-1]<=A[i]
+            dec = dec and A[i-1]>=A[i]
+        return inc or dec
 
 
-    def decrease(self,A):
-        for i in range(1,len(A)):
-            if A[i]<A[i-1]:
-                return False
-        return True
+
 
         
