@@ -63,4 +63,15 @@ class Solution(object):
         :type N: int
         :rtype: int
         """
+        if N==0:
+            return 1
+        ret=""
+        while N//2 or N%2:
+            if N%2:
+                ret="0"+ret
+            else:
+                ret="1"+ret
+            N=N//2
+        return int(ret,2)
+
         
