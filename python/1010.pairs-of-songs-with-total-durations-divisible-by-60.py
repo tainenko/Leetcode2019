@@ -51,4 +51,28 @@ class Solution(object):
         :type time: List[int]
         :rtype: int
         """
+        total=0
+        dct = {}
+        for i in range(len(time)-1,-1,-1):
+            tmp = time[i]%60
+            if tmp == 0 and dct.get(tmp,None):
+                total+=dct[tmp]
+            elif dct.get(60-tmp,None):
+                total+=dct[60-tmp]
+            dct[tmp]=dct.get(tmp,0)+1
+        return total
+
+    def numPairsDivisibleBy60_bruce_force(self, time):
+        """
+        exceed time limit
+        :type time: List[int]
+        :rtype: int
+        """
+        total=0
+        for i in range(len(time)):
+            for j in range(i+1,len(time)):
+                if (time[i]+time[j])%60==0:
+                    total+=1
+        return total
+
         
