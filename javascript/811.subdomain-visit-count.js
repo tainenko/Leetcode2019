@@ -53,5 +53,25 @@ Notes:
  * @return {string[]}
  */
 var subdomainVisits = function(cpdomains) {
-    
+    let counts=new Map();
+    cpdomains.forEach(function(string){
+        let [num, domain]=string.split(' ');
+        for(let i=domain.length-1;i>=(-1);i--){
+            if (domain[i]==='.' || i===(-1)){
+                let tmp = domain.slice(i+1);
+                if(counts.has(tmp)){
+                    counts.set(tmp,Number(num)+counts.get(tmp));
+                }
+                else{
+                    counts.set(tmp,Number(num));
+                }
+
+            }
+        }
+    });
+    let res=new Array();
+    for(let key of counts.keys()){
+        res.push(counts.get(key)+' '+key);
+    }
+    return res
 };
