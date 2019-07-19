@@ -32,6 +32,7 @@ There are many calls to sumRange function.
  * @param {number[]} nums
  */
 var NumArray = function(nums) {
+    this.nums=nums;
     
 };
 
@@ -41,6 +42,11 @@ var NumArray = function(nums) {
  * @return {number}
  */
 NumArray.prototype.sumRange = function(i, j) {
+    let total=0;
+    for(let idx=i;idx<=j;idx++){
+        total+=this.nums[idx];
+    }
+    return total;
     
 };
 
