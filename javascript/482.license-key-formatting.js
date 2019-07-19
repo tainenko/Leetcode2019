@@ -51,5 +51,21 @@ String S is non-empty.
  * @return {string}
  */
 var licenseKeyFormatting = function(S, K) {
-    
+    res=""
+    count=0;
+    for(let i=S.length-1;i>=0;i--){
+        if(S[i]==='-'){
+            continue
+        }
+        else{
+            if(count===K){
+                res='-'+res;
+                count=0;
+            }
+            res=S[i].toUpperCase()+res;
+            count++;
+
+        }
+    }
+    return res;
 };
