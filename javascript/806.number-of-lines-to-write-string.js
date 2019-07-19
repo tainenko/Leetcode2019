@@ -112,5 +112,18 @@ Note:
  * @return {number[]}
  */
 var numberOfLines = function(widths, S) {
-    
+    let total=0;
+    let line=1;
+    let  get_char_width = function(char){
+    return widths[char.charCodeAt(0)-'a'.charCodeAt(0)];
+}
+    S.split('').forEach(function(s){
+        total+=get_char_width(s);
+        if(total>100){
+            total=get_char_width(s);
+            line+=1;
+        }
+    });
+    return [line,total];
 };
+
