@@ -61,4 +61,10 @@ class Solution(object):
         :type K: int
         :rtype: int
         """
+        for i in range(K):
+            idx=A.index(min(A))
+            A[idx]=-A[idx]
+        return sum(A)
+
+
         
