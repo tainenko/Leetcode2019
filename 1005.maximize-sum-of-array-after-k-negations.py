@@ -61,6 +61,24 @@ class Solution(object):
         :type K: int
         :rtype: int
         """
+        A.sort()
+        for i in range(len(A)):
+            if not K:
+                break
+            if A[i]<0:
+                A[i]=-A[i]
+                K-=1
+        if K%2==0:
+            return sum(A)
+        else:
+            return sum(A)-2*min(A)
+
+    def largestSumAfterKNegations2(self, A, K):
+        """
+        :type A: List[int]
+        :type K: int
+        :rtype: int
+        """
         for i in range(K):
             idx=A.index(min(A))
             A[idx]=-A[idx]
