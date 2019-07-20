@@ -66,5 +66,19 @@ Note:
  * @return {number[]}
  */
 var shortestToChar = function(S, C) {
-    
+    let dist = new Array(S.length).fill(S.length);
+    let curr = -S.length;
+    for(let i = 0; i<S.length; i++){
+        if(S[i]===C){
+            curr = i;
+        }
+        dist[i] = Math.min(dist[i],Math.abs(i-curr));
+    }
+    for(let i = S.length-1; i>=0;i--){
+        if(S[i]===C){
+            curr = i;
+        }
+        dist[i] = Math.min(dist[i],Math.abs(i-curr));
+    }
+    return dist;
 };
