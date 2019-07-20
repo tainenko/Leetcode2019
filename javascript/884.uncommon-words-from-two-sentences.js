@@ -55,30 +55,25 @@ Note:
  * @return {string[]}
  */
 var uncommonFromSentences = function(A, B) {
-    let Amap = new Map();
-    let Bmap = new Map();
+    let unique = new Map();
 
     for(let word of A.split(' ')){
-        let value = Amap.has(word)? Amap.get(word):0;
-        Amap.set(word,value+1);
+        let value = unique.has(word)? unique.get(word):0;
+        unique.set(word,value+1);
     };
 
     for(let word of B.split(' ')){
-        let value = Bmap.has(word)? Bmap.get(word):0;
-        Bmap.set(word,value+1);
+        let value = unique.has(word)? unique.get(word):0;
+        unique.set(word,value+1);
     };
 
     let res = new Array();
 
-    for(let key of Amap.keys()){
-        if(Amap.get(key) === 1 && Bmap.get(key)===undefined){
+    for(let key of unique.keys()){
+        if(unique.get(key) === 1){
             res.push(key);
         }
     }
-    for(let key of Bmap.keys()){
-        if(Bmap.get(key) === 1 && Amap.get(key)===undefined){
-            res.push(key);
-        }
-    }
+
     return res;
 };
