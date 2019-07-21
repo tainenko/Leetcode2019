@@ -73,4 +73,21 @@ class Solution(object):
         :type K: int
         :rtype: List[int]
         """
+        carry=0
+        for i in range(len(A)-1,-1,-1):
+            digit=K%10+carry
+            K//=10
+            carry=0
+            A[i]+=digit
+            if A[i]>9:
+                A[i]-=10
+                carry=1
+        while carry+K:
+            A.insert(0,carry+K%10)
+            K//=10
+            carry=0
+            if A[0]>9:
+                A[i] -= 10
+                carry = 1
+        return A
         
