@@ -87,4 +87,12 @@ class Solution(object):
         :type trust: List[List[int]]
         :rtype: int
         """
+        res=[0]*(N)
+        for pair in trust:
+            res[pair[0]-1]-=1
+            res[pair[1]-1]+=1
+        for people in res:
+            if people == N-1:
+                return res.index(people)+1
+        return -1
         
