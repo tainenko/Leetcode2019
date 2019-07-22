@@ -66,4 +66,18 @@ class Solution(object):
         :type A: List[int]
         :rtype: int
         """
+        """
+        解題思路：
+        三角形的構成條件為兩邊之和大於第三邊。
+        先對list排序，考慮無法形成三角形的情景為 A[i]>=A[i-1]+A[i-2]，由於list為有序，A[i-2]>=A[i-3]，
+        因此A[i]>=A[i-1]+A[i-3]，同理可証A[i]與剩下的邊長都無法構成三角形。
+        因此我們想找到一個最長周長的三角形，必定是取連續三個周長，判斷是否符合兩邊和大於第三邊的條件。
+        """
+        A.sort()
+        N=len(A)
+        for i in range(N-1,1,-1):
+            if A[i-1]+A[i-2]>A[i]:
+                return A[i-1]+A[i-2]+A[i]
+        return 0
+
         
