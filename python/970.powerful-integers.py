@@ -54,6 +54,8 @@ Note:
         0 <= bound <= 10^6
 
 """
+
+
 class Solution(object):
     def powerfulIntegers(self, x, y, bound):
         """
@@ -62,10 +64,10 @@ class Solution(object):
         :type bound: int
         :rtype: List[int]
         """
-        res=set()
+        res = set()
         for i in range(20):
             for j in range(20):
-                if x**i+y**j>bound:
+                if x ** i + y ** j > bound:
                     break
-                res.add(x**i+y**j)
+                res.add(x ** i + y ** j)
         return list(res)

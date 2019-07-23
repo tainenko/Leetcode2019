@@ -22,10 +22,25 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 3,2,1 → 1,2,3
 1,1,5 → 1,5,1
 '''
+
+
 class Solution(object):
     def nextPermutation(self, nums):
         """
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        
+        """
+        """
+        left= len(nums)-2
+        right=len(nums)-1
+        while left>=0 and nums[left]>=nums[left+1]:
+            left-=1
+        if left >=0:
+            while nums[right]<=nums[left]:
+                right-=1
+            nums[left],nums[right]=nums[right],nums[left]
+        rev = nums[left+1:]
+        rev.reverse()
+        nums[left+1:] = nums[left+1:][::-1]
+        return
