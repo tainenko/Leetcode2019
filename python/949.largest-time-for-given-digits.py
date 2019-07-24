@@ -49,4 +49,13 @@ class Solution(object):
         :type A: List[int]
         :rtype: str
         """
+        A.sort()
+        for h in range(23,-1,-1):
+            for time in range(59,-1,-1):
+                tmp = [h//10,h%10,time//10,time%10]
+                if sorted(tmp)==A:
+                    return "{}{}:{}{}".format(tmp[0],tmp[1],tmp[2],tmp[3])
+        return ""
+
+
         
