@@ -3,19 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a4dbfc8d-b6a9-45df-9f8c-eec7fcedbeda" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lc/leetcode/cache/1.two-sum.algorithms.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lc/leetcode/cache/118.pascals-triangle.algorithms.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lc/leetcode/cache/168.excel-sheet-column-title.algorithms.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lc/leetcode/cache/2.add-two-numbers.algorithms.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lc/leetcode/cache/3.longest-substring-without-repeating-characters.algorithms.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lc/leetcode/cache/5.longest-palindromic-substring.algorithms.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lc/leetcode/cache/7.reverse-integer.algorithms.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lc/leetcode/cache/713.subarray-product-less-than-k.algorithms.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lc/leetcode/cache/735.asteroid-collision.algorithms.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lc/leetcode/cache/888.fair-candy-swap.algorithms.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.lc/leetcode/cache/problems.json" beforeDir="false" afterPath="$PROJECT_DIR$/.lc/leetcode/cache/problems.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.lc/leetcode/stat.json" beforeDir="false" afterPath="$PROJECT_DIR$/.lc/leetcode/stat.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/893.groups-of-special-equivalent-strings.py" beforeDir="false" afterPath="$PROJECT_DIR$/893.groups-of-special-equivalent-strings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1025.divisor-game.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1029.two-city-scheduling.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/29.divide-two-integers.py" beforeDir="false" afterPath="$PROJECT_DIR$/29.divide-two-integers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/953.verifying-an-alien-dictionary.py" beforeDir="false" afterPath="$PROJECT_DIR$/953.verifying-an-alien-dictionary.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,92 +17,96 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/leetcode$3_longest_substring_without_repeating_characters.coverage" NAME="3.longest-substring-without-repeating-characters Coverage Results" MODIFIED="1557057383649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/leetcode$3_longest_substring_without_repeating_characters.coverage" NAME="3.longest-substring-without-repeating-characters Coverage Results" MODIFIED="1563422781898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/1001.grid-illumination.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/1021.remove-outermost-parentheses.py">
+        <entry file="file://$PROJECT_DIR$/python/31.next-permutation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="65" column="23" lean-forward="true" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+            <state relative-caret-position="478">
+              <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/javascript/1021.remove-outermost-parentheses.js">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="85" column="15" lean-forward="true" selection-start-line="85" selection-start-column="15" selection-end-line="85" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/754.reach-a-number.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
+            <state relative-caret-position="135">
+              <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/javascript/754.reach-a-number.js">
+        <entry file="file://$PROJECT_DIR$/953.verifying-an-alien-dictionary.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="68" column="27" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
+            <state relative-caret-position="464">
+              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/1051.height-checker.py">
+        <entry file="file://$PROJECT_DIR$/953.verifying-an-alien-dictionary.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="50" selection-start-line="50" selection-end-line="50" />
+            <state relative-caret-position="287">
+              <caret line="54" selection-start-line="54" selection-end-line="54" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/javascript/1051.height-checker.js">
+        <entry file="file://$PROJECT_DIR$/python/970.powerful-integers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+            <state relative-caret-position="1095">
+              <caret line="73" selection-start-line="73" selection-end-line="73" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leetcode-cli/package.json">
+        <entry file="file://$PROJECT_DIR$/1103.distribute-candies-to-people.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="581">
-              <caret line="72" column="20" lean-forward="true" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
+            <state relative-caret-position="795">
+              <caret line="53" selection-end-line="63" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leetcode-cli/package-lock.json">
+        <entry file="file://$PROJECT_DIR$/970.powerful-integers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="1067" column="28" lean-forward="true" selection-start-line="1067" selection-start-column="28" selection-end-line="1067" selection-end-column="28" />
+            <state relative-caret-position="810">
+              <caret line="54" selection-start-line="54" selection-end-line="54" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/937.reorder-log-files.py">
+        <entry file="file://$PROJECT_DIR$/976.largest-perimeter-triangle.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="900">
+              <caret line="60" selection-start-line="60" selection-end-line="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/989.add-to-array-form-of-integer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="990">
+              <caret line="66" selection-start-line="66" selection-end-line="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/994.rotting-oranges.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="930">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
             </state>
           </provider>
         </entry>
@@ -127,6 +124,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>yaml</find>
+      <find>join</find>
+      <find>Amap</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -135,64 +134,63 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/888.fair-candy-swap.js" />
-        <option value="$PROJECT_DIR$/888.fair-candy-swap.py" />
-        <option value="$PROJECT_DIR$/javascript/888.fair-candy-swap.js" />
-        <option value="$PROJECT_DIR$/876.middle-of-the-linked-list.js" />
-        <option value="$PROJECT_DIR$/876.middle-of-the-linked-list.py" />
-        <option value="$PROJECT_DIR$/javascript/876.middle-of-the-linked-list.js" />
-        <option value="$PROJECT_DIR$/2.add-two-numbers.js" />
-        <option value="$PROJECT_DIR$/237.delete-node-in-a-linked-list.0.py" />
-        <option value="$PROJECT_DIR$/237.delete-node-in-a-linked-list.py" />
-        <option value="$PROJECT_DIR$/javascript/237.delete-node-in-a-linked-list.js" />
-        <option value="$PROJECT_DIR$/2.add-two-numbers.0.py" />
-        <option value="$PROJECT_DIR$/6.zigzag-conversion.py" />
-        <option value="$PROJECT_DIR$/5.longest-palindromic-substring.py" />
-        <option value="$PROJECT_DIR$/1013.partition-array-into-three-parts-with-equal-sum.js" />
-        <option value="$PROJECT_DIR$/1013.partition-array-into-three-parts-with-equal-sum.py" />
-        <option value="$PROJECT_DIR$/javascript/1013.partition-array-into-three-parts-with-equal-sum.js" />
-        <option value="$PROJECT_DIR$/javascript/README.md" />
-        <option value="$PROJECT_DIR$/1002.find-common-characters.js" />
-        <option value="$PROJECT_DIR$/1002.find-common-characters.py" />
-        <option value="$PROJECT_DIR$/66.plus-one.js" />
-        <option value="$PROJECT_DIR$/javascript/66.plus-one.js" />
-        <option value="$PROJECT_DIR$/206.reverse-linked-list.js" />
-        <option value="$PROJECT_DIR$/javascript/206.reverse-linked-list.js" />
-        <option value="$PROJECT_DIR$/349.intersection-of-two-arrays.js" />
-        <option value="$PROJECT_DIR$/javascript/349.intersection-of-two-arrays.js" />
-        <option value="$PROJECT_DIR$/Longest Common Substring | DP-29.py" />
-        <option value="$PROJECT_DIR$/javascript/Longest COmmon Substring.js" />
-        <option value="$PROJECT_DIR$/javascript/Longest Common Substring.js" />
-        <option value="$PROJECT_DIR$/300.longest-increasing-subsequence.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/300.longest-increasing-subsequence.py" />
-        <option value="$PROJECT_DIR$/852.peak-index-in-a-mountain-array.js" />
-        <option value="$PROJECT_DIR$/javascript/852.peak-index-in-a-mountain-array.js" />
-        <option value="$PROJECT_DIR$/893.groups-of-special-equivalent-strings.js" />
-        <option value="$PROJECT_DIR$/937.reorder-log-files.py" />
-        <option value="$PROJECT_DIR$/937.reorder-log-files.js" />
-        <option value="$PROJECT_DIR$/893.groups-of-special-equivalent-strings.py" />
-        <option value="$PROJECT_DIR$/938.range-sum-of-bst.py" />
-        <option value="$PROJECT_DIR$/javascript/938.range-sum-of-bst.js" />
-        <option value="$PROJECT_DIR$/933.number-of-recent-calls.js" />
-        <option value="$PROJECT_DIR$/933.number-of-recent-calls.py" />
-        <option value="$PROJECT_DIR$/944.delete-columns-to-make-sorted.py" />
-        <option value="$PROJECT_DIR$/883.projection-area-of-3d-shapes.py" />
-        <option value="$PROJECT_DIR$/1051.height-checker.py" />
-        <option value="$PROJECT_DIR$/1051.height-checker.js" />
-        <option value="$PROJECT_DIR$/leetcode-cli/package-lock.json" />
-        <option value="$PROJECT_DIR$/1021.remove-outermost-parentheses.py" />
-        <option value="$PROJECT_DIR$/1021.remove-outermost-parentheses.js" />
-        <option value="$PROJECT_DIR$/754.reach-a-number.py" />
-        <option value="$PROJECT_DIR$/754.reach-a-number.js" />
-        <option value="$PROJECT_DIR$/javascript/754.reach-a-number.js" />
+        <option value="$PROJECT_DIR$/1029.two-city-scheduling.py" />
+        <option value="$PROJECT_DIR$/1025.divisor-game.js" />
+        <option value="$PROJECT_DIR$/1025.divisor-game.py" />
+        <option value="$PROJECT_DIR$/1022.sum-of-root-to-leaf-binary-numbers.js" />
+        <option value="$PROJECT_DIR$/1022.sum-of-root-to-leaf-binary-numbers.py" />
+        <option value="$PROJECT_DIR$/17.letter-combinations-of-a-phone-number.py" />
+        <option value="$PROJECT_DIR$/17.letter-combinations-of-a-phone-number.js" />
+        <option value="$PROJECT_DIR$/821.shortest-distance-to-a-character.py" />
+        <option value="$PROJECT_DIR$/python/821.shortest-distance-to-a-character.py" />
+        <option value="$PROJECT_DIR$/896.monotonic-array.py" />
+        <option value="$PROJECT_DIR$/python/896.monotonic-array.py" />
+        <option value="$PROJECT_DIR$/806.number-of-lines-to-write-string.py" />
+        <option value="$PROJECT_DIR$/1016.binary-string-with-substrings-representing-1-to-n.js" />
+        <option value="$PROJECT_DIR$/1016.binary-string-with-substrings-representing-1-to-n.py" />
+        <option value="$PROJECT_DIR$/811.subdomain-visit-count.py" />
+        <option value="$PROJECT_DIR$/303.range-sum-query-immutable.py" />
+        <option value="$PROJECT_DIR$/482.license-key-formatting.py" />
+        <option value="$PROJECT_DIR$/1018.binary-prefix-divisible-by-5.js" />
+        <option value="$PROJECT_DIR$/1018.binary-prefix-divisible-by-5.py" />
+        <option value="$PROJECT_DIR$/1010.pairs-of-songs-with-total-durations-divisible-by-60.js" />
+        <option value="$PROJECT_DIR$/1010.pairs-of-songs-with-total-durations-divisible-by-60.py" />
+        <option value="$PROJECT_DIR$/1009.complement-of-base-10-integer.js" />
+        <option value="$PROJECT_DIR$/1009.complement-of-base-10-integer.py" />
+        <option value="$PROJECT_DIR$/19.remove-nth-node-from-end-of-list.js" />
+        <option value="$PROJECT_DIR$/303.range-sum-query-immutable.js" />
+        <option value="$PROJECT_DIR$/482.license-key-formatting.js" />
+        <option value="$PROJECT_DIR$/806.number-of-lines-to-write-string.js" />
+        <option value="$PROJECT_DIR$/811.subdomain-visit-count.js" />
+        <option value="$PROJECT_DIR$/821.shortest-distance-to-a-character.js" />
+        <option value="$PROJECT_DIR$/884.uncommon-words-from-two-sentences.js" />
+        <option value="$PROJECT_DIR$/javascript/884.uncommon-words-from-two-sentences.js" />
+        <option value="$PROJECT_DIR$/896.monotonic-array.js" />
+        <option value="$PROJECT_DIR$/1005.maximize-sum-of-array-after-k-negations.js" />
+        <option value="$PROJECT_DIR$/1005.maximize-sum-of-array-after-k-negations.py" />
+        <option value="$PROJECT_DIR$/999.available-captures-for-rook.js" />
+        <option value="$PROJECT_DIR$/999.available-captures-for-rook.py" />
+        <option value="$PROJECT_DIR$/997.find-the-town-judge.js" />
+        <option value="$PROJECT_DIR$/997.find-the-town-judge.py" />
+        <option value="$PROJECT_DIR$/994.rotting-oranges.js" />
+        <option value="$PROJECT_DIR$/994.rotting-oranges.py" />
+        <option value="$PROJECT_DIR$/989.add-to-array-form-of-integer.js" />
+        <option value="$PROJECT_DIR$/989.add-to-array-form-of-integer.py" />
+        <option value="$PROJECT_DIR$/976.largest-perimeter-triangle.js" />
+        <option value="$PROJECT_DIR$/976.largest-perimeter-triangle.py" />
+        <option value="$PROJECT_DIR$/970.powerful-integers.js" />
+        <option value="$PROJECT_DIR$/970.powerful-integers.py" />
+        <option value="$PROJECT_DIR$/python/970.powerful-integers.py" />
+        <option value="$PROJECT_DIR$/29.divide-two-integers.py" />
+        <option value="$PROJECT_DIR$/31.next-permutation.py" />
+        <option value="$PROJECT_DIR$/953.verifying-an-alien-dictionary.js" />
+        <option value="$PROJECT_DIR$/953.verifying-an-alien-dictionary.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="y" value="23" />
     <option name="width" value="1680" />
-    <option name="height" value="944" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -206,11 +204,6 @@
               <item name="leetcode" type="b2602c69:ProjectViewProjectNode" />
               <item name="leetcode" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="leetcode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leetcode" type="462c0819:PsiDirectoryNode" />
-              <item name="javascript" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -222,15 +215,21 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/leetcode-cli/node_modules/eslint" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/python" />
       <recent name="$PROJECT_DIR$/javascript" />
-      <recent name="$PROJECT_DIR$/leetcode-cli" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/java" />
+      <recent name="$PROJECT_DIR$/sql" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -259,7 +258,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/3.longest-substring-without-repeating-characters.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/3.longest-substring-without-repeating-characters.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -317,18 +316,26 @@
       <workItem from="1556755951286" duration="1134000" />
       <workItem from="1556888170236" duration="549000" />
       <workItem from="1556889390339" duration="560000" />
-      <workItem from="1556891888734" duration="18930000" />
+      <workItem from="1556891888734" duration="22243000" />
+      <workItem from="1560433436315" duration="1495000" />
+      <workItem from="1560443161058" duration="4172000" />
+      <workItem from="1560499695467" duration="51575000" />
+      <workItem from="1562728608883" duration="796000" />
+      <workItem from="1562745618169" duration="7445000" />
+      <workItem from="1563172499334" duration="37603000" />
+      <workItem from="1563809117385" duration="3871000" />
+      <workItem from="1563853528193" duration="2806000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75646000" />
+    <option name="totallyTimeSpent" value="188722000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2832723" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31196582" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -341,9 +348,10 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50061053" side_tool="true" weight="0.37793428" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4993895" visible="true" weight="0.32857144" />
-      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501221" side_tool="true" weight="0.32857144" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.498779" visible="true" weight="0.3867347" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32959184" />
+      <window_info anchor="bottom" id="Pylint" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -357,344 +365,354 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2.add-two-numbers.py">
+    <entry file="file://$PROJECT_DIR$/python/1022.sum-of-root-to-leaf-binary-numbers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="324">
+          <caret line="50" column="19" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2.add-two-numbers.0.py" />
-    <entry file="file://$PROJECT_DIR$/876.middle-of-the-linked-list.py">
+    <entry file="file://$PROJECT_DIR$/../beagle_opencv/barcode.png" />
+    <entry file="file://$PROJECT_DIR$/python/821.shortest-distance-to-a-character.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="82" column="26" lean-forward="true" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
+        <state relative-caret-position="579">
+          <caret line="63" column="18" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/5.longest-palindromic-substring.0.py" />
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/1.two-sum.js">
+    <entry file="file://$PROJECT_DIR$/python/896.monotonic-array.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+        <state relative-caret-position="1515">
+          <caret line="101" column="25" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/237.delete-node-in-a-linked-list.js">
+    <entry file="file://$PROJECT_DIR$/python/806.number-of-lines-to-write-string.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+        <state relative-caret-position="459">
+          <caret line="69" column="27" lean-forward="true" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/876.middle-of-the-linked-list.js">
+    <entry file="file://$PROJECT_DIR$/1016.binary-string-with-substrings-representing-1-to-n.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="44" column="64" selection-start-line="44" selection-start-column="64" selection-end-line="44" selection-end-column="64" />
+        <state relative-caret-position="552">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1002.find-common-characters.py">
+    <entry file="file://$PROJECT_DIR$/1022.sum-of-root-to-leaf-binary-numbers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1440">
-          <caret line="96" column="25" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
+        <state relative-caret-position="447">
+          <caret line="50" column="36" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/66.plus-one.js">
+    <entry file="file://$PROJECT_DIR$/python/1016.binary-string-with-substrings-representing-1-to-n.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+        <state relative-caret-position="489">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/206.reverse-linked-list.js">
+    <entry file="file://$PROJECT_DIR$/python/811.subdomain-visit-count.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="522">
+          <caret line="63" column="45" lean-forward="true" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/349.intersection-of-two-arrays.js">
+    <entry file="file://$PROJECT_DIR$/python/482.license-key-formatting.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+        <state relative-caret-position="299">
+          <caret line="54" column="25" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/6.zigzag-conversion.py">
+    <entry file="file://$PROJECT_DIR$/1018.binary-prefix-divisible-by-5.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="795">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Longest Common Substring | DP-29.py">
+    <entry file="file://$PROJECT_DIR$/python/1018.binary-prefix-divisible-by-5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="16" selection-end-column="3" />
+        <state relative-caret-position="209">
+          <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/1013.partition-array-into-three-parts-with-equal-sum.js">
+    <entry file="file://$PROJECT_DIR$/1010.pairs-of-songs-with-total-durations-divisible-by-60.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="59" column="7" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
+        <state relative-caret-position="407">
+          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1013.partition-array-into-three-parts-with-equal-sum.py">
+    <entry file="file://$PROJECT_DIR$/python/1010.pairs-of-songs-with-total-durations-divisible-by-60.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="82" column="18" selection-start-line="82" selection-start-column="18" selection-end-line="82" selection-end-column="18" />
+        <state relative-caret-position="362">
+          <caret line="69" column="11" selection-start-line="69" selection-start-column="11" selection-end-line="69" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/5.longest-palindromic-substring.py">
+    <entry file="file://$PROJECT_DIR$/1009.complement-of-base-10-integer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+        <state relative-caret-position="302">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/2.add-two-numbers.js">
+    <entry file="file://$PROJECT_DIR$/python/1009.complement-of-base-10-integer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        <state relative-caret-position="696">
+          <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/1002.find-common-characters.js">
+    <entry file="file://$PROJECT_DIR$/17.letter-combinations-of-a-phone-number.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="93" column="2" selection-start-line="93" selection-start-column="2" selection-end-line="93" selection-end-column="2" />
+        <state relative-caret-position="330">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/888.fair-candy-swap.js">
+    <entry file="file://$PROJECT_DIR$/17.letter-combinations-of-a-phone-number.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1365">
-          <caret line="91" column="38" selection-start-line="91" selection-start-column="38" selection-end-line="91" selection-end-column="38" />
+        <state relative-caret-position="390">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/922.sort-array-by-parity-ii.js">
+    <entry file="file://$PROJECT_DIR$/javascript/19.remove-nth-node-from-end-of-list.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="428">
+          <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/985.sum-of-even-numbers-after-queries.js">
+    <entry file="file://$PROJECT_DIR$/24.swap-nodes-in-pairs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="44" column="41" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
+        <state relative-caret-position="197">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/Longest Common Substring.js">
+    <entry file="file://$PROJECT_DIR$/29.divide-two-integers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="288">
-            <caret line="27" selection-start-line="27" selection-end-line="32" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/300.longest-increasing-subsequence.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
+        <state relative-caret-position="301">
           <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/31.next-permutation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/303.range-sum-query-immutable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/303.range-sum-query-immutable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="40" column="20" lean-forward="true" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/482.license-key-formatting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="64" column="34" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/806.number-of-lines-to-write-string.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="126" column="24" selection-start-line="126" selection-start-column="24" selection-end-line="126" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/811.subdomain-visit-count.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="62" column="46" selection-start-line="62" selection-start-column="46" selection-end-line="62" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/427.construct-quad-tree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="44" column="21" lean-forward="true" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/821.shortest-distance-to-a-character.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="82" column="16" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/884.uncommon-words-from-two-sentences.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="74" column="9" lean-forward="true" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/896.monotonic-array.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="78" column="18" selection-start-line="78" selection-start-column="18" selection-end-line="78" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1005.maximize-sum-of-array-after-k-negations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/1005.maximize-sum-of-array-after-k-negations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="66" column="21" lean-forward="true" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/999.available-captures-for-rook.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/999.available-captures-for-rook.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="125" selection-start-line="125" selection-end-line="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/997.find-the-town-judge.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/997.find-the-town-judge.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/994.rotting-oranges.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1425">
+          <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/989.add-to-array-form-of-integer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="90" column="25" selection-start-line="90" selection-start-column="25" selection-end-line="90" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/976.largest-perimeter-triangle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="73" column="12" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/29.divide-two-integers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="10" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/970.powerful-integers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1103.distribute-candies-to-people.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="53" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/970.powerful-integers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/976.largest-perimeter-triangle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/989.add-to-array-form-of-integer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/994.rotting-oranges.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/31.next-permutation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="135">
+          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/300.longest-increasing-subsequence.py">
+    <entry file="file://$PROJECT_DIR$/953.verifying-an-alien-dictionary.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="287">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/852.peak-index-in-a-mountain-array.js">
+    <entry file="file://$PROJECT_DIR$/953.verifying-an-alien-dictionary.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/893.groups-of-special-equivalent-strings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="26" selection-start-line="1" selection-start-column="3" selection-end-line="48" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/937.reorder-log-files.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/893.groups-of-special-equivalent-strings.0.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/985.sum-of-even-numbers-after-queries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="57" column="25" lean-forward="true" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/938.range-sum-of-bst.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="56" column="27" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/933.number-of-recent-calls.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/888.fair-candy-swap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="79" column="38" selection-start-line="79" selection-start-column="38" selection-end-line="79" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/883.projection-area-of-3d-shapes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/893.groups-of-special-equivalent-strings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-244">
-          <caret line="6" column="15" lean-forward="true" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/922.sort-array-by-parity-ii.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/933.number-of-recent-calls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/938.range-sum-of-bst.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/944.delete-columns-to-make-sorted.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="74" column="18" selection-start-line="74" selection-start-column="18" selection-end-line="74" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/1051.height-checker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="46" column="9" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leetcode-cli/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="1067" column="28" lean-forward="true" selection-start-line="1067" selection-start-column="28" selection-end-line="1067" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leetcode-cli/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
-          <caret line="72" column="20" lean-forward="true" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/937.reorder-log-files.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1001.grid-illumination.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1051.height-checker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1021.remove-outermost-parentheses.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="65" column="23" lean-forward="true" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/1021.remove-outermost-parentheses.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="85" column="15" lean-forward="true" selection-start-line="85" selection-start-column="15" selection-end-line="85" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/754.reach-a-number.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/754.reach-a-number.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="68" column="27" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
+        <state relative-caret-position="464">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
         </state>
       </provider>
     </entry>

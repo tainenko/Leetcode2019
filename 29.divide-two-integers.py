@@ -36,6 +36,8 @@ Note:
         Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, assume that your function returns 2^31 − 1 when the division result overflows.
 
 '''
+
+
 class Solution(object):
     def divide(self, dividend, divisor):
         """
@@ -43,4 +45,7 @@ class Solution(object):
         :type divisor: int
         :rtype: int
         """
-        
+        count = 0
+        while divisor * (count + 1) < dividend:
+            count += 1
+        return count
