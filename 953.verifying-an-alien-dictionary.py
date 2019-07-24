@@ -53,6 +53,8 @@ Note:
         order.length == 26
         All characters in words[i] and order are english lowercase letters.
 '''
+
+
 class Solution(object):
     def isAlienSorted(self, words, order):
         """
@@ -60,4 +62,18 @@ class Solution(object):
         :type order: str
         :rtype: bool
         """
-        
+        for i in range(len(words)-1):
+            for j in range(len(words[i])):
+                if j > len(words[i + 1]) - 1:
+                    return False
+                elif words[i][j]==words[i+1][j]:
+                    continue
+                elif self.compare(words[i][j],words[i+1][j],order):
+                    break
+                else:
+                    return False
+        return True
+
+    def compare(self, char1, char2, order):
+            return order.index(char1)<=order.index(char2)
+
