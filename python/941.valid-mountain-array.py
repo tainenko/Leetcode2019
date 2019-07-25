@@ -65,4 +65,19 @@ class Solution(object):
         :type A: List[int]
         :rtype: bool
         """
+        N=len(A)
+        left=0
+        right=N-1
+        if len(A)<3:
+            return False
+        while left<N-1 and A[left]<A[left+1]:
+            left+=1
+        if left == N - 1:
+            return False
+        while right >=0 and A[right]<A[right-1]:
+            right-=1
+        if right == 0:
+            return False
+        return left==right
+
         
