@@ -4,10 +4,10 @@
 https://leetcode.com/problems/reorder-log-files/description/
 
 * algorithms
-* Easy (59.75%)
+* Easy (56.79%)
 * Source Code:       937.reorder-log-files.py
-* Total Accepted:    18.2K
-* Total Submissions: 31.2K
+* Total Accepted:    28.7K
+* Total Submissions: 50.9K
 * Testcase Example:  '["a1 9 2 3 1","g1 act car","zo4 4 7","ab1 off key dog","a8 act zoo"]'
 
 You have an array of logs.  Each log is a space delimited string of words.
@@ -44,6 +44,7 @@ Note:
         3 <= logs[i].length <= 100
         logs[i] is guaranteed to have an identifier, and a word after the identifier.
 
+
 '''
 class Solution(object):
     def reorderLogFiles(self, logs):
@@ -51,4 +52,15 @@ class Solution(object):
         :type logs: List[str]
         :rtype: List[str]
         """
+        letters=[]
+        digits=[]
+        for log in logs:
+            tmp = log.split(' ')
+            if tmp[1].isdigit():
+                digits.append(log)
+            else:
+                letters.append((' '.join(tmp[1:]),tmp[0]))
+        letters=sorted(letters)
+        return [x[1]+' '+x[0] for x in letters]+digits
+
         
