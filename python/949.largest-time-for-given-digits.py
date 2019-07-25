@@ -43,19 +43,33 @@ Note:
         0 <= A[i] <= 9
 
 '''
+import itertools
+
 class Solution(object):
     def largestTimeFromDigits(self, A):
         """
         :type A: List[int]
         :rtype: str
         """
+        time=-1
+        res=""
+        for a in itertools.permutations(A):
+            hh=10*a[0]+a[1]
+            mm=10*a[2]+a[3]
+            if 23>=hh>=0 and 59>=mm>=0 and time< 100*hh+mm:
+                time=100*hh+mm
+                res="{}{}:{}{}".format(a[0],a[1],a[2],a[3])
+        return res
+
+    def largestTimeFromDigits_force(self, A):
+        """
+        :type A: List[int]
+        :rtype: str
+        """
         A.sort()
-        for h in range(23,-1,-1):
-            for time in range(59,-1,-1):
-                tmp = [h//10,h%10,time//10,time%10]
-                if sorted(tmp)==A:
-                    return "{}{}:{}{}".format(tmp[0],tmp[1],tmp[2],tmp[3])
+        for h in range(23, -1, -1):
+            for time in range(59, -1, -1):
+                tmp = [h // 10, h % 10, time // 10, time % 10]
+                if sorted(tmp) == A:
+                    return "{}{}:{}{}".format(tmp[0], tmp[1], tmp[2], tmp[3])
         return ""
-
-
-        
