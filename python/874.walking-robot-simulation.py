@@ -65,4 +65,26 @@ class Solution(object):
         :type obstacles: List[List[int]]
         :rtype: int
         """
+        x=0
+        y=0
+        steps=[(0,1),(1,0),(0,-1),(-1,0)]
+        direc=0
+        for command in commands:
+            if command == -2:
+                direc-=1
+                continue
+            elif command == -1:
+                direc+=1
+                direc=direc%4
+                continue
+            else:
+                for i in range(command):
+                    x_next=x+steps[direc][0]
+                    y_next=y+steps[direc][1]
+                    if [x_next, y_next] in obstacles:
+                        break
+                    x,y=x_next,y_next
+        return x**2+y**2
+
+
         
