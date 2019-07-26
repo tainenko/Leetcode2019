@@ -82,4 +82,20 @@ class Solution(object):
         :type grid: List[List[int]]
         :rtype: int
         """
-        
+        width=len(grid)
+        height=len(grid[0])
+        total=0
+        for i in range(width):
+            for j in range(height):
+                if grid[i][j]==0:
+                    continue
+                total+=grid[i][j]*4+2
+                if i>0:
+                    total-=min(grid[i-1][j],grid[i][j])
+                if i<width-1:
+                    total-=min(grid[i+1][j],grid[i][j])
+                if j>0:
+                    total -= min(grid[i][j-1], grid[i][j])
+                if j<height-1:
+                    total -= min(grid[i][j+1],grid[i][j])
+        return total
