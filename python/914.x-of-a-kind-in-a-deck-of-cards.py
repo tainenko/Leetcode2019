@@ -83,4 +83,15 @@ class Solution(object):
         :type deck: List[int]
         :rtype: bool
         """
-        
+        group={}
+        for card in deck:
+            group[card]=group.get(card,0)+1
+        values=[x for x in group.values()]
+        for i in range(2,len(deck)+1):
+            if len(deck)%i:
+                continue
+            res =all([x%i==0 for x in values])
+            if res:
+                return True
+        return False
+
