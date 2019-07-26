@@ -65,4 +65,6 @@ class Solution(object):
         :type K: int
         :rtype: int
         """
+        return max(max(A)-min(A)-2*K , 0)
+
         
