@@ -70,4 +70,22 @@ class Solution(object):
         :type typed: str
         :rtype: bool
         """
-        
+        i=0
+        j=0
+        N=len(typed)
+        while  i <len(name):
+            if j>=N:
+                return False
+            if name[i]==typed[j]:
+                i+=1
+                j+=1
+            elif i>=0 and name[i-1]==typed[j]:
+                j+=1
+            else:
+                return False
+        return True
+
+
+
+
+

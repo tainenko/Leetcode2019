@@ -69,5 +69,21 @@ Note:
  * @return {boolean}
  */
 var isLongPressedName = function(name, typed) {
+    for(let i =0,j=0;i<name.length;){
+        if(j>=typed.length){
+            return false;
+        }
+        if(name[i]===typed[j]){
+            i++;
+            j++;
+        }
+        else if(typed[j]===name[i-1]){
+            j++;
+        }
+        else{
+            return false
+        }
+    }
+    return true;
     
 };
