@@ -54,4 +54,23 @@ class Solution(object):
         :type words: List[str]
         :rtype: str
         """
+        counters=dict()
+        count=0
+        for letter in licensePlate:
+            if letter.isalpha():
+                counters[letter.lower()]=counters.get(letter.lower(),0)+1
+                count+=1
+        res=""
+        for word in words:
+            tmp_dict=counters.copy()
+            tmp=0
+            for letter in word:
+                if letter in tmp_dict and tmp_dict[letter]>0:
+                    tmp_dict[letter]-=1
+                    tmp+=1
+            if tmp==count and (not res or len(res)>len(word)):
+                res=word
+        return res
+
+
         
