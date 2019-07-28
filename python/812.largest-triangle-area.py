@@ -10,7 +10,8 @@ https://leetcode.com/problems/largest-triangle-area/description/
 * Total Submissions: 27.7K
 * Testcase Example:  '[[0,0],[0,1],[1,0],[0,2],[2,0]]'
 
-You have a list of points in the plane. Return the area of the largest triangle that can be formed by any 3 of the points.
+You have a list of points in the plane. Return the area of the largest triangle that can be
+formed by any 3 of the points.
 
 
 Example:
@@ -37,4 +38,18 @@ class Solution(object):
         :type points: List[List[int]]
         :rtype: float
         """
+
+        def calc_area(p1, p2, p3):
+            (x1, y1), (x2, y2), (x3, y3) = p1, p2, p3
+            return 0.5 * abs(x2 * y3 + x1 * y2 + x3 * y1 - x3 * y2 - x2 * y1 - x1 * y3)
+
+        N=len(points)
+        res=0
+        for i in range(N):
+            for j in range(i,N):
+                for k in range(j,N):
+                    res=max(res,calc_area(points[i],points[j],points[k]))
+        return res
+
+
         

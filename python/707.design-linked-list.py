@@ -144,5 +144,5 @@ class MyLinkedList(object):
 # param_1 = obj.get(index)
 # obj.addAtHead(val)
 # obj.addAtTail(val)
-# obj.addAtIndex(index,val)
+# obj.addAtIndex(index,val)f
 # obj.deleteAtIndex(index)
