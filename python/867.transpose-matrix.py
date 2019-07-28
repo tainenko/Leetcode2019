@@ -47,4 +47,6 @@ class Solution(object):
         :type A: List[List[int]]
         :rtype: List[List[int]]
         """
-        
+        zipped=zip(*A)
+        res=[list(x) for x in zipped]
+        return res
