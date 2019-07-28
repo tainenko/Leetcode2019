@@ -10,9 +10,12 @@ https://leetcode.com/problems/kth-largest-element-in-a-stream/description/
 * Total Submissions: 81.4K
 * Testcase Example:  '["KthLargest","add","add","add","add","add"]\n[[3,[4,5,8,2]],[3],[5],[10],[9],[4]]'
 
-Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.
+Design a class to find the kth largest element in a stream. Note that it is the kth largest element
+in the sorted order, not the kth distinct element.
 
-Your KthLargest class will have a constructor which accepts an integer k and an integer array nums, which contains initial elements from the stream. For each call to the method KthLargest.add, return the element representing the kth largest element in the stream.
+Your KthLargest class will have a constructor which accepts an integer k and an integer array nums,
+which contains initial elements from the stream. For each call to the method KthLargest.add, return
+the element representing the kth largest element in the stream.
 
 Example:
 
@@ -38,6 +41,13 @@ class KthLargest(object):
         :type k: int
         :type nums: List[int]
         """
+        self.nums=nums
+        self.size=len(nums)
+        self.k=k
+        heapq.heapify(self.nums)
+        while self.size>k:
+            heapq.heappop(self.nums)
+            self.size-=1
         
 
     def add(self, val):
@@ -45,6 +55,12 @@ class KthLargest(object):
         :type val: int
         :rtype: int
         """
+        if self.size<self.k:
+            heapq.heappush(self.nums,val)
+            self.size+=1
+        elif val >self.nums[0]:
+            heapq.heapreplace(self.nums,val)
+        return self.nums[0]
         
 
 
