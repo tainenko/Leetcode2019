@@ -53,4 +53,18 @@ class Solution(object):
         :type seats: List[int]
         :rtype: int
         """
+        N=len(seats)
+        dist=[N]*N
+        curr =-N
+        res=0
+        for i in range(N):
+            if seats[i]==1:
+                curr=i
+            dist[i]=min(dist[i],abs(i-curr))
+        for i in range(N-1,-1,-1):
+            if seats[i]==1:
+                curr=i
+            dist[i]=min(dist[i],abs(i-curr))
+            res=max(res,dist[i])
+        return res
         
