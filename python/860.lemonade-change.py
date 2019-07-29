@@ -14,7 +14,8 @@ At a lemonade stand, each lemonade costs $5. 
 
 Customers are standing in a queue to buy from you, and order one at a time (in the order specified by bills).
 
-Each customer will only buy one lemonade and pay with either a $5, $10, or $20 bill.  You must provide the correct change to each customer, so that the net transaction is that the customer pays $5.
+Each customer will only buy one lemonade and pay with either a $5, $10, or $20 bill.  You must provide the
+correct change to each customer, so that the net transaction is that the customer pays $5.
 
 Note that you don't have any change in hand at first.
 
@@ -73,10 +74,29 @@ Note:
         bills[i] will be either 5, 10, or 20.
 
 '''
+
+
 class Solution(object):
     def lemonadeChange(self, bills):
         """
         :type bills: List[int]
         :rtype: bool
         """
-        
+        changes = {5: 0, 10: 0}
+        for bill in bills:
+            if bill == 5:
+                changes[5] += 1
+            elif bill == 10:
+                if changes[5] == 0:
+                    return False
+                changes[5] -= 1
+                changes[10] += 1
+            elif bill == 20:
+                if changes[5] >= 1 and changes[10] >= 1:
+                    changes[5] -= 1
+                    changes[10] -= 1
+                elif changes[5] >= 3:
+                    changes[5] -= 3
+                else:
+                    return False
+        return True
