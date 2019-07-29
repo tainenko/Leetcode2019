@@ -53,4 +53,15 @@ class Solution(object):
         :type S: str
         :rtype: List[List[int]]
         """
-        
+        groups=[]
+        idx=0
+        while idx<len(S):
+            start=idx
+            count=1
+            while idx<len(S)-1 and S[idx]==S[idx+1]:
+                idx+=1
+                count+=1
+            if count>=3:
+                groups.append([start,start+count-1])
+            idx+=1
+        return groups
