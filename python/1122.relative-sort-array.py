@@ -41,4 +41,10 @@ class Solution(object):
         :type arr2: List[int]
         :rtype: List[int]
         """
-        
+        weight=[1001]*1001
+        for idx,val in enumerate(arr2):
+            weight[val]=idx
+        for i,c in enumerate(weight):
+            if c==1001:
+                weight[i]=i+1000
+        return sorted(arr1,key=lambda x : weight[x])
