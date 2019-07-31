@@ -37,4 +37,13 @@ class Solution(object):
         :type dominoes: List[List[int]]
         :rtype: int
         """
+
+        dominoes=[tuple(sorted(x)) for x  in dominoes]
+        count=0
+        equals=dict()
+        for dominoe in dominoes[::-1]:
+            if dominoe in equals:
+                count+=equals[dominoe]
+            equals[dominoe]=equals.get(dominoe,0)+1
+        return count
         
