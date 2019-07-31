@@ -40,4 +40,22 @@ class Solution(object):
         :type points: List[List[int]]
         :rtype: int
         """
-        
+        def get_dist(p1,p2):
+            return (p2[0]-p1[0])**2+(p2[1]-p1[1])**2
+
+        def find_Boomerangs(points):
+            point1=points[0]
+            dists=dict()
+            for i in range(1,len(points)):
+                dist=get_dist(point1,points[i])
+                dists[dist]=dists.get(dist,0)+1
+            return sum([x*(x-1) for x in dists.values()])
+
+        count=0
+        for i in range(len(points)):
+            points[0],points[i]=points[i],points[0]
+            count+=find_Boomerangs(points)
+            points[0], points[i] = points[i], points[0]
+        return count
+
+
