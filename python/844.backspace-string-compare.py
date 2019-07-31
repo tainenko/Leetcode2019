@@ -76,4 +76,15 @@ class Solution(object):
         :type T: str
         :rtype: bool
         """
+        def backspace(s):
+            res=""
+            for char in s:
+                if char=='#':
+                    if res:
+                        res=res[:-1]
+                else:
+                    res+=char
+                print(res)
+            return res
+        return backspace(S)==backspace(T)
         
