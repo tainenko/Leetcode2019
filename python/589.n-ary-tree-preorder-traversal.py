@@ -43,4 +43,12 @@ class Solution(object):
         :type root: Node
         :rtype: List[int]
         """
-        
+        res=[]
+        def get_preorder_list(root):
+            if not root:
+                return
+            res.append(root.val)
+            for child in root.children:
+                get_preorder_list(child)
+        get_preorder_list(root)
+        return res
