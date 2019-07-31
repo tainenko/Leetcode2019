@@ -99,4 +99,15 @@ class Solution(object):
         :type N: int
         :rtype: int
         """
-        
+        gap=0
+        count=0
+        while N%2==0:
+            N=N//2
+        while N:
+            if N%2==1:
+                gap=max(gap,count)
+                count=0
+            count += 1
+            N=N//2
+        return gap
+
