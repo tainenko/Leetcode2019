@@ -19,7 +19,7 @@
 # 
 # 
 # 
-# 
+#
 # 
 # 
 # We should return its level order traversal:
@@ -55,4 +55,19 @@ class Solution(object):
         :type root: Node
         :rtype: List[List[int]]
         """
+        if not root:
+            return []
+        res=[]
+        q=[root]
+        while q:
+            values=[]
+            children=[]
+            while q:
+                node=q.pop(0)
+                values.append(node.val)
+                for child in node.children:
+                    children.append(child)
+            res.append(values)
+            q=children
+        return res
         
