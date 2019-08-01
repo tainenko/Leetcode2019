@@ -9,9 +9,11 @@ https://leetcode.com/problems/rectangle-overlap/description/
 * Total Submissions: 59K
 * Testcase Example:  '[0,0,2,2]\n[1,1,3,3]'
 
-A rectangle is represented as a list [x1, y1, x2, y2], where (x1, y1) are the coordinates of its bottom-left corner, and (x2, y2) are the coordinates of its top-right corner.
+A rectangle is represented as a list [x1, y1, x2, y2], where (x1, y1) are the coordinates of
+its bottom-left corner, and (x2, y2) are the coordinates of its top-right corner.
 
-Two rectangles overlap if the area of their intersection is positive.  To be clear, two rectangles that only touch at the corner or edges do not overlap.
+Two rectangles overlap if the area of their intersection is positive.  To be clear, two
+rectangles that only touch at the corner or edges do not overlap.
 
 Given two (axis-aligned) rectangles, return whether they overlap.
 
@@ -36,6 +38,8 @@ Notes:
         All coordinates in rectangles will be between -10^9 and 10^9.
 
 '''
+
+
 class Solution(object):
     def isRectangleOverlap(self, rec1, rec2):
         """
@@ -43,4 +47,5 @@ class Solution(object):
         :type rec2: List[int]
         :rtype: bool
         """
-        
+        return rec1[0]<rec2[2] and rec2[0]<rec1[2] and rec1[1]<rec2[3] and rec2[1]<rec1[3]
+
