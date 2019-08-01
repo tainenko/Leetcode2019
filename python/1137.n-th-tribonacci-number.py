@@ -50,3 +50,13 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        if n==0:
+            return 0
+        elif n==1 or n==2:
+            return 1
+        t0=0
+        t1=1
+        t2=1
+        for _ in range(n-2):
+            t2,t1,t0=t2+t1+t0,t2,t1
+        return t2
