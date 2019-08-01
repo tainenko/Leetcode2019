@@ -58,4 +58,12 @@ class Solution(object):
         :type val: int
         :rtype: TreeNode
         """
+        if not root:
+            return
+        if root.val>val:
+            return self.searchBST(root.left,val)
+        elif root.val<val:
+            return self.searchBST(root.right,val)
+        else:
+            return root
         
