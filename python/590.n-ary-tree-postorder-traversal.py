@@ -36,18 +36,22 @@ class Node(object):
         self.val = val
         self.children = children
 """
+
+
 class Solution(object):
     def postorder(self, root):
         """
         :type root: Node
         :rtype: List[int]
         """
-        res=[]
+        res = []
+
         def get_postorder_trie(root):
             if not root:
                 return
             for child in root.children:
                 get_postorder_trie(child)
             res.append(root.val)
+
         get_postorder_trie(root)
         return res
