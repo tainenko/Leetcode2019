@@ -68,4 +68,38 @@ class Solution(object):
         :type root: TreeNode
         :rtype: TreeNode
         """
+        dummy=TreeNode(0)
+        self.prev=dummy
+        def inorder(root):
+            if not root:
+                return
+            inorder(root.left)
+            root.left=None
+            self.prev.right=root
+            self.prev=self.prev.right
+            inorder(root.right)
+        inorder(root)
+        return  dummy.right
+
+    def increasingBST_2(self, root):
+        """
+        :type root: TreeNode
+        :rtype: TreeNode
+        """
+        new_root=TreeNode(0)
+        nodes=[]
+        def reconstruct(root):
+            if not root:
+                return
+
+            reconstruct(root.left)
+            nodes.append(root.val)
+            reconstruct(root.right)
+        reconstruct(root)
+        tmp=new_root
+        for node in nodes:
+            tmp.right=TreeNode(node)
+            tmp=tmp.right
+        return new_root.right
+
         
