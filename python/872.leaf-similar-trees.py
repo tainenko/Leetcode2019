@@ -48,4 +48,17 @@ class Solution(object):
         :type root2: TreeNode
         :rtype: bool
         """
+        res1=[]
+        res2=[]
+        def get_leaf(root,res):
+            if not root:
+                return
+            if not root.left and not root.right:
+                res.append(root.val)
+            get_leaf(root.left,res)
+            get_leaf(root.right,res)
+            return res
+        get_leaf(root1,res1)
+        get_leaf(root2,res2)
+        return res1==res2
         
