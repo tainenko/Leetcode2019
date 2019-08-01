@@ -46,4 +46,22 @@ class Solution(object):
         :type M: List[List[int]]
         :rtype: List[List[int]]
         """
-        
+        '''
+        解題思路：
+        暴力解，計算九宮格的平均值。
+        計算和時需要判斷index是否合法。
+        '''
+        w=len(M)
+        h=len(M[0])
+        res=[[None]*h for _ in range(w)]
+        for i in range(w):
+            for j in range(h):
+                count=0
+                _sum=0
+                for l in range(-1,2):
+                    for k in range(-1,2):
+                        if 0<=i+l<w and 0<=j+k<h:
+                            count+=1
+                            _sum+=M[i+l][j+k]
+                res[i][j]=_sum//count
+        return res
