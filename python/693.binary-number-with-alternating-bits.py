@@ -56,4 +56,13 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        
+        prev=n%2
+        n//=2
+        while n:
+            curr=n%2
+            if prev==curr:
+                return False
+            prev=curr
+            n//=2
+        return True
+
