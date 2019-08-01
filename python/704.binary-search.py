@@ -51,4 +51,20 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        
+        if not nums:
+            return -1
+        left = 0
+        right = len(nums) - 1
+        if nums[0] == target:
+            return 0
+        if nums[-1] == target:
+            return right
+        while (right - left) > 1:
+            mid = (left + right) // 2
+            if nums[mid] > target:
+                right = mid
+            elif nums[mid] < target:
+                left = mid
+            else:
+                return mid
+        return -1
