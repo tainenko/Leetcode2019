@@ -79,10 +79,26 @@ Note:
 
 
 '''
+
+
 class Solution(object):
     def projectionArea(self, grid):
         """
         :type grid: List[List[int]]
         :rtype: int
         """
-        
+        total = 0
+        yz = [0] * len(grid)
+        for cubes in grid:
+            xz = 0
+            for idx, cube in enumerate(cubes):
+                # xy
+                if cube > 0:
+                    total += 1
+                # xz
+                xz = max(xz, cube)
+                # yz
+                yz[idx] = max(yz[idx], cube)
+            total += xz
+        total += sum(yz)
+        return total
