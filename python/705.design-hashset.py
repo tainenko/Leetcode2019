@@ -53,6 +53,7 @@ class MyHashSet(object):
         """
         Initialize your data structure here.
         """
+        self._set=set()
         
 
     def add(self, key):
@@ -60,6 +61,7 @@ class MyHashSet(object):
         :type key: int
         :rtype: None
         """
+        self._set.add(key)
         
 
     def remove(self, key):
@@ -67,6 +69,8 @@ class MyHashSet(object):
         :type key: int
         :rtype: None
         """
+        if key in self._set:
+            self._set.remove(key)
         
 
     def contains(self, key):
@@ -75,6 +79,10 @@ class MyHashSet(object):
         :type key: int
         :rtype: bool
         """
+        if key in self._set:
+            return True
+        else:
+            return False
         
 
 
