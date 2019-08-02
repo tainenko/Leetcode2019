@@ -55,6 +55,7 @@ class MyHashMap(object):
         """
         Initialize your data structure here.
         """
+        self.dct=dict()
         
 
     def put(self, key, value):
@@ -64,6 +65,7 @@ class MyHashMap(object):
         :type value: int
         :rtype: None
         """
+        self.dct[key]=value
         
 
     def get(self, key):
@@ -72,6 +74,7 @@ class MyHashMap(object):
         :type key: int
         :rtype: int
         """
+        return self.dct.get(key,-1)
         
 
     def remove(self, key):
@@ -80,6 +83,8 @@ class MyHashMap(object):
         :type key: int
         :rtype: None
         """
+        if key in self.dct:
+            del self.dct[key]
         
 
 
