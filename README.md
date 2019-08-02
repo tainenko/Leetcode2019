@@ -1,44 +1,49 @@
-[![npm version](https://img.shields.io/npm/v/leetcode-cli.svg?style=flat)](https://www.npmjs.com/package/leetcode-cli)
-[![Releases](https://img.shields.io/github/release/skygragon/leetcode-cli.svg?style=flat)](https://github.com/skygragon/leetcode-cli/releases)
-[![license](https://img.shields.io/npm/l/leetcode-cli.svg?style=flat)](https://github.com/skygragon/leetcode-cli/blob/master/LICENSE)
-[![Build](https://img.shields.io/travis/skygragon/leetcode-cli.svg?style=flat)](https://travis-ci.org/skygragon/leetcode-cli)
-[![Join chat at https://gitter.im/skygragon/leetcode-cli](https://img.shields.io/gitter/room/skygragon/leetcode-cli.svg?style=flat)](https://gitter.im/skygragon/leetcode-cli)
+# Leetcode Sharing 
+## Index
+### 刷題目的
 
-# leetcode-cli
-
-<img src="https://github.com/skygragon/leetcode-cli/raw/master/docs/logo.png" align="right">
-
-A productive cli tool to enjoy leetcode!
-
-Great thanks to leetcode.com, a really awesome website!
-
-⦙ [Releases](https://skygragon.github.io/leetcode-cli/releases) ⦙
-[Install](https://skygragon.github.io/leetcode-cli/install) ⦙
-[Docs](https://skygragon.github.io/leetcode-cli/) ⦙
-[Commands](https://skygragon.github.io/leetcode-cli/commands) ⦙
-[Advanced](https://skygragon.github.io/leetcode-cli/advanced) ⦙
-[Plugins](https://github.com/skygragon/leetcode-cli-plugins) ⦙
-
-* A very <kbd>[**EFFICIENT**](#quick-start)</kbd> way to fight questions.
-* <kbd>[**CACHING**](https://skygragon.github.io/leetcode-cli/advanced#cache)</kbd> questions to ease offline thinking.
-* <kbd>[**GENERATING**](https://skygragon.github.io/leetcode-cli/commands#show)</kbd> source code before coding.
-* Live <kbd>[**TEST**](https://skygragon.github.io/leetcode-cli/commands#test)</kbd> and <kbd>[**SUBMIT**](https://skygragon.github.io/leetcode-cli/commands#submit)</kbd> with leetcode.com.
-* Download your previous <kbd>[**SUBMISSION**](https://skygragon.github.io/leetcode-cli/commands#submission)</kbd>.
-* Trace your coding <kbd>[**STATUS**](https://skygragon.github.io/leetcode-cli/commands#stat)</kbd>.
-* <kbd>[**AUTO LOGIN**](https://skygragon.github.io/leetcode-cli/advanced#auto-login)</kbd> among multiple agents with single account.
-* Multiple <kbd>[**THEMES**](https://skygragon.github.io/leetcode-cli/advanced#color-themes)</kbd> support.
-* More <kbd>[**PLUGINS**](https://skygragon.github.io/leetcode-cli/advanced#plugins)</kbd> to enjoy extra features!
-
-## Screenshot
-
-<kbd><img src="https://github.com/skygragon/leetcode-cli/raw/master/docs/screenshots/intro.2018.01.13.gif" /></kbd>
-
-## Quick Start
-
-	Read help first                         $ leetcode help
-	Login with your leetcode account        $ leetcode user -l
-	Browse all questions                    $ leetcode list
-	Choose one question                     $ leetcode show 1 -g -l cpp
-	Coding it!
-	Run test(s) and pray...                 $ leetcode test ./two-sum.cpp -t '[3,2,4]\n7'
-	Submit final solution!                  $ leetcode submit ./two-sum.cpp
+### 刷題工具
+個人推薦以下兩套不錯的刷題工具：
+  - VS code
+  - Leetcode plugin
+  - live share  
+  或
+  - Jetbrain IDE
+  - leetcode-cli  
+### 刷題的正確姿勢
+  - 如何思考
+  - 如何解題
+  - 那些不該做的事
+#### 那些不該做的事
+1. 不要在同一道題上糾結過久，一道題目如果思考時間過長，代表對解法尚未掌握，應該把時間拿去學習解題的相關知識，而不是被困在同一道題上。
+2. 不要複製貼上別人的解法，或是看著別人的解法照搬不誤。很容易陷入能力錯覺的陷阱裡，寫完題你感覺已經熟練掌握了，其實還是一竅不通。你應該是看完別人的解法，間隔一段時間後再回來解題，重覆以上步驟，直到你不必看別人的詳解也能答題的時候才算徹底掌握。
+3. 不要只會最佳解。解題應當要能夠分析各種解法的利弊，了解演算法背後的原理，而不是死背硬套。
+### Leetcode題型分類
+  - 數學
+  - bit operation
+  - Array&字串
+  - 資料結構(Linked list & binary tree)
+  - 演算法(Dynamic Programming& Graphic)
+#### 數學
+許多經典的題目有公式解，例如求和1+2+...+n=n(n+1)/2，或是數學概念，例如給定三邊長判斷是否為合法的三角形，需要用到三角形的兩邊和必大於第三邊的概念。  
+Leetcode Easy的數學題目大部分是考觀念，而不是考程式能力，少部分的需要從基本的數學觀念延伸求解，數學類型的題目只能靠基本功和邏輯推理能力。  
+> 例題：給定一個有序的陣列，e.g.[1,1,2,3,4,4,5]，請從陣列裡題找出三個可以組成三角形的數字，其具有最大週長。
+#### bit operation 位運算
+記住，計算機裡頭所有的資料都是以二位元的方式儲存的，因此位運算(and, or, xor, not)的速度會優於數學運算。  
+位運算的題型大致上有兩種，一是給定一個二位元表示的字串，此題型可以用遍歷的方式判斷每個位元是'1'或'0'後進行操作。第二種是直接給一個數字，要求你回傳該數定以二位元表示後的一些特徵。例如，數字n以二位元表示時有幾個1。
+### 解題技巧
+  - 目標函數(時間複雜度)
+  - Traverse
+  - Recursion
+  - BFS & DFS
+  - Dynamic programming
+#### 主旨
+我們要做的其實只有兩件事：定位到我們要的元素，接著對該元素進行相關的操作，重複以上兩個步驟直到所有的元素都處理完畢。  
+當我們定位或是操作的步驟過於繁雜時，才需要考慮演算法或是數學來優化我們的處理過程。
+#### 目標函數
+對於常見的資料結構(Array, List, binary tree etc)，我們的目標是遍歷一次找出解，且不用額外的空間，時間複雜度是O(n)、空間複雜度是O(1)。  
+當時間複雜度達不到我們預期時，可以考慮用空間換時間的方式，例如時間複雜度O(n^2)，我們可以試著讓它成為時間複雜度O(n)，空間複雜度O(n)。  
+某些特殊情況，我們不需要處理全部的資料，可以透過部分操作得到我們要的結果，例如找出陣列中第k大的值，時間複雜度為logn。
+### 刷題之後
+  - 工作
+  - 求職
