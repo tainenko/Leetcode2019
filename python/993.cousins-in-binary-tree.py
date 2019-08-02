@@ -83,4 +83,18 @@ class Solution(object):
         :type y: int
         :rtype: bool
         """
-        
+        res = dict()
+        res[root.val] = (None, 0)
+
+        def get_node_info(root, depth):
+            if not root:
+                return
+            if root.left:
+                res[root.left.val] = (root.val, depth + 1)
+            if root.right:
+                res[root.right.val] = (root.val, depth + 1)
+            get_node_info(root.left, depth + 1)
+            get_node_info(root.right, depth + 1)
+
+        get_node_info(root, 0)
+        return res[x][1] == res[y][1] and res[x][0] != res[y][0]
