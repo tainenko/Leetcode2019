@@ -4,20 +4,28 @@
 
 ### 刷題工具
 個人推薦以下兩套不錯的刷題工具：
-  - VS code
-  - Leetcode plugin
-  - live share  
+  - IDE (VS code 或 Pycharm)
+  - Leetcode plugin  
   或
-  - Jetbrain IDE
-  - leetcode-cli  
+  - IDE(vscode, Jetbrain IDEs)
+  - [leetcode-cli](https://github.com/skygragon/leetcode-cli)
 ### 刷題的正確姿勢
   - 如何思考
   - 如何解題
   - 那些不該做的事
+#### 如何思考
+1. 從頭瀏覽一遍題目的敘述，了解Input和Output的Data Type和Data Structure，以及解法的限制條件。  
+2. 限制條件可能是隱性的，利用題目給定的example和Input變數範圍決定解法，有時候暴力法也是一種可接受的解。
+#### 如何解題
+1. 寫下通解
+2. 處理通解無法覆蓋的corner case
+3. 優化以上兩個部份，直到submit通過  
+p.s. 如果corner case的比重過高，需要從重思考通解的寫法。
 #### 那些不該做的事
 1. 不要在同一道題上糾結過久，一道題目如果思考時間過長，代表對解法尚未掌握，應該把時間拿去學習解題的相關知識，而不是被困在同一道題上。
 2. 不要複製貼上別人的解法，或是看著別人的解法照搬不誤。很容易陷入能力錯覺的陷阱裡，寫完題你感覺已經熟練掌握了，其實還是一竅不通。你應該是看完別人的解法，間隔一段時間後再回來解題，重覆以上步驟，直到你不必看別人的詳解也能答題的時候才算徹底掌握。
 3. 不要只會最佳解。解題應當要能夠分析各種解法的利弊，了解演算法背後的原理，而不是死背硬套。
+4. 不要在解法裡頭用過多的程式去處理corner case，假如提供的解法老是有test case不通過，應該回頭審視解法的邏輯，而不是一直改code直到通過。
 ### Leetcode題型分類
   - 數學
   - bit operation
