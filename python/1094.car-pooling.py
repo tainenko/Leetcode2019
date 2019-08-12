@@ -86,3 +86,25 @@ class Solution(object):
         :type capacity: int
         :rtype: bool
         """
+        tmp = sorted(x for i,j,k in trips for x in [[j,i],[k,-i]])
+        for i , j in tmp:
+            capacity-=j
+            if capacity <0:
+                return False
+        return True
+
+    def carPooling2(self, trips, capacity):
+        """
+        :type trips: List[List[int]]
+        :type capacity: int
+        :rtype: bool
+        """
+        res=[0]*1001
+        for trip in trips:
+            num , start, end = trip
+            for i in range(start,end):
+                res[i]+=num
+        for val in res:
+            if val>capacity:
+                return False
+        return True
