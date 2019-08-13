@@ -45,7 +45,29 @@ class Solution(object):
         :type divisor: int
         :rtype: int
         """
-        count = 0
-        while divisor * (count + 1) < dividend:
-            count += 1
-        return count
+        MAX_INT = 2147483647
+        if dividend==0:
+            return 0
+        if dividend ==MAX_INT and divisor==(-1):
+            return MAX_INT
+        if (dividend>0 and divisor<0) or (dividend<0 and divisor>0):
+            sign=-1
+        else:
+            sign=1
+        dividend = abs(dividend)
+        divisor=abs(divisor)
+        res=0
+        while dividend>=divisor:
+            shift=0
+            tmp=divisor
+            while dividend>=tmp:
+                dividend-=tmp
+                res+=1<<shift
+                shift += 1
+                tmp <<= 1
+        res*=sign
+        if res>MAX_INT:
+            return MAX_INT
+        return res
+
+
