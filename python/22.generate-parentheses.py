@@ -35,4 +35,17 @@ class Solution(object):
         :type n: int
         :rtype: List[str]
         """
-        
+        res = []
+        self.DFS(n, n, "", res)
+        return res
+
+    def DFS(self, left, right, str, res):
+        if left > right:
+            return
+        elif 0 == left == right:
+            res.append(str)
+        else:
+            if left > 0:
+                self.DFS(left - 1, right, str + '(', res)
+            if right > 0:
+                self.DFS(left, right - 1, str + ')', res)
