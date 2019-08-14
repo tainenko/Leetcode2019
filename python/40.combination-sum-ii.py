@@ -56,4 +56,17 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        
+        res = []
+
+        def findSum(candidates, target, arr):
+            if target < 0:
+                return
+            elif target == 0:
+                if arr not in res:
+                    res.append(arr)
+            else:
+                for idx in range(len(candidates)):
+                    findSum(candidates[idx + 1:], target - candidates[idx], arr + [candidates[idx]])
+
+        findSum(sorted(candidates), target, [])
+        return res
