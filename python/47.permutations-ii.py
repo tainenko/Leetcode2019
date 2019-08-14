@@ -33,4 +33,15 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        
+        if len(nums) == 1:
+            return [nums]
+        nums = sorted(nums)
+        res = []
+        prev = None
+        for i in range(len(nums)):
+            if nums[i] == prev:
+                continue
+            prev = nums[i]
+            for j in self.permuteUnique(nums[:i] + nums[i + 1:]):
+                res.append([nums[i]] + j)
+        return res
