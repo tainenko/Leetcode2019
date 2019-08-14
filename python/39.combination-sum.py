@@ -56,4 +56,16 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        
+        res = []
+
+        def findNums(candidates, target, arr):
+            if target < 0:
+                return
+            elif target == 0:
+                res.append(arr)
+            else:
+                for i in range(len(candidates)):
+                    findNums(candidates[i:], target - candidates[i], arr + [candidates[i]])
+
+        findNums(candidates, target, [])
+        return res
