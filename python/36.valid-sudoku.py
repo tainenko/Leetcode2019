@@ -85,4 +85,31 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: bool
         """
-        
+        col_dict = {0: {}, 1: {}, 2: {}, 3: {}, 4: {}, 5: {}, 6: {}, 7: {}, 8: {}}
+        for rows in board:
+            row_dict = {}
+            for idx, ele in enumerate(rows):
+                if ele == '.':
+                    continue
+                if ele in row_dict:
+                    return False
+                else:
+                    row_dict[ele] = True
+                if ele in col_dict[idx]:
+                    return False
+                else:
+                    col_dict[idx][ele] = True
+
+        for row in range(0, len(board), 3):
+            for col in range(0, len(board[0]), 3):
+                subs = set()
+                for i in range(3):
+                    for j in range(3):
+                        if board[row + i][col + j] == '.':
+                            continue
+                        if board[row + i][col + j] in subs:
+                            return False
+                        else:
+                            subs.add(board[row + i][col + j])
+
+        return True
