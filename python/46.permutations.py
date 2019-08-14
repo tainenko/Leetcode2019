@@ -35,4 +35,16 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+        res=[]
+        def getpermute(nums,arr):
+            if not nums or len(nums)==1:
+                res.append(arr+nums)
+            else:
+                for i in range(len(nums)):
+                    nums[0],nums[i]=nums[i],nums[0]
+                    getpermute(nums[1:],arr+[nums[0]])
+                    nums[0], nums[i] = nums[i], nums[0]
+        getpermute(nums,[])
+        return res
+
         
