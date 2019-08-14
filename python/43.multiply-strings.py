@@ -46,4 +46,25 @@ class Solution(object):
         :type num2: str
         :rtype: str
         """
-        
+        if num1=="0" or num2=="0":
+            return "0"
+        res=[0]*(len(num1)+len(num2))
+        pos=-1
+        for char1 in num1[::-1]:
+            tmp_pos=pos
+            for char2 in num2[::-1]:
+                res[tmp_pos]+=int(char1)*int(char2)
+                tmp_pos-=1
+            pos-=1
+
+        carry=0
+        for i in range(len(res))[::-1]:
+            res[i]+=carry
+            carry=res[i]//10
+            res[i]%=10
+        for idx,num in enumerate(res):
+            if num!=0:
+                res=res[idx:]
+                break
+        return ''.join(map(str,res))
+
