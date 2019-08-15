@@ -38,4 +38,8 @@ class Solution(object):
         :type strs: List[str]
         :rtype: List[List[str]]
         """
-        
+        res = {}
+        for item in strs:
+            key = ''.join(sorted(item))
+            res[key] = res.get(key, []) + [item]
+        return [x for x in res.values()]
