@@ -44,4 +44,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        
+        pos = 0
+        for i in range(len(nums)):
+            if i > pos or pos >= len(nums) - 1:
+                break
+            pos = max(pos, i + nums[i])
+        return pos >= len(nums) - 1
