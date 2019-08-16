@@ -58,10 +58,29 @@
 # 
 # 
 #
+
 class Solution(object):
     def setZeroes(self, matrix):
         """
         :type matrix: List[List[int]]
         :rtype: None Do not return anything, modify matrix in-place instead.
         """
-        
+        n = len(matrix)
+        m = len(matrix[0])
+        zeros = []
+        for row in range(n):
+            for col in range(m):
+                if matrix[row][col] == 0:
+                    zeros.append((row, col))
+        for x, y in zeros:
+            self.setZero(matrix, x, y, n, m)
+
+    def setZero(self, matrix, x, y, n, m):
+        if x < 0 or x >= n:
+            return
+        if y < 0 or y >= m:
+            return
+        matrix[x] = [0] * m
+        for i in range(n):
+            matrix[i][y] = 0
+        return matrix
