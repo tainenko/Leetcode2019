@@ -53,7 +53,7 @@
 # rotate the input matrix in-place such that it becomes:
 # [
 # ⁠ [15,13, 2, 5],
-# ⁠ [14, 3, 4, 1],
+# ⁠ [14, 3, 4, 1],p
 # ⁠ [12, 6, 8, 9],
 # ⁠ [16, 7,10,11]
 # ]
