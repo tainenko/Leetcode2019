@@ -49,4 +49,21 @@ class Solution(object):
         :type k: int
         :rtype: ListNode
         """
-        
+        if not head:
+            return head
+
+        first = head
+        n = 1
+        while first.next:
+            first = first.next
+            n += 1
+        first.next = head
+        k = n - k % n
+
+        for _ in range(k):
+            first = first.next
+
+        head = first.next
+        first.next = None
+
+        return head
