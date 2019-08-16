@@ -51,4 +51,17 @@ class Solution(object):
         :type obstacleGrid: List[List[int]]
         :rtype: int
         """
-        
+        n = len(obstacleGrid)
+        m = len(obstacleGrid[0])
+        grid = [[0] * m for _ in range(n)]
+        grid[0][0] = 1
+        for row in range(n):
+            for col in range(m):
+                if obstacleGrid[row][col] == 1:
+                    grid[row][col] = 0
+                else:
+                    if row > 0:
+                        grid[row][col] += grid[row - 1][col]
+                    if col > 0:
+                        grid[row][col] += grid[row][col - 1]
+        return grid[-1][-1]
