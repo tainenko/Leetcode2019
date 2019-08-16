@@ -56,4 +56,18 @@ class Solution(object):
         :type k: int
         :rtype: str
         """
-        
+        nums = [str(i + 1) for i in range(n)]
+        res = ""
+        k_order = 1
+        for i in range(1, n):
+            k_order *= i
+        k -= 1
+        while nums:
+            kplun = k // k_order
+            res += nums[kplun]
+            nums.pop(kplun)
+            k = k % k_order
+            n -= 1
+            if n > 0:
+                k_order //= n
+        return res
