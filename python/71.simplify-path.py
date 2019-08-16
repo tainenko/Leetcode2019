@@ -81,4 +81,14 @@ class Solution(object):
         :type path: str
         :rtype: str
         """
-        
+        chars = path.split('/')
+        res = []
+        for char in chars:
+            if char == '.' or char == '/' or char == '':
+                continue
+            elif char == '..':
+                if res:
+                    res.pop()
+            else:
+                res.append(char)
+        return '/' + '/'.join(res)
