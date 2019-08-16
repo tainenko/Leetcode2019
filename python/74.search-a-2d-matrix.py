@@ -53,4 +53,16 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
-        
+        if not matrix:
+            return 0
+        n = len(matrix)
+        m = len(matrix[0])
+        x, y = 0, m - 1
+        while x < n and y >= 0:
+            if matrix[x][y] == target:
+                return True
+            elif matrix[x][y] > target:
+                y -= 1
+            else:
+                x += 1
+        return False
