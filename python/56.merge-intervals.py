@@ -39,4 +39,14 @@ class Solution(object):
         :type intervals: List[List[int]]
         :rtype: List[List[int]]
         """
-        
+        res = []
+        intervals.sort(key=lambda x: x[0])
+        for interval in intervals:
+            if not res:
+                res.append(interval)
+            else:
+                if res[-1][1] < interval[0]:
+                    res.append(interval)
+                else:
+                    res[-1][1] = max(res[-1][1], interval[1])
+        return res
