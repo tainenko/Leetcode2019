@@ -66,4 +66,12 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: None Do not return anything, modify matrix in-place instead.
         """
-        N = len(matrix)
+        row=len(matrix)
+        col=len(matrix)
+        for i in range(row//2):
+            for j in range(col):
+                matrix[i][j],matrix[row-1-i][j]=matrix[row-1-i][j],matrix[i][j]
+
+        for i in range(row):
+            for j in range(i):
+                matrix[i][j],matrix[j][i]=matrix[j][i],matrix[i][j]
