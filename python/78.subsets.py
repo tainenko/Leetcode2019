@@ -39,4 +39,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        
+        res = []
+
+        def getconbination(nums, arr, k):
+            if k == 0:
+                res.append(arr)
+            for i in range(len(nums)):
+                getconbination(nums[i + 1:], arr + [nums[i]], k - 1)
+
+        for i in range(len(nums) + 1):
+            getconbination(nums, [], i)
+        return res
