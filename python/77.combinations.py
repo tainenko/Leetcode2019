@@ -37,4 +37,15 @@ class Solution(object):
         :type k: int
         :rtype: List[List[int]]
         """
-        
+        nums = [x for x in range(1, n + 1)]
+        res = []
+
+        def addpossible(nums, arr, k):
+            if k == 0:
+                res.append(arr)
+                return
+            for i in range(len(nums)):
+                addpossible(nums[i + 1:], arr + [nums[i]], k - 1)
+
+        addpossible(nums, [], k)
+        return res
