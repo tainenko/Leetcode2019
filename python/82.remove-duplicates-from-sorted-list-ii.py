@@ -41,4 +41,16 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        
+        if not head:
+            return head
+        prev = ListNode(None)
+        prev.next = head
+        newhead = prev
+        while prev and prev.next and prev.next.next:
+            if prev.next.val == prev.next.next.val:
+                while prev.next.next and prev.next.val == prev.next.next.val:
+                    prev.next.next = prev.next.next.next
+                prev.next = prev.next.next
+                continue
+            prev = prev.next
+        return newhead.next
