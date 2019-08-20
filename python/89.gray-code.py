@@ -52,8 +52,31 @@
 #
 class Solution(object):
     def grayCode(self, n):
+        def getgrays(n):
+            if n == 0:
+                res = ['0']
+            elif n == 1:
+                res = ['0', '1']
+            else:
+                res = ['0' + x for x in getgrays(n - 1)] + ['1' + x for x in getgrays(n - 1)[::-1]]
+            return res
+
+        return map(lambda x: int(x, 2), getgrays(n))
+
+    def grayCode_iter(self, n):
         """
         :type n: int
         :rtype: List[int]
         """
-        
+        if n == 0:
+            return [0]
+        grays = ['0', '1']
+        for n in range(n - 1):
+            curr = []
+            for code in grays:
+                curr.append('0' + code)
+            for code in grays[::-1]:
+                curr.append('1' + code)
+            grays = curr
+
+        return map(lambda x: int(x, 2), grays)
