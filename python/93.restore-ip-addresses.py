@@ -28,4 +28,25 @@ class Solution(object):
         :type s: str
         :rtype: List[str]
         """
-        
+        '255,255,255,255'
+        '0,0,0,0'
+        res = []
+        self.dfs(res, [], s)
+        return res
+
+    def dfs(self, res, list, s):
+        if len(s) > (4 - len(list)) * 3:
+            return
+        if len(list) == 4 and not s:
+            res.append('.'.join(list))
+        for i in range(min(3, len(s))):
+            tmp = s[:i + 1]
+            if not self.isvalid(tmp):
+                continue
+            self.dfs(res, list + [tmp], s[i + 1:])
+
+    def isvalid(self, s):
+        if s[0] == '0':
+            return s == '0'
+        else:
+            return 0 <= int(s) <= 255
