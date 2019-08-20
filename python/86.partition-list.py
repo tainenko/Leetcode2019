@@ -38,4 +38,30 @@ class Solution(object):
         :type x: int
         :rtype: ListNode
         """
-        
+        if not head or not head.next:
+            return head
+        small = None
+        big = None
+        small_head = big_head = None
+        first = head
+        while head:
+            if head.val < x:
+                if not small:
+                    small = head
+                    small_head = head
+                else:
+                    small.next = head
+                    small = small.next
+            else:
+                if not big:
+                    big = head
+                    big_head = big
+                else:
+                    big.next = head
+                    big = big.next
+            head = head.next
+        if small:
+            small.next = big_head
+        if big:
+            big.next = None
+        return small_head if small_head else big_head
