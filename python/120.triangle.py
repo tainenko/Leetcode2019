@@ -39,4 +39,14 @@ class Solution(object):
         :type triangle: List[List[int]]
         :rtype: int
         """
-        
+        prev = triangle[0] + triangle[0]
+        for lens in triangle[1:]:
+            curr = []
+            for i in range(len(lens)):
+                if i == 0:
+                    curr.append(prev[0] + lens[0])
+                else:
+                    curr.append(min(prev[i], prev[i - 1]) + lens[i])
+            prev = curr + [curr[-1]]
+
+        return min(prev[:-1])
