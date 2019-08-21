@@ -54,4 +54,19 @@ class Solution(object):
         :type sum: int
         :rtype: List[List[int]]
         """
-        
+        if not root:
+            return []
+
+        def helper(root, arr, sum):
+            pass
+            if not root:
+                return
+            if not root.left and not root.right and root.val == sum:
+                res.append(arr + [root.val])
+                return
+            helper(root.left, arr + [root.val], sum - root.val)
+            helper(root.right, arr + [root.val], sum - root.val)
+
+        res = []
+        helper(root, [], sum)
+        return res
