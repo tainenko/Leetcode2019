@@ -64,4 +64,13 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        
+
+        def helper(root, lower, upper):
+            if not root:
+                return True
+            if root.val < lower or root.val > upper:
+                print(lower, upper, root.val)
+                return False
+            return helper(root.left, lower, root.val - 1) and helper(root.right, root.val + 1, upper)
+
+        return helper(root, float('-inf'), float('inf'))
