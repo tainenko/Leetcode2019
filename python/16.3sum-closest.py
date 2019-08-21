@@ -31,4 +31,21 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        
+        close = nums[0] + nums[1] + nums[2]
+        diff = abs(target - close)
+        nums.sort()
+        N = len(nums)
+        for i in range(N - 2):
+            left = i + 1
+            right = N - 1
+            while left < right:
+                tmp = nums[i] + nums[left] + nums[right]
+                newdiff = abs(target - tmp)
+                if newdiff < diff:
+                    diff = newdiff
+                    close = tmp
+                if tmp < target:
+                    left += 1
+                else:
+                    right -= 1
+        return close
