@@ -38,4 +38,19 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        
+        nums.sort()
+        if not nums:
+            return []
+        res = [[]]
+        size = 1
+        last = nums[0]
+        for num in nums:
+            if last != num:
+                last = num
+                size = len(res)
+            newsize = len(res)
+            curr = []
+            for i in range(newsize - size, len(res)):
+                curr.append(res[i] + [num])
+            res += curr
+        return res
