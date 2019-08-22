@@ -37,4 +37,34 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        
+        if not head or n == 1:
+            return head
+        h1 = ListNode(0)
+        h1.next = head
+        fast = h1
+        for _ in range(n - m + 1):
+            fast = fast.next
+        slow = h1
+        for _ in range(m - 1):
+            slow = slow.next
+            fast = fast.next
+        next = fast.next
+        fast.next = None
+        newhead = slow.next
+        slow.next = None
+        slow.next, tail = self.reverselist(newhead)
+        tail.next = next
+        return h1.next
+
+    def reverselist(self, head):
+
+        prev = None
+        tail = head
+
+        while head:
+            next = head.next
+            head.next = prev
+            prev = head
+            head = next
+
+        return prev, tail
