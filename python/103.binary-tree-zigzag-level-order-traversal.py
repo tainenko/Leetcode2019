@@ -50,4 +50,23 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
-        
+        if not root:
+            return []
+        flag = True
+        q = [root]
+        res = []
+        while q:
+            val = [x.val for x in q]
+            if flag:
+                res.append(val)
+            else:
+                res.append(val[::-1])
+            flag = not flag
+            next = []
+            for node in q:
+                if node.left:
+                    next.append(node.left)
+                if node.right:
+                    next.append(node.right)
+            q = next
+        return res
