@@ -53,4 +53,20 @@ class Solution(object):
         :type head: ListNode
         :rtype: TreeNode
         """
-        
+        if not head:
+            return None
+        if not head.next:
+            return TreeNode(head.val)
+        slow = fast = last = head
+        while fast.next and fast.next.next:
+            last = slow
+            slow = slow.next
+            fast = fast.next.next
+
+        root = TreeNode(slow.val)
+        fast = slow.next
+        last.next = None
+        if slow != head:
+            root.left = self.sortedListToBST(head)
+        root.right = self.sortedListToBST(fast)
+        return root
