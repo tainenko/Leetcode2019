@@ -50,4 +50,22 @@ class Solution(object):
         :type n: int
         :rtype: List[TreeNode]
         """
-        
+        if n == 0:
+            return []
+        return self.helper(1, n)
+
+    def helper(self, left, right):
+        if left > right:
+            return [None]
+        res = []
+
+        for i in range(left, right + 1):
+            left_tree = self.helper(left, i - 1)
+            right_tree = self.helper(i + 1, right)
+            for left_node in left_tree:
+                for right_node in right_tree:
+                    root = TreeNode(i)
+                    root.left = left_node
+                    root.right = right_node
+                    res.append(root)
+        return res
