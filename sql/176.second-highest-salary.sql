@@ -33,4 +33,10 @@ For example, given the above Employee table, the query should return 200 as the 
 +---------------------+
 
  */
+SELECT(
+SELECT DISTINCT Salary
+FROM Employee
+ORDER BY Salary DESC
+LIMIT 1,1
+) AS SecondHighestSalary
 
