@@ -53,4 +53,14 @@ class Solution(object):
         :type root: TreeNode
         :rtype: None Do not return anything, modify root in-place instead.
         """
-        
+        if root:
+            self.flatten(root.left)
+            self.flatten(root.right)
+
+            if root.left:
+                current = root.left
+                while current.right:
+                    current = current.right
+                current.right = root.right
+                root.right = root.left
+                root.left = None
