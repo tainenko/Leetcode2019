@@ -46,4 +46,7 @@ Write a SQL query for a report that provides the following information for each 
 FirstName, LastName, City, State
 */
 
-
+SELECT p.FirstName, p.LastName, a.City, a.State
+From Person as p
+Left JOIN Address as a
+on p.PersonId=a.PersonId
