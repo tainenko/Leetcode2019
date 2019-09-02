@@ -54,4 +54,17 @@ class Solution(object):
         :type guess: str
         :rtype: str
         """
+        bull=0
+        cow=0
+        tmp1={}
+        tmp2={}
+        for i in range(len(secret)):
+            if secret[i]==guess[i]:
+                bull+=1
+            else:
+                tmp1[secret[i]]=tmp1.get(secret[i],0)+1
+                tmp2[guess[i]]=tmp2.get(guess[i],0)+1
+        for key,val in tmp2.items():
+            cow+=min(val,tmp1.get(key,0))
+        return "{bull}A{cow}B".format(bull=bull,cow=cow)
         
