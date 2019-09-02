@@ -56,4 +56,14 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        
+        if not s:
+            return True
+        if not t:
+            return False
+        idx = 0
+        for char in t:
+            if char == s[idx]:
+                idx += 1
+            if idx == len(s):
+                return True
+        return False
