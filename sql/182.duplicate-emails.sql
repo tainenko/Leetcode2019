@@ -36,3 +36,7 @@ For example, your query should return the following for the above table:
 Note: All emails are in lowercase.
 
  */
+ SELECT DISTINCT p1.Email
+ FROM Person as p1 , Person as p2
+ WHERE p1.Id<>p2.Id and p1.Email=p2.Email
+
