@@ -1,7 +1,7 @@
 #
 # @lc app=leetcode id=127 lang=python
 #
-# [127] Word Ladder
+
 #
 # https://leetcode.com/problems/word-ladder/description/
 #
@@ -72,4 +72,17 @@ class Solution(object):
         :type wordList: List[str]
         :rtype: int
         """
-        
+        wordset = set(wordList)
+        bfs = collections.deque()
+        bfs.append((beginWord, 1))
+        while bfs:
+            word, length = bfs.popleft()
+            if word == endWord:
+                return length
+            for i in range(len(word)):
+                for c in "abcdefghijklmnopqrstuvwxyz":
+                    newword = word[:i] + c + word[i + 1:]
+                    if newword in wordset:
+                        wordset.remove(newword)
+                        bfs.append((newword, length + 1))
+        return 0
