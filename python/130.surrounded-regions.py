@@ -50,4 +50,44 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: None Do not return anything, modify board in-place instead.
         """
-        
+        if not board:
+            return []
+        m = len(board)
+        n = len(board[0])
+        self.border(board, (m, n), '$', 'O')
+        self.dfs(board, (m, n), 'X', 'O')
+        self.border(board, (m, n), 'O', '$')
+
+    def helper(self, board, len, pos, letter, target):
+        dirs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        x, y = pos
+        m, n = len
+        board[x][y] = letter
+        for i, j in dirs:
+            if 0 <= x + i < m and 0 <= y + j < n and board[x + i][y + j] == target:
+                self.helper(board, (m, n), (x + i, y + j), letter, target)
+
+    def border(self, board, len, letter, target):
+        m, n = len
+        for top in range(n):
+            if board[0][top] == target:
+                self.helper(board, (m, n), (0, top), letter, target)
+
+        for bottom in range(n):
+            if board[-1][bottom] == target:
+                self.helper(board, (m, n), (m - 1, bottom), letter, target)
+
+        for left in range(m):
+            if board[left][0] == target:
+                self.helper(board, (m, n), (left, 0), letter, target)
+
+        for right in range(m):
+            if board[right][-1] == target:
+                self.helper(board, (m, n), (right, n - 1), letter, target)
+
+    def dfs(self, board, len, letter, target):
+        m, n = len
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] == target:
+                    self.helper(board, (m, n), (i, j), letter, target)
