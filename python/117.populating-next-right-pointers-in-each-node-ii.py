@@ -64,10 +64,47 @@ class Node(object):
         self.right = right
         self.next = next
 """
+
+
 class Solution(object):
     def connect(self, root):
         """
         :type root: Node
         :rtype: Node
         """
-        
+        node = root
+        dummy = Node(0)
+        prev = dummy
+        while node:
+            if node.left:
+                prev.next = node.left
+                prev = prev.next
+            if node.right:
+                prev.next = node.right
+                prev = prev.next
+            node = node.next
+            if not node:
+                node = dummy.next
+                prev = dummy
+                dummy.next = None
+        return root
+
+    def bfs(self, root):
+        """
+        :type root: Node
+        :rtype: Node
+        """
+        if not root:
+            return None
+        currs = [root]
+        while currs:
+            nexts = []
+            for i in range(len(currs)):
+                if i < len(currs) - 1:
+                    currs[i].next = currs[i + 1]
+                if currs[i].left:
+                    nexts.append(currs[i].left)
+                if currs[i].right:
+                    nexts.append(currs[i].right)
+            currs = nexts
+        return root
