@@ -67,10 +67,27 @@ class Node(object):
         self.right = right
         self.next = next
 """
+
+
 class Solution(object):
     def connect(self, root):
         """
         :type root: Node
         :rtype: Node
         """
-        
+        if not root:
+            return None
+        q = [root]
+        while q:
+            nexts = []
+            for i in range(len(q)):
+                if i == len(q) - 1:
+                    q[i].next = None
+                else:
+                    q[i].next = q[i + 1]
+                if q[i].left:
+                    nexts.append(q[i].left)
+                if q[i].right:
+                    nexts.append(q[i].right)
+            q = nexts
+        return root
