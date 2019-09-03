@@ -34,4 +34,27 @@ class Solution(object):
         :type s: str
         :rtype: List[List[str]]
         """
-        
+        if not s:
+            return [[]]
+        res = []
+        out = []
+        self.helper(s, out, res)
+        return res
+
+    def helper(self, s, out, res):
+        if not s:
+            res.append(out)
+        for i in range(1, len(s) + 1):
+            sub = s[:i]
+            if self.is_palindrome(sub):
+                self.helper(s[i:], out + [sub], res)
+
+    def is_palindrome(self, s):
+        left = 0
+        right = len(s) - 1
+        while left < right:
+            if s[left] != s[right]:
+                return False
+            left += 1
+            right -= 1
+        return True
