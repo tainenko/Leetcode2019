@@ -55,10 +55,25 @@ class Node(object):
         self.val = val
         self.neighbors = neighbors
 """
+
+
 class Solution(object):
     def cloneGraph(self, node):
         """
         :type node: Node
         :rtype: Node
         """
-        
+        visited = dict()
+
+        q = collections.deque()
+        q.append(node)
+        visited[node] = Node(node.val, [])
+        while q:
+            curr = q.popleft()
+            for neighbor in curr.neighbors:
+                if neighbor not in visited:
+                    visited[neighbor] = Node(neighbor.val, [])
+                    q.append(neighbor)
+                visited[curr].neighbors.append(visited[neighbor])
+
+        return visited[node]
