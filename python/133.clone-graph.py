@@ -75,5 +75,4 @@ class Solution(object):
                     visited[neighbor] = Node(neighbor.val, [])
                     q.append(neighbor)
                 visited[curr].neighbors.append(visited[neighbor])
-
         return visited[node]
