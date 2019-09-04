@@ -39,4 +39,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+        res = 0
+        for i in range(32):
+            count = 0
+            bit = 1 << i
+            for num in nums:
+                if num & bit:
+                    count += 1
+            if count % 3:
+                res |= bit
+        return res
