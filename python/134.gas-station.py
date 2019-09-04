@@ -80,4 +80,10 @@ class Solution(object):
         :type cost: List[int]
         :rtype: int
         """
-        
+        min_sum, min_index, total = 0, 0, 0
+        for i in range(len(gas)):
+            total = total + gas[i] - cost[i]
+            if min_sum > total:
+                min_sum = total
+                min_index = i + 1
+        return -1 if total < 0 else min_index
