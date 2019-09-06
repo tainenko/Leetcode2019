@@ -72,4 +72,30 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        
+        slow = fast = head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if slow == fast:
+                break
+        if not fast or not fast.next:
+            return None
+
+        slow = head
+        while slow != fast:
+            slow = slow.next
+            fast = fast.next
+        return fast
+
+    def outerspace(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        res = set()
+        while head:
+            if head in res:
+                return head
+            res.add(head)
+            head = head.next
+        return None
