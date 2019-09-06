@@ -51,10 +51,34 @@
 # 
 #
 class Solution(object):
+
     def wordBreak(self, s, wordDict):
         """
         :type s: str
         :type wordDict: List[str]
         :rtype: bool
         """
-        
+        dp = [False] * (len(s) + 1)
+        dp[0] = True
+        for i in range(1, len(s) + 1):
+            for k in range(i):
+                if dp[k] and s[k:i] in wordDict:
+                    dp[i] = True
+        return dp[-1]
+
+    def dfs(self, s, wordDict):
+        """
+        :type s: str
+        :type wordDict: List[str]
+        :rtype: bool
+        """
+        # dfs would exceed the time limit.
+        if not s.replace('$', ''):
+            return True
+        if not wordDict:
+            return False
+        for i in range(len(wordDict)):
+            if wordDict[i] in s:
+                if self.wordBreak(s.replace(wordDict[i], '$'), wordDict[:i] + wordDict[i + 1:]):
+                    return True
+        return False
