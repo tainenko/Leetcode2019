@@ -42,10 +42,12 @@ class Solution(object):
         res = 0
         for i in range(32):
             count = 0
-            bit = 1 << i
+            digit = 1 << i
             for num in nums:
-                if num & bit:
+                if num & digit:
                     count += 1
             if count % 3:
-                res |= bit
+                res |= digit
+        if res >= 2 ** 31:
+            res -= 2 ** 32
         return res
