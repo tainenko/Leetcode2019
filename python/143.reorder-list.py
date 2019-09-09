@@ -41,4 +41,26 @@ class Solution(object):
         :type head: ListNode
         :rtype: None Do not return anything, modify head in-place instead.
         """
-        
+        if not head:
+            return head
+        fast = slow = head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+
+        q = slow.next
+        slow.next = None
+        prev = None
+        while q:
+            next = q.next
+            q.next = prev
+            prev = q
+            q = next
+        q = prev
+        p = head
+        while p and q:
+            next = q.next
+            q.next = p.next
+            p.next = q
+            q = next
+            p = p.next.next
