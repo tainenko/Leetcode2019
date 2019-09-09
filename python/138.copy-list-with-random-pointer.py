@@ -51,10 +51,71 @@ class Node(object):
         self.next = next
         self.random = random
 """
+
+
 class Solution(object):
     def copyRandomList(self, head):
         """
         :type head: Node
         :rtype: Node
         """
-        
+        if not head:
+            return head
+
+        p = head
+
+        while p:
+            tmp = Node(p.val, None, None)
+            tmp.next = p.next
+            p.next = tmp
+            p = p.next.next
+
+        p = head
+        q = head.next
+        while p:
+            if p.random:
+                q.random = p.random.next
+            p = p.next.next
+            if q.next:
+                q = q.next.next
+
+        header = head.next
+        p = head
+        q = header
+
+        while p:
+            if not q.next:
+                break
+            p.next = q.next
+            p = p.next
+            q.next = p.next
+            q = q.next
+        p.next = None
+        return header
+
+    def copyRandomList_outerspace(self, head):
+        """
+        :type head: Node
+        :rtype: Node
+        """
+        if not head:
+            return head
+        header = Node(0, None, None)
+        p = header
+        q = head
+        dct = {}
+        while q:
+            tmp = Node(q.val, None, None)
+            dct[q] = tmp
+            p.next = tmp
+            p = p.next
+            q = q.next
+
+        p = header.next
+        q = head
+        while q:
+            if q.random:
+                p.random = dct[q.random]
+            p = p.next
+            q = q.next
+        return header.next
