@@ -65,4 +65,20 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        
+        if not head:
+            return head
+        dummy = ListNode(0)
+        dummy.next = head
+        curr = head
+        while curr.next:
+            if curr.val < curr.next.val:
+                curr = curr.next
+            else:
+                pre = dummy
+                while pre.next.val < curr.next.val:
+                    pre = pre.next
+                next = curr.next
+                curr.next = curr.next.next
+                next.next = pre.next
+                pre.next = next
+        return dummy.next
