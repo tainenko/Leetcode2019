@@ -64,4 +64,6 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        
+        lst = s.split(' ')
+        lst = [x for x in lst if x]
+        return ' '.join(lst[::-1])
