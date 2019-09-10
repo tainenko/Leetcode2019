@@ -7,7 +7,7 @@
 #
 # algorithms
 # Medium (29.77%)
-# Total Accepted:    238.7K
+# Total numsccepted:    238.7K
 # Total Submissions: 796.3K
 # Testcase Example:  '[2,3,-2,4]'
 #
@@ -36,4 +36,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+        currMax = currMin = res = nums[0]
+        for i in range(1, len(nums)):
+            tmp = currMax
+            currMax = max(tmp * nums[i], currMin * nums[i], nums[i])
+            currMin = min(tmp * nums[i], currMin * nums[i], nums[i])
+            res = max(res, currMax)
+        return res
