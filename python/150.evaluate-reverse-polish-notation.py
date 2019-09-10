@@ -63,4 +63,25 @@ class Solution(object):
         :type tokens: List[str]
         :rtype: int
         """
-        
+        opes = {'+', '-', '*', '/'}
+        nums = []
+        for token in tokens:
+            if token in opes:
+                y = nums.pop()
+                x = nums.pop()
+                print(x, y, token)
+                tmp = self.operation(x, y, token)
+                nums.append(tmp)
+            else:
+                nums.append(token)
+        return int(nums[-1])
+
+    def operation(self, x, y, token):
+        if token == '+':
+            return int(x) + int(y)
+        elif token == '-':
+            return int(x) - int(y)
+        elif token == '*':
+            return int(x) * int(y)
+        elif token == '/':
+            return operator.truediv(int(x), int(y))
