@@ -45,4 +45,26 @@ class Solution(object):
         :type denominator: int
         :rtype: str
         """
-        
+        if numerator == 0:
+            return "0"
+
+        sign = '-' if ((numerator > 0) ^ (denominator > 0)) else ''
+        numerator, denominator = abs(numerator), abs(denominator)
+        div, mod = divmod(numerator, denominator)
+        if not mod:
+            return sign + str(div)
+        res = sign + str(div) + '.'
+        pos = dict()
+        pos[mod] = len(res)
+        while mod:
+            mod *= 10
+            div, mod = divmod(mod, denominator)
+            res += str(div)
+            if mod in pos:
+                idx = pos[mod]
+                res = res[:idx] + '(' + res[idx:] + ')'
+                break
+            else:
+                pos[mod] = len(res)
+
+        return res
