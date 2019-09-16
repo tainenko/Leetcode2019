@@ -74,4 +74,17 @@ class Solution(object):
         :type version2: str
         :rtype: int
         """
-        
+        string1 = version1.split('.')
+        string2 = version2.split('.')
+        n = len(string1)
+        m = len(string2)
+        if n < m:
+            string1 += ['0'] * (m - n)
+        elif n > m:
+            string2 += ['0'] * (n - m)
+        for idx in range(len(string1)):
+            if int(string1[idx]) < int(string2[idx]):
+                return -1
+            elif int(string1[idx]) > int(string2[idx]):
+                return 1
+        return 0
