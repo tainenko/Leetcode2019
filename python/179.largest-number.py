@@ -37,4 +37,42 @@ class Solution(object):
         :type nums: List[int]
         :rtype: str
         """
-        
+        nums = sorted([str(x) for x in nums], key=self.cmp_to_key(self.cmp))
+        res = ''
+        for val in nums:
+            res += val
+        return res
+
+    def cmp(self, x, y):
+        xy = int(x + y)
+        yx = int(y + x)
+        return (yx > xy) - (yx < xy)
+
+    def cmp_to_key(self, mycmp):
+        'Convert a cmp= function into a key= function'
+
+        class K:
+            def __init__(self, obj, *args):
+                self.obj = obj
+
+            def __lt__(self, other):
+                return mycmp(self.obj, other.obj) < 0
+
+            def __gt__(self, other):
+
+                def __gt__(self, other):
+                    return mycmp(self.obj, other.obj) > 0
+
+            def __eq__(self, other):
+                return mycmp(self.obj, other.obj) == 0
+
+            def __le__(self, other):
+                return mycmp(self.obj, other.obj) <= 0
+
+            def __ge__(self, other):
+                return mycmp(self.obj, other.obj) >= 0
+
+            def __ne__(self, other):
+                return mycmp(self.obj, other.obj) != 0
+
+        return K
