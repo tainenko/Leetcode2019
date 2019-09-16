@@ -63,22 +63,29 @@ class BSTIterator(object):
         """
         :type root: TreeNode
         """
-        
+        self.stack = []
+        while root:
+            self.stack.append(root)
+            root = root.left
 
     def next(self):
         """
         @return the next smallest number
         :rtype: int
         """
-        
+        node = self.stack.pop()
+        tmp = node.right
+        while tmp:
+            self.stack.append(tmp)
+            tmp = tmp.left
+        return node.val
 
     def hasNext(self):
         """
         @return whether we have a next smallest number
         :rtype: bool
         """
-        
-
+        return self.stack != []
 
 # Your BSTIterator object will be instantiated and called as such:
 # obj = BSTIterator(root)
