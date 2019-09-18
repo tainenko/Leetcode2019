@@ -33,4 +33,11 @@ class Solution(object):
         :type s: str
         :rtype: List[str]
         """
-        
+        seen = set()
+        repeated = set()
+        for i in range(0, len(s) - 9):
+            curr = s[i:i + 10]
+            if curr in seen:
+                repeated.add(curr)
+            seen.add(curr)
+        return list(repeated)
