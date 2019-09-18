@@ -41,4 +41,19 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        
+        if not root:
+            return root
+        q = collections.deque()
+        q.append(root)
+        res = []
+        while q:
+            next = collections.deque()
+            res.append(q[0].val)
+            while q:
+                curr = q.popleft()
+                if curr.right:
+                    next.append(curr.right)
+                if curr.left:
+                    next.append(curr.left)
+            q = next
+        return res
