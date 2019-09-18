@@ -46,4 +46,18 @@ class Solution(object):
         :type grid: List[List[str]]
         :rtype: int
         """
-        
+        count = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == "1":
+                    count += 1
+                    self.setzero_islands(grid, i, j)
+
+        return count
+
+    def setzero_islands(self, grid, i, j):
+        dir = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+        grid[i][j] = "0"
+        for x, y in dir:
+            if 0 <= i + x < len(grid) and 0 <= j + y < len(grid[0]) and grid[i + x][y + j] == "1":
+                self.setzero_islands(grid, i + x, y + j)
