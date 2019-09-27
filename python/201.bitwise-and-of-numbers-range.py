@@ -34,4 +34,8 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        
+        mask =2147483647
+        while m&mask != n&mask:
+            mask<<=1
+
+        return m&mask
