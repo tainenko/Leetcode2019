@@ -39,6 +39,7 @@ const LANGS = [
   {lang: 'javascript', ext: '.js',         style: 'c'},
   {lang: 'kotlin',     ext: '.kt',         style: 'c'},
   {lang: 'mysql',      ext: '.sql',        style: '--'},
+  {lang: 'php',        ext: '.php',        style: 'c'},
   {lang: 'python',     ext: '.py',         style: '#'},
   {lang: 'python3',    ext: '.py',         style: '#'},
   {lang: 'ruby',       ext: '.rb',         style: '#'},
@@ -133,8 +134,8 @@ h.langToCommentStyle = function(lang) {
   const res = LANGS.find(x => x.lang === lang);
 
   return (res && res.style === 'c') ?
-    {start: '/*', line: ' *', end: ' */'} :
-    {start: res.style,  line: res.style,  end: res.style};
+    {start: '/*', line: ' *', end: ' */', singleLine: '//'} :
+    {start: res.style,  line: res.style,  end: res.style, singleLine: res.style};
 };
 
 h.readStdin = function(cb) {

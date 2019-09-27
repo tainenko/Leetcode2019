@@ -2,8 +2,6 @@
 var util = require('util');
 
 var _ = require('underscore');
-var cheerio = require('cheerio');
-var he = require('he');
 var request = require('request');
 
 var config = require('../config');
@@ -134,6 +132,8 @@ plugin.getProblem = function(problem, cb) {
       '  question(titleSlug: $titleSlug) {',
       '    content',
       '    stats',
+      '    likes',
+      '    dislikes',
       '    codeDefinition',
       '    sampleTestCase',
       '    enableRunCode',
@@ -157,11 +157,10 @@ plugin.getProblem = function(problem, cb) {
 
     problem.totalAC = JSON.parse(q.stats).totalAccepted;
     problem.totalSubmit = JSON.parse(q.stats).totalSubmission;
+    problem.likes = q.likes;
+    problem.dislikes = q.dislikes;
 
-    let content = q.translatedContent ? q.translatedContent : q.content;
-    // Replace <sup/> with '^' as the power operator
-    content = content.replace(/<\/sup>/gm, '').replace(/<sup>/gm, '^');
-    problem.desc = he.decode(cheerio.load(content).root().text());
+    problem.desc = q.translatedContent ? q.translatedContent : q.content;
 
     problem.templates = JSON.parse(q.codeDefinition);
     problem.testcase = q.sampleTestCase;
@@ -186,7 +185,7 @@ function runCode(opts, problem, cb) {
     lang:        problem.lang,
     question_id: parseInt(problem.id, 10),
     test_mode:   false,
-    typed_code:  file.data(problem.file)
+    typed_code:  file.codeData(problem.file)
   });
 
   const spin = h.spin('Sending code to judge');
@@ -242,13 +241,17 @@ function verifyResult(task, queue, cb) {
 
 function formatResult(result) {
   const x = {
-    ok:       result.run_success,
-    answer:   result.code_answer || '',
-    runtime:  result.status_runtime || '',
-    state:    h.statusToName(result.status_code),
-    testcase: util.inspect(result.input || result.last_testcase || ''),
-    passed:   result.total_correct || 0,
-    total:    result.total_testcases || 0
+    ok:                 result.run_success,
+    answer:             result.code_answer || '',
+    lang:               result.lang,
+    runtime:            result.status_runtime || '',
+    runtime_percentile: result.runtime_percentile || '',
+    memory:             result.status_memory || '',
+    memory_percentile:  result.memory_percentile || '',
+    state:              h.statusToName(result.status_code),
+    testcase:           util.inspect(result.input || result.last_testcase || ''),
+    passed:             result.total_correct || 0,
+    total:              result.total_testcases || 0
   };
 
   x.error = _.chain(result)
@@ -261,7 +264,11 @@ function formatResult(result) {
     x.expected_answer = result.expected_output;
     x.stdout = result.std_output;
   } else {
-    x.stdout = util.inspect((result.code_output || []).join('\n'));
+    let output = result.code_output || [];
+    if (Array.isArray(output)) {
+      output = output.join('\n');
+    }
+    x.stdout = util.inspect(output);
   }
 
   // make sure we pass eveything!
@@ -336,7 +343,7 @@ plugin.getSubmission = function(submission, cb) {
     let re = body.match(/submissionCode:\s('[^']*')/);
     if (re) submission.code = eval(re[1]);
 
-    re = body.match(/distribution_formatted:\s('[^']+')/);
+    re = body.match(/runtimeDistributionFormatted:\s('[^']+')/);
     if (re) submission.distributionChart = JSON.parse(eval(re[1]));
     return cb(null, submission);
   });
