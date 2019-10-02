@@ -40,5 +40,19 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+        if not nums:
+            return 0
+        left = right = 0
+        res = float('inf')
+        total = 0
+        while right < len(nums):
+            total += nums[right]
+            while total >= s:
+                res = min(res, right - left + 1)
+                total -= nums[left]
+                left += 1
+            right += 1
+        if res == float('inf'):
+            return 0
+        return res
 # @lc code=end
