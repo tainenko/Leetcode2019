@@ -63,5 +63,24 @@ class Solution(object):
         :type prerequisites: List[List[int]]
         :rtype: List[int]
         """
-        
+        graph=collections.defaultdict(list)
+        indegree=collections.defaultdict(int)
+
+        for u,v in prerequisites:
+            graph[v].append(u)
+            indegree[u]+=1
+        res=[]
+        for i in range(numCourses):
+            zeroDegree=False
+            for j in range(numCourses):
+                if indegree[j]==0:
+                    zeroDegree=True
+                    break
+            if not zeroDegree:
+                return []
+            res.append(j)
+            indegree[j]=-1
+            for node in graph[j]:
+                indegree[node]-=1
+        return res
 # @lc code=end
