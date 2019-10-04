@@ -50,8 +50,7 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         res = []
-        for i in range(1, 10):
-            self.dfs(k, n, res, [], i)
+        self.dfs(k, n, res, [], 1)
         return res
 
     def dfs(self, k, n, res, arr, start):
