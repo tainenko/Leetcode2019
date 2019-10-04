@@ -55,5 +55,17 @@ class Solution(object):
         :type t: int
         :rtype: bool
         """
-        
+        if k < 1 or t < 0:
+            return False
+        dct = collections.OrderedDict()
+        for n in nums:
+            key = n if not t else n // t
+            for m in (dct.get(key - 1), dct.get(key), dct.get(key + 1)):
+                if m is not None and abs(n - m) <= t:
+                    return True
+            if len(dct) == k:
+                dct.popitem(False)
+            dct[key] = n
+        return False
+
 # @lc code=end
