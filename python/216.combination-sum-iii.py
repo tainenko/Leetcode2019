@@ -49,5 +49,18 @@ class Solution(object):
         :type n: int
         :rtype: List[List[int]]
         """
-        
+        res = []
+        for i in range(1, 10):
+            self.dfs(k, n, res, [], i)
+        return res
+
+    def dfs(self, k, n, res, arr, start):
+        if k < 0 or n < 0:
+            return
+        if 0 == k and n == 0:
+            if arr not in res:
+                res.append(arr)
+            return
+        for i in range(start, 10):
+            self.dfs(k - 1, n - i, res, arr + [i], i + 1)
 # @lc code=end
