@@ -55,5 +55,27 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        
+        stack = []
+        prev_op = '+'
+        num = 0
+        for idx, each in enumerate(s):
+            if each.isdigit():
+                num = num * 10 + int(each)
+            if idx == len(s) - 1 or each in '+-*/':
+                if prev_op == '+':
+                    stack.append(int(num))
+                elif prev_op == '-':
+                    stack.append(int(-num))
+                elif prev_op == '*':
+                    stack.append(stack.pop() * num)
+                elif prev_op == '/':
+                    top = stack.pop()
+                    if top < 0:
+                        stack.append(-(-top // num))
+                    else:
+                        stack.append(top // num)
+                prev_op = each
+                num = 0
+        return sum(stack)
+
 # @lc code=end
