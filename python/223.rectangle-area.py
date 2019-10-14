@@ -46,5 +46,12 @@ class Solution(object):
         :type H: int
         :rtype: int
         """
-        
+        return self.get_area(A, B, C, D) + self.get_area(E, F, G, H) - self.get_area(max(A, E), max(B, F), min(C, G),
+                                                                                     min(D, H))
+
+    def get_area(self, A, B, C, D):
+        if A < C and B < D:
+            return (C - A) * (D - B)
+        else:
+            return 0
 # @lc code=end
