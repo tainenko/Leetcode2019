@@ -50,5 +50,40 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        
+        if not root:
+            return 0
+        left_height = self.get_height(root.left)
+        right_height = self.get_height(root.right)
+
+        if left_height == right_height:
+            return (1 << left_height) + self.countNodes(root.right)
+        else:
+            return (1 << right_height) + self.countNodes(root.left)
+
+    def get_height(self, root):
+        height = 0
+        while root:
+            root = root.left
+            height += 1
+        return height
+
+    def force_countNodes(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root:
+            return 0
+        count = 0
+        q = collections.deque()
+        q.append(root)
+        while q:
+            node = q.popleft()
+            count += 1
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
+        return count
+
 # @lc code=end
