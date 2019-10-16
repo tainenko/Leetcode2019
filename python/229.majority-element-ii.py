@@ -40,12 +40,37 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        res = []
-        dct = {}
+        a = 0
+        b = 0
+        cnt1 = 0
+        cnt2 = 0
         for num in nums:
-            dct[num] = dct.get(num, 0) + 1
-            if dct[num] > len(nums) // 3 and num not in res:
-                res.append(num)
+            if num == a:
+                cnt1 += 1
+            elif num == b:
+                cnt2 += 1
+            elif cnt1 == 0:
+                a = num
+                cnt1 = 1
+            elif cnt2 == 0:
+                b = num
+                cnt2 = 1
+            else:
+                cnt1 -= 1
+                cnt2 -= 1
+
+        cnt1 = 0
+        cnt2 = 0
+        for num in nums:
+            if num == a:
+                cnt1 += 1
+            elif num == b:
+                cnt2 += 1
+        res = []
+        if cnt1 > len(nums) // 3:
+            res.append(a)
+        if cnt2 > len(nums) // 3:
+            res.append(b)
         return res
 
     def outerspace_majorityElement(self, nums):
