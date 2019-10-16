@@ -34,10 +34,33 @@
 
 # @lc code=start
 class Solution(object):
+
     def majorityElement(self, nums):
         """
         :type nums: List[int]
         :rtype: List[int]
         """
-        
+        res = []
+        dct = {}
+        for num in nums:
+            dct[num] = dct.get(num, 0) + 1
+            if dct[num] > len(nums) // 3 and num not in res:
+                res.append(num)
+        return res
+
+    def outerspace_majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        # space complexity: O(n)
+        # time complexity: O(n)
+        res = []
+        dct = {}
+        for num in nums:
+            dct[num] = dct.get(num, 0) + 1
+            if dct[num] > len(nums) // 3 and num not in res:
+                res.append(num)
+        return res
+
 # @lc code=end
