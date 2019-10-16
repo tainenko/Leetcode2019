@@ -41,5 +41,19 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[str]
         """
-        
+        if not nums:
+            return []
+        res = []
+        start = 0
+        end = 0
+        while start < len(nums):
+            while end < len(nums) - 1 and (nums[end] + 1 == nums[end + 1]):
+                end += 1
+            if end == start:
+                res.append(str(nums[end]))
+            else:
+                res.append("{start}->{end}".format(start=nums[start], end=nums[end]))
+            end += 1
+            start = end
+        return res
 # @lc code=end
