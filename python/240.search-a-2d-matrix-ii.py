@@ -12,7 +12,9 @@
 # Total Accepted:    224.8K
 # Total Submissions: 538.2K
 # Testcase Example:  '[[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]]\n' +
-  '5'
+'5'
+
+
 #
 # Write an efficient algorithm that searches for a value in an m x n matrix.
 # This matrix has the following properties:
@@ -50,5 +52,18 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
-        
+        if not matrix:
+            return False
+        n = len(matrix)
+        m = len(matrix[0])
+        i = n - 1
+        j = 0
+        while i >= 0 and j < m:
+            if matrix[i][j] == target:
+                return True
+            elif matrix[i][j] > target:
+                i -= 1
+            else:
+                j += 1
+        return False
 # @lc code=end
