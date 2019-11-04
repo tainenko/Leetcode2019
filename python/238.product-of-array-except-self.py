@@ -39,5 +39,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        
+        if len(nums) <= 1:
+            return nums
+        res = [None] * len(nums)
+        res[0] = 1
+        right = 1
+        for i in range(1, len(nums)):
+            res[i] = nums[i - 1] * res[i - 1]
+
+        for i in range(len(nums) - 2, -1, -1):
+            right = nums[i + 1] * right
+            res[i] *= right
+
+        return res
+
 # @lc code=end
