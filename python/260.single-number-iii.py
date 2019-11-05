@@ -40,18 +40,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        tmp=0
+        tmp = 0
         for num in nums:
-            tmp^=num
-        mask=1
-        while mask&tmp==0:
-            mask=mask<<1
-        a=b=tmp
+            tmp ^= num
+        mask = 1
+        while mask & tmp == 0:
+            mask = mask << 1
+        a = b = tmp
         for num in nums:
-            if num&mask==0:
-                a^=num
+            if num & mask == 0:
+                a ^= num
             else:
-                b^=num
-        return [a,b]
-        
+                b ^= num
+        return [a, b]
+
 # @lc code=end
