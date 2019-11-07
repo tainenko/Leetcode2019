@@ -44,11 +44,26 @@ class Solution(object):
         :type citations: List[int]
         :rtype: int
         """
+        count = [0] * (len(citations) + 1)
+        for i in range(len(citations)):
+            if citations[i] >= len(citations):
+                count[len(citations)] += 1
+            else:
+                count[citations[i]] += 1
+        for j in range(len(citations), -1, -1):
+            if count[j] >= j:
+                return j
+            count[j - 1] += count[j]
+
+    def hIndex_sort(self, citations):
+        """
+        :type citations: List[int]
+        :rtype: int
+        """
         level = 0
         citations.sort()
         for i in range(len(citations)):
             level = max(level, min(len(citations) - i, citations[i]))
         return level
-
 
 # @lc code=end
