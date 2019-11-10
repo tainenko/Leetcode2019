@@ -53,6 +53,22 @@ class Solution(object):
         """
         if not points:
             return 0
+        points = sorted(points, key=lambda x: x[1])
+        end = float('-inf')
+        res = 0
+        for s, e in points:
+            if s > end:
+                end = e
+                res += 1
+        return res
+
+    def force_findMinArrowShots(self, points):
+        """
+        :type points: List[List[int]]
+        :rtype: int
+        """
+        if not points:
+            return 0
         points = sorted(points, key=lambda x: (x[0], x[1]))
         res = 0
         start = points[0][0]
