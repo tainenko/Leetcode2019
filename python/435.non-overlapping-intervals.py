@@ -68,6 +68,16 @@ class Solution(object):
         :type intervals: List[List[int]]
         :rtype: int
         """
+        if not intervals:
+            return 0
+        intervals = sorted(intervals, key=lambda x: x[1])
+        end = float('-inf')
+        res = 0
+        for s, e in intervals:
+            if s >= end:
+                end = e
+            else:
+                res += 1
+        return res
 
-        
 # @lc code=end
