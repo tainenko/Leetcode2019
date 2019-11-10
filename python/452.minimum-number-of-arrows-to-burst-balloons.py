@@ -51,5 +51,20 @@ class Solution(object):
         :type points: List[List[int]]
         :rtype: int
         """
-        
+        if not points:
+            return 0
+        points = sorted(points, key=lambda x: (x[0], x[1]))
+        res = 0
+        start = points[0][0]
+        end = points[0][1]
+        for i in range(1, len(points)):
+            if points[i][0] > end:
+                res += 1
+                start = points[i][0]
+                end = points[i][1]
+            else:
+                start = max(start, points[i][0])
+                end = min(end, points[i][1])
+        return res + 1
+
 # @lc code=end
