@@ -49,5 +49,19 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+        res = 0
+        n = len(nums)
+        for i in range(32):
+            bit = 1 << i
+            cnt1 = 0
+            cnt2 = 0
+            for j in range(n):
+                if j & bit > 0:
+                    cnt1 += 1
+                if nums[j] & bit > 0:
+                    cnt2 += 1
+            if cnt2 > cnt1:
+                res += bit
+        return res
+
 # @lc code=end
