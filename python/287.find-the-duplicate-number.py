@@ -49,6 +49,27 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        fast = 0
+        slow = 0
+
+        while 1:
+            fast = nums[nums[fast]]
+            slow = nums[slow]
+            if slow == fast:
+                break
+        fast = 0
+        while 1:
+            fast = nums[fast]
+            slow = nums[slow]
+            if slow == fast:
+                break
+        return slow
+
+    def bit_findDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
         res = 0
         n = len(nums)
         for i in range(32):
