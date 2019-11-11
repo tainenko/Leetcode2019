@@ -77,5 +77,31 @@ class Solution(object):
         :type board: List[List[int]]
         :rtype: None Do not return anything, modify board in-place instead.
         """
-        
+        m = len(board)
+        n = len(board[0])
+        for i in range(m):
+            for j in range(n):
+                count = self.count_neighbors(i, j, m,n,board)
+                if board[i][j] == 1:
+                    if count < 2 or count>3:
+                        board[i][j] = 2
+                    elif count == 2 or count == 3:
+                        board[i][j] = 1
+                elif board[i][j]==0:
+                    if count == 3:
+                        board[i][j] = 3
+        for i in range(m):
+            for j in range(n):
+                board[i][j] %= 2
+        return board
+
+    def count_neighbors(self, i, j, m, n,board):
+        dirs = [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
+        count = 0
+        for x, y in dirs:
+            if 0 <= x + i < m and 0 <= y + j < n:
+                if board[x + i][y + j] in (1,2):
+                    count += 1
+        return count
+
 # @lc code=end
