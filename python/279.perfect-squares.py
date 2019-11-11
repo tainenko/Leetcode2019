@@ -30,6 +30,8 @@
 # Output: 2
 # Explanation: 13 = 4 + 9.
 #
+import math
+
 
 # @lc code=start
 class Solution(object):
@@ -38,5 +40,33 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        
+        dp = [float('inf')] * (n + 1)
+        dp[0] = 0
+
+        for i in range(n + 1):
+            j = 1
+            while i + j * j <= n:
+                dp[i + j * j] = min(dp[i + j * j], dp[i] + 1)
+                j += 1
+        return dp[-1]
+
+    def math_numSquares(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        tmp = n
+        while tmp & 3 == 0:
+            tmp >>= 2
+        if tmp % 8 == 7:
+            return 4
+
+        index = int(math.sqrt(n))
+        while index:
+            tmp = n - index ** 2
+            sqrt_tmp = int(math.sqrt(tmp))
+            if n == sqrt_tmp ** 2 + index ** 2:
+                return 1 if sqrt_tmp == 0 else 2
+            index -= 1
+        return 3
 # @lc code=end
