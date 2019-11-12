@@ -12,7 +12,9 @@
 # Total Accepted:    87.1K
 # Total Submissions: 249.2K
 # Testcase Example:  '["NumMatrix","sumRegion","sumRegion","sumRegion"]\n' +
-  '[[[[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]]],[2,1,4,3],[1,1,2,2],[1,2,2,4]]'
+'[[[[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]]],[2,1,4,3],[1,1,2,2],[1,2,2,4]]'
+
+
 #
 # Given a 2D matrix matrix, find the sum of the elements inside the rectangle
 # defined by its upper left corner (row1, col1) and lower right corner (row2,
@@ -56,8 +58,10 @@ class NumMatrix(object):
         """
         :type matrix: List[List[int]]
         """
-
-        
+        if not matrix:
+            self.matrix = [[]]
+        else:
+            self.matrix = self.compute_sum_matrix(matrix)
 
     def sumRegion(self, row1, col1, row2, col2):
         """
@@ -67,8 +71,25 @@ class NumMatrix(object):
         :type col2: int
         :rtype: int
         """
+        area1 = self.matrix[row2][col2]
+        area2 = self.matrix[row1 - 1][col2] if row1 > 0 else 0
+        area3 = self.matrix[row2][col1 - 1] if col1 > 0 else 0
+        area4 = self.matrix[row1 - 1][col1 - 1] if row1 > 0 and col1 > 0 else 0
+        return area1 - area2 - area3 + area4
 
-
+    def compute_sum_matrix(self, matrix):
+        if not matrix:
+            return [0]
+        m = len(matrix)
+        n = len(matrix[0])
+        for i in range(1, m):
+            matrix[i][0] += matrix[i - 1][0]
+        for j in range(1, n):
+            matrix[0][j] += matrix[0][j - 1]
+        for i in range(1, m):
+            for j in range(1, n):
+                matrix[i][j] += matrix[i - 1][j] + matrix[i][j - 1] - matrix[i - 1][j - 1]
+        return matrix
 
 # Your NumMatrix object will be instantiated and called as such:
 # obj = NumMatrix(matrix)
