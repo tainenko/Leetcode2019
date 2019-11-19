@@ -46,5 +46,17 @@ class Solution(object):
         :type primes: List[int]
         :rtype: int
         """
-        
+        uglies = [1]
+        candidate = [1] * len(primes)
+        ids = [0] * len(primes)
+        next_min = 1
+        for _ in range(1, n):
+            for i in range(len(primes)):
+                if next_min == candidate[i]:
+                    candidate[i] = uglies[ids[i]] * primes[i]
+                    ids[i] += 1
+            next_min = min(candidate)
+            uglies.append(next_min)
+        return uglies[-1]
+
 # @lc code=end
