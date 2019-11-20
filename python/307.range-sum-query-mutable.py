@@ -46,7 +46,7 @@ class NumArray(object):
         """
         :type nums: List[int]
         """
-        
+        self._nums = nums
 
     def update(self, i, val):
         """
@@ -54,7 +54,7 @@ class NumArray(object):
         :type val: int
         :rtype: None
         """
-        
+        self._nums[i]=val
 
     def sumRange(self, i, j):
         """
@@ -62,8 +62,7 @@ class NumArray(object):
         :type j: int
         :rtype: int
         """
-        
-
+        return sum(self._nums[i:j+1])
 
 # Your NumArray object will be instantiated and called as such:
 # obj = NumArray(nums)
