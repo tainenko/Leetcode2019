@@ -45,5 +45,24 @@ class Solution(object):
         :type amount: int
         :rtype: int
         """
-        
+        if not coins:
+            return -1
+        if amount < 0:
+            return -1
+        if amount == 0:
+            return 0
+        dp = [amount + 1] * (amount + 1)
+        dp[0] = 0
+        for coin in coins:
+            if amount == coin:
+                return 1
+            if coin > amount:
+                continue
+            dp[coin] = 1
+        for i in range(1, amount + 1):
+            for coin in coins:
+                if coin < i:
+                    dp[i] = min(dp[i], dp[i - coin] + 1)
+        return dp[-1] if dp[-1] != amount + 1 else -1
+
 # @lc code=end
