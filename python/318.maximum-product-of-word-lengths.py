@@ -49,5 +49,14 @@ class Solution(object):
         :type words: List[str]
         :rtype: int
         """
-        
+        mask = [0] * len(words)
+        res = 0
+        for i in range(len(words)):
+            for c in words[i]:
+                mask[i] |= 1 << (ord(c) - ord('a'))
+            for j in range(i):
+                if not mask[i] & mask[j]:
+                    res = max(res, len(words[i]) * len(words[j]))
+        return res
+
 # @lc code=end
