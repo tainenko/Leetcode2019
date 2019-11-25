@@ -67,5 +67,15 @@ class Solution(object):
         :type preorder: str
         :rtype: bool
         """
-        
+        if len(preorder) == 1 and preorder[0] == '#':
+            return True
+        capacity = 1
+        for item in preorder.split(','):
+            capacity -= 1
+            if capacity < 0:
+                return False
+            if item != '#':
+                capacity += 2
+        return capacity == 0
+
 # @lc code=end
