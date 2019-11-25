@@ -57,5 +57,17 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        
+        if not head or not head.next:
+            return head
+        even = head
+        odd = head.next
+        odd_head = head.next
+        while even.next and odd.next:
+            even.next = even.next.next
+            odd.next = odd.next.next
+            even = even.next
+            odd = odd.next
+        even.next = odd_head
+        return head
+
 # @lc code=end
