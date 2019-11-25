@@ -42,7 +42,7 @@
 # 
 # Input: [3,4,5,1,3,null,1]
 # 
-# 3
+#      3
 # ⁠   / \
 # ⁠  4   5
 # ⁠ / \   \ 
@@ -67,5 +67,20 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        
+        return self.dfs(root,dict())
+
+    def dfs(self, root, m):
+        if not root:
+            return 0
+        if root in m:
+            return m[root]
+        val = 0
+        if root.left:
+            val += self.dfs(root.left.left, m) + self.dfs(root.left.right, m)
+        if root.right:
+            val += self.dfs(root.right.left, m) + self.dfs(root.right.right, m)
+        val = max(root.val + val, self.dfs(root.left, m)+self.dfs(root.right, m))
+        m[root]=val
+        return val
+
 # @lc code=end
