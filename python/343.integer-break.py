@@ -45,5 +45,16 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        
+        if n==2:
+            return 1
+        if n==3:
+            return 2
+        res = 1
+        while n != 4 and n != 2 and n>0:
+            n -= 3
+            res *= 3
+        if n>0:
+            res *= n
+        return res
+
 # @lc code=end
