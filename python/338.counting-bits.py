@@ -49,5 +49,9 @@ class Solution(object):
         :type num: int
         :rtype: List[int]
         """
-        
+        bits = [0] * (num + 1)
+        for n in range(1, num + 1):
+            bits[n] = bits[n & (n - 1)] + 1
+        return bits
+
 # @lc code=end
