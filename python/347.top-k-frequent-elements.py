@@ -48,5 +48,17 @@ class Solution(object):
         :type k: int
         :rtype: List[int]
         """
-        
+        cnts = {}
+        for num in nums:
+            cnts[num] = cnts.get(num, 0) + 1
+        buckets = [[] for _ in range(len(nums) + 1)]
+        for key, val in cnts.items():
+            buckets[val].append(key)
+        res = []
+        for ele in buckets[::-1]:
+            if len(res) >= k:
+                break
+            res += ele
+        return res
+
 # @lc code=end
