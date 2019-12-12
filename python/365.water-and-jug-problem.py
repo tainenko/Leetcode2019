@@ -53,5 +53,19 @@ class Solution(object):
         :type z: int
         :rtype: bool
         """
-        
+        if z == x or z == y or z == x + y or z == 0:
+            return True
+        if z > x + y:
+            return False
+        if x > y:
+            x, y = y, x
+        res = x
+        while res != 0 and res != z:
+            res += x
+            if res == z:
+                return True
+            if res >= y:
+                res -= y
+
+        return res == z
 # @lc code=end
