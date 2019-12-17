@@ -46,5 +46,24 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        
+        if not nums:
+            return []
+        nums.sort()
+        n = len(nums)
+        dp, index = [1] * n, [-1] * n
+        max_dp, max_index = 1, 0
+        for i in range(n):
+            for j in range(i - 1, -1, -1):
+                if nums[i] % nums[j] == 0 and dp[j] + 1 > dp[i]:
+                    dp[i] = dp[j] + 1
+                    index[i] = j
+            if max_dp < dp[i]:
+                max_dp = dp[i]
+                max_index = i
+        res = []
+        while max_index != -1:
+            res.append(nums[max_index])
+            max_index = index[max_index]
+        return res
+
 # @lc code=end
