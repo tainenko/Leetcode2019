@@ -43,5 +43,10 @@ class Solution(object):
         :type b: List[int]
         :rtype: int
         """
-        
+        a = a % 1337
+        res = pow(a, b[0]) % 1337
+        for x in b[1:]:
+            res = (pow(res, 10) * pow(a, x)) % 1337
+        return res
+
 # @lc code=end
