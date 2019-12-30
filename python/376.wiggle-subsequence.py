@@ -65,5 +65,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+        p = q = 1
+        for i in range(1, len(nums)):
+            if nums[i] > nums[i - 1]:
+                p = q + 1
+            elif nums[i] < nums[i - 1]:
+                q = p + 1
+        return min(len(nums), max(p, q))
+
 # @lc code=end
