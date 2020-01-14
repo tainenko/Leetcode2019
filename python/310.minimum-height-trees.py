@@ -70,6 +70,9 @@
 #
 
 # @lc code=start
+import collections
+
+
 class Solution(object):
     def findMinHeightTrees(self, n, edges):
         """
@@ -77,5 +80,26 @@ class Solution(object):
         :type edges: List[List[int]]
         :rtype: List[int]
         """
-        
+        if not edges:
+            return [0]
+        leaves = [set() for _ in range(n)]
+        for edge in edges:
+            leaves[edge[0]].add(edge[1])
+            leaves[edge[1]].add(edge[0])
+        que = collections.deque()
+        for i in range(len(leaves)):
+            if len(leaves[i]) == 1:
+                que.append(i)
+
+        while n > 2:
+            _len = len(que)
+            n -= _len
+            for _ in range(_len):
+                v = que.popleft()
+                for leaf in leaves[v]:
+                    leaves[leaf].remove(v)
+                    if len(leaves[leaf]) == 1:
+                        que.append(leaf)
+
+        return list(que)
 # @lc code=end
