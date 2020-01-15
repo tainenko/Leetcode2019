@@ -46,5 +46,28 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        left = matrix[0][0]
+        right = matrix[-1][-1]
+        while left <= right:
+            mid = left + (right - left) // 2
+            cnt = self.count_lower(matrix, mid)
+            if cnt < k:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return left
+
+    def count_lower(self, matrix, mid):
+        i = len(matrix) - 1
+        j = 0
+        cnt = 0
+        while i >= 0 and j < len(matrix):
+            if matrix[i][j] <= mid:
+                cnt += i + 1
+                j += 1
+
+            else:
+                i -= 1
+        return cnt
 
 # @lc code=end
