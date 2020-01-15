@@ -50,8 +50,7 @@ BEGIN
       FROM Employee
       GROUP BY SALARY
       ORDER BY SALARY DESC
-      LIMIT N-1,1
-
+      LIMIT M , 1
   );
 END
 -- @lc code=end

@@ -51,5 +51,9 @@
 
 -- @lc code=start
 # Write your MySQL query statement below
+SELECT Score,
+(SELECT COUNT(*) FROM (SELECT DISTINCT Score s FROM Scores)t WHERE s>=Score) Rank
+FROM Scores
+ORDER BY Score DESC
 
 -- @lc code=end
