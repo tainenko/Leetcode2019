@@ -50,5 +50,7 @@
 -- 
 --
 # Write your MySQL query statement below
-
-
+Select p.FirstName , p.LastName , a.City , a.State
+FROM Person as p
+Left Join Address as a
+ON p.PersonId = a.PersonId
