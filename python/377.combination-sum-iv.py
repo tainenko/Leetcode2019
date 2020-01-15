@@ -57,5 +57,15 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
+        dp = [0] * (target + 1)
+        dp[0] = 1
+        nums.sort()
+
+        for i in range(1, target + 1):
+            for num in nums:
+                if i < num:
+                    break
+                dp[i] += dp[i - num]
+        return dp[-1]
 
 # @lc code=end
