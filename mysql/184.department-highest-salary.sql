@@ -62,5 +62,10 @@
 
 -- @lc code=start
 # Write your MySQL query statement below
+SELECT d.Name as Department, e.Name as Employee, e.Salary as Salary
+FROM Employee as e
+JOIN Department as d
+ON e.DepartmentId=d.Id
+WHERE (DepartmentId,Salary) in (SELECT DepartmentId,MAX(Salary) FROM Employee t GROUP BY DepartmentId)
 
 -- @lc code=end
