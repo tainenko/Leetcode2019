@@ -45,5 +45,13 @@
 
 -- @lc code=start
 # Write your MySQL query statement below
+SELECT DISTINCT L1.Num as ConsecutiveNums
+FROM Logs as L1
+JOIN Logs as L2
+ON L1.Id=L2.Id-1
+JOIN Logs as L3
+ON L2.Id=L3.Id-1
+WHERE L1.Num=L2.Num
+AND L1.Num=L3.Num
 
 -- @lc code=end
