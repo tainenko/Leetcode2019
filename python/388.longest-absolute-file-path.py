@@ -73,5 +73,17 @@ class Solution(object):
         :type input: str
         :rtype: int
         """
-        
+        stack = [(-1, 0)]
+        maxlen = 0
+        for p in input.split('\n'):
+            depth = p.count('\t')
+            p=p.replace('\t', '')
+            while stack and depth <= stack[-1][0]:
+                stack.pop()
+            if "." in p:
+                maxlen = max(maxlen, len(p) + stack[-1][1])
+            else:
+                stack.append((depth, stack[-1][1] + len(p) + 1))
+        return maxlen
+
 # @lc code=end
