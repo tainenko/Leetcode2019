@@ -29,8 +29,26 @@ class Solution(object):
         :type n: int
         :rtype: List[int]
         """
-        res=[x for x in range(1,n+1)]
-        res=sorted(res,key=lambda x:str(x))
+        res = []
+        count = 1
+        for _ in range(n):
+            res.append(count)
+            if count * 10 <= n:
+                count *= 10
+            else:
+                if count >= n:
+                    count //= 10
+                count += 1
+                while count % 10 == 0:
+                    count //= 10
         return res
-        
+
+    def lexicalOrder2(self, n):
+        """
+        :type n: int
+        :rtype: List[int]
+        """
+        res = [x for x in range(1, n + 1)]
+        res = sorted(res, key=lambda x: str(x))
+        return res
 # @lc code=end
