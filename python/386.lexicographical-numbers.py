@@ -29,5 +29,8 @@ class Solution(object):
         :type n: int
         :rtype: List[int]
         """
+        res=[x for x in range(1,n+1)]
+        res=sorted(res,key=lambda x:str(x))
+        return res
         
 # @lc code=end
