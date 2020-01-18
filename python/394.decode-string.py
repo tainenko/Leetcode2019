@@ -45,7 +45,22 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
+        cnt = 0
+        tmp = ""
+        nums = []
+        ss = []
+        for char in s:
+            if char == "[":
+                nums.append(cnt)
+                cnt = 0
+                ss.append(tmp)
+                tmp = ""
+            elif char == "]":
+                tmp = ss.pop() + tmp * nums.pop()
+            elif char.isdigit():
+                cnt = 10 * cnt + int(char)
+            else:
+                tmp += char
+        return ss[-1] if ss else tmp
 
-
-        
 # @lc code=end
