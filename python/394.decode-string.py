@@ -45,6 +45,32 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
+        return self.helper(s,[0])
+
+    def helper(self, s, nums):
+        res = ""
+        n = len(s)
+        while nums[0] < n and s[nums[0]] != ']':
+            if s[nums[0]].isalpha():
+                res += s[nums[0]]
+                nums[0] = nums[0]+1
+            else:
+                cnt = ""
+                while s[nums[0]].isdigit():
+                    cnt += s[nums[0]]
+                    nums[0] = nums[0]+1
+                nums[0] = nums[0]+1
+                t = self.helper(s, nums)
+                nums[0] = nums[0]+1
+                if cnt:
+                    res = res + int(cnt) * t
+        return res
+
+    def decodeString_iter(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
         cnt = 0
         tmp = ""
         nums = []
