@@ -75,5 +75,30 @@ class Solution(object):
         :type data: List[int]
         :rtype: bool
         """
+        cnt = 0
+        for num in data:
+            bits = format(num, '08b')
+
+            if cnt != 0:
+                if bits[:2] == '10':
+                    cnt -= 1
+                    continue
+                else:
+                    return False
+            else:
+                if bits[0] == '0':
+                    continue
+                elif bits[:3] == '110':
+                    cnt = 1
+                    continue
+                elif bits[:4] == '1110':
+                    cnt = 2
+                    continue
+                elif bits[:5] == '11110':
+                    cnt = 3
+                    continue
+                else:
+                    return False
+        return cnt == 0
 
 # @lc code=end
