@@ -53,5 +53,13 @@ class Solution(object):
         :type A: List[int]
         :rtype: int
         """
-        
+        total = sum(A)
+        f0 = sum([idx * val for idx, val in enumerate(A)])
+        res = f0
+        n = len(A)
+        for i in range(1, n):
+            f0 = f0 + total - n * A[n - i]
+            res = max(res, f0)
+        return res
+
 # @lc code=end
