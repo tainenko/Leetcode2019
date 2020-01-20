@@ -66,5 +66,13 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        
+        return self.helper(n, 0)
+
+    def helper(self, n, cnt):
+        if n == 1:
+            return cnt
+        if n % 2 == 0:
+            return self.helper(n // 2, cnt + 1)
+        return min(self.helper(n + 1, cnt + 1), self.helper(n - 1, cnt + 1))
+
 # @lc code=end
