@@ -61,5 +61,20 @@ class Solution(object):
         :type k: int
         :rtype: str
         """
-        
+        if k >= len(num):
+            return "0"
+        nums = list(num)
+        res = []
+        keep = len(num) - k
+        for num in nums:
+            while k and res and res[-1] > num:
+                res.pop()
+                k -= 1
+            res.append(num)
+        res = res[:keep]
+        zero = 0
+        while res[zero] == '0' and zero < len(res) - 1:
+            zero += 1
+        return ''.join(res[zero:])
+
 # @lc code=end
