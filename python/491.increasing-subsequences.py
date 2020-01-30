@@ -47,5 +47,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        
+        dp = set()
+        for num in nums:
+            for ele in list(dp):
+                if num >= ele[-1]:
+                    dp.add(ele + (num,))
+            dp.add((num,))
+        return [ele for ele in dp if len(ele) > 1]
+
 # @lc code=end
