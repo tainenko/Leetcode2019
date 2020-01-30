@@ -48,5 +48,28 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        
+        stack1 = []
+        stack2 = []
+        while l1:
+            stack1.append(l1)
+            l1 = l1.next
+        while l2:
+            stack2.append(l2)
+            l2 = l2.next
+        res = ListNode(0)
+        while stack1 or stack2:
+            sum = res.val
+            if stack1:
+                node1 = stack1.pop()
+                sum += node1.val
+            if stack2:
+                node2 = stack2.pop()
+                sum += node2.val
+            res.val = sum % 10
+            head = ListNode(sum // 10)
+
+            head.next = res
+            res = head
+        return res if res.val != 0 else res.next
+
 # @lc code=end
