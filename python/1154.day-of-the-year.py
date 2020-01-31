@@ -63,5 +63,20 @@ class Solution(object):
         :type date: str
         :rtype: int
         """
-        
+        day_in_months = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]
+        year, month, day = date.split('-')
+        return self.isleap(int(year), int(month)) + day_in_months[int(month) - 1] + int(day)
+
+    def isleap(self, year, month):
+        if month < 3:
+            return 0
+        if year % 4 == 0:
+            if year % 100 == 0:
+                if year % 400 == 0:
+                    return 1
+                else:
+                    return 0
+            return 1
+        return 0
+
 # @lc code=end
