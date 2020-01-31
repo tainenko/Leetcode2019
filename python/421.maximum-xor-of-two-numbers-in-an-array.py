@@ -26,7 +26,7 @@
 # Input: [3, 10, 5, 25, 2, 8]
 # 
 # Output: 28
-# 
+#
 # Explanation: The maximum result is 5 ^ 25 = 28.
 # 
 # 
@@ -41,5 +41,16 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+        res = 0
+        mask = 0
+        for x in range(31, -1, -1):
+            mask += 1<<x
+            prefixSet = set([n & mask for n in nums])
+            temp = res | 1 << x
+            for prefix in prefixSet:
+                if temp ^ prefix in prefixSet:
+                    res = temp
+                    break
+        return res
+
 # @lc code=end
