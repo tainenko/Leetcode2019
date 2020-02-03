@@ -43,5 +43,10 @@ class Solution(object):
         :type people: List[List[int]]
         :rtype: List[List[int]]
         """
+        people=sorted(people,key=lambda x:(-x[0],x[1]))
+        res=[]
+        for person in people:
+            res.insert(person[1],person)
+        return res
         
 # @lc code=end
