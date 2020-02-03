@@ -51,5 +51,20 @@ class Solution(object):
         :type A: List[int]
         :rtype: int
         """
-        
+        if not A or len(A) < 3:
+            return 0
+        res = 0
+        length = 0
+        diff = A[1] - A[0]
+        for i in range(1, len(A)):
+            tmp = A[i] - A[i - 1]
+            if diff == tmp:
+                length += 1
+                if length >= 2:
+                    res += length - 1
+            else:
+                length = 1
+                diff = tmp
+        return res
+
 # @lc code=end
