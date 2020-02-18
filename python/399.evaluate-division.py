@@ -12,8 +12,8 @@
 # Total Accepted:    108.2K
 # Total Submissions: 217K
 # Testcase Example:  '[["a","b"],["b","c"]]\n' +
-  '[2.0,3.0]\n' +
-  '[["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]'
+#  '[2.0,3.0]\n' +
+#  '[["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]'
 #
 # Equations are given in the format A / B = k, where A and B are variables
 # represented as strings, and k is a real number (floating point number). Given
@@ -45,7 +45,11 @@
 #
 
 # @lc code=start
+from collections import deque
+
+
 class Solution(object):
+
     def calcEquation(self, equations, values, queries):
         """
         :type equations: List[List[str]]
@@ -53,5 +57,35 @@ class Solution(object):
         :type queries: List[List[str]]
         :rtype: List[float]
         """
-        
+
+        def find(x):
+            if x != U[x][0]:
+                px, py = find(U[x][0])
+                U[x] = (px, U[x][1] * py)
+            return U[x]
+
+        def devide(x, y):
+            rx, vx = find(x)
+            ry, vy = find(y)
+            if rx != ry:
+                return -1
+            else:
+                return vx / vy
+
+        U = {}
+        for (x, y), v in zip(equations, values):
+            if x not in U and y not in U:
+                U[x] = (y, v)
+                U[y] = (y, 1.0)
+            elif x not in U:
+                U[x] = (y, v)
+            elif y not in U:
+                U[y] = (x, 1.0 / v)
+            else:
+                rx, vx = find(x)
+                ry, vy = find(y)
+                U[rx] = (ry, v / vx * vy)
+        ans = [devide(x, y) if x in U and y in U else -1 for x, y in queries]
+        return ans
+
 # @lc code=end
