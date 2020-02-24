@@ -10,6 +10,7 @@
 # Total Accepted:    141.9K
 # Total Submissions: 535.1K
 # Testcase Example:  '[10,2]'
+
 #
 # Given a list of non negative integers, arrange them such that they form the
 # largest number.
@@ -40,8 +41,10 @@ class Solution(object):
         nums = sorted([str(x) for x in nums], key=self.cmp_to_key(self.cmp))
         res = ''
         for val in nums:
+            if not res and val=='0':
+                continue
             res += val
-        return res
+        return res if res else '0'
 
     def cmp(self, x, y):
         xy = int(x + y)
