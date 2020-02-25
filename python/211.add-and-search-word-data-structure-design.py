@@ -12,7 +12,9 @@
 # Total Accepted:    152.4K
 # Total Submissions: 448.1K
 # Testcase Example:  '["WordDictionary","addWord","addWord","addWord","search","search","search","search"]\n' +
-  '[[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]]'
+'[[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]]'
+
+
 #
 # Design a data structure that supports the following two operations:
 # 
@@ -48,7 +50,7 @@ class WordDictionary(object):
         """
         Initialize your data structure here.
         """
-        
+        self.root = {}
 
     def addWord(self, word):
         """
@@ -56,7 +58,12 @@ class WordDictionary(object):
         :type word: str
         :rtype: None
         """
-        
+        p = self.root
+        for letter in word:
+            if letter not in p:
+                p[letter] = {}
+            p = p[letter]
+        p['#'] = {}
 
     def search(self, word):
         """
@@ -64,8 +71,20 @@ class WordDictionary(object):
         :type word: str
         :rtype: bool
         """
-        
-
+        p = [self.root]
+        for letter in word:
+            next = []
+            if letter == '.':
+                for node in p:
+                    next += node.values()
+            else:
+                for node in p:
+                    if letter in node:
+                        next.append(node[letter])
+            if not next:
+                return False
+            p = next
+        return any(['#' in x for x in p])
 
 # Your WordDictionary object will be instantiated and called as such:
 # obj = WordDictionary()
