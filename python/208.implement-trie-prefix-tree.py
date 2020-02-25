@@ -12,7 +12,9 @@
 # Total Accepted:    241.4K
 # Total Submissions: 551.2K
 # Testcase Example:  '["Trie","insert","search","search","startsWith","insert","search"]\n' +
-  '[[],["apple"],["apple"],["app"],["app"],["app"],["app"]]'
+'[[],["apple"],["apple"],["app"],["app"],["app"],["app"]]'
+
+
 #
 # Implement a trie with insert, search, and startsWith methods.
 # 
@@ -45,7 +47,7 @@ class Trie(object):
         """
         Initialize your data structure here.
         """
-        
+        self.root = {}
 
     def insert(self, word):
         """
@@ -53,7 +55,12 @@ class Trie(object):
         :type word: str
         :rtype: None
         """
-        
+        p = self.root
+        for c in word:
+            if c not in p:
+                p[c] = {}
+            p = p[c]
+        p["#"] = True
 
     def search(self, word):
         """
@@ -61,7 +68,8 @@ class Trie(object):
         :type word: str
         :rtype: bool
         """
-        
+        node = self.find(word)
+        return node is not None and '#' in node
 
     def startsWith(self, prefix):
         """
@@ -69,8 +77,16 @@ class Trie(object):
         :type prefix: str
         :rtype: bool
         """
-        
+        node = self.find(prefix)
+        return node is not None
 
+    def find(self, prefix):
+        p = self.root
+        for c in prefix:
+            if c not in p:
+                return None
+            p = p[c]
+        return p
 
 # Your Trie object will be instantiated and called as such:
 # obj = Trie()
