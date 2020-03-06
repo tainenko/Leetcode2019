@@ -43,6 +43,8 @@
 #         self.val = x
 #         self.next = None
 from random import randint
+
+
 class Solution(object):
 
     def __init__(self, head):
@@ -51,17 +53,23 @@ class Solution(object):
         Note that the head is guaranteed to be not null, so it contains at least one node.
         :type head: ListNode
         """
-
-        
+        self.head = head
 
     def getRandom(self):
         """
         Returns a random node's value.
         :rtype: int
         """
-
-        
-
+        # Ref. Reservoir sampling https://en.wikipedia.org/wiki/Reservoir_sampling
+        curr = self.head
+        i = 0
+        res = self.head.val
+        while curr:
+            if randint(0, i) == 0:
+                res = curr.val
+            i += 1
+            curr = curr.next
+        return res
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(head)
