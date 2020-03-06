@@ -12,7 +12,7 @@
 # Total Accepted:    154K
 # Total Submissions: 344.9K
 # Testcase Example:  '["RandomizedSet","insert","remove","insert","getRandom","remove","insert","getRandom"]\n' +
-  '[[],[1],[2],[2],[],[1],[2],[]]'
+'[[],[1],[2],[2],[],[1],[2],[]]'
 #
 # Design a data structure that supports all following operations in average
 # O(1) time.
@@ -56,13 +56,17 @@
 #
 
 # @lc code=start
+import random
+
+
 class RandomizedSet(object):
 
     def __init__(self):
         """
         Initialize your data structure here.
         """
-        
+        self.dct = dict()
+        self.lst = list()
 
     def insert(self, val):
         """
@@ -70,7 +74,11 @@ class RandomizedSet(object):
         :type val: int
         :rtype: bool
         """
-        
+        if val in self.dct:
+            return False
+        self.lst.append(val)
+        self.dct[val] = self.lst.index(val)
+        return True
 
     def remove(self, val):
         """
@@ -78,15 +86,22 @@ class RandomizedSet(object):
         :type val: int
         :rtype: bool
         """
-        
+        if val not in self.dct:
+            return False
+        idx = self.dct[val]
+        last = self.lst.pop()
+        if idx < len(self.lst):
+            self.lst[idx] = last
+            self.dct[last] = idx
+        del self.dct[val]
+        return True
 
     def getRandom(self):
         """
         Get a random element from the set.
         :rtype: int
         """
-        
-
+        return random.choice(self.lst)
 
 # Your RandomizedSet object will be instantiated and called as such:
 # obj = RandomizedSet()
