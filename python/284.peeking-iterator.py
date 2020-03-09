@@ -12,7 +12,9 @@
 # Total Accepted:    83.3K
 # Total Submissions: 196.6K
 # Testcase Example:  '["PeekingIterator","next","peek","next","next","hasNext"]\n' +
-  '[[[1,2,3]],[],[],[],[],[]]'
+'[[[1,2,3]],[],[],[],[],[]]'
+
+
 #
 # Given an Iterator class interface with methods: next() and hasNext(), design
 # and implement a PeekingIterator that support the peek() operation -- it
@@ -65,26 +67,35 @@ class PeekingIterator(object):
         Initialize your data structure here.
         :type iterator: Iterator
         """
-        
+        self.iterator = iterator
+        self.next_val = None
 
     def peek(self):
         """
         Returns the next element in the iteration without advancing the iterator.
         :rtype: int
         """
-        
+        if self.next_val is None:
+            self.next_val = self.iterator.next()
+        return self.next_val
 
     def next(self):
         """
         :rtype: int
         """
-        
+        if self.next_val is None:
+            return self.iterator.next()
+        tmp = self.next_val
+        self.next_val = None
+        return tmp
 
     def hasNext(self):
         """
         :rtype: bool
         """
-        
+        if self.next_val is None:
+            return self.iterator.hasNext()
+        return True
 
 # Your PeekingIterator object will be instantiated and called as such:
 # iter = PeekingIterator(Iterator(nums))
