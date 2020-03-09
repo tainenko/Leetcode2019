@@ -12,7 +12,7 @@
 # Total Accepted:    45.5K
 # Total Submissions: 156K
 # Testcase Example:  '["Twitter","postTweet","getNewsFeed","follow","postTweet","getNewsFeed","unfollow","getNewsFeed"]\n' +
-  '[[],[1,5],[1],[1,2],[2,6],[1],[1,2],[1]]'
+'[[],[1,5],[1],[1,2],[2,6],[1],[1,2],[1]]'
 #
 # Design a simplified version of Twitter where users can post tweets,
 # follow/unfollow another user and is able to see the 10 most recent tweets in
@@ -62,13 +62,17 @@
 #
 
 # @lc code=start
+import collections
+
+
 class Twitter(object):
 
     def __init__(self):
         """
         Initialize your data structure here.
         """
-        
+        self.posts = []
+        self.followers = collections.defaultdict(list)
 
     def postTweet(self, userId, tweetId):
         """
@@ -77,7 +81,7 @@ class Twitter(object):
         :type tweetId: int
         :rtype: None
         """
-        
+        self.posts.append((userId, tweetId))
 
     def getNewsFeed(self, userId):
         """
@@ -85,7 +89,16 @@ class Twitter(object):
         :type userId: int
         :rtype: List[int]
         """
-        
+        res = []
+        size = 0
+        followee = self.followers[userId]
+        for id, tweetId in self.posts[::-1]:
+            if id == userId or id in followee:
+                res.append(tweetId)
+                size += 1
+            if size == 10:
+                break
+        return res
 
     def follow(self, followerId, followeeId):
         """
@@ -94,7 +107,7 @@ class Twitter(object):
         :type followeeId: int
         :rtype: None
         """
-        
+        self.followers[followerId].append(followeeId)
 
     def unfollow(self, followerId, followeeId):
         """
@@ -103,8 +116,11 @@ class Twitter(object):
         :type followeeId: int
         :rtype: None
         """
-        
-
+        follower = self.followers[followerId]
+        if followeeId not in follower:
+            return
+        idx = follower.index(followeeId)
+        del follower[idx]
 
 # Your Twitter object will be instantiated and called as such:
 # obj = Twitter()
