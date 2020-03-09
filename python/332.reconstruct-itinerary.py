@@ -55,5 +55,20 @@ class Solution(object):
         :type tickets: List[List[str]]
         :rtype: List[str]
         """
-        
+        maps = {}
+        for ticket in tickets:
+            if ticket[0] not in maps:
+                maps[ticket[0]] = []
+            maps[ticket[0]].append(ticket[1])
+        for _, val in maps.items():
+            val.sort(reverse=True)
+        res = []
+        self.dfs(maps, "JFK", res)
+        return res[::-1]
+
+    def dfs(self, maps, source, res):
+        while maps.get(source):
+            v = maps[source].pop()
+            self.dfs(maps, v, res)
+        res.append(source)
 # @lc code=end
