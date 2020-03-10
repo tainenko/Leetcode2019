@@ -36,6 +36,9 @@
 # 
 # 
 #
+import random
+import collections
+
 
 # @lc code=start
 class Solution(object):
@@ -44,15 +47,17 @@ class Solution(object):
         """
         :type nums: List[int]
         """
-        
+        self.nums = nums
+        self.pos = collections.defaultdict(list)
+        for i in range(len(nums)):
+            self.pos[nums[i]].append(i)
 
     def pick(self, target):
         """
         :type target: int
         :rtype: int
         """
-        
-
+        return random.choice(self.pos[target])
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(nums)
