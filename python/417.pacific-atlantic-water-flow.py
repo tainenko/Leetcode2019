@@ -63,5 +63,30 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: List[List[int]]
         """
-        
+        if not matrix:
+            return []
+        m = len(matrix)
+        n = len(matrix[0])
+        pacific = [[False] * n for _ in range(m)]
+        atlantic = [[False] * n for _ in range(m)]
+        for i in range(m):
+            self.dfs(matrix, pacific, m, n, i, 0, -1)
+            self.dfs(matrix, atlantic, m, n, i, n - 1, -1)
+        for j in range(n):
+            self.dfs(matrix, pacific, m, n, 0, j, -1)
+            self.dfs(matrix, atlantic, m, n, m - 1, j, -1)
+        res = []
+        for i in range(m):
+            for j in range(n):
+                if True == pacific[i][j] == atlantic[i][j]:
+                    res.append([i, j])
+        return res
+
+    def dfs(self, matrix, visited, m, n, x, y, prev):
+        if x < 0 or x >= m or y < 0 or y >= n or visited[x][y] or matrix[x][y] < prev:
+            return
+        visited[x][y] = True
+        for i, j in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+            self.dfs(matrix, visited, m, n, x + i, y + j, matrix[x][y])
+
 # @lc code=end
