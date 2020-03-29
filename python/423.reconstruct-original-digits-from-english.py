@@ -44,11 +44,26 @@
 #
 
 # @lc code=start
+import collections
+
+
 class Solution(object):
     def originalDigits(self, s):
         """
         :type s: str
         :rtype: str
         """
-        
+        s_cnts = collections.Counter(s)
+        nums = ['six', 'zero', "two", "eight", "seven", "four", "five", "one", "three", "nine"]
+        num_cnts = [collections.Counter(letter) for letter in nums]
+        digits = [6, 0, 2, 8, 7, 4, 5, 1, 3, 9]
+        ans = [""] * 10
+        for idx, num in enumerate(nums):
+            num_cnt = num_cnts[idx]
+            t = min([s_cnts[c] / num_cnt[c] for c in num_cnt])
+            ans[digits[idx]] = t
+            for i in range(t):
+                s_cnts.subtract(num_cnt)
+        return "".join(str(i) * n for i, n in enumerate(ans))
+
 # @lc code=end
