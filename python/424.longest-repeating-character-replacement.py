@@ -66,5 +66,16 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        
+        res = 0
+        max_cnt = 0
+        start = 0
+        cnts = {}
+        for i in range(len(s)):
+            cnts[s[i]] = cnts.get(s[i], 0) + 1
+            max_cnt = max(max_cnt, cnts[s[i]])
+            while i - start + 1 - max_cnt > k:
+                cnts[s[start]] -= 1
+                start += 1
+            res = max(res, i - start + 1)
+        return res
 # @lc code=end
