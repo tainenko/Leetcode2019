@@ -53,17 +53,20 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        s_cnts = collections.Counter(s)
+        cnts = collections.Counter(s)
         nums = ['six', 'zero', "two", "eight", "seven", "four", "five", "one", "three", "nine"]
-        num_cnts = [collections.Counter(letter) for letter in nums]
-        digits = [6, 0, 2, 8, 7, 4, 5, 1, 3, 9]
-        ans = [""] * 10
-        for idx, num in enumerate(nums):
-            num_cnt = num_cnts[idx]
-            t = min([s_cnts[c] / num_cnt[c] for c in num_cnt])
-            ans[digits[idx]] = t
-            for i in range(t):
-                s_cnts.subtract(num_cnt)
-        return "".join(str(i) * n for i, n in enumerate(ans))
+        # digits = [6, 0, 2, 8, 7, 4, 5, 1, 3, 9]
+        digits = [0] * 10
+        digits[6] = cnts["x"]
+        digits[0] = cnts["z"]
+        digits[2] = cnts["w"]
+        digits[8] = cnts["g"]
+        digits[7] = cnts["s"] - digits[6]
+        digits[5] = cnts["v"] - digits[7]
+        digits[3] = cnts["h"] - digits[8]
+        digits[4] = cnts["f"] - digits[5]
+        digits[1] = cnts["o"] - digits[4] - digits[2] - digits[0]
+        digits[9] = cnts["i"] - digits[6] - digits[8] - digits[5]
+        return "".join([str(index) * value for index, value in enumerate(digits) if value > 0])
 
 # @lc code=end
