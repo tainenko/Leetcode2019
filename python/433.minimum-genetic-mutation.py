@@ -80,6 +80,9 @@
 #
 
 # @lc code=start
+import collections
+
+
 class Solution(object):
     def minMutation(self, start, end, bank):
         """
@@ -88,5 +91,19 @@ class Solution(object):
         :type bank: List[str]
         :rtype: int
         """
-        
+        bfs = collections.deque()
+        bank = set(bank)
+        bfs.append((start, 0))
+        while bfs:
+            gene, step = bfs.popleft()
+            if gene == end:
+                return step
+            for i in range(len(gene)):
+                for letter in "ACGT":
+                    newGene = gene[:i] + letter + gene[i + 1:]
+                    if newGene in bank:
+                        bfs.append((newGene, step + 1))
+                        bank.remove(newGene)
+        return -1
+
 # @lc code=end
