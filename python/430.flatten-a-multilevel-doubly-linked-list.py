@@ -118,11 +118,30 @@ class Node(object):
         self.child = child
 """
 
+
 class Solution(object):
     def flatten(self, head):
         """
         :type head: Node
         :rtype: Node
         """
-        
+        if not head:
+            return head
+        curr = head
+        while curr:
+            if curr.child:
+                next = curr.next
+                curr.child = self.flatten(curr.child)
+                last = curr.child
+                while last.next:
+                    last = last.next
+                curr.next = curr.child
+                curr.child.prev = curr
+                last.next = next
+                if next:
+                    next.prev = last
+                curr.child = None
+            curr = curr.next
+        return head
+
 # @lc code=end
