@@ -37,5 +37,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        
+        res = []
+        n = len(nums)
+        for i in range(n):
+            idx = abs(nums[i]) - 1
+            if nums[idx] < 0:
+                res.append(idx + 1)
+            nums[idx] = -nums[idx]
+        return res
+
 # @lc code=end
