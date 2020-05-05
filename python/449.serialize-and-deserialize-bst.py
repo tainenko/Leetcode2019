@@ -37,6 +37,8 @@
 #         self.val = x
 #         self.left = None
 #         self.right = None
+import collections
+
 
 class Codec:
 
@@ -46,7 +48,16 @@ class Codec:
         :type root: TreeNode
         :rtype: str
         """
-        
+        vals = []
+
+        def preOrder(root):
+            if root:
+                vals.append(root.val)
+                preOrder(root.left)
+                preOrder(root.right)
+
+        preOrder(root)
+        return " ".join(map(str, vals))
 
     def deserialize(self, data):
         """Decodes your encoded data to tree.
@@ -54,7 +65,17 @@ class Codec:
         :type data: str
         :rtype: TreeNode
         """
-        
+        vals = collections.deque(int(val) for val in data.split())
+
+        def build(minVal, maxVal):
+            if vals and minVal < vals[0] < maxVal:
+                val = vals.popleft()
+                root = TreeNode(val)
+                root.left = build(minVal, val)
+                root.right = build(val, maxVal)
+                return root
+
+        return build(float("-inf"), float("inf"))
 
 # Your Codec object will be instantiated and called as such:
 # codec = Codec()
