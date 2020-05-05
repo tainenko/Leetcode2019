@@ -77,11 +77,36 @@
 #
 
 # @lc code=start
+import collections
+
+
 class Solution(object):
     def findRightInterval(self, intervals):
         """
         :type intervals: List[List[int]]
         :rtype: List[int]
         """
-        
+        start_map = {interval[0]: idx for idx, interval in enumerate(intervals)}
+        start_list = sorted([interval[0] for interval in intervals])
+        res = []
+        for interval in intervals:
+            pos = self.helper(interval[1], start_list)
+            if pos == -1:
+                res.append(-1)
+            else:
+                res.append(start_map[start_list[pos]])
+        return res
+
+    def helper(self, target, lst):
+        lo, hi = 0, len(lst) - 1
+        pos = -1
+        while lo <= hi:
+            mid = lo + (hi - lo) // 2
+            if lst[mid] >= target:
+                hi = mid - 1
+                pos = mid
+            else:
+                lo = mid + 1
+        return pos
+
 # @lc code=end
