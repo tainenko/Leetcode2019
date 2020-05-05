@@ -1,7 +1,0 @@
-#!/bin/sh
-
-srcdir=/root/leetcode-cli
-leetcode=$srcdir/bin/leetcode
-
-export TERM=xterm-256color
-exec $leetcode $@
