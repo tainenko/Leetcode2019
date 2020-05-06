@@ -72,5 +72,18 @@ class Solution(object):
         :type key: int
         :rtype: TreeNode
         """
-        
+        if not root:
+            return None
+        if root.val == key:
+            if not root.right:
+                return root.left
+            else:
+                right = root.right
+                while right.left:
+                    right = right.left
+                root.val, right.val = right.val, root.val
+        root.left = self.deleteNode(root.left, key)
+        root.right = self.deleteNode(root.right, key)
+        return root
+
 # @lc code=end
