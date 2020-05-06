@@ -61,11 +61,16 @@
 #
 
 # @lc code=start
+import collections
+
+
 class Solution(object):
     def frequencySort(self, s):
         """
         :type s: str
         :rtype: str
         """
-        
+        cnts = collections.Counter(s).most_common()
+        return "".join([c * v for c, v in cnts])
+
 # @lc code=end
