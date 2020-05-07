@@ -79,5 +79,30 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        
+        n = len(nums)
+
+        def getNext(i):
+            return ((i + nums[i]) % n + n) % n
+
+        for i in range(n):
+            if nums[i] == 0:
+                continue
+            slow = i
+            fast = getNext(i)
+            val = nums[i]
+            while val * nums[fast] > 0 and val * nums[getNext(fast)] > 0:
+                if slow == fast:
+                    if slow == getNext(slow):
+                        break
+                    return True
+                slow = getNext(slow)
+                fast = getNext(getNext(fast))
+
+            slow = i
+            while val * nums[slow] > 0:
+                next = getNext(slow)
+                nums[slow] = 0
+                slow = next
+        return False
+
 # @lc code=end
