@@ -60,6 +60,17 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
+        if len(nums) < 3:
+            return False
+        stack = []
+        third = float("-inf")
+        for i in range(len(nums) - 1, -1, -1):
+            if nums[i] < third:
+                return True
+            while stack and nums[i] > stack[-1]:
+                third = stack[-1]
+                stack.pop()
+            stack.append(nums[i])
+        return False
 
-        
 # @lc code=end
