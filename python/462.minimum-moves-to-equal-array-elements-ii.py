@@ -43,5 +43,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+        nums.sort()
+        i, j = 0, len(nums) - 1
+        res = 0
+        while i < j:
+            res += nums[j] - nums[i]
+            j -= 1
+            i += 1
+        return res
+
 # @lc code=end
