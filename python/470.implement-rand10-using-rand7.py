@@ -78,4 +78,7 @@ class Solution(object):
         """
         :rtype: int
         """
-        
+        num = (rand7() - 1) * 7 + rand7()
+        if num > 40:
+            return self.rand10()
+        return num % 10 + 1
