@@ -96,5 +96,48 @@ class Solution(object):
         :type IP: str
         :rtype: str
         """
-        
+        if self.isIPv4(IP):
+            return "IPv4"
+        elif self.isIPv6(IP):
+            return "IPv6"
+        return "Neither"
+
+    def isIPv4(self, IP):
+        if not "." in IP:
+            return False
+        ips = IP.split('.')
+        if len(ips) != 4:
+            return False
+        for ip in ips:
+            if not ip:
+                return False
+            if len(ip) > 1 and ip[0] == "0":
+                return False
+            if len(ip) > 3:
+                return False
+            if not ip.isdigit():
+                return False
+            if int(ip) < 0 or int(ip) > 255:
+                return False
+        return True
+
+    def isIPv6(self, IP):
+        if not ":" in IP:
+            return False
+        ips = IP.split(":")
+        valids = set(
+            ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "a", "b", "c", "d", "e", "f", "A", "B", "C", "D", "E",
+             "F"])
+        if len(ips) != 8:
+            return False
+        for ip in ips:
+            if not ip:
+                return False
+            if len(ip) > 4:
+                return False
+            for char in ip:
+                if char not in valids:
+                    return False
+        return True
+
 # @lc code=end
