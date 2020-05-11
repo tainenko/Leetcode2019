@@ -59,5 +59,18 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        
+        dp = [[0 for _ in range(n + 1)] for _ in range(m + 1)]
+        for _str in strs:
+            zero = 0
+            one = 0
+            for s in _str:
+                if s == "0":
+                    zero += 1
+                else:
+                    one += 1
+            for i in range(m, zero - 1, -1):
+                for j in range(n, one - 1, -1):
+                    dp[i][j] = max(dp[i][j], dp[i - zero][j - one] + 1)
+        return dp[-1][-1]
+
 # @lc code=end
