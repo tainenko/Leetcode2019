@@ -60,5 +60,30 @@ class Solution(object):
         :type desiredTotal: int
         :rtype: bool
         """
-        
+        if maxChoosableInteger >= desiredTotal:
+            return True
+        if (maxChoosableInteger + 1) * maxChoosableInteger < desiredTotal * 2:
+            return False
+        dp = dict()
+
+        def helper(state, total):
+            for x in range(maxChoosableInteger, 0, -1):
+                if not state & (1 << (x - 1)):
+                    if x + total >= desiredTotal:
+                        dp[state] = True
+                        return True
+                    break
+            for x in range(1, maxChoosableInteger + 1):
+                if not state & (1 << (x - 1)):
+                    nstate = state | (1 << (x - 1))
+                    if nstate not in dp:
+                        dp[nstate] = helper(nstate, total + x)
+                    if not dp[nstate]:
+                        dp[state] = True
+                        return True
+            dp[state] = False
+            return False
+
+        return helper(0, 0)
+
 # @lc code=end
