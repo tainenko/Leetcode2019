@@ -49,5 +49,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+        total = 0
+        n = len(nums)
+        for i in range(32):
+            cnt = 0
+            for num in nums:
+                if num & (1 << i):
+                    cnt += 1
+            total += cnt * (n - cnt)
+        return total
+
 # @lc code=end
