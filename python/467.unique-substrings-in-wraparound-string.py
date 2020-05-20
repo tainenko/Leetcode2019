@@ -60,5 +60,17 @@ class Solution(object):
         :type p: str
         :rtype: int
         """
-        
+        res = 0
+        length = 0
+        letters = [0] * 26
+        for i in range(len(p)):
+            curr = ord(p[i]) - ord('a')
+            if i > 0 and ord(p[i - 1]) != (curr + 26 - 1) % 26 + ord('a'):
+                length = 0
+            length += 1
+            if length > letters[curr]:
+                res += length - letters[curr]
+                letters[curr] = length
+        return res
+
 # @lc code=end
