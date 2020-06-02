@@ -43,6 +43,9 @@
 #
 
 # @lc code=start
+from collections import defaultdict
+
+
 class Solution(object):
     def fourSumCount(self, A, B, C, D):
         """
@@ -52,5 +55,14 @@ class Solution(object):
         :type D: List[int]
         :rtype: int
         """
-        
+        res = 0
+        cnts = defaultdict(int)
+        for a in A:
+            for b in B:
+                cnts[a + b] += 1
+        for c in C:
+            for d in D:
+                res += cnts[-(c + d)]
+        return res
+
 # @lc code=end
