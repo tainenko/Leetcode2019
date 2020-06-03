@@ -71,5 +71,11 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        
+        ms = [1, 2, 2]
+        pos = 2
+        while len(ms) < n:
+            ms += [3 ^ ms[-1]] * ms[pos]
+            pos += 1
+        return ms[:n].count(1)
+
 # @lc code=end
