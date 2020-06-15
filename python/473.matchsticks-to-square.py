@@ -58,5 +58,28 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        
+
+        if len(nums) < 4:
+            return False
+        total = sum(nums)
+        if total % 4:
+            return False
+        target = [0] * 4
+        possible_edge = total // 4
+        nums.sort(reverse=True)
+
+        def _dfs(index):
+            if index == len(nums):
+                return target[0] == target[1] == target[2] == possible_edge
+
+            for i in range(4):
+                if target[i] + nums[index] <= possible_edge:
+                    target[i] += nums[index]
+                    if _dfs(index + 1):
+                        return True
+                    target[i] -= nums[index]
+            return False
+
+        return _dfs(0)
+
 # @lc code=end
