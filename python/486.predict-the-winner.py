@@ -62,5 +62,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        
+
+        def helper(begin, end):
+            if begin == end:
+                return nums[begin]
+            return max(nums[begin] - helper(begin + 1, end), nums[end] - helper(begin, end - 1))
+
+        dp = helper(0, len(nums) - 1)
+        return dp >= 0
+
 # @lc code=end
