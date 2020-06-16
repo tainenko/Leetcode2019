@@ -12,7 +12,7 @@
 # Total Accepted:    10.3K
 # Total Submissions: 26.9K
 # Testcase Example:  '["Solution", "randPoint", "randPoint", "randPoint"]\n' +
-  '[[1.0, 0.0, 0.0], [], [], []]'
+'[[1.0, 0.0, 0.0], [], [], []]'
 #
 # Given the radius and x-y positions of the center of a circle, write a
 # function randPoint which generates a uniform random point in the circle.
@@ -61,6 +61,10 @@
 #
 
 # @lc code=start
+import math
+import random
+
+
 class Solution(object):
 
     def __init__(self, radius, x_center, y_center):
@@ -69,14 +73,17 @@ class Solution(object):
         :type x_center: float
         :type y_center: float
         """
-        
+        self.raidus = radius
+        self.x = x_center
+        self.y = y_center
 
     def randPoint(self):
         """
         :rtype: List[float]
         """
-        
-
+        r = self.raidus * math.sqrt(random.random())
+        theta = 2 * math.pi * random.random()
+        return [self.x + r * math.cos(theta), self.y + r * math.sin(theta)]
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(radius, x_center, y_center)
