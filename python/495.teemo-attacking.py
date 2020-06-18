@@ -76,5 +76,17 @@ class Solution(object):
         :type duration: int
         :rtype: int
         """
-        
+        total = 0
+        start = 0
+        end = 0
+        for attack_time in timeSeries:
+            if attack_time < end:
+                end = attack_time + duration
+            else:
+                total += end - start
+                start = attack_time
+                end = attack_time + duration
+        total += end - start
+        return total
+
 # @lc code=end
