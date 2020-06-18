@@ -48,6 +48,9 @@
 #
 
 # @lc code=start
+from collections import defaultdict
+
+
 class Solution(object):
     def findTargetSumWays(self, nums, S):
         """
@@ -55,5 +58,14 @@ class Solution(object):
         :type S: int
         :rtype: int
         """
-        
+        dp = {}
+        dp[0] = 1
+        for num in nums:
+            tmp = defaultdict(int)
+            for key, val in dp.items():
+                tmp[key + num] += val
+                tmp[key - num] += val
+            dp = tmp
+        return dp[S]
+
 # @lc code=end
