@@ -71,22 +71,35 @@
 #
 
 # @lc code=start
+from random import randint, shuffle
+import bisect
+
+
 class Solution(object):
 
     def __init__(self, rects):
         """
         :type rects: List[List[int]]
         """
-        
+        self.rects = rects
+        self.rands = []
+        total_area = 0
+        for i in range(len(rects)):
+            total_area += (rects[i][2] - rects[i][0] + 1) * (rects[i][3] - rects[i][1] + 1)
+            self.rands.append(total_area)
 
     def pick(self):
         """
         :rtype: List[int]
         """
-        
-
+        rand_area = randint(0, self.rands[-1] - 1)
+        rect = self.rects[bisect.bisect_right(self.rands, rand_area)]
+        rand_x = randint(rect[0], rect[2])
+        rand_y = randint(rect[1], rect[3])
+        return [rand_x, rand_y]
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(rects)
 # param_1 = obj.pick()
 # @lc code=end
+
