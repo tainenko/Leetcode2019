@@ -49,7 +49,31 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: List[int]
         """
-        res=[]
-        while
-        
+        if not matrix or not matrix[0]:
+            return []
+        res = []
+        dirs = [(-1, 1), (1, -1)]
+        row, col = 0, 0
+        k = 0
+        for i in range(len(matrix) * len(matrix[0])):
+            res.append(matrix[row][col])
+            row += dirs[k][0]
+            col += dirs[k][1]
+            if row >= len(matrix):
+                row = len(matrix) - 1
+                col += 2
+                k = 1 - k
+            if col >= len(matrix[0]):
+                col = len(matrix[0]) - 1
+                row += 2
+                k = 1 - k
+            if row < 0:
+                row = 0
+                k = 1 - k
+            if col < 0:
+                col = 0
+                k = 1 - k
+
+        return res
+
 # @lc code=end
