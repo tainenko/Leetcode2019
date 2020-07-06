@@ -44,5 +44,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        
+        res = [-1] * len(nums)
+        stack = []
+        for i in range(2 * len(nums)):
+            num = nums[i % len(nums)]
+            while stack and nums[stack[-1]] < num:
+                res[stack[-1]] = num
+                stack.pop()
+            if i < len(nums):
+                stack.append(i)
+        return res
 # @lc code=end
