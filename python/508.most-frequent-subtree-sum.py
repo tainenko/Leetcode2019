@@ -55,11 +55,33 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+from collections import defaultdict
+
+
 class Solution(object):
     def findFrequentTreeSum(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        
+        if not root:
+            return []
+        count = defaultdict(int)
+
+        def helper(root):
+            if not root:
+                return
+            left = right = 0
+            if root.left:
+                left = helper(root.left)
+            if root.right:
+                right = helper(root.right)
+            total = root.val + left + right
+            count[total] += 1
+            return total
+
+        helper(root)
+        most = max([val for _, val in count.items()])
+        return [key for key, val in count.items() if val == most]
+
 # @lc code=end
