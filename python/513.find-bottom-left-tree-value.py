@@ -65,5 +65,16 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        
+        q = [root]
+        while q:
+            next = []
+            for node in q:
+                if node.left:
+                    next.append(node.left)
+                if node.right:
+                    next.append(node.right)
+            if not next:
+                return q[0].val
+            q = next
+
 # @lc code=end
