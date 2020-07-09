@@ -44,5 +44,21 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        
+        if not root:
+            return []
+        res = []
+        q = [root]
+        while q:
+            highest = float('-inf')
+            next = []
+            for node in q:
+                highest = max(highest, node.val)
+                if node.left:
+                    next.append(node.left)
+                if node.right:
+                    next.append(node.right)
+            res.append(highest)
+            q = next
+        return res
+
 # @lc code=end
