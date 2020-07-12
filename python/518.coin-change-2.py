@@ -73,5 +73,13 @@ class Solution(object):
         :type coins: List[int]
         :rtype: int
         """
-        
+        res = [0] * (amount + 1)
+
+        res[0] = 1
+        for coin in coins:
+            for i in range(coin, amount + 1):
+                res[i] += res[i - coin]
+
+        return res[amount]
+
 # @lc code=end
