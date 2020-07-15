@@ -58,6 +58,9 @@
 #
 
 # @lc code=start
+from random import randint
+
+
 class Solution(object):
 
     def __init__(self, n_rows, n_cols):
@@ -65,20 +68,25 @@ class Solution(object):
         :type n_rows: int
         :type n_cols: int
         """
-        
+        self._row = n_rows
+        self._col = n_cols
+        self._set = set()
 
     def flip(self):
         """
         :rtype: List[int]
         """
-        
+        while True:
+            rand = randint(0, self._row * self._col - 1)
+            if rand not in self._set:
+                self._set.add(rand)
+                return [rand // self._col, rand % self._col]
 
     def reset(self):
         """
         :rtype: None
         """
-        
-
+        self._set = set()
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(n_rows, n_cols)
