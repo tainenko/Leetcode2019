@@ -49,11 +49,36 @@
 #
 
 # @lc code=start
+import collections
+
+
 class Solution(object):
     def findLUSlength(self, strs):
         """
         :type strs: List[str]
         :rtype: int
         """
-        
+        res = -1
+        for i in range(len(strs)):
+            for j in range(len(strs)):
+                if i == j:
+                    continue
+                if self.isSubsequence(strs[i], strs[j]):
+                    break
+            else:
+                res = max(res, len(strs[i]))
+        return res
+
+    def isSubsequence(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        queue = collections.deque(s)
+        for c in t:
+            if not queue: return True
+            if c == queue[0]:
+                queue.popleft()
+        return not queue
 # @lc code=end
