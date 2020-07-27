@@ -12,7 +12,9 @@
 # Total Accepted:    62.1K
 # Total Submissions: 105.5K
 # Testcase Example:  '[["E","E","E","E","E"],["E","E","M","E","E"],["E","E","E","E","E"],["E","E","E","E","E"]]\n' +
-  '[3,0]'
+'[3,0]'
+
+
 #
 # Let's play the minesweeper game (Wikipedia, online game)!
 # 
@@ -111,5 +113,20 @@ class Solution(object):
         :type click: List[int]
         :rtype: List[List[str]]
         """
-        
+        directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+        x, y = click
+        if board[x][y] == 'M':
+            board[x][y] = 'X'
+        elif board[x][y] == 'E':
+            count = 0
+            for i, j in directions:
+                if 0 <= x + i < len(board) and 0 <= y + j < len(board[0]) and board[x + i][y + j] == 'M':
+                    count += 1
+            board[x][y] = 'B' if count == 0 else str(count)
+            if not count:
+                for i, j in directions:
+                    if 0 <= x + i < len(board) and 0 <= y + j < len(board[0]):
+                        self.updateBoard(board, (x + i, y + j))
+        return board
+
 # @lc code=end
