@@ -57,5 +57,17 @@ class Solution(object):
         :type k: int
         :rtype: bool
         """
-        
+        dct = {0: -1}
+        total = 0
+        for i in range(len(nums)):
+            total += nums[i]
+            if k != 0:
+                total %= k
+            if total in dct:
+                if i - dct[total] > 1:
+                    return True
+            else:
+                dct[total] = i
+        return False
+
 # @lc code=end
