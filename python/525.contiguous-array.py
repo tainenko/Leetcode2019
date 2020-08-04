@@ -47,5 +47,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+        index = {0: -1}
+        curr = 0
+        res = 0
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                curr -= 1
+            else:
+                curr += 1
+            if curr in index:
+                res = max(res, i - index[curr])
+            else:
+                index[curr] = i
+        return res
+
 # @lc code=end
