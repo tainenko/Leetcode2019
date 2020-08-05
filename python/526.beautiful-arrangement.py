@@ -65,5 +65,21 @@ class Solution(object):
         :type N: int
         :rtype: int
         """
-        
+        cache = {}
+
+        def helper(idx, nums):
+            if not nums:
+                return 1
+            key = idx, tuple(nums)
+            if key in cache:
+                return cache[key]
+            ans = 0
+            for i, num in enumerate(nums):
+                if num % idx == 0 or idx % num == 0:
+                    ans += helper(idx + 1, nums[:i] + nums[i + 1:])
+            cache[key] = ans
+            return ans
+
+        return helper(1, range(1, N + 1))
+
 # @lc code=end
