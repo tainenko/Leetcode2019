@@ -80,20 +80,33 @@
 #
 
 # @lc code=start
+from random import randint
+
+
 class Solution(object):
 
     def __init__(self, w):
         """
         :type w: List[int]
         """
-        
+        self.weights = w
+        for i in range(1, len(w)):
+            self.weights[i] += self.weights[i - 1]
 
     def pickIndex(self):
         """
         :rtype: int
         """
-        
-
+        target = randint(0, self.weights[-1] - 1)
+        left = 0
+        right = len(self.weights) - 1
+        while left < right:
+            mid = left + (right - left) // 2
+            if self.weights[mid] <= target:
+                left = mid + 1
+            else:
+                right = mid
+        return right
 
 # Your Solution object will be instantiated and called as such:
 # obj = Solution(w)
