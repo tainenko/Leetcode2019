@@ -29,6 +29,11 @@
 
 # @lc code=start
 class Codec:
+    count = 0
+
+    def __init__(self):
+        self.long_urls = {}
+        self.short_urls = {}
 
     def encode(self, longUrl):
         """Encodes a URL to a shortened URL.
@@ -36,7 +41,13 @@ class Codec:
         :type longUrl: str
         :rtype: str
         """
-        
+        if longUrl in self.long_urls:
+            return "http://http://tinyurl.com/" + self.long_urls[longUrl]
+        self.count += 1
+        count_no = str(self.count)
+        self.long_urls[longUrl] = count_no
+        self.short_urls[count_no] = longUrl
+        return "http://http://tinyurl.com/" + count_no
 
     def decode(self, shortUrl):
         """Decodes a shortened URL to its original URL.
@@ -44,7 +55,7 @@ class Codec:
         :type shortUrl: str
         :rtype: str
         """
-        
+        return self.short_urls[shortUrl.split("/")[-1]]
 
 # Your Codec object will be instantiated and called as such:
 # codec = Codec()
