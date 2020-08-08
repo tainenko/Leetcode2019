@@ -39,5 +39,14 @@ class Solution(object):
         :type timePoints: List[str]
         :rtype: int
         """
-        
+        if len(timePoints) >= 1440:a
+            return 0
+        time_points = sorted([self.get_minutes(x) for x in timePoints])
+        return min([time_points[i] - time_points[i - 1] for i in range(1, len(time_points))] + [
+            time_points[0] + 1440 - time_points[-1]])
+
+    def get_minutes(self, str):
+        min_, sec = str.split(":")
+        return int(min_) * 60 + int(sec)
+
 # @lc code=end
