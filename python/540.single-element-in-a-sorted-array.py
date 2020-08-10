@@ -44,5 +44,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+        lo = 0
+        hi = len(nums) / 2
+        while lo < hi:
+            m = lo + (hi - lo) / 2
+            if nums[2 * m] != nums[2 * m + 1]:
+                hi = m
+            else:
+                lo = m + 1
+        return nums[2 * lo]
+
 # @lc code=end
