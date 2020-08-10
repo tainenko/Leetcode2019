@@ -67,5 +67,25 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: List[List[int]]
         """
-        
+        m = len(matrix)
+        n = len(matrix[0])
+        res = [[float('inf') for _ in range(n)] for _ in range(m)]
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j] == 0:
+                    res[i][j] = 0
+                else:
+                    if i > 0:
+                        res[i][j] = min(res[i][j], res[i - 1][j] + 1)
+                    if j > 0:
+                        res[i][j] = min(res[i][j], res[i][j - 1] + 1)
+        for i in range(m - 1, -1, -1):
+            for j in range(n - 1, -1, -1):
+                if res[i][j] != 0 and res[i][j] != 1:
+                    if i < m - 1:
+                        res[i][j] = min(res[i][j], res[i + 1][j] + 1)
+                    if j < n - 1:
+                        res[i][j] = min(res[i][j], res[i][j + 1] + 1)
+        return res
+
 # @lc code=end
