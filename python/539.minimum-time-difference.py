@@ -39,7 +39,7 @@ class Solution(object):
         :type timePoints: List[str]
         :rtype: int
         """
-        if len(timePoints) >= 1440:a
+        if len(timePoints) >= 1440:
             return 0
         time_points = sorted([self.get_minutes(x) for x in timePoints])
         return min([time_points[i] - time_points[i - 1] for i in range(1, len(time_points))] + [
