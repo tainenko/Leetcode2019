@@ -55,5 +55,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: str
         """
-        
+        if len(nums) == 1:
+            return str(nums[0])
+        elif len(nums) == 2:
+            return "/".join([str(num) for num in nums])
+        return "/".join([str(num) for num in nums]).replace("/", "/(", 1) + ")"
+
 # @lc code=end
