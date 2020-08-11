@@ -62,11 +62,23 @@
 #
 
 # @lc code=start
+from collections import defaultdict
+
+
 class Solution(object):
     def leastBricks(self, wall):
         """
         :type wall: List[List[int]]
         :rtype: int
         """
-        
+        edges_cnt = defaultdict(int)
+        for bricks in wall:
+            total = 0
+            for brick in bricks[:-1]:
+                total += brick
+                edges_cnt[total] += 1
+        if not edges_cnt:
+            return len(wall)
+        return len(wall) - max([val for val in edges_cnt.values()])
+
 # @lc code=end
