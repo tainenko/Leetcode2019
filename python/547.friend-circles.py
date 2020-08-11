@@ -70,5 +70,21 @@ class Solution(object):
         :type M: List[List[int]]
         :rtype: int
         """
-        
+        n = len(M)
+        visited = [False for _ in range(n)]
+        res = 0
+        for i in range(n):
+            if visited[i]:
+                continue
+            self.dfs(M, visited, i)
+            res += 1
+        return res
+
+    def dfs(self, M, visited, k):
+        visited[k] = True
+        for i in range(len(M)):
+            if M[i][k] != 1 or visited[i]:
+                continue
+            self.dfs(M, visited, i)
+
 # @lc code=end
