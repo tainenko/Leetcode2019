@@ -45,5 +45,21 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        
+        nums = list(str(n))
+        size = len(nums)
+        for i in range(size - 1, -1, -1):
+            if nums[i - 1] < nums[i]:
+                break
+        if i > 0:
+            for j in range(size - 1, -1, -1):
+                if nums[j] > nums[i - 1]:
+                    nums[i - 1], nums[j] = nums[j], nums[i - 1]
+                    break
+        for k in range((size - i) / 2):
+            nums[i + k], nums[size - k - 1] = nums[size - k - 1], nums[i + k]
+        ans = int(''.join(nums))
+        if ans > 1 << 31 or ans <= n:
+            return -1
+        return ans
+
 # @lc code=end
