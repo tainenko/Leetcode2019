@@ -35,6 +35,9 @@
 #
 
 # @lc code=start
+from collections import defaultdict
+
+
 class Solution(object):
     def subarraySum(self, nums, k):
         """
@@ -42,5 +45,15 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        
+        d = defaultdict(int)
+        d[0] = 1
+        total = 0
+        res = 0
+        for num in nums:
+            total += num
+            if total - k in d:
+                res += d[total - k]
+            d[total] += 1
+        return res
+
 # @lc code=end
