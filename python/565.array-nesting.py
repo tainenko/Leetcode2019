@@ -17,7 +17,7 @@
 # and return the longest length of set S, where S[i] = {A[i], A[A[i]],
 # A[A[A[i]]], ... } subjected to the rule below.
 # 
-# Suppose the first element in S starts with the selection of element A[i] of
+# Suppose the first element in S starts with0  the selection of element A[i] of
 # index = i, the next element in S should be A[A[i]], and then A[A[A[i]]]… By
 # that analogy, we stop adding right before a duplicate element occurs in
 # S.
@@ -55,5 +55,21 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+        if not nums:
+            return 0
+        visited = [False] * len(nums)
+        res = 0
+        for i in range(len(nums)):
+            if visited[i]:
+                continue
+            cnt = self.helper(nums, visited, i, 0)
+            res = max(cnt, res)
+        return res
+
+    def helper(self, nums, visited, i, cnt):
+        if visited[i]:
+            return cnt
+        visited[i] = True
+        return self.helper(nums, visited, nums[i], cnt + 1)
+
 # @lc code=end
