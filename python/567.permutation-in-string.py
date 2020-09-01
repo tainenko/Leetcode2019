@@ -45,6 +45,9 @@
 #
 
 # @lc code=start
+from collections import Counter
+
+
 class Solution(object):
     def checkInclusion(self, s1, s2):
         """
@@ -52,5 +55,23 @@ class Solution(object):
         :type s2: str
         :rtype: bool
         """
-        
+        if len(s2) < len(s1):
+            return False
+        count1 = Counter(s1)
+        count2 = Counter(s2[:len(s1)])
+        right = len(s1)
+        left = 0
+        while right < len(s2):
+            if count1 == count2:
+                return True
+            count2[s2[right]] += 1
+            count2[s2[left]] -= 1
+            if count2[s2[left]] == 0:
+                del count2[s2[left]]
+            right += 1
+            left += 1
+        if count1 == count2:
+            return True
+        return False
+
 # @lc code=end
