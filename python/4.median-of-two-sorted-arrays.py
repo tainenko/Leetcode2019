@@ -78,5 +78,27 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: float
         """
-        
+        n = len(nums1)
+        m = len(nums2)
+        if (n + m) % 2 == 1:
+            return self.getKth(nums1, nums2, (n + m) // 2 + 1)
+        else:
+            return (self.getKth(nums1, nums2, (n + m) // 2) + self.getKth(nums1, nums2, (n + m) // 2 + 1)) * 0.5
+
+    def getKth(self, listA, listB, k):
+        n = len(listA)
+        m = len(listB)
+        if n > m:
+            return self.getKth(listB, listA, k)
+        if n == 0:
+            return listB[k - 1]
+        if k == 1:
+            return min(listA[0], listB[0])
+        pa = min(k // 2, len(listA))
+        pb = k - pa
+        if listA[pa - 1] <= listB[pb - 1]:
+            return self.getKth(listA[pa:], listB, pb)
+        else:
+            return self.getKth(listA, listB[pb:], pa)
+
 # @lc code=end
