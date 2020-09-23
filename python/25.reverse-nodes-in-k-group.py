@@ -61,10 +61,10 @@ class Solution(object):
         pre = dummy
         curr = head
         i = 0
-        while curr != None:
+        while curr:
             i += 1
             if i % k == 0:
-                self.reverse_one_group(pre, curr.next)
+                pre = self.reverse_one_group(pre, curr.next)
                 curr = pre.next
             else:
                 curr = curr.next
