@@ -66,5 +66,25 @@ class Solution(object):
         :type words: List[str]
         :rtype: List[int]
         """
-        
+        words_map = {}
+        for word in words:
+            words_map[word] = words_map.get(word, 0) + 1
+        word_len = len(words)
+        word_size = len(words[0])
+        res = []
+        for i in range(len(s) - word_len * word_size + 1):
+            j = 0
+            word_cnts = {}
+            while j < word_len:
+                word = s[i + word_size * j:i + word_size * j + word_size]
+                if word not in words_map:
+                    break
+                word_cnts[word] = word_cnts.get(word, 0) + 1
+                if word_cnts[word] > words_map[word]:
+                    break
+                j += 1
+            if j == word_len:
+                res.append(i)
+        return res
+
 # @lc code=end
