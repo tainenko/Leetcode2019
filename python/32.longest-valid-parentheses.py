@@ -57,5 +57,16 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        
+        stack = []
+        start, res = 0, 0
+        for i in range(len(s)):
+            if s[i] == '(':
+                stack.append(i)
+                continue
+            if not stack:
+                start = i + 1
+            else:
+                stack.pop()
+                res = max(res, i - stack[-1] if stack else i - start + 1)
+        return res
 # @lc code=end
