@@ -59,5 +59,35 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: None Do not return anything, modify board in-place instead.
         """
-        
+
+        def isValid(i, j, board):
+            tmp = board[i][j]
+            board[i][j] = 'D'
+            for x in range(9):
+                if board[x][j] == tmp:
+                    return False
+            for y in range(9):
+                if board[i][y] == tmp:
+                    return False
+            for x in range(3):
+                for y in range(3):
+                    if board[int(i / 3) * 3 + x][int(j / 3) * 3 + y] == tmp:
+                        return False
+            board[i][j] = tmp
+            return True
+
+        def dfs(board):
+            for i in range(9):
+                for j in range(9):
+                    if board[i][j] == '.':
+                        for k in '123456789':
+                            board[i][j] = k
+                            if isValid(i, j, board) and dfs(board):
+                                return True
+                            board[i][j] = '.'
+                        return False
+            return True
+
+        dfs(board)
+
 # @lc code=end
