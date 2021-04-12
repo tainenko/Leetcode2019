@@ -64,5 +64,17 @@ class Solution(object):
         :type newInterval: List[int]
         :rtype: List[List[int]]
         """
-        
+        res = []
+        curr = 0
+        for start, end in intervals:
+            if end < newInterval[0]:
+                res.append([start, end])
+                curr += 1
+            elif start > newInterval[1]:
+                res.append([start, end])
+            else:
+                newInterval = [min(start, newInterval[0]), max(end, newInterval[1])]
+        res.insert(curr, newInterval)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
