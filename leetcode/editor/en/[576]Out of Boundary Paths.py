@@ -57,7 +57,6 @@ class Solution(object):
                     v3 = 1 if y == 0 else dp[k - 1][x][y - 1]
                     v4 = 1 if y == n - 1 else dp[k - 1][x][y + 1]
                     dp[k][x][y] = (v1 + v2 + v3 + v4) % (10 ** 9 + 7)
-
         return dp[N][i][j]
 
 # leetcode submit region end(Prohibit modification and deletion)
