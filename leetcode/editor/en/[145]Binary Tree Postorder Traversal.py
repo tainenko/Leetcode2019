@@ -69,5 +69,20 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        
+        if not root:
+            return []
+        res = []
+
+        def helper(root):
+            if not root:
+                return
+            if root.left:
+                helper(root.left)
+            if root.right:
+                helper(root.right)
+            res.append(root.val)
+
+        helper(root)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
