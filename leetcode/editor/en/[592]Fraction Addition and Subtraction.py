@@ -51,11 +51,62 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import re
+
+
 class Solution(object):
     def fractionAddition(self, expression):
         """
         :type expression: str
         :rtype: str
         """
-        
+        res = [0, 1]
+        tmp = ["", ""]
+        idx = 0
+        operator = '+'
+        for char in expression:
+            if char == '+' or char == '-':
+                if tmp != ["", ""]:
+                    tmp = [int(x) for x in tmp]
+                    if res[1] % tmp[1] != 0:
+                        deno = res[1] * tmp[1]
+                    else:
+                        deno = res[1]
+                    if operator == '+':
+                        res[0] = res[0] * (deno / res[1]) + tmp[0] * (deno / tmp[1])
+                    else:
+                        res[0] = res[0] * (deno / res[1]) - tmp[0] * (deno / tmp[1])
+                    res[1] = deno
+                operator = char
+                idx = 0
+                tmp = ["", ""]
+                continue
+            if char == '/':
+                idx = 1
+                continue
+            tmp[idx] += char
+        tmp = [int(x) for x in tmp]
+        if res[1] % tmp[1] != 0:
+            deno = res[1] * tmp[1]
+        else:
+            deno = res[1]
+        if operator == '+':
+            res[0] = res[0] * (deno / res[1]) + tmp[0] * (deno / tmp[1])
+        else:
+            res[0] = res[0] * (deno / res[1]) - tmp[0] * (deno / tmp[1])
+        res[1] = deno
+        if res[0] == 0:
+            return "0/1"
+        gcd = self.find_gcd(res[1], res[0])
+        return "/".join([str(x / gcd) for x in res])
+
+    def find_gcd(self, m, n):
+        m = abs(m)
+        n = abs(n)
+        while n != 0:
+            r = m % n
+            m = n
+            n = r
+        return m
+
 # leetcode submit region end(Prohibit modification and deletion)
