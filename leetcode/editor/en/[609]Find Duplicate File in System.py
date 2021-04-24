@@ -67,6 +67,8 @@
 #  Related Topics Hash Table String 
 #  👍 554 👎 706
 
+from collections import defaultdict
+
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution(object):
@@ -75,5 +77,12 @@ class Solution(object):
         :type paths: List[str]
         :rtype: List[List[str]]
         """
-        
+        res = defaultdict(list)
+        for path in paths:
+            path_split = path.split(' ')
+            dir = path_split[0]
+            for file in path_split[1:]:
+                filename, key = file.split('(')
+                res[key].append(dir + '/' + filename)
+        return [val for val in res.values() if len(val) > 1]
 # leetcode submit region end(Prohibit modification and deletion)
