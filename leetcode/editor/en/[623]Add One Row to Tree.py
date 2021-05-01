@@ -62,5 +62,22 @@ class Solution(object):
         :type depth: int
         :rtype: TreeNode
         """
-        
+        if depth == 1:
+            new_node = TreeNode(val=val, left=root)
+            return new_node
+        q = [root]
+        for i in range(depth - 2):
+            next_layer = []
+            for node in q:
+                if node.left:
+                    next_layer.append(node.left)
+                if node.right:
+                    next_layer.append(node.right)
+            q = next_layer
+        for node in q:
+            new_left_node = TreeNode(val=val, left=node.left)
+            node.left = new_left_node
+            new_right_node = TreeNode(val=val, right=node.right)
+            node.right = new_right_node
+        return root
 # leetcode submit region end(Prohibit modification and deletion)
