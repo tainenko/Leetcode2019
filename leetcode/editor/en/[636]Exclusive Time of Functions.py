@@ -119,5 +119,18 @@ class Solution(object):
         :type logs: List[str]
         :rtype: List[int]
         """
-        
+        q = []
+        res = [0] * n
+        for log in logs:
+            idx, status, timestamp = log.split(":")
+            if status == 'start':
+                q.append((int(idx), int(timestamp)))
+                continue
+            elif status == 'end':
+                _, prev_timestamp = q.pop()
+                duration = int(timestamp) - int(prev_timestamp) + 1
+                res[int(idx)] += duration
+                if q:
+                    res[q[-1][0]] -= duration
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
