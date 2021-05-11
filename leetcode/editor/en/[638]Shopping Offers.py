@@ -67,5 +67,12 @@ class Solution(object):
         :type needs: List[int]
         :rtype: int
         """
+        n = len(needs)
+        total = sum([needs[i] * price[i] for i in range(n)])
+        for spec in special:
+            remains = [needs[i] - spec[i] for i in range(n)]
+            if all([x >= 0 for x in remains]):
+                total = min(total, spec[-1] + self.shoppingOffers(price, special, remains))
+        return total
 
 # leetcode submit region end(Prohibit modification and deletion)
