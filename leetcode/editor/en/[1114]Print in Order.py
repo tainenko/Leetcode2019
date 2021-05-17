@@ -42,37 +42,50 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from time import sleep
+
+
 class Foo(object):
+    index = 0
+
     def __init__(self):
         pass
-
 
     def first(self, printFirst):
         """
         :type printFirst: method
         :rtype: void
         """
-        
-        # printFirst() outputs "first". Do not change or remove this line.
-        printFirst()
-
+        while True:
+            if self.index == 0:
+                # printFirst() outputs "first". Do not change or remove this line.
+                printFirst()
+                self.index += 1
+                break
+            sleep(0.01)
 
     def second(self, printSecond):
         """
         :type printSecond: method
         :rtype: void
         """
-        
-        # printSecond() outputs "second". Do not change or remove this line.
-        printSecond()
-            
-            
+        while True:
+            if self.index == 1:
+                # printSecond() outputs "second". Do not change or remove this line.
+                printSecond()
+                self.index += 1
+                break
+            sleep(0.01)
+
     def third(self, printThird):
         """
         :type printThird: method
         :rtype: void
         """
-        
-        # printThird() outputs "third". Do not change or remove this line.
-        printThird()
+        while True:
+            if self.index == 2:
+                # printThird() outputs "third". Do not change or remove this line.
+                printThird()
+                break
+            sleep(0.01)
 # leetcode submit region end(Prohibit modification and deletion)
