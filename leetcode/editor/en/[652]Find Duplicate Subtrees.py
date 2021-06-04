@@ -46,11 +46,26 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+from collections import defaultdict
+
+
 class Solution(object):
     def findDuplicateSubtrees(self, root):
         """
         :type root: TreeNode
         :rtype: List[TreeNode]
         """
-        
+        map = defaultdict(int)
+        res = []
+        self.helper(root, map, res)
+        return res
+
+    def helper(self, root, map, res):
+        if not root:
+            return "#"
+        s = ','.join([str(root.val), self.helper(root.left, map, res), self.helper(root.right, map, res)])
+        if map[s] == 1:
+            res.append(root)
+        map[s] += 1
+        return s
 # leetcode submit region end(Prohibit modification and deletion)
