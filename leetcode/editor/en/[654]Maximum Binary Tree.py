@@ -65,5 +65,11 @@ class Solution(object):
         :type nums: List[int]
         :rtype: TreeNode
         """
-        
+        if not nums:
+            return None
+        index = nums.index(max(nums))
+        root = TreeNode(val=max(nums), left=self.constructMaximumBinaryTree(nums[:index]),
+                        right=self.constructMaximumBinaryTree(nums[index + 1:]))
+        return root
+
 # leetcode submit region end(Prohibit modification and deletion)
