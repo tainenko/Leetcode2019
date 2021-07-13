@@ -38,6 +38,8 @@
 #  Related Topics Array Hash Table String 
 #  👍 694 👎 103
 
+from collections import Counter
+
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution(object):
@@ -47,5 +49,11 @@ class Solution(object):
         :type chars: str
         :rtype: int
         """
-        
+        chars_count = Counter(chars)
+        count = 0
+        for word in words:
+            if all(val <= chars_count[key] for key, val in Counter(word).items()):
+                count += len(word)
+        return count
+
 # leetcode submit region end(Prohibit modification and deletion)
