@@ -48,5 +48,19 @@ class Solution(object):
         :type root: TreeNode
         :rtype: None Do not return anything, modify root in-place instead.
         """
-        
+        nodes = []
+        vals = []
+        self.inorder_traverse(root, nodes, vals)
+        vals.sort()
+        for node, val in zip(nodes, vals):
+            node.val = val
+
+    def inorder_traverse(self, root, nodes, vals):
+        if not root:
+            return
+        self.inorder_traverse(root.left, nodes, vals)
+        nodes.append(root)
+        vals.append(root.val)
+        self.inorder_traverse(root.right, nodes, vals)
+
 # leetcode submit region end(Prohibit modification and deletion)
