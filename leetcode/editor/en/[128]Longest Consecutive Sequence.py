@@ -38,5 +38,21 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        visited = {num: True for num in nums}
+        length = 0
+        for num in nums:
+            if not visited[num]:
+                continue
+            visited[num] = False
+            left = num - 1
+            right = num + 1
+            while visited.get(left):
+                visited[left] = False
+                left -= 1
+            while visited.get(right):
+                visited[right] = False
+                right += 1
+            length = max(length, right - left - 1)
+        return length
 
-# leetcode submit region end(Prohibit modification and deletion)
+    # leetcode submit region end(Prohibit modification and deletion)
