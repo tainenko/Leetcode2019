@@ -60,7 +60,7 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
-from collections import Counter
+from collections import Counter, defaultdict
 
 
 class Solution(object):
@@ -69,4 +69,21 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
+        counter = Counter(nums)
+        needs = defaultdict(int)
+        for num in nums:
+            if counter[num] == 0:
+                continue
+            elif needs[num] > 0:
+                needs[num] -= 1
+                needs[num + 1] += 1
+            elif counter[num + 1] > 0 and counter[num + 2] > 0:
+                counter[num + 1] -= 1
+                counter[num + 2] -= 1
+                needs[num + 3] += 1
+            else:
+                return False
+            counter[num] -= 1
+        return True
+
 # leetcode submit region end(Prohibit modification and deletion)
