@@ -70,5 +70,18 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        
+        if not root:
+            return 0
+        q = [(root, 1)]
+        res = 0
+        while q:
+            res = max(res, q[-1][1] - q[0][1] + 1)
+            new_q = []
+            for node, pos in q:
+                if node.left:
+                    new_q.append((node.left, pos * 2))
+                if node.right:
+                    new_q.append((node.right, pos * 2 + 1))
+            q = new_q
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
