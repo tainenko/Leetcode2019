@@ -62,5 +62,24 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[str]]
         """
-        
+        height = self.find_height(root, 0) - 1
+        m = int(height + 1)
+        n = int(2 ** (height + 1) - 1)
+        res = [[""] * n for _ in range(m)]
+        nodes = [(root, 0, (n - 1) // 2)]
+        while nodes:
+            next_nodes = []
+            for node, r, c in nodes:
+                res[r][c] = str(node.val)
+                if node.left:
+                    next_nodes.append((node.left, r + 1, c - 2 ** (height - r - 1)))
+                if node.right:
+                    next_nodes.append((node.right, r + 1, c + 2 ** (height - r - 1)))
+            nodes = next_nodes
+        return res
+
+    def find_height(self, root, h):
+        if not root:
+            return h
+        return max(self.find_height(root.left, h), self.find_height(root.right, h)) + 1
 # leetcode submit region end(Prohibit modification and deletion)
