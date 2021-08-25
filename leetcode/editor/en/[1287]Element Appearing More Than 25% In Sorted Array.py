@@ -26,6 +26,8 @@
 #  Related Topics Array 
 #  👍 526 👎 34
 
+from collections import Counter
+
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution(object):
@@ -34,6 +36,7 @@ class Solution(object):
         :type arr: List[int]
         :rtype: int
         """
-       
+        cnts = Counter(arr)
+        return sorted([(num, time) for num, time in cnts.items()], key=lambda x: x[1])[-1][0]
 
     # leetcode submit region end(Prohibit modification and deletion)
