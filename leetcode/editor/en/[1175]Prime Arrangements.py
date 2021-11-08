@@ -33,11 +33,27 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from math import factorial
+
+
 class Solution(object):
     def numPrimeArrangements(self, n):
         """
         :type n: int
         :rtype: int
         """
-        
+        cnt_prime = self.countPrime(n)
+        return (factorial(cnt_prime) * factorial(n - cnt_prime)) % (10 ** 9 + 7)
+
+    def countPrime(self, n):
+        primes = [False] * (n + 1)
+        cnt = 0
+        for i in range(2, n + 1):
+            if primes[i]:
+                continue
+            cnt += 1
+            for j in range(i, n + 1, i):
+                primes[j] = True
+        return cnt
+
 # leetcode submit region end(Prohibit modification and deletion)
