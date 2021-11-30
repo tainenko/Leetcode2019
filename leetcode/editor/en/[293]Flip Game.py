@@ -37,5 +37,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def generatePossibleNextMoves(self, currentState: str) -> List[str]:
-        
+        if len(currentState) < 2:
+            return []
+        res = []
+
+        for i in range(len(currentState) - 1):
+            if currentState[i:i + 2] == '++':
+                res.append(currentState[:i] + '--' + currentState[i + 2:])
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
