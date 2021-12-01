@@ -34,7 +34,30 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import collections
+
+
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
-        
+        m = collections.defaultdict(lambda: [-1, -1])
+        for idx, char in enumerate(s):
+            idx_map = m[char]
+            if idx_map[0] == -1:
+                idx_map[0] = idx
+            idx_map[1] = idx
+        intervals = [(start, end) for start, end in m.values()]
+        intervals.sort(key=lambda x: x[0])
+        res = []
+        start = intervals[0][0]
+        end = intervals[0][1]
+        for i, j in intervals[1:]:
+            if end > i:
+                end = max(j, end)
+            else:
+                res.append((start, end))
+                start = i
+                end = j
+        if not res or res[-1] != (start, end):
+            res.append((start, end))
+        return [right - left + 1 for left, right in res]
 # leetcode submit region end(Prohibit modification and deletion)
