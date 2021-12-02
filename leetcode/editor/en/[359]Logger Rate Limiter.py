@@ -56,11 +56,14 @@
 class Logger:
 
     def __init__(self):
-        
+        self.msg = {}
 
     def shouldPrintMessage(self, timestamp: int, message: str) -> bool:
-        
-
+        prev_timestamp = self.msg.get(message, 0)
+        if timestamp < prev_timestamp:
+            return False
+        self.msg[message] = timestamp + 10
+        return True
 
 # Your Logger object will be instantiated and called as such:
 # obj = Logger()
