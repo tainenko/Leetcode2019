@@ -34,7 +34,20 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def canPermutePalindrome(self, s: str) -> bool:
-        
+        count = Counter(s)
+        flag = False
+        for k, v in count.items():
+            if v % 2 == 0:
+                continue
+            if not flag:
+                flag = True
+            else:
+                return False
+        return True
+
 # leetcode submit region end(Prohibit modification and deletion)
