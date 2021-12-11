@@ -51,17 +51,40 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from typing import Tuple
+
+
 class StringIterator:
 
     def __init__(self, compressedString: str):
-        
+        self.idx = 0
+        self.s = compressedString
+        self.letter, self.cnt = self.helper()
+        self.curr = 0
+
+    def helper(self) -> Tuple[str, int]:
+        if self.idx >= len(self.s) - 1:
+            return " ", -1
+        self.curr = 0
+        char = self.s[self.idx]
+        num = ""
+        self.idx += 1
+        while self.idx < len(self.s) and self.s[self.idx].isdigit():
+            num += self.s[self.idx]
+            self.idx += 1
+        return char, int(num)
 
     def next(self) -> str:
-        
+        if self.letter == " ":
+            return " "
+        if self.curr >= self.cnt:
+            self.curr = 0
+            self.letter, self.cnt = self.helper()
+        self.curr += 1
+        return self.letter
 
     def hasNext(self) -> bool:
-        
-
+        return self.idx < len(self.s) or self.curr < self.cnt
 
 # Your StringIterator object will be instantiated and called as such:
 # obj = StringIterator(compressedString)
