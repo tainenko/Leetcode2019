@@ -37,5 +37,14 @@
 #         self.right = right
 class Solution:
     def closestValue(self, root: Optional[TreeNode], target: float) -> int:
-        
-# leetcode submit region end(Prohibit modification and deletion)
+        if target < root.val:
+            next_node = root.left
+        else:
+            next_node = root.right
+        if next_node is None:
+            return root.val
+        x = self.closestValue(next_node, target)
+        if abs(x - target) < abs(root.val - target):
+            return x
+        else:
+            return root.val
