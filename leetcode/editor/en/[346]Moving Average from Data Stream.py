@@ -43,13 +43,18 @@
 class MovingAverage:
 
     def __init__(self, size: int):
-
-        
+        self.size = size
+        self.window = []
+        self.total = 0
 
     def next(self, val: int) -> float:
-
-        
-
+        self.total += val
+        self.window.append(val)
+        if len(self.window) > self.size:
+            first = self.window[0]
+            self.total -= first
+            self.window = self.window[1:]
+        return self.total / len(self.window)
 
 # Your MovingAverage object will be instantiated and called as such:
 # obj = MovingAverage(size)
