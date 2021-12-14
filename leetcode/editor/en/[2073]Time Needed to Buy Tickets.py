@@ -55,5 +55,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
-        
+        total = 0
+        target = tickets[k]
+        for i in range(len(tickets)):
+            if tickets[i] >= target:
+                total += target if i <= k else target - 1
+            else:
+                total += tickets[i]
+        return total
+
 # leetcode submit region end(Prohibit modification and deletion)
