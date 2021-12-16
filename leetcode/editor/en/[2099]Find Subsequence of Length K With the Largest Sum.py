@@ -48,5 +48,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxSubsequence(self, nums: List[int], k: int) -> List[int]:
-        
+        if len(nums) <= k:
+            return nums
+        res = nums[:k]
+        lowest = min(res)
+        for idx, val in enumerate(nums[k:]):
+            if lowest < val:
+                res.remove(lowest)
+                res.append(val)
+                lowest = min(res)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
