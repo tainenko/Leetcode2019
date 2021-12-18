@@ -45,14 +45,16 @@
 class TwoSum:
 
     def __init__(self):
-        
+        self.nums = []
+        self.map = {}
 
     def add(self, number: int) -> None:
-        
+        for num in self.nums:
+            self.map[number + num] = True
+        self.nums.append(number)
 
     def find(self, value: int) -> bool:
-        
-
+        return self.map.get(value, False)
 
 # Your TwoSum object will be instantiated and called as such:
 # obj = TwoSum()
