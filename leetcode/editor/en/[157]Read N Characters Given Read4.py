@@ -128,6 +128,7 @@ read4(buf4) # read4 returns 4. Now buf = ['e','f','g','h'], fp points to 'i'
 read4(buf4) # read4 returns 3. Now buf = ['i','j','k',...], fp points to end of file
 """
 
+
 class Solution:
     def read(self, buf, n):
         """
@@ -135,5 +136,16 @@ class Solution:
         :type n: Number of characters to read (int)
         :rtype: The number of actual characters read (int)
         """
-        
+        index = 0
+        while index < n:
+            buf4 = [" "] * 4
+            count = read4(buf4)
+            if count == 0:
+                break
+
+            count = min(count, n - index)
+            buf[index:] = buf4[:count]
+            index += count
+        return index
+
 # leetcode submit region end(Prohibit modification and deletion)
