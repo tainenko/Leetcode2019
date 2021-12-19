@@ -42,19 +42,24 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class TwoSum:
 
     def __init__(self):
-        self.nums = []
-        self.map = {}
+        self.nums = defaultdict(int)
 
     def add(self, number: int) -> None:
-        for num in self.nums:
-            self.map[number + num] = True
-        self.nums.append(number)
+        self.nums[number] += 1
 
     def find(self, value: int) -> bool:
-        return self.map.get(value, False)
+        for key in self.nums:
+            num = value - key
+            if num in self.nums and (num != key or self.nums[num] > 1):
+                return True
+
+        return False
 
 # Your TwoSum object will be instantiated and called as such:
 # obj = TwoSum()
