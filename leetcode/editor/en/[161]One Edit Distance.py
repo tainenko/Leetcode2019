@@ -39,5 +39,24 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isOneEditDistance(self, s: str, t: str) -> bool:
-        
+        if abs(len(s) - len(t)) > 1:
+            return False
+        if not s and not t:
+            return False
+        if not s or not t:
+            return True
+        if len(s) == len(t):
+            for i in range(len(s)):
+                if s[i] == t[i]:
+                    continue
+                return s[i + 1:] == t[i + 1:]
+            else:
+                return False
+        if len(s) > len(t):
+            s, t = t, s
+        for i in range(len(s)):
+            if s[i] == t[i]:
+                continue
+            return s[i:] == t[i + 1:]
+        return True
 # leetcode submit region end(Prohibit modification and deletion)
