@@ -33,5 +33,20 @@ class Solution:
         """
         Do not return anything, modify s in-place instead.
         """
-        
+        start = 0
+        for i in range(len(s)):
+            if s[i] == ' ':
+                end = i - 1
+                while start < end:
+                    s[start], s[end] = s[end], s[start]
+                    start += 1
+                    end -= 1
+                start = i + 1
+        end = len(s) - 1
+        while start < end:
+            s[start], s[end] = s[end], s[start]
+            start += 1
+            end -= 1
+        return s.reverse()
+
 # leetcode submit region end(Prohibit modification and deletion)
