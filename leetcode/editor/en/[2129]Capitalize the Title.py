@@ -60,6 +60,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def capitalizeTitle(self, title: str) -> str:
-
-        
+        words = title.split(' ')
+        res = []
+        for word in words:
+            if len(word) <= 2:
+                res.append(word.lower())
+                continue
+            res.append(word.title())
+        return " ".join(res)
 # leetcode submit region end(Prohibit modification and deletion)
