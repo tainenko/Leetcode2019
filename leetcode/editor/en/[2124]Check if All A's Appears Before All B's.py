@@ -46,5 +46,18 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def checkString(self, s: str) -> bool:
-        
+        if not s:
+            return True
+        idx_a = -1
+        idx_b = len(s) - 1
+        for i in range(len(s) - 1, -1, -1):
+            if s[i] == 'a':
+                idx_a = i
+                break
+        for i in range(len(s)):
+            if s[i] == 'b':
+                idx_b = i
+                break
+        return idx_a <= idx_b
+
 # leetcode submit region end(Prohibit modification and deletion)
