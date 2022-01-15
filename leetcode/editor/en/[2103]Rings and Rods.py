@@ -64,7 +64,13 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def countPoints(self, rings: str) -> int:
-        
+        rods = defaultdict(set)
+        for i in range(0, len(rings), 2):
+            rods[rings[i + 1]].add(rings[i])
+        return len([rod for rod, ring in rods.items() if len(ring) == 3])
 # leetcode submit region end(Prohibit modification and deletion)
