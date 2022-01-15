@@ -35,7 +35,16 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def groupStrings(self, strings: List[str]) -> List[List[str]]:
-        
+        res = defaultdict(list)
+        for word in strings:
+            key = tuple((ord(word[i]) - ord(word[0]) + 26) % 26 for i in range(len(word)))
+            res[key].append(word)
+
+        return res.values()
+
 # leetcode submit region end(Prohibit modification and deletion)
