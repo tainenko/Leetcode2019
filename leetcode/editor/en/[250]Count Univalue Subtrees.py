@@ -43,5 +43,24 @@
 #         self.right = right
 class Solution:
     def countUnivalSubtrees(self, root: Optional[TreeNode]) -> int:
+        count = 0
+
+        def helper(root: Optional[TreeNode]) -> bool:
+            if not root:
+                return True
+            left = helper(root.left)
+            right = helper(root.right)
+            if left is False or right is False:
+                return False
+            if root.left and root.val != root.left.val:
+                return False
+            if root.right and root.val != root.right.val:
+                return False
+            nonlocal count
+            count += 1
+            return True
+
+        helper(root)
+        return count
 
 # leetcode submit region end(Prohibit modification and deletion)
