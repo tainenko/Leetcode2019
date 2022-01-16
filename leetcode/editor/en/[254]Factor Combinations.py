@@ -41,7 +41,29 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import math
+
+
 class Solution:
     def getFactors(self, n: int) -> List[List[int]]:
-        
+        res = []
+        cur = []
+        self.helper(n, cur, res)
+        return res
+
+    def helper(self, n, cur, res):
+        if n == 1:
+            return
+        bound = int(math.floor(math.sqrt(n)))
+        for i in range(2, bound + 1):
+            if len(cur) != 0 and i < cur[-1]:
+                continue
+            if n % i == 0:
+                cur.append(i)
+                res.append(cur + [n / i])
+                if math.sqrt(n / i) >= i:
+                    self.helper(n / i, cur, res)
+                cur.pop()
+        return
+
 # leetcode submit region end(Prohibit modification and deletion)
