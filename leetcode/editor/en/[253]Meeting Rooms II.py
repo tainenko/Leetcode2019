@@ -21,15 +21,19 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
-        ups = [(x[0], 1) for x in intervals]
-        downs = [(x[1], -1) for x in intervals]
-        intervals = sorted(ups + downs, key=lambda x: (x[0], x[1]))
+        m = defaultdict(int)
+        for interval in intervals:
+            m[interval[0]] += 1
+            m[interval[1]] -= 1
         res = 0
         cnt = 0
-        for interval in intervals:
-            cnt += interval[1]
+        for key, val in sorted(m.items(), key=lambda x: x[0]):
+            cnt += val
             res = max(cnt, res)
         return res
 # leetcode submit region end(Prohibit modification and deletion)
