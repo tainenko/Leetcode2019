@@ -39,8 +39,7 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def checkValid(self, matrix: List[List[int]]) -> bool:
-        return self.helper(matrix) and self.helper(
-            [[matrix[i][j] for i in range(len(matrix))] for j in range(len(matrix[0]))])
+        return self.helper(matrix) and self.helper(list(zip(*matrix)))
 
     def helper(self, matrix: List[List[int]]) -> bool:
         for row in matrix:
