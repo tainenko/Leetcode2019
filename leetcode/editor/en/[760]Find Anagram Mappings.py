@@ -41,5 +41,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def anagramMappings(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        
+        m = {}
+        for idx, value in enumerate(nums2):
+            m[value] = idx
+        return [m[num] for num in nums1]
 # leetcode submit region end(Prohibit modification and deletion)
