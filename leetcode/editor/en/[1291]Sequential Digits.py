@@ -24,5 +24,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def sequentialDigits(self, low: int, high: int) -> List[int]:
-        
+        res = []
+        for i in range(len(str(low)), len(str(high)) + 1):
+            for j in range(i, 10):
+                num = int(''.join([str(j - i + k + 1) for k in range(i)]))
+                if low <= num <= high:
+                    res.append(num)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
