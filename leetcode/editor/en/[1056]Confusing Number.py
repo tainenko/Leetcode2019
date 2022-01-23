@@ -57,5 +57,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def confusingNumber(self, n: int) -> bool:
-        
+        rotated_map = {'0': '0', '1': '1', '6': '9', '8': '8', '9': '6'}
+        rotated = ""
+        for c in str(n):
+            if c not in rotated_map:
+                return False
+            rotated = rotated_map[c] + rotated
+        return int(rotated) != n
+
 # leetcode submit region end(Prohibit modification and deletion)
