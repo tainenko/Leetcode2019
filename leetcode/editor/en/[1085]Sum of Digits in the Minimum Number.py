@@ -33,5 +33,6 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def sumOfDigits(self, nums: List[int]) -> int:
-        
+        num = min(nums)
+        return 1 if sum([int(s) for s in str(num)]) % 2 == 0 else 0
 # leetcode submit region end(Prohibit modification and deletion)
