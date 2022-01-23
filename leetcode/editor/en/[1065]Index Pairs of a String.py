@@ -37,5 +37,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def indexPairs(self, text: str, words: List[str]) -> List[List[int]]:
-        
+        res = []
+        words.sort(key=lambda x: len(x))
+        for i in range(len(text)):
+            for word in words:
+                if i + len(word) > len(text):
+                    continue
+                if word == text[i:i + len(word)]:
+                    res.append([i, i + len(word) - 1])
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
