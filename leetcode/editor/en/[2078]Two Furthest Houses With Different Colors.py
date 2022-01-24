@@ -59,5 +59,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxDistance(self, colors: List[int]) -> int:
-        
+        res = 0
+        for i in range(len(colors)):
+            res = max([res, i * (colors[i] != colors[0]), (len(colors) - i - 1) * (colors[-1] != colors[i])])
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
