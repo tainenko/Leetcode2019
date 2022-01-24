@@ -49,8 +49,13 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def countWords(self, words1: List[str], words2: List[str]) -> int:
+        cnt1 = Counter(words1)
+        cnt2 = Counter(words2)
+        return len(set([k for k, v in cnt1.items() if v == 1]) & set([k for k, v in cnt2.items() if v == 1]))
 
-        
 # leetcode submit region end(Prohibit modification and deletion)
