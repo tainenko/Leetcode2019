@@ -56,7 +56,17 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from itertools import permutations
+
+
 class Solution:
     def findEvenNumbers(self, digits: List[int]) -> List[int]:
-        
+        digits.sort()
+        res = set()
+        for nums in permutations(digits, 3):
+            if nums[0] == 0 or nums[2] % 2 != 0:
+                continue
+            res.add(100 * nums[0] + 10 * nums[1] + nums[2])
+        return sorted(list(res))
+
 # leetcode submit region end(Prohibit modification and deletion)
