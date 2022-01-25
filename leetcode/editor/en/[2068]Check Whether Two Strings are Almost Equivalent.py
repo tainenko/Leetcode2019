@@ -57,7 +57,19 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def checkAlmostEquivalent(self, word1: str, word2: str) -> bool:
-        
+        cnt1 = Counter(word1)
+        cnt2 = Counter(word2)
+        for key, val in cnt1.items():
+            if abs(val - cnt2.get(key, 0)) > 3:
+                return False
+        for key, val in cnt2.items():
+            if abs(val - cnt1.get(key, 0)) > 3:
+                return False
+        return True
+
 # leetcode submit region end(Prohibit modification and deletion)
