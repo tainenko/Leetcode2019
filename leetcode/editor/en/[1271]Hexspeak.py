@@ -37,5 +37,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def toHexspeak(self, num: str) -> str:
-        
+        num = str(hex(int(num)))
+        m = {'a': 'A', 'b': 'B', 'c': 'C', 'd': 'D', 'e': 'E', 'f': 'F', '1': 'I', '0': 'O'}
+        res = ""
+        for digit in num[2:]:
+            if digit not in m:
+                return "ERROR"
+            res += m[digit]
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
