@@ -33,7 +33,12 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from functools import reduce
+
+
 class Solution:
     def subtractProductAndSum(self, n: int) -> int:
-        
+        nums = [int(x) for x in str(n)]
+        return reduce(lambda a, b: a * b, nums) - sum(nums)
+
 # leetcode submit region end(Prohibit modification and deletion)
