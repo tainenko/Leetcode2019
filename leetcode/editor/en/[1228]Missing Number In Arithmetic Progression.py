@@ -36,5 +36,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def missingNumber(self, arr: List[int]) -> int:
-        
+        diff = (arr[-1] - arr[0]) // len(arr)
+        if diff == 0:
+            return arr[0]
+        for i in range(len(arr) - 1):
+            if arr[i + 1] - arr[i] == diff:
+                continue
+            return arr[i] + diff
 # leetcode submit region end(Prohibit modification and deletion)
