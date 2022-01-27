@@ -47,7 +47,21 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import copy
+
+
 class Solution:
     def transformArray(self, arr: List[int]) -> List[int]:
-        
+        res = copy.copy(arr)
+        while True:
+
+            for i in range(1, len(arr) - 1):
+                if arr[i - 1] > arr[i] and arr[i + 1] > arr[i]:
+                    res[i] = arr[i] + 1
+                elif arr[i - 1] < arr[i] and arr[i + 1] < arr[i]:
+                    res[i] = arr[i] - 1
+            if arr == res:
+                break
+            arr = copy.copy(res)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
