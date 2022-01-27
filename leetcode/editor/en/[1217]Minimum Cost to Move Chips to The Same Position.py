@@ -51,5 +51,7 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minCostToMoveChips(self, position: List[int]) -> int:
-        
+        total = sum(pos % 2 for pos in position)
+        return min(total, len(position) - total)
+
 # leetcode submit region end(Prohibit modification and deletion)
