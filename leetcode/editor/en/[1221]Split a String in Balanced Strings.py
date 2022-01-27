@@ -47,5 +47,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def balancedStringSplit(self, s: str) -> int:
-        
+        m = {'L': -1, 'R': 1}
+        cnt = 0
+        total = 0
+        for c in s:
+            total += m[c]
+            if total == 0:
+                cnt += 1
+        return cnt
+
 # leetcode submit region end(Prohibit modification and deletion)
