@@ -37,4 +37,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def checkStraightLine(self, coordinates: List[List[int]]) -> bool:
+        x, y = coordinates[0]
+        for i in range(1, len(coordinates) - 1):
+            x2, y2 = coordinates[i]
+            x3, y3 = coordinates[i + 1]
+            if (x2 - x) * (y3 - y) != (x3 - x) * (y2 - y):
+                return False
+        return True
 # leetcode submit region end(Prohibit modification and deletion)
