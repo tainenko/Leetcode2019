@@ -29,7 +29,11 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def largestUniqueNumber(self, nums: List[int]) -> int:
-        
+        cnt = Counter(nums)
+        return max([num for num, val in cnt.items() if val == 1], default=-1)
 # leetcode submit region end(Prohibit modification and deletion)
