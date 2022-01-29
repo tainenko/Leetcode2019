@@ -32,5 +32,7 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isArmstrong(self, n: int) -> bool:
-        
+        k = len(str(n))
+        return n == sum(int(x) ** k for x in str(n))
+
 # leetcode submit region end(Prohibit modification and deletion)
