@@ -25,5 +25,28 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numberOfDays(self, year: int, month: int) -> int:
-        
+        month2day = {
+            1: 31,
+            # 2: 28,
+            3: 31,
+            4: 30,
+            5: 31,
+            6: 30,
+            7: 31,
+            8: 31,
+            9: 30,
+            10: 31,
+            11: 30,
+            12: 31
+        }
+        if month in month2day:
+            return month2day[month]
+        else:
+            return 28 + self.is_leap(year)
+
+    def is_leap(self, year):
+        if (year % 100 != 0 and year % 4 == 0) or (year % 4 == 0 and year % 400 == 0):
+            return True
+        return False
+
 # leetcode submit region end(Prohibit modification and deletion)
