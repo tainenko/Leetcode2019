@@ -46,7 +46,17 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import heapq
+from collections import defaultdict
+
+
 class Solution:
     def highFive(self, items: List[List[int]]) -> List[List[int]]:
-        
+        res = defaultdict(list)
+        for stu, score in items:
+            heapq.heappush(res[stu], score)
+            while len(res[stu]) > 5:
+                heapq.heappop(res[stu])
+        return sorted([[key, sum(val) // len(val)] for key, val in res.items()], key=lambda x: x[0])
+
 # leetcode submit region end(Prohibit modification and deletion)
