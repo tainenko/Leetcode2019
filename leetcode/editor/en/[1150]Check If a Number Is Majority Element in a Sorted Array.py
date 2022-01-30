@@ -37,5 +37,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isMajorityElement(self, nums: List[int], target: int) -> bool:
-        
+        curr = None
+        cnt = 0
+        for num in nums:
+            if curr == num:
+                cnt += 1
+            else:
+                if cnt > len(nums) // 2:
+                    break
+                curr = num
+                cnt = 1
+        return cnt > len(nums) // 2 and curr == target
+
 # leetcode submit region end(Prohibit modification and deletion)
