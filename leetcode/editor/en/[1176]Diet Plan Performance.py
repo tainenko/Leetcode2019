@@ -62,5 +62,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def dietPlanPerformance(self, calories: List[int], k: int, lower: int, upper: int) -> int:
-        
+        res = 0
+        seq = 0
+        for i in range(k - 1):
+            seq += calories[i]
+
+        for j in range(k - 1, len(calories)):
+            seq += calories[j]
+            if seq < lower:
+                res -= 1
+            elif seq > upper:
+                res += 1
+            seq -= calories[j - k + 1]
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
