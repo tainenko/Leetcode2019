@@ -41,5 +41,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def calculateTime(self, keyboard: str, word: str) -> int:
-        
+        m = {c: i for i, c in enumerate(keyboard)}
+        prev = keyboard[0]
+        res = 0
+        for c in word:
+            res += abs(m[c] - m[prev])
+            prev = c
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
