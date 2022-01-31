@@ -38,7 +38,11 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from datetime import date
+
+
 class Solution:
     def dayOfTheWeek(self, day: int, month: int, year: int) -> str:
-        
+        WEEKDAY = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        return WEEKDAY[date(year, month, day).weekday()]
 # leetcode submit region end(Prohibit modification and deletion)
