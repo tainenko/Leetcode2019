@@ -46,5 +46,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimumAbsDifference(self, arr: List[int]) -> List[List[int]]:
-        
+        arr.sort()
+        curr = float('inf')
+        res = []
+        for i in range(1, len(arr)):
+            diff = arr[i] - arr[i - 1]
+            if diff < curr:
+                curr = diff
+                res = [[arr[i - 1], arr[i]]]
+            elif diff == curr:
+                res.append([arr[i - 1], arr[i]])
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
