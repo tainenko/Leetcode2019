@@ -56,5 +56,10 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findTheDistanceValue(self, arr1: List[int], arr2: List[int], d: int) -> int:
-        
+        cnt = 0
+        for num1 in arr1:
+            if all([abs(num1 - num2) > d for num2 in arr2]):
+                cnt += 1
+        return cnt
+
 # leetcode submit region end(Prohibit modification and deletion)
