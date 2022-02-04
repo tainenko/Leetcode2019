@@ -50,7 +50,25 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def sortString(self, s: str) -> str:
-        
+        cnts = Counter(s)
+        res = []
+        while cnts:
+            for c in sorted(cnts.keys()):
+                res.append(c)
+                cnts[c] -= 1
+                if cnts[c] == 0:
+                    del cnts[c]
+            for c in sorted(cnts.keys(), reverse=True):
+                res.append(c)
+                cnts[c] -= 1
+                if cnts[c] == 0:
+                    del cnts[c]
+
+        return "".join(res)
+
 # leetcode submit region end(Prohibit modification and deletion)
