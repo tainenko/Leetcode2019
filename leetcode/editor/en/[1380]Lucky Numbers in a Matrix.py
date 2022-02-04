@@ -47,6 +47,13 @@
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
-    def luckyNumbers (self, matrix: List[List[int]]) -> List[int]:
-        
+    def luckyNumbers(self, matrix: List[List[int]]) -> List[int]:
+        res = []
+        for row in matrix:
+            candidate = min(row)
+            idx = row.index(candidate)
+            if candidate == max([matrix[i][idx] for i in range(len(matrix))]):
+                res.append(candidate)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
