@@ -45,5 +45,7 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
-        
+        sorted_nums = sorted(nums)
+        return [sorted_nums.index(num) for num in nums]
+
 # leetcode submit region end(Prohibit modification and deletion)
