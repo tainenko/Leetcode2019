@@ -40,6 +40,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def freqAlphabets(self, s: str) -> str:
-        
-        
+        res = ""
+        idx = len(s) - 1
+        while idx >= 0:
+            if s[idx] == '#':
+                res = chr(ord('a') + int(s[idx - 2:idx]) - 1) + res
+                idx -= 3
+            else:
+                res = chr(ord('a') + int(s[idx]) - 1) + res
+                idx -= 1
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
