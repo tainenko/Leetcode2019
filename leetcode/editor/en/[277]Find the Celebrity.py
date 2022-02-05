@@ -60,10 +60,16 @@
 
 class Solution:
     def findCelebrity(self, n: int) -> int:
-        for num in range(n):
-            if all(knows(other, num) for other in range(n) if other != num) and not any(
-                    knows(num, other) for other in range(n) if other != num):
-                return num
-        return -1
+        celebrity = 0
+        for i in range(1, n):
+            if knows(celebrity, i):
+                celebrity = i
+        for i in range(n):
+            if not knows(i, celebrity):
+                return -1
+        for i in range(celebrity):
+            if knows(celebrity, i):
+                return -1
+        return celebrity
 
 # leetcode submit region end(Prohibit modification and deletion)
