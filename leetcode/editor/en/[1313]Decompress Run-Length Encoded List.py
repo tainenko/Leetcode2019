@@ -42,6 +42,10 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def decompressRLElist(self, nums: List[int]) -> List[int]:
-        
-        
+        res = []
+        for i in range(0, len(nums), 2):
+            freq, num = nums[i], nums[i + 1]
+            res += [num] * freq
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
