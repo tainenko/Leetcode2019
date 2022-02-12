@@ -54,7 +54,24 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+from collections import deque
+
+
 class Solution:
     def getLonelyNodes(self, root: Optional[TreeNode]) -> List[int]:
-        
+        nodes = []
+        q = deque()
+        q.append(root)
+        while q:
+            node = q.popleft()
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
+            if node.left is None or node.right is None:
+                if node.left:
+                    nodes.append(node.left.val)
+                if node.right:
+                    nodes.append(node.right.val)
+        return nodes
 # leetcode submit region end(Prohibit modification and deletion)
