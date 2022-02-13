@@ -52,7 +52,16 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def destCity(self, paths: List[List[str]]) -> str:
-        
+        begins = set()
+        cities = set()
+        for start, dist in paths:
+            begins.add(start)
+            cities.add(start)
+            cities.add(dist)
+        return next(iter(cities - begins))
 # leetcode submit region end(Prohibit modification and deletion)
