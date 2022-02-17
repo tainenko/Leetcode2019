@@ -49,5 +49,23 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def reformat(self, s: str) -> str:
-        
+        q1 = []
+        q2 = []
+        for c in s:
+            if c.isdigit():
+                q1.append(c)
+            else:
+                q2.append(c)
+        if len(q2) > len(q1):
+            q1, q2 = q2, q1
+        if len(q1) - len(q2) > 1:
+            return ""
+        res = ""
+        while q1:
+            res += q1.pop()
+            if not q2:
+                break
+            res += q2.pop()
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
