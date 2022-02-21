@@ -82,7 +82,7 @@ class Codec:
         """Encodes a list of strings to a single string.
         """
         return "\n".join(strs)
-        
+
     def decode(self, s: str) -> [str]:
         """Decodes a single string to a list of strings.
         """
