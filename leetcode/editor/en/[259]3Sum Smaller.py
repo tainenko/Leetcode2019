@@ -41,5 +41,24 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def threeSumSmaller(self, nums: List[int], target: int) -> int:
-        
+        if len(nums) < 3:
+            return 0
+        nums.sort()
+        total = 0
+        for i in range(len(nums) - 2):
+            total += self.twoSumSmaller(nums[i + 1:], target - nums[i])
+        return total
+
+    def twoSumSmaller(self, nums, target):
+        left = 0
+        right = len(nums) - 1
+        total = 0
+        while left < right:
+            if nums[left] + nums[right] < target:
+                total += right - left
+                left += 1
+            else:
+                right -= 1
+        return total
+
 # leetcode submit region end(Prohibit modification and deletion)
