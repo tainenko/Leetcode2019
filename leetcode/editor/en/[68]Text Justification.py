@@ -89,5 +89,31 @@ class Solution(object):
         :type maxWidth: int
         :rtype: List[str]
         """
-        
+        tmp = []
+        sentences = []
+        length = 0
+        for word in words:
+            if length + len(word) + len(tmp) > maxWidth:
+                sentences.append(tmp)
+                tmp = []
+                length = 0
+            tmp.append(word)
+            length += len(word)
+        if tmp:
+            sentences.append(tmp)
+        res = []
+        for s in sentences[:-1]:
+            if len(s) == 1:
+                res.append(s[0] + " " * (maxWidth - len(s[0])))
+                continue
+            spaces = maxWidth - sum([len(word) for word in s])
+            sentence = (" " * (spaces // (len(s) - 1))).join(s)
+            if len(sentence) != maxWidth:
+                sentence = sentence.replace(" " * (spaces // (len(s) - 1)), " " * (1 + spaces // (len(s) - 1)),
+                                            maxWidth - len(sentence))
+            res.append(sentence)
+        sentence = " ".join(sentences[-1])
+        sentence += " " * (maxWidth - len(sentence))
+        res.append(sentence)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
