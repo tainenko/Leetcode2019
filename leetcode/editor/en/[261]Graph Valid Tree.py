@@ -36,7 +36,26 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict, deque
+
+
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        
+        if len(edges) != n - 1:
+            return False
+        dist = defaultdict(list)
+        for node1, node2 in edges:
+            dist[node1].append(node2)
+            dist[node2].append(node1)
+        visited = set()
+        q = deque([0])
+
+        while q:
+            node = q.popleft()
+            visited.add(node)
+            for point in dist[node]:
+                if point not in visited:
+                    visited.add(point)
+                    q.append(point)
+        return len(visited) == n
 # leetcode submit region end(Prohibit modification and deletion)
