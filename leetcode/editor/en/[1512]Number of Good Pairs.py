@@ -37,7 +37,15 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
-        
+        cnt = Counter(nums)
+        res = 0
+        for val in cnt.values():
+            res += (val - 1) * (val) // 2
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
