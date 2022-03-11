@@ -40,5 +40,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numWaterBottles(self, numBottles: int, numExchange: int) -> int:
-        
+        res = 0
+        res += numBottles
+        while numBottles >= numExchange:
+            res += numBottles // numExchange
+            numBottles = numBottles % numExchange + numBottles // numExchange
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
