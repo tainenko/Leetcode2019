@@ -71,5 +71,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
-        
+        mat = [(sum(val), idx) for idx, val in enumerate(mat)]
+        mat = sorted(mat, key=lambda x: x[0])
+        return [x[1] for x in mat[:k]]
+
 # leetcode submit region end(Prohibit modification and deletion)
