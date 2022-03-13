@@ -37,4 +37,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def restoreString(self, s: str, indices: List[int]) -> str:
+        res = [None] * len(s)
+        for char, idx in zip(s, indices):
+            res[idx] = char
+        return "".join(res)
 # leetcode submit region end(Prohibit modification and deletion)
