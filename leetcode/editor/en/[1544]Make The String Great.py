@@ -59,5 +59,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def makeGood(self, s: str) -> str:
-        
+        res = []
+        for char in s:
+            if res and res[-1] != char and res[-1].upper() == char.upper():
+                res.pop()
+            else:
+                res.append(char)
+        return "".join(res)
+
 # leetcode submit region end(Prohibit modification and deletion)
