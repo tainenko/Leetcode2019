@@ -39,5 +39,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def average(self, salary: List[int]) -> float:
-        
+        if len(salary) <= 2:
+            return 0
+        return (sum(salary) - max(salary) - min(salary)) / (len(salary) - 2)
+
 # leetcode submit region end(Prohibit modification and deletion)
