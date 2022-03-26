@@ -36,7 +36,11 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import functools
+
+
 class Solution:
     def xorOperation(self, n: int, start: int) -> int:
-        
+        nums = [start + i * 2 for i in range(n)]
+        return functools.reduce(lambda x, y: x ^ y, nums)
 # leetcode submit region end(Prohibit modification and deletion)
