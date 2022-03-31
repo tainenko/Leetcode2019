@@ -50,7 +50,28 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        
+        left = 0
+        count = Counter(t)
+        cnt = 0
+        res = ""
+        min_len = float('inf')
+        for idx, c in enumerate(s):
+            count[c] -= 1
+            if count[c] >= 0:
+                cnt += 1
+            while cnt == len(t):
+                if min_len > idx - left + 1:
+                    min_len = idx - left + 1
+                    res = s[left:idx+1]
+                count[s[left]] += 1
+                if count[s[left]] > 0:
+                    cnt -= 1
+                left += 1
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
