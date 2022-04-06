@@ -49,7 +49,15 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import re
+
+
 class Solution:
     def numDifferentIntegers(self, word: str) -> int:
-        
+        if word.isalpha():
+            return 0
+        pattern = re.compile("[a-z]+")
+        digit = pattern.sub(" ", word)
+        return len(set([int(num) for num in digit.strip().split(" ")]))
+
 # leetcode submit region end(Prohibit modification and deletion)
