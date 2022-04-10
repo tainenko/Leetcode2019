@@ -50,5 +50,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maximumDifference(self, nums: List[int]) -> int:
-        
+        res = -1
+        small = float('inf')
+        for num in nums:
+            if num <= small:
+                small = num
+            else:
+                res = max(res, num - small)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
