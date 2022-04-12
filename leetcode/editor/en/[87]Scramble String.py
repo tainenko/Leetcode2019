@@ -64,13 +64,18 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+from functools import lru_cache
+
+
 class Solution:
+    @lru_cache(maxsize=None)
     def isScramble(self, s1: str, s2: str) -> bool:
         if len(s1) != len(s1):
             return False
         if s1 == s2:
             return True
-        if sorted(s1) != sorted(s2):
+        if Counter(s1) != Counter(s2):
             return False
         for i in range(1, len(s1)):
             s11, s12 = s1[:i], s1[i:]
