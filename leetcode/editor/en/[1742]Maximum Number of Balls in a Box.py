@@ -55,5 +55,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countBalls(self, lowLimit: int, highLimit: int) -> int:
-        
+        balls = {}
+        for num in range(lowLimit, highLimit + 1):
+            tmp = sum(int(digit) for digit in str(num))
+            balls[tmp] = balls.get(tmp, 0) + 1
+        res = 0
+        for v in balls.values():
+            res = max(res, v)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
