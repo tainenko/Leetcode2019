@@ -42,5 +42,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxLengthBetweenEqualCharacters(self, s: str) -> int:
-        
+        m = {}
+        for idx, c in enumerate(s):
+            if c not in m:
+                m[c] = idx
+        res = -1
+        for i in range(len(s) - 1, -1, -1):
+            if s[i] in m:
+                res = max(res, i - m[s[i]] - 1)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
