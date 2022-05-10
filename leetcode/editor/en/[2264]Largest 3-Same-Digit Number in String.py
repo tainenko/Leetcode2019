@@ -56,5 +56,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def largestGoodInteger(self, num: str) -> str:
-        
+        res = ""
+        for i in range(len(num) - 2):
+            if num[i] == num[i + 1] == num[i + 2]:
+                if not res:
+                    res = num[i:i + 3]
+                elif int(num[i:i + 3]) > int(res):
+                    res = num[i:i + 3]
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
