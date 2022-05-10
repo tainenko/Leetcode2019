@@ -58,7 +58,14 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from math import ceil
+
+
 class Solution:
     def divideString(self, s: str, k: int, fill: str) -> List[str]:
-        
+        res = [s[i * k:(i + 1) * k] for i in range(ceil(len(s) / k))]
+        if len(res[-1]) != k:
+            res[-1] = res[-1] + fill * (k - len(res[-1]))
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
