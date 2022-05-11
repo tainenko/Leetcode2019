@@ -48,7 +48,7 @@
 # This is the interface that allows for creating nested lists.
 # You should not implement it, or speculate about its implementation
 # """
-#class NestedInteger:
+# class NestedInteger:
 #    def __init__(self, value=None):
 #        """
 #        If value is not specified, initializes an empty list.
@@ -89,5 +89,15 @@
 
 class Solution:
     def depthSum(self, nestedList: List[NestedInteger]) -> int:
-        
+        return self.dfs(nestedList, 1)
+
+    def dfs(self, nestedList, depth):
+        total = 0
+        for item in nestedList:
+            if item.isInteger():
+                total += item.getInteger() * depth
+            else:
+                total += self.dfs(item.getList(), depth + 1)
+        return total
+
 # leetcode submit region end(Prohibit modification and deletion)
