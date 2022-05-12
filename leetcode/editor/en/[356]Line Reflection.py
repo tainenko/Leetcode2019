@@ -39,7 +39,20 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def isReflected(self, points: List[List[int]]) -> bool:
-        
+        if not points:
+            return True
+        mid = max([p[0] for p in points]) + min([p[0] for p in points])
+        group_by_y = defaultdict(set)
+        for x, y in points:
+            group_by_y[y].add(x)
+        for group in group_by_y.values():
+            for x in group:
+                if mid - x not in group:
+                    return False
+        return True
 # leetcode submit region end(Prohibit modification and deletion)
