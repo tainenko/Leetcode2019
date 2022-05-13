@@ -45,6 +45,13 @@
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
-    def maximum69Number (self, num: int) -> int:
-        
+    def maximum69Number(self, num: int) -> int:
+        num = str(num)
+        if len(num) == 1:
+            return 9
+        try:
+            idx = num.index('6')
+            return int(num[:idx] + '9' + num[idx + 1:])
+        except ValueError:
+            return int(num)
 # leetcode submit region end(Prohibit modification and deletion)
