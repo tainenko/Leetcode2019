@@ -27,5 +27,7 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def sortTransformedArray(self, nums: List[int], a: int, b: int, c: int) -> List[int]:
-        
+        res = [a * num ** 2 + b * num + c for num in nums]
+        return sorted(res)
+
 # leetcode submit region end(Prohibit modification and deletion)
