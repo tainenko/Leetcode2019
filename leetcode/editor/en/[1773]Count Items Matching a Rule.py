@@ -48,5 +48,7 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countMatches(self, items: List[List[str]], ruleKey: str, ruleValue: str) -> int:
-        
+        idx = {"type": 0, "color": 1, "name": 2}[ruleKey]
+        return sum([item[idx] == ruleValue for item in items])
+
 # leetcode submit region end(Prohibit modification and deletion)
