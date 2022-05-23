@@ -47,5 +47,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def arrayRankTransform(self, arr: List[int]) -> List[int]:
-        
+        tmp = [val for val in arr]
+        tmp.sort()
+        rank = {}
+        for num in tmp:
+            if num not in rank:
+                rank[num] = len(rank) + 1
+        return [rank[num] for num in arr]
 # leetcode submit region end(Prohibit modification and deletion)
