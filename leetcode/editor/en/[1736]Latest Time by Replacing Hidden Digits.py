@@ -43,5 +43,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maximumTime(self, time: str) -> str:
-        
+        hour, minute = time.split(':')
+        if hour[1] == '?':
+            digit = '3' if hour[0] in ('2', '?') else '9'
+            hour = hour[0] + digit
+        if hour[0] == '?':
+            digit = '2' if int(hour[1]) < 4 else '1'
+            hour = digit + hour[1]
+        if minute[0] == '?':
+            minute = '5' + minute[1]
+        if minute[1] == '?':
+            minute = minute[0] + '9'
+        return f"{hour}:{minute}"
+
 # leetcode submit region end(Prohibit modification and deletion)
