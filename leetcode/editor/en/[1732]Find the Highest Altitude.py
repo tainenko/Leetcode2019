@@ -37,5 +37,10 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def largestAltitude(self, gain: List[int]) -> int:
-        
+        height = 0
+        curr = 0
+        for num in gain:
+            curr += num
+            height = max(height, curr)
+        return height
 # leetcode submit region end(Prohibit modification and deletion)
