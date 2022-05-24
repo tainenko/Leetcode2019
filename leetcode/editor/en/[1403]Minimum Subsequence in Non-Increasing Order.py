@@ -51,5 +51,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minSubsequence(self, nums: List[int]) -> List[int]:
-        
+        if not nums:
+            return nums
+        nums.sort(reverse=True)
+        total = sum(nums)
+        curr = 0
+        for i in range(len(nums)):
+            curr += nums[i]
+            if curr > total - curr:
+                return nums[:i + 1]
+
 # leetcode submit region end(Prohibit modification and deletion)
