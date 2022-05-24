@@ -54,5 +54,21 @@
 #         self.next = next
 class Solution:
     def deleteNodes(self, head: ListNode, m: int, n: int) -> ListNode:
-        
+        node = head
+        while node:
+            for _ in range(m - 1):
+                node = node.next
+                if node is None:
+                    break
+            if node is None:
+                break
+            next = node.next
+            for _ in range(n):
+                if next is None:
+                    break
+                next = next.next
+            node.next = next
+            node = node.next
+        return head
+
 # leetcode submit region end(Prohibit modification and deletion)
