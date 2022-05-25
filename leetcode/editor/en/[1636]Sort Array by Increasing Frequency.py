@@ -40,7 +40,16 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def frequencySort(self, nums: List[int]) -> List[int]:
-        
+        count = [(num, freq) for num, freq in Counter(nums).items()]
+        count.sort(key=lambda x: (x[1], -x[0]))
+        res = []
+        for num, freq in count:
+            res += [num] * freq
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
