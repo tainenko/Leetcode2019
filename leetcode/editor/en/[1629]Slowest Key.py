@@ -69,5 +69,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def slowestKey(self, releaseTimes: List[int], keysPressed: str) -> str:
-        
+        longest = releaseTimes[0]
+        res = keysPressed[0]
+        for i in range(1, len(keysPressed)):
+            duration = releaseTimes[i] - releaseTimes[i - 1]
+            if duration > longest:
+                longest = duration
+                res = keysPressed[i]
+            elif duration == longest:
+                res = max(res, keysPressed[i])
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
