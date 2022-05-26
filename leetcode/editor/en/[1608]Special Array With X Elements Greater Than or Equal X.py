@@ -50,5 +50,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def specialArray(self, nums: List[int]) -> int:
-        
+        nums.sort()
+        res = -1
+        n = len(nums)
+        for idx, num in enumerate(nums):
+            if num >= n - idx and all(prev < n - idx for prev in nums[:idx]):
+                res = n - idx
+                break
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
