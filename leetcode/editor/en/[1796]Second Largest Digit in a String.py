@@ -36,5 +36,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def secondHighest(self, s: str) -> int:
-        
+        res = set()
+        for c in s:
+            if c.isdigit():
+                res.add(c)
+        if len(res) < 2:
+            return -1
+        return sorted(list(res))[-2]
 # leetcode submit region end(Prohibit modification and deletion)
