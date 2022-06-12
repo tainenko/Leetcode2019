@@ -52,5 +52,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def mostVisited(self, n: int, rounds: List[int]) -> List[int]:
-        
+        start = rounds[0]
+        end = rounds[-1]
+        if start <= end:
+            return [i for i in range(start, end + 1)]
+        else:
+            excludes = [i for i in range(end + 1, start)]
+            return [i for i in range(1, n + 1) if i not in excludes]
+
 # leetcode submit region end(Prohibit modification and deletion)
