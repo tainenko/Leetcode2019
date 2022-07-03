@@ -54,5 +54,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findMiddleIndex(self, nums: List[int]) -> int:
-        
+        pre = 0
+        post = sum(nums)
+        for i in range(len(nums)):
+            post -= nums[i]
+            if pre == post:
+                return i
+            pre += nums[i]
+        return -1
+
 # leetcode submit region end(Prohibit modification and deletion)
