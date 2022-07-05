@@ -49,5 +49,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def makeFancyString(self, s: str) -> str:
-        
+        res = ""
+        cnt = 0
+        prev = ""
+        for letter in s:
+            if letter == prev:
+                cnt += 1
+            else:
+                prev = letter
+                cnt = 1
+            if cnt < 3:
+                res += letter
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
