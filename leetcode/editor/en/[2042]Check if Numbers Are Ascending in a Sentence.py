@@ -61,5 +61,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def areNumbersAscending(self, s: str) -> bool:
-        
+        words = s.split(" ")
+        prev = float("-inf")
+        for word in words:
+            if not word.isdigit():
+                continue
+            num = int(word)
+            if num <= prev:
+                return False
+            prev = num
+        return True
+
 # leetcode submit region end(Prohibit modification and deletion)
