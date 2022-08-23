@@ -51,5 +51,9 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def smallestEqual(self, nums: List[int]) -> int:
-        
+        for idx in range(len(nums)):
+            if idx % 10 == nums[idx]:
+                return idx
+        return -1
+
 # leetcode submit region end(Prohibit modification and deletion)
