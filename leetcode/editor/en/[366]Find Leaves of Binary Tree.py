@@ -45,5 +45,17 @@
 #         self.right = right
 class Solution:
     def findLeaves(self, root: Optional[TreeNode]) -> List[List[int]]:
-        
+        res = []
+        self.helper(root, res)
+        return res
+
+    def helper(self, root, res) -> int:
+        if not root:
+            return -1
+        depth = 1 + max(self.helper(root.left, res), self.helper(root.right, res))
+        if depth >= len(res):
+            res.append([])
+        res[depth].append(root.val)
+        return depth
+
 # leetcode submit region end(Prohibit modification and deletion)
