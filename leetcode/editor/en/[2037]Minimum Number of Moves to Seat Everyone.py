@@ -77,5 +77,7 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minMovesToSeat(self, seats: List[int], students: List[int]) -> int:
-        
+        seats.sort()
+        students.sort()
+        return sum([abs(stu - seat) for stu, seat in zip(seats, students)])
 # leetcode submit region end(Prohibit modification and deletion)
