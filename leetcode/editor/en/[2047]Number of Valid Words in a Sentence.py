@@ -61,7 +61,23 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import string
+
+
 class Solution:
     def countValidWords(self, sentence: str) -> int:
-        
+        cnt = 0
+        for word in sentence.split():
+            if any(char.isdigit() for char in word):
+                continue
+            if word.count("-") > 1 or word.startswith("-") or word.endswith("-"):
+                continue
+
+            if "-" in word and word[word.index("-") + 1] in ",.!":
+                continue
+            if any(char in ",.!" for char in word[:-1]):
+                continue
+            cnt += 1
+        return cnt
+
 # leetcode submit region end(Prohibit modification and deletion)
