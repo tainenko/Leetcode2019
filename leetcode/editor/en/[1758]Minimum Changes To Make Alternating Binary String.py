@@ -46,5 +46,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minOperations(self, s: str) -> int:
-        
+        s = list(s)
+        cnt = 0
+        for i in range(1, len(s)):
+            if s[i - 1] == s[i]:
+                cnt += 1
+                s[i] = "1" if s[i] == "0" else "0"
+        return min(cnt, len(s) - cnt)
+
 # leetcode submit region end(Prohibit modification and deletion)
