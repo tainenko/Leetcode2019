@@ -51,5 +51,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def nearestValidPoint(self, x: int, y: int, points: List[List[int]]) -> int:
-        
+        dist = float('inf')
+        res = -1
+        for idx in range(len(points)):
+            i, j = points[idx]
+            if i != x and j != y:
+                continue
+            dist2 = abs(i - x) + abs(j - y)
+            if dist2 < dist:
+                res = idx
+                dist = dist2
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
