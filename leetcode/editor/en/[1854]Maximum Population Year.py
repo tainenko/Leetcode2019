@@ -41,5 +41,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maximumPopulation(self, logs: List[List[int]]) -> int:
-        
+        logs = [(log[0], 1) for log in logs] + [(log[1], -1) for log in logs]
+        logs.sort(key=lambda x: x)
+        tmp = 0
+        highest = 0
+        res = 0
+        for year, num in logs:
+            tmp += num
+            if tmp > highest:
+                highest = tmp
+                res = year
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
