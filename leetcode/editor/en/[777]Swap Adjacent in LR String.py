@@ -40,5 +40,36 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def canTransform(self, start: str, end: str) -> bool:
-        
+        idx1 = 0
+        idx2 = 0
+        while idx1 <= len(start) and idx2 <= len(end):
+            while idx1 < len(start):
+                if start[idx1] in ["L", "R"]:
+                    break
+                idx1 += 1
+
+            while idx2 < len(end):
+                if end[idx2] in ["L", "R"]:
+                    break
+                idx2 += 1
+
+            if idx1 == len(start) or idx2 == len(end):
+                break
+
+            if start[idx1] != end[idx2]:
+                return False
+
+            if start[idx1] == "L" and idx1 < idx2:
+                return False
+            if start[idx1] == "R" and idx1 > idx2:
+                return False
+
+            idx1 += 1
+            idx2 += 1
+        if idx1 < len(start) and start[idx1] in ["L", "R"]:
+            return False
+        if idx2 < len(end) and end[idx2] in ["L", "R"]:
+            return False
+        return True
+
 # leetcode submit region end(Prohibit modification and deletion)
