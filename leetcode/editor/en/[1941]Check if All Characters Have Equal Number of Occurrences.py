@@ -35,7 +35,12 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def areOccurrencesEqual(self, s: str) -> bool:
-        
+        cnt = Counter(s)
+        return len(set(cnt.values())) == 1
+
 # leetcode submit region end(Prohibit modification and deletion)
