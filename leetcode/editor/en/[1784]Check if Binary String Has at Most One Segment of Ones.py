@@ -29,7 +29,17 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import re
+
+
 class Solution:
     def checkOnesSegment(self, s: str) -> bool:
-        
+        flag = False
+        for i in range(1, len(s)):
+            if s[i] != s[i - 1]:
+                if flag:
+                    return False
+                flag = True
+        return True
+
 # leetcode submit region end(Prohibit modification and deletion)
