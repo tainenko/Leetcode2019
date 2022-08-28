@@ -46,5 +46,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxAscendingSum(self, nums: List[int]) -> int:
-        
+        res = 0
+        total = 0
+        for i in range(len(nums)):
+            if i > 0 and nums[i - 1] < nums[i]:
+                total += nums[i]
+            else:
+                total = nums[i]
+            res = max(total, res)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
