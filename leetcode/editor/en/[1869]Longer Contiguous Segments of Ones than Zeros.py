@@ -58,5 +58,20 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def checkZeroOnes(self, s: str) -> bool:
-        
+        s += "$"
+        ones = 0
+        zeros = 0
+        length = 1
+        for i in range(1, len(s)):
+            if s[i] == s[i - 1]:
+                length += 1
+            else:
+
+                if s[i - 1] == "1":
+                    ones = max(ones, length)
+                else:
+                    zeros = max(zeros, length)
+                length = 1
+        return ones > zeros
+
 # leetcode submit region end(Prohibit modification and deletion)
