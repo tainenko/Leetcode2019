@@ -48,5 +48,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def canBeTypedWords(self, text: str, brokenLetters: str) -> int:
-        
+        brokenLetters = set(brokenLetters)
+        res = 0
+        for letter in text.split():
+            for char in letter:
+                if char in brokenLetters:
+                    break
+            else:
+                res += 1
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
