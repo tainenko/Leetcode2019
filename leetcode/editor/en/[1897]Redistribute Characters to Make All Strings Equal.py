@@ -40,7 +40,15 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def makeEqual(self, words: List[str]) -> bool:
-        
+        cnt = defaultdict(int)
+        for word in words:
+            for char in word:
+                cnt[char] += 1
+        return all([val % len(words) == 0 for val in cnt.values()])
+
 # leetcode submit region end(Prohibit modification and deletion)
