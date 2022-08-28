@@ -50,5 +50,9 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def getMinDistance(self, nums: List[int], target: int, start: int) -> int:
-        
+        res = float("inf")
+        for i in range(len(nums)):
+            if target == nums[i]:
+                res = min(res, abs(i - start))
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
