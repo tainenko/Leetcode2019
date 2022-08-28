@@ -65,7 +65,13 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from functools import reduce
+from itertools import chain, combinations
+
+
 class Solution:
     def subsetXORSum(self, nums: List[int]) -> int:
-        
+        return sum(reduce(lambda x, y: x ^ y, sub_set, 0) for sub_set in
+                   chain.from_iterable(combinations(nums, r) for r in range(len(nums) + 1)))
+
 # leetcode submit region end(Prohibit modification and deletion)
