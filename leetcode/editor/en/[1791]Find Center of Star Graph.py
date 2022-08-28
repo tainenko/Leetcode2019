@@ -39,7 +39,11 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from functools import reduce
+
+
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:
-        
+        return list(reduce(lambda x, y: x & y, map(lambda x: set(x), edges)))[0]
+
 # leetcode submit region end(Prohibit modification and deletion)
