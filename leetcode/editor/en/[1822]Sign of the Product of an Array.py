@@ -50,7 +50,16 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from functools import reduce
+
+
 class Solution:
     def arraySign(self, nums: List[int]) -> int:
-        
+        product = reduce(lambda x, y: x * y, nums)
+        if product > 0:
+            return 1
+        elif product < 0:
+            return -1
+        else:
+            return 0
 # leetcode submit region end(Prohibit modification and deletion)
