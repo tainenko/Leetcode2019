@@ -42,5 +42,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def halvesAreAlike(self, s: str) -> bool:
-        
+        s = s.lower()
+        a = s[:len(s) // 2]
+        b = s[len(s) // 2:]
+        cnt = 0
+        for char in a:
+            if char in {"a", "e", "i", "o", "u"}:
+                cnt += 1
+        for char in b:
+            if char in {"a", "e", "i", "o", "u"}:
+                cnt -= 1
+        return cnt == 0
 # leetcode submit region end(Prohibit modification and deletion)
