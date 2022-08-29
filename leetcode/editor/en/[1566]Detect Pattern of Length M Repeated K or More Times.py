@@ -52,11 +52,21 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def containsPattern(self, arr: List[int], m: int, k: int) -> bool:
-        for i in range(0, len(arr) - m * k + 1):
-            target = arr[i:i + m] * k
-            for candidate in range(i, len(arr) - m * k + 1):
-                if target == arr[i:i + m * k]:
-                    return True
+        times = 1
+        tmp = arr[:m]
+        i = 0
+        while i < (len(arr)-m+1):
+            if times >= k:
+                return True
+            i += m
+            if arr[i:i+m] == tmp:
+                times += 1
+                continue
+            else:
+                i = i - m + 1
+                tmp = arr[i:i+m]
+                times = 1
+
         return False
 
 # leetcode submit region end(Prohibit modification and deletion)
