@@ -67,7 +67,14 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+
 class Solution:
     def countStudents(self, students: List[int], sandwiches: List[int]) -> int:
-        
+        cnt=[students.count(0),students.count(1)]
+        for sandwiche in sandwiches:
+            if cnt[sandwiche]:
+                cnt[sandwiche]-=1
+            else:
+                break
+        return sum(cnt)
 # leetcode submit region end(Prohibit modification and deletion)
