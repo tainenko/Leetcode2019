@@ -56,5 +56,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def largestSubarray(self, nums: List[int], k: int) -> List[int]:
-        
+        res = 0
+        idx = 0
+        for i in range(len(nums) - k + 1):
+            if nums[i] > res:
+                idx = i
+                res = nums[i]
+        return nums[idx:idx + k]
+
 # leetcode submit region end(Prohibit modification and deletion)
