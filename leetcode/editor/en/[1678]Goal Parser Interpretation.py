@@ -47,5 +47,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def interpret(self, command: str) -> str:
-        
+        command = command.replace("()", "o")
+        command = command.replace("(al)", "al")
+        return command
+
 # leetcode submit region end(Prohibit modification and deletion)
