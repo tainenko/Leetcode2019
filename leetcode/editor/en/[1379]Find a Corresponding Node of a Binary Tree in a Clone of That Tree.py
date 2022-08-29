@@ -59,5 +59,13 @@
 
 class Solution:
     def getTargetCopy(self, original: TreeNode, cloned: TreeNode, target: TreeNode) -> TreeNode:
-        
+        q = [cloned]
+        while q:
+            node = q.pop()
+            if node.val == target.val:
+                return node
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
 # leetcode submit region end(Prohibit modification and deletion)
