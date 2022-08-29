@@ -58,5 +58,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def wordsTyping(self, sentence: List[str], rows: int, cols: int) -> int:
-        
+        n = len(sentence)
+        all_len = sum(map(len, sentence)) + n
+        sentence = " ".join(sentence) + " "
+        start = 0
+        for i in range(rows):
+            start += cols
+            if sentence[start % all_len] == " ":
+                start += 1
+            else:
+                while start > 0 and sentence[(start - 1) % all_len] != " ":
+                    start -= 1
+        return start // all_len
 # leetcode submit region end(Prohibit modification and deletion)
