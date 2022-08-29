@@ -73,5 +73,24 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def reformatNumber(self, number: str) -> str:
-        
+        number = number.replace(" ", "").replace("-", "")
+        n = len(number)
+        res = []
+        i = 0
+        while n > 0:
+            if n == 4:
+                res.append(number[i:i + 2])
+                res.append(number[i + 2:i + 4])
+                break
+            elif n == 3:
+                res.append(number[i:i + 3])
+                break
+            elif n == 2:
+                res.append(number[i:i + 2])
+                break
+            else:
+                n -= 3
+                res.append(number[i:i + 3])
+                i += 3
+        return "-".join(res)
 # leetcode submit region end(Prohibit modification and deletion)
