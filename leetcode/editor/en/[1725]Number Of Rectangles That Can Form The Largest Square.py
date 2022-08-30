@@ -44,7 +44,18 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def countGoodRectangles(self, rectangles: List[List[int]]) -> int:
-        
+        max_len = 0
+        cnt = defaultdict(int)
+        for l, w in rectangles:
+            s = min(l, w)
+            cnt[s] += 1
+            if s > max_len:
+                max_len = s
+        return cnt[max_len]
+
 # leetcode submit region end(Prohibit modification and deletion)
