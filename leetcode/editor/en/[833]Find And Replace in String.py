@@ -70,5 +70,20 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findReplaceString(self, s: str, indices: List[int], sources: List[str], targets: List[str]) -> str:
-        
+        res = ""
+        i = 0
+        while i < len(s):
+            if i not in indices:
+                res += s[i]
+                i += 1
+                continue
+            j = indices.index(i)
+            source = sources[j]
+            target = targets[j]
+            if s[i:i + len(source)] == source:
+                res += target
+            else:
+                res += s[i:i + len(source)]
+            i += len(source)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
