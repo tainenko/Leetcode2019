@@ -48,5 +48,6 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def totalMoney(self, n: int) -> int:
-        
+        return sum(range(1, 8)) * (n // 7) + sum(range(n // 7 + 1, n % 7 + n // 7 + 1)) + 7 * sum(range(n // 7))
+
 # leetcode submit region end(Prohibit modification and deletion)
