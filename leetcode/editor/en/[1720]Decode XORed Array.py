@@ -44,5 +44,9 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def decode(self, encoded: List[int], first: int) -> List[int]:
-        
+        res = [0] * (len(encoded) + 1)
+        res[0] = first
+        for i in range(1, len(res)):
+            res[i] = res[i - 1] ^ encoded[i - 1]
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
