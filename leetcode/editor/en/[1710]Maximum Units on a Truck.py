@@ -49,5 +49,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
-        
+        boxTypes.sort(key=lambda x: -x[1])
+        total = 0
+        for box, unit in boxTypes:
+            if truckSize >= box:
+                total += box * unit
+                truckSize -= box
+            else:
+                total += truckSize * unit
+                truckSize = 0
+            if truckSize == 0:
+                break
+        return total
+
 # leetcode submit region end(Prohibit modification and deletion)
