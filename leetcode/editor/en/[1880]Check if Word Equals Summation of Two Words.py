@@ -68,5 +68,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isSumEqual(self, firstWord: str, secondWord: str, targetWord: str) -> bool:
-        
+        return (self.to_number(firstWord) + self.to_number(secondWord)) == self.to_number(targetWord)
+
+    def to_number(self, word: str) -> int:
+        res = 0
+        for c in word:
+            res = 10 * res + ord(c) - ord("a")
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
