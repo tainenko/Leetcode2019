@@ -50,5 +50,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimumMoves(self, s: str) -> int:
-        
+        res = 0
+        i = 0
+        while i < len(s):
+            if s[i] == "O":
+                i += 1
+                continue
+            for j in range(3):
+                if s[i] == "O":
+                    break
+            i += j + 1
+            res += 1
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
