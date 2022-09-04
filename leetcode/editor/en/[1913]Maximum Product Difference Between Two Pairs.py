@@ -47,6 +47,22 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxProductDifference(self, nums: List[int]) -> int:
-        nums.sort()
-        return nums[-1] * nums[-2] - nums[0] * nums[1]
+        maxs = [0, 0]
+        mins = [float("inf"), float("inf")]
+        for num in nums:
+            if num >= maxs[0]:
+                maxs[1] = maxs[0]
+                maxs[0] = num
+
+            elif num > maxs[1]:
+                maxs[1] = num
+
+            if num <= mins[0]:
+                mins[1] = mins[0]
+                mins[0] = num
+
+            elif num < mins[1]:
+                mins[1] = num
+
+        return maxs[0] * maxs[1] - mins[0] * mins[1]
 # leetcode submit region end(Prohibit modification and deletion)
