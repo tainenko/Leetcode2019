@@ -50,5 +50,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def canBeIncreasing(self, nums: List[int]) -> bool:
-        
+        asc = True
+        for i in range(len(nums) - 1):
+            if nums[i] >= nums[i + 1]:
+                if asc:
+                    if i - 1 < 0 or nums[i + 1] > nums[i - 1]:
+                        asc = False
+                    elif i + 2 >= len(nums) or nums[i + 2] > nums[i]:
+                        asc = False
+                    else:
+                        return False
+                else:
+                    return False
+        return True
 # leetcode submit region end(Prohibit modification and deletion)
