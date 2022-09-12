@@ -49,5 +49,9 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findFinalValue(self, nums: List[int], original: int) -> int:
-        
+        nums = set(nums)
+        while original in nums:
+            original *= 2
+        return original
+
 # leetcode submit region end(Prohibit modification and deletion)
