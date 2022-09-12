@@ -67,5 +67,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimumCost(self, cost: List[int]) -> int:
-        
+        cost.sort(reverse=True)
+        total = 0
+        cnt = 0
+        for num in cost:
+            cnt += 1
+            if cnt == 3:
+                cnt = 0
+                continue
+            total += num
+        return total
+
 # leetcode submit region end(Prohibit modification and deletion)
