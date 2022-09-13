@@ -55,5 +55,19 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countOperations(self, num1: int, num2: int) -> int:
-        
+        step = 0
+
+        def helper(num1: int, num2: int):
+            nonlocal step
+            if num1 == 0 or num2 == 0:
+                return
+            if num1 >= num2:
+                step += num1 // num2
+                helper(num1 % num2, num2)
+            else:
+                helper(num2, num1)
+
+        helper(num1, num2)
+        return step
+
 # leetcode submit region end(Prohibit modification and deletion)
