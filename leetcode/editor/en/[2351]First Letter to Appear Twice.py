@@ -46,7 +46,15 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def repeatedCharacter(self, s: str) -> str:
-        
+        cnt = defaultdict(int)
+        for c in s:
+            cnt[c] += 1
+            if cnt[c] == 2:
+                return c
+
 # leetcode submit region end(Prohibit modification and deletion)
