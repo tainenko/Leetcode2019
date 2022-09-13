@@ -61,5 +61,22 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def sortEvenOdd(self, nums: List[int]) -> List[int]:
-        
+        odds = [nums[i] for i in range(len(nums)) if i % 2 == 1]
+        evens = [nums[i] for i in range(len(nums)) if i % 2 == 0]
+
+        odds.sort(reverse=True)
+        evens.sort()
+        res = []
+        i = j = 0
+        while i < len(odds) and j < len(evens):
+            res.append(evens[i])
+            res.append(odds[j])
+            i += 1
+            j += 1
+        if i < len(evens):
+            res.append(evens[i])
+        if j < len(odds):
+            res.append(odds[j])
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
