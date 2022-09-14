@@ -47,5 +47,18 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def checkXMatrix(self, grid: List[List[int]]) -> bool:
-        
+        m = len(grid)
+        n = len(grid[0])
+        for i in range(m):
+            for j in range(n):
+                if j == i:
+                    if grid[i][j] == 0:
+                        return False
+                elif (n-j-1) == i:
+                    if grid[i][j] == 0:
+                        return False
+                elif grid[i][j] != 0:
+                    return False
+        return True
+
 # leetcode submit region end(Prohibit modification and deletion)
