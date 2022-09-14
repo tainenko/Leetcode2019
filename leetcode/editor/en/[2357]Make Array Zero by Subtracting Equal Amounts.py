@@ -44,5 +44,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimumOperations(self, nums: List[int]) -> int:
-        
+        s = set(nums)
+        s.discard(0)
+        return len(s)
+
 # leetcode submit region end(Prohibit modification and deletion)
