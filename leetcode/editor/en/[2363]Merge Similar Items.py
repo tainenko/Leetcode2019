@@ -70,7 +70,20 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def mergeSimilarItems(self, items1: List[List[int]], items2: List[List[int]]) -> List[List[int]]:
-        
+        ret = []
+        cnt = defaultdict(int)
+        for val, weight in items1:
+            cnt[val] += weight
+        for val, weight in items2:
+            cnt[val] += weight
+        for key in range(1, 1001):
+            if key in cnt:
+                ret.append([key, cnt[key]])
+        return ret
+
 # leetcode submit region end(Prohibit modification and deletion)
