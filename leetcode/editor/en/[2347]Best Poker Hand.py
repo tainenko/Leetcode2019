@@ -60,7 +60,25 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def bestHand(self, ranks: List[int], suits: List[str]) -> str:
-        
+        ranks = Counter(ranks)
+        suits = set(suits)
+        if len(suits) == 1:
+            return "Flush"
+        elif len(ranks) == 3:
+            if 2 in ranks.values():
+                return "Pair"
+            else:
+                return "Three of a Kind"
+        elif len(ranks) == 2:
+            return "Three of a Kind"
+        elif len(ranks) == 4:
+            return "Pair"
+        else:
+            return "High Card"
+
 # leetcode submit region end(Prohibit modification and deletion)
