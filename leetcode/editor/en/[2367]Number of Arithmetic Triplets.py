@@ -47,5 +47,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def arithmeticTriplets(self, nums: List[int], diff: int) -> int:
-        
+        nums = set(nums)
+        res = 0
+        for num in nums:
+            if num + diff in nums and num + 2 * diff in nums:
+                res += 1
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
