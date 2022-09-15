@@ -37,5 +37,10 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countEven(self, num: int) -> int:
-        
+        res = 0
+        for n in range(1, num + 1):
+            total = sum([int(digit) for digit in str(n)])
+            if total % 2 == 0:
+                res += 1
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
