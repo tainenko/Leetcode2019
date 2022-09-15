@@ -48,5 +48,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findKDistantIndices(self, nums: List[int], key: int, k: int) -> List[int]:
-        
+        idxs = []
+        for i, v in enumerate(nums):
+            if v == key:
+                idxs.append(i)
+        res = []
+        for i in range(len(nums)):
+            for idx in idxs:
+                if abs(i - idx) <= k:
+                    res.append(i)
+                    break
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
