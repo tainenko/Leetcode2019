@@ -37,5 +37,6 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def prefixCount(self, words: List[str], pref: str) -> int:
-        
+        return sum([word.startswith(pref) for word in words])
+
 # leetcode submit region end(Prohibit modification and deletion)
