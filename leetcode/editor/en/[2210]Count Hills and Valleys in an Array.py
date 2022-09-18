@@ -67,5 +67,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countHillValley(self, nums: List[int]) -> int:
-        
+        res = 0
+        i = 1
+        while i < len(nums) - 1:
+            prev = i - 1
+            while nums[i + 1] == nums[i] and i < len(nums) - 2:
+                i += 1
+            post = i + 1
+            if nums[prev] < nums[i] > nums[post] or nums[prev] > nums[i] < nums[post]:
+                res += 1
+            i = post
+
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
