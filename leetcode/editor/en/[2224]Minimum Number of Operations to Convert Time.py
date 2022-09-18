@@ -48,5 +48,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def convertTime(self, current: str, correct: str) -> int:
-        
+        h, m = current.split(":")
+        curr = int(h) * 60 + int(m)
+        h, m = correct.split(":")
+        corr = int(h) * 60 + int(m)
+        diff = corr - curr
+        res = 0
+        for min in [60, 15, 5, 1]:
+            res += diff // min
+            diff %= min
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
