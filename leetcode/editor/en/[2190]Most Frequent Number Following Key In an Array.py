@@ -51,7 +51,20 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def mostFrequent(self, nums: List[int], key: int) -> int:
-        
+        cnt = defaultdict(int)
+        for i in range(len(nums) - 1):
+            if nums[i] == key:
+                cnt[nums[i + 1]] += 1
+        res, val = 0, 0
+        for k, v in cnt.items():
+            if v > val:
+                val = v
+                res = k
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
