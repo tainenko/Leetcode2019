@@ -56,5 +56,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isConsecutive(self, nums: List[int]) -> bool:
-        
+        n = len(nums)
+        nums = set(nums)
+        if len(nums) != n:
+            return False
+        x = min(nums)
+        for num in range(x, x + n):
+            if num not in nums:
+                return False
+        else:
+            return True
+
 # leetcode submit region end(Prohibit modification and deletion)
