@@ -45,5 +45,6 @@
 #         self.right = right
 class Solution:
     def checkTree(self, root: Optional[TreeNode]) -> bool:
+        return root.val==(root.left.val+root.right.val)
         
 # leetcode submit region end(Prohibit modification and deletion)
