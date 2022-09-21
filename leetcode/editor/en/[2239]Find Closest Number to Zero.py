@@ -39,5 +39,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findClosestNumber(self, nums: List[int]) -> int:
-        
+        res = 0
+        dist = float("inf")
+        for num in nums:
+            if abs(num) < dist:
+                dist = abs(num)
+                res = num
+            elif abs(num) == dist:
+                res = max(res, num)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
