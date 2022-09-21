@@ -51,5 +51,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countAsterisks(self, s: str) -> int:
-        
+        flag = True
+        res = 0
+        for c in s:
+            if flag and c == "*":
+                res += 1
+            if c == "|":
+                flag = not flag
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
