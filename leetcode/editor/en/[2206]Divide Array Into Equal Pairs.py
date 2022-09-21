@@ -44,7 +44,12 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def divideArray(self, nums: List[int]) -> bool:
-        
+        cnt = Counter(nums)
+        return all([v % 2 == 0 for v in cnt.values()])
+
 # leetcode submit region end(Prohibit modification and deletion)
