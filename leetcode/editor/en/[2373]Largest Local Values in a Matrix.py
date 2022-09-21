@@ -47,5 +47,9 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def largestLocal(self, grid: List[List[int]]) -> List[List[int]]:
-        
+        res = [[0 for _ in range(len(grid[0]) - 2)] for _ in range(len(grid) - 2)]
+        for i in range(len(grid) - 2):
+            for j in range(len(grid[0]) - 2):
+                res[i][j] = max([grid[i + x][j + y] for x in range(3) for y in range(3)])
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
