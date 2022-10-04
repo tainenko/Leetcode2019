@@ -32,5 +32,6 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def smallestEvenMultiple(self, n: int) -> int:
-        
+        return n if n % 2 == 0 else n * 2
+
 # leetcode submit region end(Prohibit modification and deletion)
