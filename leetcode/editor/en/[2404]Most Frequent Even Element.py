@@ -41,7 +41,23 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def mostFrequentEven(self, nums: List[int]) -> int:
-        
+        res = float("inf")
+        times = 0
+        nums = [num for num in nums if num % 2 == 0]
+        if not nums:
+            return -1
+        cnt = defaultdict(int)
+        for num in nums:
+            cnt[num] += 1
+            if cnt[num] > times:
+                times = cnt[num]
+                res = num
+            elif cnt[num]==times:
+                res=min(res,num)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
