@@ -42,5 +42,7 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
-        
+        people = list(zip(names, heights))
+        people.sort(key=lambda x: -x[1])
+        return [name for name, _ in people]
 # leetcode submit region end(Prohibit modification and deletion)
