@@ -32,5 +32,21 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def shortestWordDistance(self, wordsDict: List[str], word1: str, word2: str) -> int:
-        
+        pos1 = pos2 = -1
+        res = len(wordsDict)
+        if word1 != word2:
+            for idx, word in enumerate(wordsDict):
+                if word == word1:
+                    pos1 = idx
+                elif word == word2:
+                    pos2 = idx
+                if pos1 != -1 and pos2 != -1:
+                    res = min(res, abs(pos1 - pos2))
+        else:
+            for idx, word in enumerate(wordsDict):
+                if word == word1:
+                    if pos1 != -1:
+                        res = min(res, abs(pos1 - idx))
+                    pos1 = idx
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
