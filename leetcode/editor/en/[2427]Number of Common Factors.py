@@ -33,5 +33,18 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def commonFactors(self, a: int, b: int) -> int:
-        
+        lcm = self.lcm(a, b)
+        cnt = 0
+        for i in range(1, lcm + 1):
+            if lcm % i == 0:
+                cnt += 1
+        return cnt
+
+    def lcm(self, a, b):
+        if a < b:
+            return self.lcm(b, a)
+        if b == 0:
+            return a
+        return self.lcm(b, a % b)
+
 # leetcode submit region end(Prohibit modification and deletion)
