@@ -44,5 +44,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findMaxK(self, nums: List[int]) -> int:
-        
+        neg = set()
+        for num in nums:
+            if num < 0:
+                neg.add(num)
+        res = -1
+        for num in nums:
+            if num and -num in neg:
+                res = max(res, num)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
