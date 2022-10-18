@@ -47,5 +47,21 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
-        
+        memo = dict()
+        return self.dfs(s, memo, wordDict)
+
+    def dfs(self, s, memo, wordDict):
+        if s in memo:
+            return memo[s]
+        if not s:
+            return [""]
+        res = []
+        for word in wordDict:
+            if s[:len(word)] != word:
+                continue
+            for r in self.dfs(s[len(word):], memo, wordDict):
+                res.append(word + ("" if not r else " " + r))
+        memo[s] = res
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
