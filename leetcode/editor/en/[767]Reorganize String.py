@@ -25,7 +25,26 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def reorganizeString(self, s: str) -> str:
-        
+        res = "#"
+        cnt = Counter(s)
+        stop = True
+        while cnt:
+            for v, _ in cnt.most_common():
+                if v != res[-1]:
+                    res += v
+                    stop = False
+                    cnt[v] -= 1
+                    if not cnt[v]:
+                        del cnt[v]
+                    break
+                stop = True
+            if stop:
+                return ""
+        return res[1:] if not stop else ""
+
 # leetcode submit region end(Prohibit modification and deletion)
