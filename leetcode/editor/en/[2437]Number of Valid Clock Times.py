@@ -54,5 +54,25 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countTime(self, time: str) -> int:
-        
+        if "?" not in time:
+            return 1
+        res = 1
+        if time[:2] == "??":
+            res *= 24
+        elif time[0] == "?":
+            if int(time[1]) > 3:
+                res *= 2
+            else:
+                res *= 3
+        elif time[1] == "?":
+            if time[0] == "2":
+                res *= 4
+            else:
+                res *= 10
+        if time[3] == "?":
+            res *= 6
+        if time[4] == "?":
+            res *= 10
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
