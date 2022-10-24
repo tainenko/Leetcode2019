@@ -46,5 +46,24 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minSwaps(self, s: str) -> int:
-        
+        zeros = s.count("0")
+        ones = len(s) - zeros
+        res = 0
+        if zeros == ones:
+            for i in range(0, len(s), 2):
+                if s[i] == "0":
+                    res += 1
+            return min(res, len(s) // 2 - res)
+        elif zeros == ones + 1:
+            for i in range(0, len(s), 2):
+                if s[i] == "1":
+                    res += 1
+            return res
+        elif ones == zeros + 1:
+            for i in range(0, len(s), 2):
+                if s[i] == "0":
+                    res += 1
+            return res
+        return -1
+
 # leetcode submit region end(Prohibit modification and deletion)
