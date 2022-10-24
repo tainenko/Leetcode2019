@@ -78,7 +78,24 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict, Counter
+
+
 class Solution:
     def mostVisitedPattern(self, username: List[str], timestamp: List[int], website: List[str]) -> List[str]:
-        
+        visited = defaultdict(list)
+        for user, time, web in sorted(zip(username, timestamp, website), key=lambda x: x[1]):
+            visited[user].append(web)
+        cnt = Counter()
+        for web in visited.values():
+            paths = set()
+            for i in range(len(web) - 2):
+                for j in range(i + 1, len(web) - 1):
+                    for k in range(j + 1, len(web)):
+                        paths.add((web[i], web[j], web[k]))
+            for path in paths:
+                cnt[path] += 1
+        keys = cnt.keys()
+        keys = sorted(keys, key=lambda x: (-cnt[x], x))
+        return keys[0]
 # leetcode submit region end(Prohibit modification and deletion)
