@@ -57,5 +57,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numberOfWays(self, s: str) -> int:
-        
+        res = 0
+        n0 = n1 = n10 = n01 = 0
+        for n in s:
+            if n == '1':
+                res += n10
+                n1 += 1
+                n01 += n0
+            else:
+                res += n01
+                n0 += 1
+                n10 += n1
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
