@@ -34,7 +34,12 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def percentageLetter(self, s: str, letter: str) -> int:
-        
+        cnt = Counter(s)
+        return cnt.get(letter, 0) * 100 // sum(cnt.values())
+
 # leetcode submit region end(Prohibit modification and deletion)
