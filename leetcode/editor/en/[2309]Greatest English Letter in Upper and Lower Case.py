@@ -49,5 +49,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def greatestLetter(self, s: str) -> str:
-        
+        res = ""
+        s = set(s)
+        for c in s:
+            if c.upper() in s and c.lower() in s:
+                res = max(c.upper(), res)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
