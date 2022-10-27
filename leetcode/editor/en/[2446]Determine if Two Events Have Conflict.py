@@ -54,7 +54,14 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from datetime import datetime
+
+
 class Solution:
     def haveConflict(self, event1: List[str], event2: List[str]) -> bool:
-        
+        start1 = datetime.strptime(event1[0], "%H:%M")
+        end1 = datetime.strptime(event1[1], "%H:%M")
+        start2 = datetime.strptime(event2[0], "%H:%M")
+        end2 = datetime.strptime(event2[1], "%H:%M")
+        return (end1 >= start2 and start1 < end2) or (end2 >= start1 and start2 < end1)
 # leetcode submit region end(Prohibit modification and deletion)
