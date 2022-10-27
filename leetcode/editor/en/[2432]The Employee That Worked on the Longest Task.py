@@ -76,5 +76,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def hardestWorker(self, n: int, logs: List[List[int]]) -> int:
-        
+        longest = 0
+        res = float("inf")
+        start = 0
+        for eid, end_time in logs:
+            if end_time - start > longest:
+                longest = end_time - start
+                res = eid
+            if end_time - start == longest:
+                res = min(res, eid)
+            start = end_time
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
