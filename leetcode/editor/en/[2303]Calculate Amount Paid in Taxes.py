@@ -69,5 +69,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def calculateTax(self, brackets: List[List[int]], income: int) -> float:
-        
+        prev = 0
+        total = 0
+        for upper, percent in brackets:
+            if upper < income:
+                total += (upper - prev) * percent
+            else:
+                total += (income - prev) * percent
+                break
+            prev=upper
+        return total / 100
 # leetcode submit region end(Prohibit modification and deletion)
