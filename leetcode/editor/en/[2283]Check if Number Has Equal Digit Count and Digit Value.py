@@ -44,7 +44,16 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def digitCount(self, num: str) -> bool:
-        
+        cnt = Counter(num)
+
+        for idx, n in enumerate(num):
+            if cnt[str(idx)] != int(n):
+                return False
+        return True
+
 # leetcode submit region end(Prohibit modification and deletion)
