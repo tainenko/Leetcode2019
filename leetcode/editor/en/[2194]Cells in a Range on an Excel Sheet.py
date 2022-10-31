@@ -61,5 +61,10 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def cellsInRange(self, s: str) -> List[str]:
-        
+        res = []
+        for i in range(ord(s[3]) - ord(s[0]) + 1):
+            for j in range(int(s[4]) - int(s[1]) + 1):
+                res.append(chr(ord(s[0]) + i) + str(int(s[1]) + j))
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
