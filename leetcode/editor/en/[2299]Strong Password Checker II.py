@@ -56,5 +56,21 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def strongPasswordCheckerII(self, password: str) -> bool:
-        
+        if len(password) < 8:
+            return False
+        if not any([s.islower() for s in password]):
+            return False
+        if not any([s.isupper() for s in password]):
+            return False
+        if not any([s.isdigit() for s in password]):
+            return False
+        if not any([s.isalpha() for s in password]):
+            return False
+        if not any([not s.isalnum() for s in password]):
+            return False
+
+        for i in range(1, len(password)):
+            if password[i] == password[i - 1]:
+                return False
+        return True
 # leetcode submit region end(Prohibit modification and deletion)
