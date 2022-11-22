@@ -61,5 +61,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def applyOperations(self, nums: List[int]) -> List[int]:
-        
+        res = list()
+        for i in range(len(nums) - 1):
+            if nums[i] == nums[i + 1]:
+                nums[i] *= 2
+                nums[i + 1] = 0
+            if nums[i]:
+                res.append(nums[i])
+        if nums[-1]:
+            res.append(nums[-1])
+        zeros = [0] * (len(nums) - len(res))
+        return res + zeros
 # leetcode submit region end(Prohibit modification and deletion)
