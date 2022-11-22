@@ -37,5 +37,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def averageValue(self, nums: List[int]) -> int:
-        
+        res = list()
+        for num in nums:
+            if num % 6 == 0:
+                res.append(num)
+        if not res:
+            return 0
+        return sum(res) // len(res)
+
 # leetcode submit region end(Prohibit modification and deletion)
