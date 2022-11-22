@@ -53,7 +53,16 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def oddString(self, words: List[str]) -> str:
-        
+        s = defaultdict(list)
+        for word in words:
+            diff = tuple(ord(word[j + 1]) - ord(word[j]) for j in range(len(word) - 1))
+            s[diff].append(word)
+        for k, v in s.items():
+            if len(v) == 1:
+                return v[0]
 # leetcode submit region end(Prohibit modification and deletion)
