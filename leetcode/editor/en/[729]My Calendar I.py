@@ -50,11 +50,15 @@
 class MyCalendar:
 
     def __init__(self):
-        
+        self.data = []
 
     def book(self, start: int, end: int) -> bool:
-        
-
+        for i, j in self.data:
+            if start >= j or end <= i:
+                continue
+            return False
+        self.data.append([start, end])
+        return True
 
 # Your MyCalendar object will be instantiated and called as such:
 # obj = MyCalendar()
