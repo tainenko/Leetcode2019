@@ -40,7 +40,23 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def numMatchingSubseq(self, s: str, words: List[str]) -> int:
-        
+        waiting = defaultdict(list)
+        for word in words:
+            waiting[word[0]].append(word[1:])
+        cnt = 0
+        for c in s:
+            tmp = waiting[c]
+            waiting[c] = []
+            for word in tmp:
+                if not word:
+                    cnt += 1
+                    continue
+                waiting[word[0]].append(word[1:])
+        return cnt
+
 # leetcode submit region end(Prohibit modification and deletion)
