@@ -50,7 +50,17 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def minimumRecolors(self, blocks: str, k: int) -> int:
-        
+        cnt = Counter(blocks[:k])
+        res = cnt["W"]
+        for i in range(k, len(blocks)):
+            cnt[blocks[i - k]] -= 1
+            cnt[blocks[i]] += 1
+            res = min(cnt["W"], res)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
