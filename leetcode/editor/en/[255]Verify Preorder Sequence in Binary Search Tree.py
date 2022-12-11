@@ -35,5 +35,21 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def verifyPreorder(self, preorder: List[int]) -> bool:
-        
+        res = []
+        stack = [preorder[0]]
+        for v in preorder[1:]:
+            if v < stack[-1]:
+                stack.append(v)
+                continue
+            while stack:
+                if v < stack[-1]:
+                    stack.append(v)
+                    break
+                res.append(stack.pop())
+            if not stack:
+                stack.append(v)
+        while stack:
+            res.append(stack.pop())
+        return res == sorted(res)
+
 # leetcode submit region end(Prohibit modification and deletion)
