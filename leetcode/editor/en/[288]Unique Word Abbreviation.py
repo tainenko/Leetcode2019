@@ -70,14 +70,24 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class ValidWordAbbr:
 
     def __init__(self, dictionary: List[str]):
-        
+        self.dct = defaultdict(set)
+        for word in dictionary:
+            self.dct[self.get_abbre(word)].add(word)
+
+    def get_abbre(self, word):
+        if len(word) == 2:
+            return word
+        return word[0] + str(len(word) - 2) + word[-1]
 
     def isUnique(self, word: str) -> bool:
-        
-
+        abbre = self.get_abbre(word)
+        return self.dct[abbre] <= {word}
 
 # Your ValidWordAbbr object will be instantiated and called as such:
 # obj = ValidWordAbbr(dictionary)
