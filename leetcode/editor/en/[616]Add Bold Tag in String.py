@@ -59,5 +59,26 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def addBoldTag(self, s: str, words: List[str]) -> str:
-        
+        res = ""
+        start = end = -1
+        for i, c in enumerate(s):
+            nend = 0
+            for word in words:
+                if s[i:].startswith(word):
+                    nend = max(nend, len(word))
+            if nend:
+                if start == -1:
+                    start = i
+                end = max(end, nend + i)
+                continue
+            if i == end:
+                res += "<b>" + s[start:end] + "</b>"
+                start = end = -1
+            if start == -1:
+                res += c
+
+        if start != -1:
+            res += "<b>" + s[start:end] + "</b>"
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
