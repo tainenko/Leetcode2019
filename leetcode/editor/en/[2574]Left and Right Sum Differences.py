@@ -51,5 +51,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def leftRigthDifference(self, nums: List[int]) -> List[int]:
-        
+        res = [0] * len(nums)
+        left = 0
+        right = sum(nums)
+        for i, v in enumerate(nums):
+            right -= v
+            res[i] = abs(left - right)
+            left += v
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
