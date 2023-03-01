@@ -54,5 +54,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def pickGifts(self, gifts: List[int], k: int) -> int:
-        
+        for _ in range(k):
+            idx = gifts.index(max(gifts))
+            gifts[idx] = int(gifts[idx] ** 0.5)
+        return sum(gifts)
 # leetcode submit region end(Prohibit modification and deletion)
