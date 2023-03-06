@@ -47,6 +47,7 @@
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
+    int
     def separateDigits(self, nums: List[int]) -> List[int]:
         res = []
         for num in nums:
