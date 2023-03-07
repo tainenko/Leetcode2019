@@ -38,5 +38,6 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def getCommon(self, nums1: List[int], nums2: List[int]) -> int:
-        
+        s = set(nums1).intersection(set(nums2))
+        return min(s) if s else -1
 # leetcode submit region end(Prohibit modification and deletion)
