@@ -49,5 +49,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def alternateDigitSum(self, n: int) -> int:
-        
+        total = 0
+        sign = 1
+        for num in str(n):
+            num = int(num)
+            total += sign * num
+            sign *= -1
+        return total
+
 # leetcode submit region end(Prohibit modification and deletion)
