@@ -46,7 +46,7 @@ class Solution:
         res = 0
         m = len(matrix)
         n = len(matrix[0])
-        height = [0] * n
+        height = [0] * (n + 1)
         for i in range(m):
             for j in range(n):
                 if matrix[i][j] == '0':
@@ -59,7 +59,6 @@ class Solution:
     def max_rectangle(self, height):
         stack = list()
         res = 0
-        height.append(0)
         for i in range(len(height)):
             curr = height[i]
             while stack and curr < height[stack[-1]]:
