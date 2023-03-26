@@ -43,5 +43,9 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def canWin(self, currentState: str) -> bool:
-        
+        for i in range(len(currentState) - 1):
+            if currentState[i:i + 2] == "++" and not self.canWin(currentState[:i] + "--" + currentState[i + 2:]):
+                return True
+        return False
+
 # leetcode submit region end(Prohibit modification and deletion)
