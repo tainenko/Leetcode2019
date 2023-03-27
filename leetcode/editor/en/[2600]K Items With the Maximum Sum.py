@@ -51,5 +51,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def kItemsWithMaximumSum(self, numOnes: int, numZeros: int, numNegOnes: int, k: int) -> int:
-        
+        res = 0
+        num = min(numOnes, k)
+        k -= num
+        res += num
+        if k == 0:
+            return res
+        num = min(numZeros, k)
+        k -= num
+        if k == 0:
+            return res
+        num = min(numNegOnes, k)
+        return res - num
 # leetcode submit region end(Prohibit modification and deletion)
