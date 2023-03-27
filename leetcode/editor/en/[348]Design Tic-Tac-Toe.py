@@ -93,11 +93,21 @@
 class TicTacToe:
 
     def __init__(self, n: int):
-        
+        self.n = n
+        self.board = [[None] * n for _ in range(n)]
 
     def move(self, row: int, col: int, player: int) -> int:
-        
-
+        self.board[row][col] = player
+        if all(ele == player for ele in self.board[row]):
+            return player
+        elif all(self.board[i][col] == player for i in range(self.n)):
+            return player
+        elif all(self.board[i][i] == player for i in range(self.n)):
+            return player
+        elif all(self.board[i][-i - 1] == player for i in range(self.n)):
+            return player
+        else:
+            return 0
 
 # Your TicTacToe object will be instantiated and called as such:
 # obj = TicTacToe(n)
