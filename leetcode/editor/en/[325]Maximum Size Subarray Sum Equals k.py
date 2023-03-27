@@ -11,7 +11,7 @@
 #  
 # 
 #  Example 2: 
-# 
+#
 #  
 # Input: nums = [-2,-1,2,1], k = 1
 # Output: 2
@@ -31,7 +31,19 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from itertools import accumulate
+
+
 class Solution:
     def maxSubArrayLen(self, nums: List[int], k: int) -> int:
-        
+        res, mapping = 0, dict()
+        for idx, val in enumerate(accumulate(nums)):
+            if val == k:
+                res = idx + 1
+            elif val - k in mapping:
+                res = max(res, idx - mapping[val - k])
+            if val not in mapping:
+                mapping[val] = idx
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
