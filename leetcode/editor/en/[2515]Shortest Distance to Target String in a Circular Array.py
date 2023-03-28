@@ -62,5 +62,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def closetTarget(self, words: List[str], target: str, startIndex: int) -> int:
-        
+        if words[startIndex] == target:
+            return 0
+        n = len(words)
+        left = startIndex
+        right = startIndex
+        for i in range(n):
+            right = (right + 1) % n
+            left = (left - 1 + n) % n
+            if words[left] == target or words[right] == target:
+                return i + 1
+        return -1
 # leetcode submit region end(Prohibit modification and deletion)
