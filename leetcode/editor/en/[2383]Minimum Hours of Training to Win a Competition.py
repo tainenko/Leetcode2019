@@ -67,6 +67,18 @@
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
-    def minNumberOfHours(self, initialEnergy: int, initialExperience: int, energy: List[int], experience: List[int]) -> int:
-        
+    def minNumberOfHours(self, initialEnergy: int, initialExperience: int, energy: List[int],
+                         experience: List[int]) -> int:
+        hour = 0
+        for egy, exp in zip(energy, experience):
+            if initialEnergy <= egy:
+                hour += egy - initialEnergy + 1
+                initialEnergy = egy + 1
+            if initialExperience <= exp:
+                hour += exp - initialExperience + 1
+                initialExperience = exp + 1
+            initialEnergy -= egy
+            initialExperience += exp
+        return hour
+
 # leetcode submit region end(Prohibit modification and deletion)
