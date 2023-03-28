@@ -49,6 +49,12 @@
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
+    VOWELS = {"a", "e", "i", "o", "u"}
+
     def vowelStrings(self, words: List[str], left: int, right: int) -> int:
-        
+        return sum([self.is_vowel(word) for word in words[left:right + 1]])
+
+    def is_vowel(self, word: str) -> bool:
+        return word[0] in self.VOWELS and word[-1] in self.VOWELS
+
 # leetcode submit region end(Prohibit modification and deletion)
