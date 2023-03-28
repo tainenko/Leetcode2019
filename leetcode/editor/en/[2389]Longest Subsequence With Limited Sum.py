@@ -45,7 +45,20 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from itertools import accumulate
+
+
 class Solution:
     def answerQueries(self, nums: List[int], queries: List[int]) -> List[int]:
-        
+        nums.sort()
+        accums = list(accumulate(nums))
+        res = []
+        for query in queries:
+            for idx, val in enumerate(accums):
+                if val > query:
+                    res.append(idx)
+                    break
+            else:
+                res.append(len(nums))
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
