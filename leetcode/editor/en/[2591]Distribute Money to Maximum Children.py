@@ -52,5 +52,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def distMoney(self, money: int, children: int) -> int:
-        
+        if money < children:
+            return -1
+        if money > children * 8:
+            return children - 1
+        x = (money - children) // 7
+        r = (money - children) % 7
+        if x == children - 1 and r == 3:
+            return x - 1
+        return x
 # leetcode submit region end(Prohibit modification and deletion)
