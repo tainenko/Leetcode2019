@@ -59,5 +59,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def captureForts(self, forts: List[int]) -> int:
-        
+        total = 0
+        prev = 0
+        for i in range(len(forts)):
+            if not forts[i]:
+                continue
+            if forts[prev] + forts[i] == 0:
+                total = max(i - prev - 1, total)
+            prev = i
+        return total
+
 # leetcode submit region end(Prohibit modification and deletion)
