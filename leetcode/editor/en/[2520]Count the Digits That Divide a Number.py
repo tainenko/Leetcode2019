@@ -42,5 +42,10 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countDigits(self, num: int) -> int:
-        
+        res = 0
+        for i in str(num):
+            if int(i) != 0 and num % int(i) == 0:
+                res += 1
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
