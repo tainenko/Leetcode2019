@@ -60,7 +60,15 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import collections
+
+
 class Solution:
     def similarPairs(self, words: List[str]) -> int:
-        
+        cnt = collections.defaultdict(int)
+        for word in words:
+            cnt[tuple(sorted(set(word)))] += 1
+
+        return sum(val * (val - 1)//2 for val in cnt.values())
+
 # leetcode submit region end(Prohibit modification and deletion)
