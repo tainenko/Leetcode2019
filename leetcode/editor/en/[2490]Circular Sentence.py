@@ -74,5 +74,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isCircularSentence(self, sentence: str) -> bool:
-        
+        if sentence[0] != sentence[-1]:
+            return False
+        prev = None
+        for word in sentence.split(" "):
+            if prev is None:
+                prev = word
+                continue
+            if prev[-1] != word[0]:
+                return False
+            prev = word
+        return True
+
 # leetcode submit region end(Prohibit modification and deletion)
