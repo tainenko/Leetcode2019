@@ -34,5 +34,24 @@
 #         self.next = next
 class Solution:
     def plusOne(self, head: ListNode) -> ListNode:
-        
+        stack = []
+        node = head
+        while node:
+            stack.append(node)
+            node = node.next
+        carry = 1
+        while stack:
+            node = stack.pop()
+            node.val += carry
+            if node.val > 9:
+                node.val -= 10
+                carry = 1
+            else:
+                carry = 0
+            if not carry:
+                break
+        if carry:
+            new_head = ListNode(1, head)
+            return new_head
+        return head
 # leetcode submit region end(Prohibit modification and deletion)
