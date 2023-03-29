@@ -46,14 +46,15 @@ from itertools import permutations
 
 class Solution:
     def findPermutation(self, s: str) -> List[int]:
-        for perm in permutations(range(1, len(s) + 2)):
-            for i, char in enumerate(s):
-                if char == "I" and perm[i] >= perm[i + 1]:
-                    break
-                if char == "D" and perm[i] <= perm[i + 1]:
-                    break
-            else:
-                return perm
-        return []
-
+        perm = list(range(1, len(s) + 2))
+        i = 0
+        while i < len(s):
+            if s[i] != 'D':
+                i += 1
+                continue
+            j = i
+            while i < len(s) and s[i] == 'D':
+                i += 1
+            perm = perm[:j] + perm[j:i + 1][::-1] + perm[i + 1:]
+        return perm
 # leetcode submit region end(Prohibit modification and deletion)
