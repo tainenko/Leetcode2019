@@ -41,7 +41,19 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from itertools import permutations
+
+
 class Solution:
     def findPermutation(self, s: str) -> List[int]:
-        
+        for perm in permutations(range(1, len(s) + 2)):
+            for i, char in enumerate(s):
+                if char == "I" and perm[i] >= perm[i + 1]:
+                    break
+                if char == "D" and perm[i] <= perm[i + 1]:
+                    break
+            else:
+                return perm
+        return []
+
 # leetcode submit region end(Prohibit modification and deletion)
