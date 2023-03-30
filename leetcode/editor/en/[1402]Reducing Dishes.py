@@ -52,5 +52,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxSatisfaction(self, satisfaction: List[int]) -> int:
-        
+        satisfaction.sort(reverse=True)
+        res = 0
+        total = 0
+        before = 0
+        for sat in satisfaction:
+            total += before + sat
+            before += sat
+            res = max(res, total)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
