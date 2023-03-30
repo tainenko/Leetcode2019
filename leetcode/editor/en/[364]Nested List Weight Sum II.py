@@ -45,7 +45,7 @@
 # This is the interface that allows for creating nested lists.
 # You should not implement it, or speculate about its implementation
 # """
-#class NestedInteger:
+# class NestedInteger:
 #    def __init__(self, value=None):
 #        """
 #        If value is not specified, initializes an empty list.
@@ -86,5 +86,18 @@
 
 class Solution:
     def depthSumInverse(self, nestedList: List[NestedInteger]) -> int:
-        
+        return self.dfs(nestedList, 0)
+
+    def dfs(self, nestedList: List[NestedInteger], list_sum):
+        temp = []
+        for ele in nestedList:
+            if ele.isInteger():
+                list_sum += ele.getInteger()
+            else:
+                temp += ele.getList()
+        if temp:
+            list_sum += self.dfs(temp, list_sum)
+        return list_sum
+
+
 # leetcode submit region end(Prohibit modification and deletion)
