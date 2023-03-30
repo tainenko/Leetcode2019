@@ -38,5 +38,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def getModifiedArray(self, length: int, updates: List[List[int]]) -> List[int]:
-        
+        updates.sort(key=lambda x: (x[0], -x[1]))
+        res = [0] * (length + 1)
+        for start, end, val in updates:
+            res[start] += val
+            res[end + 1] -= val
+        for i in range(1, len(res)):
+            res[i] += res[i - 1]
+        return res[:-1]
 # leetcode submit region end(Prohibit modification and deletion)
