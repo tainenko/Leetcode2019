@@ -43,8 +43,37 @@
 #         self.val = x
 #         self.left = None
 #         self.right = None
+from collections import defaultdict, deque
+
 
 class Solution:
     def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
-        
+        graph = defaultdict(list)
+
+        def dfs(parent: TreeNode, child: TreeNode):
+            if not child:
+                return
+            if parent and child:
+                graph[parent.val].append(child.val)
+                graph[child.val].append(parent.val)
+            dfs(child, child.left)
+            dfs(child, child.right)
+
+        dfs(None, root)
+
+        res = deque()
+        res.append(target.val)
+        visited = set()
+        while k:
+            for _ in range(len(res)):
+                val = res.popleft()
+                visited.add(val)
+                for n in graph[val]:
+                    if n in visited:
+                        continue
+                    res.append(n)
+
+            k -= 1
+        return list(res)
+
 # leetcode submit region end(Prohibit modification and deletion)
