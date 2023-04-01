@@ -66,7 +66,15 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from itertools import accumulate
+
+
 class Solution:
     def minimumHealth(self, damage: List[int], armor: int) -> int:
-        
+        accums = list(accumulate(damage))
+        total = accums[-1] + 1
+        arm = armor
+        arm = min(max(damage), arm)
+        return total - arm
+
 # leetcode submit region end(Prohibit modification and deletion)
