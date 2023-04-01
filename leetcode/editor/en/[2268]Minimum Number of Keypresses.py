@@ -57,7 +57,19 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def minimumKeypresses(self, s: str) -> int:
-        
+        cnt = Counter(s)
+        res = 0
+        for i, v in enumerate(sorted(cnt.values(), reverse=True)):
+            if i < 9:
+                res += v
+            elif 9 <= i < 18:
+                res += v * 2
+            else:
+                res += v * 3
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
