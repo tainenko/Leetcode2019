@@ -58,7 +58,28 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def earliestAcq(self, logs: List[List[int]], n: int) -> int:
-        
+        fa = list(range(n))
+        weight = [1] * n
+
+        def find(x: int) -> int:
+            if fa[x] != x:
+                fa[x] = find(fa[x])
+            return fa[x]
+
+        for timestamp, x, y in sorted(logs, key=lambda x: x[0]):
+            x = find(x)
+            y = find(y)
+            if x == y:
+                continue
+            fa[y] = x
+            weight[x] += weight[y]
+            if weight[x] == n:
+                return timestamp
+        return -1
+
 # leetcode submit region end(Prohibit modification and deletion)
