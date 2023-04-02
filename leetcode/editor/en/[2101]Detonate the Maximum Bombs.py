@@ -63,7 +63,36 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict, deque
+
+
 class Solution:
     def maximumDetonation(self, bombs: List[List[int]]) -> int:
-        
+        graph = defaultdict(list)
+        for i in range(len(bombs)):
+            for j in range(len(bombs)):
+                if i == j:
+                    continue
+                x1 = bombs[i][0]
+                y1 = bombs[i][1]
+                r1 = bombs[i][2]
+                x2 = bombs[j][0]
+                y2 = bombs[j][1]
+                if (x1 - x2) ** 2 + (y1 - y2) ** 2 <= r1 ** 2:
+                    graph[i].append(j)
+        res = 0
+        for i in range(len(bombs)):
+            visited = set()
+            cnt = 1
+            q = deque(graph[i])
+            visited.add(i)
+            while q:
+                next_ = q.popleft()
+                if next_ in visited:
+                    continue
+                visited.add(next_)
+                cnt += 1
+                q.extend(graph[next_])
+            res = max(cnt, res)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
