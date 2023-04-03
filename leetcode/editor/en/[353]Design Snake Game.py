@@ -69,14 +69,63 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import deque
+
+
 class SnakeGame:
 
     def __init__(self, width: int, height: int, food: List[List[int]]):
-        
+        self.width = width
+        self.height = height
+        self.food = food
+        self.food_idx = 0
+        self.x = 0
+        self.y = 0
+        self.body = deque()
+        self.body.append((0, 0))
+        self.length = 1
+        self.set = {(0, 0)}
 
     def move(self, direction: str) -> int:
-        
+        if direction == "R":
+            x = 1
+            y = 0
+        elif direction == "L":
+            x = -1
+            y = 0
+        elif direction == "D":
+            x = 0
+            y = 1
+        else:
+            x = 0
+            y = -1
 
+        self.x += x
+        self.y += y
+        if self.x < 0 or self.x >= self.width:
+            return -1
+        if self.y < 0 or self.y >= self.height:
+            return -1
+
+        if self.food_idx < len(self.food):
+            food = self.food[self.food_idx]
+            if self.x == food[1] and self.y == food[0]:
+                self.body.append((self.x, self.y))
+                self.set.add((self.x, self.y))
+                self.length += 1
+                self.food_idx += 1
+                return self.length - 1
+
+        pos = self.body.popleft()
+        self.set.remove(pos)
+
+        if (self.x, self.y) in self.set:
+            return -1
+
+        self.body.append((self.x, self.y))
+        self.set.add((self.x, self.y))
+
+        return self.length - 1
 
 # Your SnakeGame object will be instantiated and called as such:
 # obj = SnakeGame(width, height, food)
