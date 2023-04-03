@@ -56,5 +56,23 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def parseTernary(self, expression: str) -> str:
-        
+        if len(expression) == 1:
+            return expression
+        question, colon = 0, 0
+        pos1, pos2 = -1, -1
+        for i, v in enumerate(expression):
+            if v == "?":
+                question += 1
+                if question == 1:
+                    pos1 = i
+            elif v == ":":
+                colon += 1
+                if question == colon:
+                    pos2 = i
+                    break
+        if expression[0] == "T":
+            return self.parseTernary(expression[pos1 + 1:pos2])
+        else:
+            return self.parseTernary(expression[pos2 + 1:])
+
 # leetcode submit region end(Prohibit modification and deletion)
