@@ -48,5 +48,22 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findTheLongestBalancedSubstring(self, s: str) -> int:
-        
+        if not s:
+            return 0
+        i = 0
+        res = 0
+        for i in range(1, len(s)):
+            if s[i - 1] == "0" and s[i] == "1":
+                zeros = 0
+                ones = 0
+                for j in range(i - 1, -1, -1):
+                    if s[j] == "1":
+                        break
+                    zeros += 1
+                for k in range(i, len(s)):
+                    if s[k] == "0":
+                        break
+                    ones += 1
+                res = max(res, min(ones, zeros))
+        return res * 2
 # leetcode submit region end(Prohibit modification and deletion)
