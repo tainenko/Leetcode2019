@@ -65,7 +65,35 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import heapq
+
+
 class Solution:
     def shortestDistance(self, maze: List[List[int]], start: List[int], destination: List[int]) -> int:
-        
+        def helper(x, y):
+            res = []
+            for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+                new_x, new_y = x, y
+                dist = 0
+                while 0 <= new_x + dx < len(maze) and 0 <= new_y + dy < len(maze[0]) and maze[new_x + dx][
+                    new_y + dy] == 0:
+                    new_x += dx
+                    new_y += dy
+                    dist += 1
+                if (new_x, new_y) not in visited:
+                    res.append((dist, new_x, new_y))
+            return res
+
+        heap = [(0, *start)]
+        visited = set()
+        while heap:
+            dist, x, y = heapq.heappop(heap)
+            if (x, y) in visited:
+                continue
+            if [x, y] == destination:
+                return dist
+            visited.add((x, y))
+            for new_dist, new_x, new_y in helper(x, y):
+                heapq.heappush(heap, (new_dist + dist, new_x, new_y))
+        return -1
 # leetcode submit region end(Prohibit modification and deletion)
