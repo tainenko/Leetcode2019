@@ -53,5 +53,22 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimizeArrayValue(self, nums: List[int]) -> int:
-        
+        def check(limit):
+            remain = 0
+            for i in range(len(nums) - 1, 0, -1):
+                if nums[i] > limit:
+                    remain += nums[i] - limit
+                else:
+                    remain = max(0, remain - (limit - nums[i]))
+            return nums[0] + remain <= limit
+
+        l, r = 0, max(nums)
+        while l < r:
+            mid = l + (r - l) // 2
+            if check(mid):
+                r = mid
+            else:
+                l = mid + 1
+        return l
+
 # leetcode submit region end(Prohibit modification and deletion)
