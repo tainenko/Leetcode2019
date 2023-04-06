@@ -41,5 +41,26 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxDistance(self, arrays: List[List[int]]) -> int:
-        
+        largest = (0, -2147483647)
+        second_largest = (0, -2147483647)
+        for i, arr in enumerate(arrays):
+            if arr[-1] > largest[1]:
+                second_largest = largest
+                largest = (i, arr[-1])
+            elif arr[-1] > second_largest[1]:
+                second_largest = (i, arr[-1])
+
+        smallest = (0, 2147483647)
+        second_smallest = (0, 2147483647)
+        for i, arr in enumerate(arrays):
+            if arr[0] < smallest[1]:
+                second_smallest = smallest
+                smallest = (i, arr[0])
+            elif arr[0] < second_smallest[1]:
+                second_smallest = (i, arr[0])
+
+        if smallest[0] != largest[0]:
+            return abs(smallest[1] - largest[1])
+
+        return max(abs(smallest[1] - second_largest[1]), abs(largest[1] - second_smallest[1]))
 # leetcode submit region end(Prohibit modification and deletion)
