@@ -51,10 +51,17 @@
 # This is ArrayReader's API interface.
 # You should not implement it, or speculate about its implementation
 # """
-#class ArrayReader:
+# class ArrayReader:
 #    def get(self, index: int) -> int:
 
 class Solution:
     def search(self, reader: 'ArrayReader', target: int) -> int:
-        
+        i = 0
+        while True:
+            val = reader.get(i)
+            if val == 2 ** 31 - 1:
+                return -1
+            if val == target:
+                return i
+            i += 1
 # leetcode submit region end(Prohibit modification and deletion)
