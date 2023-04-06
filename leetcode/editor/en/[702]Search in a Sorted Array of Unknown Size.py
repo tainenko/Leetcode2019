@@ -56,12 +56,16 @@
 
 class Solution:
     def search(self, reader: 'ArrayReader', target: int) -> int:
-        i = 0
-        while True:
-            val = reader.get(i)
-            if val == 2 ** 31 - 1:
-                return -1
+        left = 0
+        right = 10 ** 4
+        while left <= right:
+            mid = left + (right - left) // 2
+            val = reader.get(mid)
             if val == target:
-                return i
-            i += 1
+                return mid
+            elif val > target:
+                right = mid - 1
+            else:
+                left = mid + 1
+        return -1
 # leetcode submit region end(Prohibit modification and deletion)
