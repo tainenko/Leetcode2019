@@ -76,5 +76,38 @@
 #         self.right = right
 class Solution:
     def boundaryOfBinaryTree(self, root: Optional[TreeNode]) -> List[int]:
-        
+        if not root:
+            return []
+        res = [root.val]
+
+        def find_leaf(node):
+            if not node:
+                return
+            if node != root and not node.left and not node.right:
+                res.append(node.val)
+            find_leaf(node.left)
+            find_leaf(node.right)
+
+        def find_left(node):
+            if not node or (not node.left and not node.right):
+                return
+            res.append(node.val)
+            if node.left:
+                find_left(node.left)
+            elif node.right:
+                find_left(node.right)
+
+        def find_right(node):
+            if not node or (not node.left and not node.right):
+                return
+            if node.right:
+                find_right(node.right)
+            elif node.left:
+                find_right(node.left)
+            res.append(node.val)
+
+        find_left(root.left)
+        find_leaf(root)
+        find_right(root.right)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
