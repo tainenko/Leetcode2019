@@ -46,9 +46,28 @@
 # 
 #  Related Topics Array Hash Table Matrix 👍 82 👎 741
 
-
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def findBlackPixel(self, picture: List[List[str]], target: int) -> int:
-        
-# leetcode submit region end(Prohibit modification and deletion)
+        rows = [0] * len(picture)
+        cols = [0] * len(picture[0])
+        m = defaultdict(int)
+        for row in range(len(picture)):
+            m["".join(picture[row])] += 1
+            for col in range(len(picture[0])):
+                if picture[row][col] == "B":
+                    rows[row] += 1
+                    cols[col] += 1
+        res = 0
+        for row in range(len(picture)):
+            if m["".join(picture[row])] != target:
+                continue
+            for col in range(len(picture[0])):
+                if picture[row][col] == "B" and rows[row] == target and cols[col] == target:
+                    res += 1
+        return res
+
+    # leetcode submit region end(Prohibit modification and deletion)
