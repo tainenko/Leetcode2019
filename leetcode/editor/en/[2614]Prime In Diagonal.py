@@ -50,7 +50,26 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import math
+
+
 class Solution:
     def diagonalPrime(self, nums: List[List[int]]) -> int:
-        
+        res = 0
+        n = len(nums)
+        for i in range(n):
+            if self.is_prime(nums[i][i]):
+                res = max(res, nums[i][i])
+            if self.is_prime(nums[i][n - i - 1]):
+                res = max(res, nums[i][n - i - 1])
+        return res
+
+    def is_prime(self, num: int) -> bool:
+        if num <= 1:
+            return False
+        for i in range(2, int(math.sqrt(num)) + 1):
+            if num % i == 0:
+                return False
+        return True
+
 # leetcode submit region end(Prohibit modification and deletion)
