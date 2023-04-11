@@ -47,5 +47,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def removeInterval(self, intervals: List[List[int]], toBeRemoved: List[int]) -> List[List[int]]:
-        
+        res = []
+        for interval in intervals:
+            if interval[0] >= toBeRemoved[1] or interval[1] <= toBeRemoved[0]:
+                res.append(interval)
+            elif interval[0] < toBeRemoved[0] and interval[1] > toBeRemoved[1]:
+                res.append([interval[0], toBeRemoved[0]])
+                res.append([toBeRemoved[1], interval[1]])
+            elif interval[0] < toBeRemoved[0] and interval[1] >= toBeRemoved[0]:
+                res.append([interval[0], toBeRemoved[0]])
+            elif interval[0] < toBeRemoved[1] and interval[1] > toBeRemoved[1]:
+                res.append([toBeRemoved[1], interval[1]])
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
