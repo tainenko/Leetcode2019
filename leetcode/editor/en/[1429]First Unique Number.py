@@ -81,17 +81,30 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class FirstUnique:
 
     def __init__(self, nums: List[int]):
-        
+        self.nums = nums
+        self.cnt = Counter(nums)
+        self.idx = len(nums)
+        for i in range(len(nums)):
+            if self.cnt[nums[i]] == 1:
+                self.idx = i
+                break
 
     def showFirstUnique(self) -> int:
-        
+        if self.idx == len(self.nums):
+            return -1
+        return self.nums[self.idx]
 
     def add(self, value: int) -> None:
-        
-
+        self.nums.append(value)
+        self.cnt[value] = self.cnt.get(value, 0) + 1
+        while self.idx < len(self.nums) and self.cnt[self.nums[self.idx]] > 1:
+            self.idx += 1
 
 # Your FirstUnique object will be instantiated and called as such:
 # obj = FirstUnique(nums)
