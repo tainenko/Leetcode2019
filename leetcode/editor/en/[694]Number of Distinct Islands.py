@@ -39,5 +39,23 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numDistinctIslands(self, grid: List[List[int]]) -> int:
-        
+        directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+        shapes = set()
+
+        def dfs(x, y, pos, shape):
+            grid[x][y] = 0
+            for dx, dy in directions:
+                direction = (pos[0] + dx, pos[1] + dy)
+                shape.append(direction)
+                if 0 <= x + dx < len(grid) and 0 <= y + dy < len(grid[0]) and grid[x + dx][y + dy]:
+                    dfs(x + dx, y + dy, direction, shape)
+            return tuple(shape)
+
+        for x in range(len(grid)):
+            for y in range(len(grid[0])):
+                if not grid[x][y]:
+                    continue
+                shapes.add(dfs(x, y, (0, 0), [(0, 0)]))
+        return len(shapes)
+
 # leetcode submit region end(Prohibit modification and deletion)
