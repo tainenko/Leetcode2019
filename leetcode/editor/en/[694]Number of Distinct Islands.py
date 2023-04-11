@@ -55,7 +55,7 @@ class Solution:
             for y in range(len(grid[0])):
                 if not grid[x][y]:
                     continue
-                shapes.add(dfs(x, y, (0, 0), [(0, 0)]))
+                shapes.add(dfs(x, y, (0, 0), []))
         return len(shapes)
 
 # leetcode submit region end(Prohibit modification and deletion)
