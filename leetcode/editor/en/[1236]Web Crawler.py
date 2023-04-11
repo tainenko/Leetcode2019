@@ -110,24 +110,26 @@
 #        :rtype List[str]
 #        """
 from urllib import parse
+from collections import deque
 
 
 class Solution:
     def crawl(self, startUrl: str, htmlParser: 'HtmlParser') -> List[str]:
-        visited = {startUrl}
-        res = [startUrl]
-        host = parse.urlparse(startUrl).hostname
-        q = htmlParser.getUrls(startUrl)
+        visited = set()
+        res = []
+        host = "http://" + parse.urlparse(startUrl).hostname
+        q = deque()
+        q.append(startUrl)
         while q:
-            url = q[0]
-            q = q[1:]
-            if host != parse.urlparse(url).hostname:
-                continue
+            url = q.popleft()
             if url in visited:
                 continue
             visited.add(url)
             res.append(url)
-            q += htmlParser.getUrls(url)
+            for u in htmlParser.getUrls(url):
+                if not u.startswith(host):
+                    continue
+                q.append(u)
         return res
 
 # leetcode submit region end(Prohibit modification and deletion)
