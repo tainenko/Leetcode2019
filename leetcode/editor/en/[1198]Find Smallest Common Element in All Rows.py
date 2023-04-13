@@ -35,5 +35,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def smallestCommonElement(self, mat: List[List[int]]) -> int:
-        
+        res = set(mat[0])
+        for i in range(1, len(mat)):
+            res = res.intersection(set(mat[i]))
+        if len(res):
+            return min(res)
+        return -1
+
 # leetcode submit region end(Prohibit modification and deletion)
