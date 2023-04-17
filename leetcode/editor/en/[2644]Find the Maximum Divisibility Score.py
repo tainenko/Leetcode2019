@@ -65,5 +65,19 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxDivScore(self, nums: List[int], divisors: List[int]) -> int:
-        
+        scores = [0] * len(divisors)
+        for num in nums:
+            for idx, divisor in enumerate(divisors):
+                if num % divisor == 0:
+                    scores[idx] += 1
+        res = 2147483647
+        cnt = 0
+        for idx, score in enumerate(scores):
+            if score > cnt:
+                cnt = score
+                res = divisors[idx]
+            elif score == cnt:
+                res = min(res, divisors[idx])
+
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
