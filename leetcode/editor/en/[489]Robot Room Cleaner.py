@@ -88,7 +88,7 @@
 # This is the robot's control interface.
 # You should not implement it, or speculate about its implementation
 # """
-#class Robot:
+# class Robot:
 #    def move(self):
 #        """
 #        Returns true if the cell in front is open and robot moves into the cell.
@@ -122,5 +122,22 @@ class Solution:
         :type robot: Robot
         :rtype: None
         """
-        
+        visited = {(0, 0)}
+
+        def dfs(x, y, dx, dy):
+            robot.clean()
+            visited.add((x, y))
+            for _ in range(4):
+                if (x + dx, y + dy) not in visited and robot.move():
+                    dfs(x + dx, y + dy, dx, dy)
+                robot.turnLeft()
+                dx, dy = -dy, dx
+            robot.turnLeft()
+            robot.turnLeft()
+            robot.move()
+            robot.turnLeft()
+            robot.turnLeft()
+
+        dfs(0, 0, 0, 1)
+
 # leetcode submit region end(Prohibit modification and deletion)
