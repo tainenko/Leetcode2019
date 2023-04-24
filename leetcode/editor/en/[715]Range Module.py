@@ -57,17 +57,22 @@
 class RangeModule:
 
     def __init__(self):
-        
+        self.arr = []
 
     def addRange(self, left: int, right: int) -> None:
-        
+        i = bisect_left(self.arr, left)
+        j = bisect_right(self.arr, right)
+        self.arr[i:j] = [left] * (i % 2 == 0) + [right] * (j % 2 == 0)
 
     def queryRange(self, left: int, right: int) -> bool:
-        
+        i = bisect_right(self.arr, left)
+        j = bisect_left(self.arr, right)
+        return i == j and i % 2 == 1
 
     def removeRange(self, left: int, right: int) -> None:
-        
-
+        i = bisect_left(self.arr, left)
+        j = bisect_right(self.arr, right)
+        self.arr[i:j] = [left] * (i % 2 == 1) + [right] * (j % 2 == 1)
 
 # Your RangeModule object will be instantiated and called as such:
 # obj = RangeModule()
