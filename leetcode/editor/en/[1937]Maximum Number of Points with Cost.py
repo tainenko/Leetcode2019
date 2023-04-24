@@ -62,5 +62,23 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxPoints(self, points: List[List[int]]) -> int:
-        
+        m = len(points)
+        n = len(points[0])
+        dp = points[0]
+        left = [0] * n
+        right = [0] * n
+        for i in range(1, m):
+            for j in range(n):
+                if j == 0:
+                    left[j] = dp[j]
+                else:
+                    left[j] = max(left[j - 1] - 1, dp[j])
+            for j in range(n - 1, -1, -1):
+                if j == n - 1:
+                    right[j] = dp[j]
+                else:
+                    right[j] = max(right[j + 1] - 1, dp[j])
+            for j in range(n):
+                dp[j] = max(left[j], right[j]) + points[i][j]
+        return max(dp)
 # leetcode submit region end(Prohibit modification and deletion)
