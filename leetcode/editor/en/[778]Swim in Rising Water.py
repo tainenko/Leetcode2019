@@ -50,7 +50,29 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import heapq
+
+
 class Solution:
     def swimInWater(self, grid: List[List[int]]) -> int:
-        
-# leetcode submit region end(Prohibit modification and deletion)
+        pq = []
+        heapq.heappush(pq, (grid[0][0], 0, 0))
+        res = 0
+        m = len(grid)
+        n = len(grid[0])
+        visited = set()
+        while pq:
+            w, i, j = heapq.heappop(pq)
+            visited.add((i, j))
+            res = max(w, res)
+            if i == m - 1 and j == n - 1:
+                return res
+            dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+            for dx, dy in dirs:
+                x = i + dx
+                y = j + dy
+                if x < 0 or x == m or y < 0 or y == n or (x, y) in visited:
+                    continue
+                heapq.heappush(pq, (grid[i + dx][j + dy], i + dx, j + dy))
+        return res
+    # leetcode submit region end(Prohibit modification and deletion)
