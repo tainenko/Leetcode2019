@@ -61,18 +61,24 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import collections
+
+
 class DetectSquares:
 
     def __init__(self):
-        
+        self.cnt = collections.Counter()
 
     def add(self, point: List[int]) -> None:
-        
+        self.cnt[tuple(point)] += 1
 
     def count(self, point: List[int]) -> int:
-        
-
-
+        x1, y1 = point
+        total = 0
+        for (x2, y2), c in self.cnt.items():
+            if x1 != x2 and abs(x1 - x2) == abs(y1 - y2):
+                total += c * self.cnt[(x1, y2)] * self.cnt[(x2, y1)]
+        return total
 # Your DetectSquares object will be instantiated and called as such:
 # obj = DetectSquares()
 # obj.add(point)
