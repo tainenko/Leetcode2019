@@ -44,7 +44,21 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def equalFrequency(self, word: str) -> bool:
-        
+        cnt = Counter(word)
+        if len(set(cnt.values())) > 2:
+            return False
+        for letter in word:
+            cnt[letter] -= 1
+            if cnt[letter] == 0:
+                del cnt[letter]
+            if len(set(cnt.values())) == 1:
+                return True
+            cnt[letter] += 1
+        return False
+
 # leetcode submit region end(Prohibit modification and deletion)
