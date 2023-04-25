@@ -53,5 +53,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numberOfWeakCharacters(self, properties: List[List[int]]) -> int:
-        
+        properties.sort(key=lambda x: (-x[0], x[1]))
+        res = 0
+        max_def = 0
+        for attack, defence in properties:
+            if defence < max_def:
+                res += 1
+            max_def = max(max_def, defence)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
