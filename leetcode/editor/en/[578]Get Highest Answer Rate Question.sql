@@ -1,4 +1,4 @@
-#Table: SurveyLog 
+#Table: SurveyLog
 #
 # 
 #+-------------+------+
@@ -63,5 +63,9 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select question_id as survey_log
+    from surveylog
+        group by question_id
+        order by sum(answer_id)/sum(if(action="show",1,0)) desc
+        limit 1
 #leetcode submit region end(Prohibit modification and deletion)
