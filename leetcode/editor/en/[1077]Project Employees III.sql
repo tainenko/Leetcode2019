@@ -81,5 +81,14 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select project_id, p.employee_id
+    from project as p
+    join employee as e
+    on p.employee_id=e.employee_id
+    where (p.project_id, e.experience_years) in (
+        select p.project_id, max(e.experience_years) experience_years
+        from project as p
+        join employee as e
+        on p.employee_id=e.employee_id
+        group by p.project_id)
 #leetcode submit region end(Prohibit modification and deletion)
