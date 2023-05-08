@@ -66,5 +66,9 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select login_date, count(login_date) user_count
+from (select user_id, min(activity_date) login_date from traffic where activity='login' group by user_id) tmp
+where login_date >= '2019-06-30'- interval 90 day
+group by login_date
+order by login_date
 #leetcode submit region end(Prohibit modification and deletion)
