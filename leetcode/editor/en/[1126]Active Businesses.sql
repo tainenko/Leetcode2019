@@ -64,5 +64,10 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select business_id
+from events
+join (select event_type, avg(occurences) avg_occ from events group by event_type) tmp
+on events.event_type=tmp.event_type and events.occurences>tmp.avg_occ
+group by business_id
+having count(business_id)>1
 #leetcode submit region end(Prohibit modification and deletion)
