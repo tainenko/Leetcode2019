@@ -78,5 +78,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def wordCount(self, startWords: List[str], targetWords: List[str]) -> int:
-        
+        startWords = set(["".join(sorted(s)) for s in startWords])
+        res = 0
+        for word in targetWords:
+            word = "".join(sorted(word))
+            if any(word[:i] + word[i + 1:] in startWords for i in range(len(word))):
+                res += 1
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
