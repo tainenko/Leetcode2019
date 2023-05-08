@@ -73,5 +73,8 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select emp_id, firstname, lastname, max(salary) salary, department_id
+from salary
+group by emp_id
+order by emp_id
 #leetcode submit region end(Prohibit modification and deletion)
