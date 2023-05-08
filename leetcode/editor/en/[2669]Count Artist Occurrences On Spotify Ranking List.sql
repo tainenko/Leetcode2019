@@ -56,5 +56,8 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select artist, count(artist) occurrences
+from spotify
+group by artist
+order by occurrences desc, artist
 #leetcode submit region end(Prohibit modification and deletion)
