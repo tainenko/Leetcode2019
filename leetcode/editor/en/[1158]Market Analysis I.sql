@@ -105,5 +105,16 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
+with shopping as (
+    select buyer_id, count(*) orders_in_2019
+    from orders
+    where year(order_date)=2019
+    group by buyer_id
+)
+
+select u.user_id buyer_id, u.join_date, COALESCE(shopping.orders_in_2019, 0) orders_in_2019
+from users as u
+left join shopping on shopping.buyer_id=u.user_id
+order by u.user_id
 
 #leetcode submit region end(Prohibit modification and deletion)
