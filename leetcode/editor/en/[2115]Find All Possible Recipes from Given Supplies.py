@@ -68,19 +68,26 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict, deque
+
+
 class Solution:
     def findAllRecipes(self, recipes: List[str], ingredients: List[List[str]], supplies: List[str]) -> List[str]:
-        supplies = set(supplies)
-        res = list()
-        while True:
-            pre = len(supplies)
-            for i in range(len(recipes)):
-                if recipes[i] in supplies:
-                    continue
-                if all([ingredient in supplies for ingredient in ingredients[i]]):
-                    supplies.add(recipes[i])
-                    res.append(recipes[i])
-            if pre == len(supplies):
-                break
+        graph = defaultdict(list)
+        deg = defaultdict(int)
+        for i in range(len(ingredients)):
+            for j in range(len(ingredients[i])):
+                graph[ingredients[i][j]].append(recipes[i])
+                deg[recipes[i]] += 1
+        q = deque(supplies)
+        res = []
+        while q:
+            supply = q.popleft()
+            for recipe in graph[supply]:
+                deg[recipe] -= 1
+                if deg[recipe] == 0:
+                    q.append(recipe)
+                    res.append(recipe)
+
         return res
 # leetcode submit region end(Prohibit modification and deletion)
