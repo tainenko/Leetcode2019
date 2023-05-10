@@ -64,5 +64,33 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def placeWordInCrossword(self, board: List[List[str]], word: str) -> bool:
-        
+        letters = set()
+        for i, c in enumerate(word):
+            letters.add((i, c))
+
+        for row in board:
+            if self.check(row, letters):
+                return True
+
+        for col in zip(*board):
+            if self.check(col, letters):
+                return True
+        return False
+
+    def check(self, row, letters):
+        spaces = "".join(row).split("#")
+        for space in spaces:
+            if len(space) != len(letters):
+                continue
+            for i, c in enumerate(space):
+                if c != " " and (i, c) not in letters:
+                    break
+            else:
+                return True
+            for i, c in enumerate(space[::-1]):
+                if c != " " and (i, c) not in letters:
+                    break
+            else:
+                return True
+        return False
 # leetcode submit region end(Prohibit modification and deletion)
