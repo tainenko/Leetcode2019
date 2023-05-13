@@ -61,9 +61,13 @@
 # 
 #
 # Related Topics Database 👍 135 👎 58
-
-
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+with cte as(
+    select customer_id, order_date, customer_pref_delivery_date, rank() over(partition by customer_id order by order_date) as rank_num
+    from delivery
+)
+select round(count(case when order_date=customer_pref_delivery_date then 1 end)/ count(customer_id)*100,2) immediate_percentage
+from cte
+where rank_num=1
 #leetcode submit region end(Prohibit modification and deletion)
