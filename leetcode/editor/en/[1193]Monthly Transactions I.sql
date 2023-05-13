@@ -1,4 +1,5 @@
-#Table: Transactions 
+#Table
+: Transactions
 #
 # 
 #+---------------+---------+
@@ -56,10 +57,20 @@
 #------------------+
 # 
 #
-# Related Topics Database 👍 202 👎 30
+# Related Topics Database
+👍 202
+👎 30
 
 
-#leetcode submit region begin(Prohibit modification and deletion)
+#leetcode submit region
+begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
-#leetcode submit region end(Prohibit modification and deletion)
+select DATE_FORMAT(trans_date, '%Y-%m') month,
+       country,
+       count(country)                                                 trans_count,
+       COALESCE(count(case when state = 'approved' then 1 end), 0)    approved_count,
+       sum(amount)                                                    trans_total_amount,
+       COALESCE(sum(case when state = 'approved' then amount end), 0) approved_total_amount
+from transactions
+group by DATE_FORMAT(trans_date, '%Y-%M'), country #leetcode submit region
+end(Prohibit modification and deletion)
