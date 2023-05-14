@@ -76,24 +76,39 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import heapq
+
+
 class StockPrice:
 
     def __init__(self):
-        
+        self.prices = dict()
+        self.min_heap = []
+        self.max_heap = []
+        self.timestamp = 0
 
     def update(self, timestamp: int, price: int) -> None:
-        
+        self.prices[timestamp] = price
+        heapq.heappush(self.min_heap, (price, timestamp))
+        heapq.heappush(self.max_heap, (-price, timestamp))
+        self.timestamp = max(self.timestamp, timestamp)
 
     def current(self) -> int:
-        
+        return self.prices[self.timestamp]
 
     def maximum(self) -> int:
-        
+        p, t = heapq.heappop(self.max_heap)
+        while self.prices[t] != -p:
+            p, t = heapq.heappop(self.max_heap)
+        heapq.heappush(self.max_heap, (p, t))
+        return -p
 
     def minimum(self) -> int:
-        
-
-
+        p, t = heapq.heappop(self.min_heap)
+        while self.prices[t] != p:
+            p, t = heapq.heappop(self.min_heap)
+        heapq.heappush(self.min_heap, (p, t))
+        return p
 # Your StockPrice object will be instantiated and called as such:
 # obj = StockPrice()
 # obj.update(timestamp,price)
