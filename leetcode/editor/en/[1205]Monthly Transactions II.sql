@@ -88,5 +88,15 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select date_format(trans_date, '%Y-%m') month, country, sum(state='approved') approved_count,  sum(if(state='approved',amount,0)) approved_amount, sum(state='chargeback') chargeback_count, sum(if(state="chargeback",amount,0)) chargeback_amount
+    from (
+        select * from transactions
+        union
+        select id, country, "chargeback" state, amount, c.trans_date
+        from chargebacks c
+        left join transactions t
+        on c.trans_id = t.id
+         ) a
+where state!="declined"
+group by date_format(trans_date, '%Y-%m'), country
 #leetcode submit region end(Prohibit modification and deletion)
