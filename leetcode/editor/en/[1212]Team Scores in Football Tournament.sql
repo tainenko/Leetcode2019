@@ -1,4 +1,5 @@
-#Table: Teams 
+#Table
+: Teams
 #
 # 
 #+---------------+----------+
@@ -88,10 +89,33 @@
 #+------------+--------------+---------------+
 # 
 #
-# Related Topics Database 👍 273 👎 23
+# Related Topics Database
+👍 273
+👎 23
 
 
-#leetcode submit region begin(Prohibit modification and deletion)
+#leetcode submit region
+begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
-#leetcode submit region end(Prohibit modification and deletion)
+select t.team_id, t.team_name, sum(ifnull(num_points, 0)) num_points
+from teams t
+         join (select t.team_id,
+                      case
+                          when m.host_goals > m.guest_goals then 3
+                          when m.host_goals = m.guest_goals then 1
+                          else 0 end num_points
+               from teams as t
+                        left join matches as m
+                                  on t.team_id = m.host_team
+               union all
+               select t.team_id,
+                      case
+                          when m.host_goals < m.guest_goals then 3
+                          when m.host_goals = m.guest_goals then 1
+                          else 0 end num_points
+               from teams as t
+                        join matches as m
+                             on t.team_id = m.guest_team) s on t.team_id = s.team_id
+group by team_id
+order by num_points desc, team_id #leetcode submit region
+end(Prohibit modification and deletion)
