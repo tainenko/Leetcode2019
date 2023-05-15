@@ -74,7 +74,7 @@
 # This is ArrayReader's API interface.
 # You should not implement it, or speculate about its implementation
 # """
-#class ArrayReader(object):
+# class ArrayReader(object):
 #	 # Compares the sum of arr[l..r] with the sum of arr[x..y]
 #	 # return 1 if sum(arr[l..r]) > sum(arr[x..y])
 #	 # return 0 if sum(arr[l..r]) == sum(arr[x..y])
@@ -88,5 +88,17 @@
 
 class Solution:
     def getIndex(self, reader: 'ArrayReader') -> int:
-        
+        n = reader.length()
+        l, r = 0, n - 1
+        while l < r:
+            mid = l + (r - l) // 2
+            if (r - l + 1) % 2 == 0:
+                compare = reader.compareSub(l, mid, mid + 1, r)
+            else:
+                compare = reader.compareSub(l, mid, mid, r)
+            if compare < 0:
+                l = mid + 1
+            else:
+                r = mid
+        return l
 # leetcode submit region end(Prohibit modification and deletion)
