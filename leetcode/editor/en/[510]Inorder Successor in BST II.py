@@ -62,7 +62,19 @@ class Node:
         self.parent = None
 """
 
+
 class Solution:
     def inorderSuccessor(self, node: 'Node') -> 'Optional[Node]':
-        
+        if not node:
+            return node
+
+        if node.right:
+            node = node.right
+            while node.left:
+                node = node.left
+            return node
+
+        while node.parent and node.parent.right == node:
+            node = node.parent
+        return node.parent
 # leetcode submit region end(Prohibit modification and deletion)
