@@ -60,5 +60,20 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def assignBikes(self, workers: List[List[int]], bikes: List[List[int]]) -> List[int]:
-        
+        distances = []
+        n = len(workers)
+        m = len(bikes)
+        for i in range(n):
+            for j in range(m):
+                distances.append((abs(workers[i][0] - bikes[j][0]) + abs(workers[i][1] - bikes[j][1]), i, j))
+        distances.sort()
+        res = [0] * n
+        used_worker = set()
+        used_bike = set()
+        for _, i, j in distances:
+            if i not in used_worker and j not in used_bike:
+                res[i] = j
+                used_worker.add(i)
+                used_bike.add(j)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
