@@ -65,5 +65,8 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select distinct u1.user_id
+    from users as u1
+    join users as u2 on u1.user_id=u2.user_id and u1.item!=u2.item and abs(datediff(u2.created_at,u1.created_at))<=7
+    order by u1.user_id
 #leetcode submit region end(Prohibit modification and deletion)
