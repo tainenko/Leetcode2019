@@ -1,5 +1,4 @@
-#Table
-: Customer
+#Table: Customer
 #
 # 
 #+---------------+---------+
@@ -71,21 +70,19 @@
 #+ 110 + 140 + 150 + 80 + 110 + 130 + 150)/7 = 142.86
 # 
 #
-# Related Topics Database
-👍 377
-👎 63
+# Related Topics Database 👍 377 👎 63
 
 
-#leetcode submit region
-begin(Prohibit modification and deletion)
+#leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-select visited_on, amount, round(average_amount, 2) average_amount
-from (select visited_on,
-             sum(amount) over (order by visited_on rows 6 preceding) amount, avg(amount) over (order by visited_on rows 6 preceding) average_amount
+select visited_on, amount, round(average_amount,2) average_amount
+from (
+select visited_on,
+             sum(amount) over (order by visited_on rows 6 preceding) amount,
+              avg(amount) over (order by visited_on rows 6 preceding) average_amount
       from (select visited_on, sum(amount) amount
             from customer
-            group by visited_on) t) c
-where DATEDIFF(visited_on, (SELECT min(visited_on) from Customer)) >= 6;
-#leetcode
-submit region
-end(Prohibit modification and deletion)
+            group by visited_on)t
+      ) c
+where DATEDIFF(visited_on,(SELECT min(visited_on) from Customer)) >= 6;
+#leetcode submit region end(Prohibit modification and deletion)
