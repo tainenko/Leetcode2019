@@ -49,5 +49,6 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def theMaximumAchievableX(self, num: int, t: int) -> int:
-        
+        return num + t * 2
+
 # leetcode submit region end(Prohibit modification and deletion)
