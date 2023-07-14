@@ -51,10 +51,16 @@
 #  
 # 
 #  Related Topics Array Math Number Theory 👍 127 👎 18
+import math
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countBeautifulPairs(self, nums: List[int]) -> int:
-        
+        res = 0
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if math.gcd(int(str(nums[i])[0]), nums[j] % 10) == 1:
+                    res += 1
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
