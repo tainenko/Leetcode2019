@@ -59,7 +59,16 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def maximumNumberOfStringPairs(self, words: List[str]) -> int:
-        
+        res = 0
+        cnt = defaultdict(int)
+        for word in words:
+            if word in cnt:
+                res += cnt[word]
+            cnt[word[::-1]] += 1
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
