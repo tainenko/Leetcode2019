@@ -62,5 +62,7 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select bike_number, max(end_time) as end_time
+from bikes
+group by bike_number
 #leetcode submit region end(Prohibit modification and deletion)
