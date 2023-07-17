@@ -47,5 +47,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isFascinating(self, n: int) -> bool:
-        
+        nums = str(n) + str(n * 2) + str(n * 3)
+        res = set()
+        for num in nums:
+            if num == "0":
+                return False
+            if num in res:
+                return False
+            res.add(num)
+        return True
+
 # leetcode submit region end(Prohibit modification and deletion)
