@@ -113,5 +113,15 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
+with cte as(
+    select customer.salesperson_id, sales.price
+    from customer
+    join sales on customer.customer_id = sales.customer_id
+)
 
+select salesperson.salesperson_id, salesperson.name, COALESCE(sum(cte.price),0) as total
+from salesperson
+left join cte on salesperson.salesperson_id=cte.salesperson_id
+group by salesperson.salesperson_id
+order by salesperson.salesperson_id
 #leetcode submit region end(Prohibit modification and deletion)
