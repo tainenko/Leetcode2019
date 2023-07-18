@@ -66,5 +66,15 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
+with cte as(
+    select date(day) day, max(amount) as amount
+    from transactions
+    group by date(day)
+)
+
+select transaction_id
+from transactions
+where (date(day), amount) in (select day,amount from cte)
+order by transaction_id
 
 #leetcode submit region end(Prohibit modification and deletion)
