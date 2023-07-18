@@ -61,5 +61,38 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def uniquePathsIII(self, grid: List[List[int]]) -> int:
-        
-# leetcode submit region end(Prohibit modification and deletion)
+        empty = 0
+        x, y = 0, 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == 1:
+                    x = i
+                    y = j
+                elif grid[i][j] == 0:
+                    empty += 1
+        return self.dfs(grid, len(grid), len(grid[0]), x, y, empty)
+
+    def dfs(self, grid, m, n, x, y, empty):
+        if x < 0 or x >= m or y < 0 or y >= n:
+            return 0
+        if grid[x][y] == -1:
+            return 0
+        if grid[x][y] == 2:
+            if empty == -1:
+                return 1
+            return 0
+        grid[x][y] = -1
+        empty -= 1
+        count = self.dfs(
+            grid, m, n, x + 1, y, empty
+        ) + self.dfs(
+            grid, m, n, x - 1, y, empty
+        ) + self.dfs(
+            grid, m, n, x,
+            y + 1, empty
+        ) + self.dfs(
+            grid, m, n, x, y - 1, empty
+        )
+        grid[x][y] = 0
+        return count
+    # leetcode submit region end(Prohibit modification and deletion)
