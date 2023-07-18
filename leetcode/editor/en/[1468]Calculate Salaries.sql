@@ -81,5 +81,18 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
+with cte as(
+    select company_id,
+    (case
+        when max(salary) < 1000 then 0
+        when max(salary) between 1000 and 10000 then 0.24
+        else 0.49
+    end) as tax
+    from salaries
+    group by company_id
+)
 
+select salaries.company_id, salaries.employee_id, salaries.employee_name, round(salaries.salary*(1-cte.tax),0) as salary
+from salaries
+join cte using(company_id)
 #leetcode submit region end(Prohibit modification and deletion)
