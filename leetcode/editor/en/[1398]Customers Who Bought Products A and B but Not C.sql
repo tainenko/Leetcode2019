@@ -79,5 +79,9 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select distinct customer_id, customer_name
+from Customers
+where customer_id in (select customer_id from Orders where product_name = 'A')
+and customer_id in (select customer_id from Orders where product_name = 'B')
+and customer_id not in (select customer_id from Orders where product_name = 'C')
 #leetcode submit region end(Prohibit modification and deletion)
