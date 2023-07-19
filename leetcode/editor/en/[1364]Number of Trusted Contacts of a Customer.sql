@@ -125,5 +125,16 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
+with cte as(
+    select customer_name, count(*) as trusted_contacts_cnt
+    from customers
+    where email in (select contact_email from contacts)
+)
+select invoices.invoice_id, customers.customer_name, invoices.price, count(distinct contacts.contact_email) as contacts_cnt, COALESCE(sum(contacts.contact_email in (select email from customers)),0) as trusted_contacts_cnt
+from invoices
+left join contacts on invoices.user_id=contacts.user_id
+left join customers on invoices.user_id=customers.customer_id
+group by invoices.invoice_id
+order by invoices.invoice_id
 
 #leetcode submit region end(Prohibit modification and deletion)
