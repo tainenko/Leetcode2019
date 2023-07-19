@@ -53,5 +53,13 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
+with recursive t as(
+    select 1 as ids
+    union all
+    select ids+1 from t where ids < (select max(customer_id) from customers)
+)
 
+select ids
+from t
+where ids not in (select customer_id from customers)
 #leetcode submit region end(Prohibit modification and deletion)
