@@ -61,5 +61,10 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
+select city_id, min(day) day, degree
+from weather
+where (city_id, degree) in (select city_id, max(degree) degree from weather group by city_id)
+group by city_id, degree
+order by city_id
 
 #leetcode submit region end(Prohibit modification and deletion)
