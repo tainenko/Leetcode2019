@@ -61,5 +61,9 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maximizeSum(self, nums: List[int], k: int) -> int:
-        
+        if k == 0:
+            return 0
+        res = max(nums)
+        return (res + res + k - 1) * k // 2
+
 # leetcode submit region end(Prohibit modification and deletion)
