@@ -64,5 +64,13 @@
 #         pass
 class Solution:
     def houseCount(self, street: Optional['Street'], k: int) -> int:
-        
+        for _ in range(k):
+            street.closeDoor()
+            street.moveRight()
+
+        for i in range(k + 1):
+            if street.isDoorOpen():
+                return i
+            street.openDoor()
+            street.moveRight()
 # leetcode submit region end(Prohibit modification and deletion)
