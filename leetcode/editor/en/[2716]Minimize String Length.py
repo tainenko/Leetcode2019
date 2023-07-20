@@ -68,5 +68,6 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimizedStringLength(self, s: str) -> int:
+        return len(set(s))
         
 # leetcode submit region end(Prohibit modification and deletion)
