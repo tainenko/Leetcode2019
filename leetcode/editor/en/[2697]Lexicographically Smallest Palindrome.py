@@ -58,5 +58,21 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def makeSmallestPalindrome(self, s: str) -> str:
-        
+        if len(s) % 2 == 0:
+            right = len(s) // 2
+            left = len(s) // 2 - 1
+        else:
+            mid = len(s) // 2
+            right = mid + 1
+            left = mid - 1
+        s = list(s)
+        for i in range(len(s) // 2):
+            if s[right] > s[left]:
+                s[right] = s[left]
+            else:
+                s[left] = s[right]
+            right += 1
+            left -= 1
+        return "".join(s)
+
 # leetcode submit region end(Prohibit modification and deletion)
