@@ -83,4 +83,14 @@
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
 
+select left_operand, operator, right_operand,
+       case
+           when operator='>' and v1.value>v2.value then 'true'
+           when operator='=' and v1.value=v2.value then 'true'
+           when operator='<' and v1.value<v2.value then 'true'
+           else 'false'
+       end as value
+from Expressions as e
+join variables as v1 on v1.name=left_operand
+join variables as v2 on v2.name=right_operand
 #leetcode submit region end(Prohibit modification and deletion)
