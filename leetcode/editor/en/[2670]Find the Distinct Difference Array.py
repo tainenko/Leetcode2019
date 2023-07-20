@@ -60,5 +60,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def distinctDifferenceArray(self, nums: List[int]) -> List[int]:
-        
+        n = len(nums)
+        distinct = set()
+        suffix = [0] * n
+        for i in range(n - 1, -1, -1):
+            suffix[i] = len(distinct)
+            distinct.add(nums[i])
+        distinct = set()
+        prefix = [0] * n
+        for i in range(n):
+            distinct.add(nums[i])
+            prefix[i] = len(distinct)
+        return [pre - su for pre, su in zip(prefix, suffix)]
 # leetcode submit region end(Prohibit modification and deletion)
