@@ -86,5 +86,12 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select order_id
+from ordersdetails
+group by order_id
+having max(quantity) > all(
+    select sum(quantity)/count(distinct product_id) as average
+    from ordersdetails
+    group by order_id
+)
 #leetcode submit region end(Prohibit modification and deletion)
