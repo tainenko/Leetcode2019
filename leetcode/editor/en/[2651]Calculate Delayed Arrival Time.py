@@ -40,5 +40,5 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findDelayedArrivalTime(self, arrivalTime: int, delayedTime: int) -> int:
-        
+        return (arrivalTime + delayedTime) % 24
 # leetcode submit region end(Prohibit modification and deletion)
