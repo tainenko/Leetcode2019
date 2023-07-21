@@ -116,5 +116,13 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select product_name, product_id,  order_id, order_date
+    from
+    (
+select p.product_id, p.product_name, o.order_id, o.order_date, rank() over (partition by p.product_id order by o.order_date desc) rk
+from products as p
+join orders as o using(product_id)
+    )t
+    where rk=1
+    order by product_name, product_id, order_id
 #leetcode submit region end(Prohibit modification and deletion)
