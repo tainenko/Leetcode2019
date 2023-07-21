@@ -131,5 +131,22 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
+select member_id, name,
+       case
+            when conversion_rate >= 80 then 'Diamond'
+            when conversion_rate<80 and conversion_rate>=50 then 'Gold'
+            when conversion_rate<50 then 'Silver'
+            else 'Bronze'
+        end as category
+from (
+    select
+    m.member_id,
+    m.name,
+    count(p.visit_id)/count(v.visit_id)*100 as conversion_rate
+from members as m
+left join visits as v using(member_id)
+left join purchases as p using(visit_id)
+group by m.member_id
+) t
 
 #leetcode submit region end(Prohibit modification and deletion)
