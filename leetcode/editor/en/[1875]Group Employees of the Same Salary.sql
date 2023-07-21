@@ -79,5 +79,14 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
+select employee_id, name, salary, dense_rank() over(order by salary) team_id
+from employees
+where salary in (
+    select salary
+    from employees
+    group by salary
+    having count(salary)>1
+    )
+order by team_id, employee_id
 
 #leetcode submit region end(Prohibit modification and deletion)
