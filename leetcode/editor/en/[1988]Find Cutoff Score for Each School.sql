@@ -104,5 +104,8 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select school_id, COALESCE(min(score),-1) score
+from schools
+left join exam on student_count <= capacity
+group by school_id
 #leetcode submit region end(Prohibit modification and deletion)
