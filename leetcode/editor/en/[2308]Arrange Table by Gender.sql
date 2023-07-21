@@ -69,5 +69,11 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select user_id, gender
+from
+    (
+      select user_id, gender, rank() over (partition by gender order by user_id) rk
+        from genders
+    )t
+order by rk, gender
 #leetcode submit region end(Prohibit modification and deletion)
