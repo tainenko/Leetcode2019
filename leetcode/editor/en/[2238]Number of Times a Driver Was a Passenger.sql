@@ -57,5 +57,9 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select r1.driver_id, count(r2.passenger_id) cnt
+from (select distinct driver_id from rides) as r1
+left join rides as r2
+on r1.driver_id = r2.passenger_id
+group by r1.driver_id
 #leetcode submit region end(Prohibit modification and deletion)
