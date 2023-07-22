@@ -114,5 +114,33 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
+with t0 as(
+    select contest_id, gold_medal user_id
+    from contests
+    union all
+    select contest_id, silver_medal user_id
+    from contests
+    union all
+    select contest_id, bronze_medal user_id
+    from contests
+)
+, t1 as(
+    select user_id, contest_id, row_number() over ( partition by user_id order by contest_id) as rn
+    from t0
+)
+, t2 as(
+    select user_id
+    from t1
+    group by user_id, contest_id-rn
+    having count(*)>=3
+    union all
+    select gold_medal as user_id
+    from contests
+    group by gold_medal
+    having count(*)>=3
+)
 
+select distinct name, mail
+from users
+join t2 using(user_id)
 #leetcode submit region end(Prohibit modification and deletion)
