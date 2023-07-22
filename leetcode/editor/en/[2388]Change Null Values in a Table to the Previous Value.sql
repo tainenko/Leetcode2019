@@ -64,5 +64,10 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
+with cte1 as (select id, drink, row_number() over () as rn from coffeeshop)
+     ,cte2 as (select id, drink,rn, sum(case when drink is null then 0 else 1 end) over (order by rn) as group_id from cte1)
 
+select id, FIRST_VALUE(drink)  over (partition by group_id order by rn) as drink
+from cte2
+order by rn
 #leetcode submit region end(Prohibit modification and deletion)
