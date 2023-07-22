@@ -93,5 +93,8 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select s.user_id, round(coalesce(sum(c.action='confirmed')/count(c.action), 0),2) confirmation_rate
+from signups as s
+left join confirmations as c using(user_id)
+group by s.user_id
 #leetcode submit region end(Prohibit modification and deletion)
