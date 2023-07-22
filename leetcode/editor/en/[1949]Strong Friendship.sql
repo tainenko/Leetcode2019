@@ -68,5 +68,21 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
+with cte as(
+    select user1_id, user2_id
+    from friendship
+    union
+    select user2_id user1_id, user1_id user2_id
+    from friendship
+)
 
+select f.user1_id, f.user2_id, count(b.user2_id) as common_friend
+from friendship as f
+join cte as a
+on f.user1_id=a.user1_id
+join cte as b
+on f.user2_id=b.user1_id
+and a.user2_id = b.user2_id
+group by f.user1_id, f.user2_id
+having count(b.user2_id)>=3
 #leetcode submit region end(Prohibit modification and deletion)
