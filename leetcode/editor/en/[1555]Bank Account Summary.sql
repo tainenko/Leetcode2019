@@ -97,5 +97,15 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+with t as(
+    select paid_by as user_id, -amount as amount
+    from transactions
+    union all
+    select paid_to as user_id, amount as amount
+    from transactions
+)
+select u.user_id, u.user_name, u.credit+COALESCE(sum(t.amount),0) as credit, case when u.credit+COALESCE(sum(t.amount),0)>=0 then 'No' else 'Yes' end credit_limit_breached
+from users as u
+LEFT join t using(user_id)
+group by user_id
 #leetcode submit region end(Prohibit modification and deletion)
