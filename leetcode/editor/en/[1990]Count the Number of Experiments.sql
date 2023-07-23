@@ -71,5 +71,24 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+with t as (
+    select platform, experiment_name from
+    (
+    select 'Android' as platform
+    union
+    select 'IOS'
+    union
+    select 'Web') e1
+    cross join (
+    select 'Reading' as experiment_name
+    union
+    select 'Sports'
+    union
+    select 'Programming') e2
+)
+select t.platform, t.experiment_name, sum(case when e.experiment_name is null then 0 else 1 end) as num_experiments
+from t
+left join experiments as e
+on e.platform=t.platform and e.experiment_name=t.experiment_name
+group by t.platform, t.experiment_name
 #leetcode submit region end(Prohibit modification and deletion)
