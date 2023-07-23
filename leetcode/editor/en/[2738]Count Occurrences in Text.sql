@@ -71,5 +71,11 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+select 'bull' as word, count(*) as count
+from files
+where content like '% bull %'
+union all
+select 'bear' as word, count(*) as count
+from files
+where content like '% bear %'
 #leetcode submit region end(Prohibit modification and deletion)
