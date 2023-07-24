@@ -57,5 +57,14 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
+with cte as (
+    select product_id, year(purchase_date) purchase_date
+    from orders
+    group by product_id, year(purchase_date)
+    having count(*)>=3
+)
+select distinct product_id
+from cte
+where (product_id, purchase_date+1 ) in (select product_id, purchase_date from cte)
 
 #leetcode submit region end(Prohibit modification and deletion)
