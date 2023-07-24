@@ -101,5 +101,17 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
+with cte as(
+    select tx.account_id, date_format(tx.day, "%Y%m") date
+    from transactions as tx
+    join accounts as a using(account_id)
+    where type='Creditor'
+    group by account_id, date_format(tx.day,"%Y%m")
+    having sum(tx.amount)>avg(a.max_income)
+)
+
+select distinct account_id
+from cte
+where (account_id, period_add(date,1)) in (select account_id, date from cte)
 
 #leetcode submit region end(Prohibit modification and deletion)
