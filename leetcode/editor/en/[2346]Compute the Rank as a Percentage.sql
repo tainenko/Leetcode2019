@@ -67,5 +67,17 @@
 
 #leetcode submit region begin(Prohibit modification and deletion)
 # Write your MySQL query statement below
-
+with cte as(
+    select student_id, department_id, rank() over (partition by department_id order by mark desc) rk
+    from students
+    )
+    , cte2 as (
+    select count(*) cnt, department_id
+    from students
+    group by department_id
+    )
+select s.student_id, s.department_id, COALESCE(round((c1.rk-1)*100/(c2.cnt -1),2),0) percentage
+from students as s
+join cte c1 on s.student_id=c1.student_id and s.department_id=c1.department_id
+join cte2 c2 on s.department_id=c2.department_id
 #leetcode submit region end(Prohibit modification and deletion)
