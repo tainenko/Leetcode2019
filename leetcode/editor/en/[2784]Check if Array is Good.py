@@ -64,7 +64,12 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def isGood(self, nums: List[int]) -> bool:
-        
+        base = len(nums) - 1
+        cnt = Counter(nums)
+        return len(cnt) == base and cnt[base] == 2 and all(cnt[i] == 1 for i in range(1, base))
 # leetcode submit region end(Prohibit modification and deletion)
