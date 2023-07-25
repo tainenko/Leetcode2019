@@ -71,11 +71,11 @@ from collections import Counter
 class Solution:
     def circularGameLosers(self, n: int, k: int) -> List[int]:
         cnt = Counter()
-        i = 0
+        i = 1
         idx = 0
-        while cnt[idx] != 2:
-            idx = (idx + i * k) % n
+        while cnt[idx] != 1:
             cnt[idx] += 1
+            idx = (idx + i * k) % n
             i += 1
         return [i + 1 for i in range(n) if i not in cnt]
 
