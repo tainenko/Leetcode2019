@@ -66,5 +66,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def splitWordsBySeparator(self, words: List[str], separator: str) -> List[str]:
-        
+        res = []
+        for word in words:
+            for w in word.split(separator):
+                if not w:
+                    continue
+                res.append(w)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
