@@ -64,10 +64,19 @@
 #  
 # 
 #  Related Topics Array Hash Table Simulation 👍 192 👎 33
+from collections import Counter
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def circularGameLosers(self, n: int, k: int) -> List[int]:
-        
+        cnt = Counter()
+        i = 0
+        idx = 0
+        while cnt[idx] != 2:
+            idx = (idx + i * k) % n
+            cnt[idx] += 1
+            i += 1
+        return [i + 1 for i in range(n) if i not in cnt]
+
 # leetcode submit region end(Prohibit modification and deletion)
