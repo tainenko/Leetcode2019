@@ -65,5 +65,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def semiOrderedPermutation(self, nums: List[int]) -> int:
-        
+        i = 0
+        j = len(nums)
+        n = len(nums)
+        for idx, val in enumerate(nums):
+            if val == 1:
+                i = idx
+            elif val == n:
+                j = idx
+        carry = -1 if i > j else 0
+        return i - 0 + (n - 1) - j + carry
 # leetcode submit region end(Prohibit modification and deletion)
