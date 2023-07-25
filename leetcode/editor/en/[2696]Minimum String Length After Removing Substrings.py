@@ -45,5 +45,10 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minLength(self, s: str) -> int:
-        
+        while True:
+            prev = s
+            s = s.replace("AB", "")
+            s = s.replace("CD", "")
+            if prev == s:
+                return len(s)
 # leetcode submit region end(Prohibit modification and deletion)
