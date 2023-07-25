@@ -73,5 +73,25 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isWinner(self, player1: List[int], player2: List[int]) -> int:
-        
+        score1 = self.get_score(player1)
+        score2 = self.get_score(player2)
+        if score1 > score2:
+            return 1
+        elif score1 == score2:
+            return 0
+        else:
+            return 2
+
+    def get_score(self, scores: List[int]) -> int:
+        total = 0
+        times = 0
+        for score in scores:
+            if times:
+                times -= 1
+                total += 2 * score
+            else:
+                total += score
+            if score == 10:
+                times = 2
+        return total
 # leetcode submit region end(Prohibit modification and deletion)
