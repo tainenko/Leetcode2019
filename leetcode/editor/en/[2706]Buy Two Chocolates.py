@@ -44,5 +44,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def buyChoco(self, prices: List[int], money: int) -> int:
-        
+        if len(prices) < 2:
+            return money
+        prices.sort()
+        total = prices[0] + prices[1]
+        if total > money:
+            return money
+        return money - total
 # leetcode submit region end(Prohibit modification and deletion)
