@@ -61,5 +61,14 @@
 #         pass
 class Solution:
     def numberOfCategories(self, n: int, categoryHandler: Optional['CategoryHandler']) -> int:
-        
+        def find(x):
+            if p[x]!=x:
+                p[x]=find(p[x])
+            return p[x]
+        p = list(range(n))
+        for i in range(n):
+            for j in range(i+1,n):
+                if categoryHandler.haveSameCategory(i, j):
+                    p[find(i)]=find(j)
+        return sum([1 for i,v in enumerate(p) if i==v])
 # leetcode submit region end(Prohibit modification and deletion)
