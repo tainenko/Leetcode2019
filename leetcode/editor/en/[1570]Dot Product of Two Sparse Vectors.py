@@ -55,10 +55,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class SparseVector:
     def __init__(self, nums: List[int]):
-        
+        self.nums = nums
 
     # Return the dotProduct of two sparse vectors
     def dotProduct(self, vec: 'SparseVector') -> int:
+        result = 0
+        for num1, num2 in zip(self.nums, vec.nums):
+            if num1 and num2:
+                result+=num1*num2
+        return result
         
 
 # Your SparseVector object will be instantiated and called as such:
