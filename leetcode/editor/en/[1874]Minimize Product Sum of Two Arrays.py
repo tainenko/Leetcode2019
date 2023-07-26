@@ -43,5 +43,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minProductSum(self, nums1: List[int], nums2: List[int]) -> int:
-        
+        result = 0
+        nums1 = sorted(nums1)
+        nums2 = sorted(nums2, reverse=True)
+        for num1, num2 in zip(nums1, nums2):
+            result += num1 * num2
+        return result
+
 # leetcode submit region end(Prohibit modification and deletion)
