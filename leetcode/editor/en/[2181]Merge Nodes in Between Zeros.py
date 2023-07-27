@@ -53,5 +53,14 @@
 #         self.next = next
 class Solution:
     def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        
+        node = head
+        while node and node.next:
+            if node.next.val:
+                node.val += node.next.val
+                node.next = node.next.next
+            else:
+                if node.next.next is None:
+                    node.next = node.next.next
+                node = node.next
+        return head
 # leetcode submit region end(Prohibit modification and deletion)
