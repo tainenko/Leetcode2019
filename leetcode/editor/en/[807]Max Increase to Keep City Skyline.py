@@ -56,5 +56,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxIncreaseKeepingSkyline(self, grid: List[List[int]]) -> int:
-        
+        rmax = [ max(row) for row in grid]
+        cmax = [max(col) for col in zip(*grid)]
+        return sum(
+            min(rmax[i],cmax[j])-grid[i][j]
+            for i in range(len(grid))
+            for j in range(len(grid[0]))
+        )
 # leetcode submit region end(Prohibit modification and deletion)
