@@ -43,5 +43,23 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isStrictlyPalindromic(self, n: int) -> bool:
-        
+        return all(self.is_palindromic(self.int2base(n, base)) for base in range(2, n - 1))
+
+    def int2base(self, n: int, base: int) -> List[int]:
+        res = list()
+        while n:
+            res.append(n % base)
+            n //= base
+        return res
+
+    def is_palindromic(self, s: List[int]):
+        i = 0
+        j = len(s) - 1
+        while i <= j:
+            if s[i] != s[j]:
+                return False
+            i += 1
+            j -= 1
+        return True
+
 # leetcode submit region end(Prohibit modification and deletion)
