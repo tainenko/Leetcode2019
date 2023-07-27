@@ -37,5 +37,16 @@
 #         self.right = right
 class Solution:
     def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
-        
+        nodes = [root]
+        while True:
+            nexts = []
+            for node in nodes:
+                if node.left:
+                    nexts.append(node.left)
+                if node.right:
+                    nexts.append(node.right)
+            if not nexts:
+                return sum(node.val for node in nodes)
+            nodes = nexts
+
 # leetcode submit region end(Prohibit modification and deletion)
