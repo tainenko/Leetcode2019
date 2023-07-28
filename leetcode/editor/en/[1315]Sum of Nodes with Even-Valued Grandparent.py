@@ -42,5 +42,26 @@
 #         self.right = right
 class Solution:
     def sumEvenGrandparent(self, root: TreeNode) -> int:
-        
+        total = 0
+
+        def dfs(root):
+            if not root:
+                return None
+            if root.val % 2 == 0:
+                nodes = [root]
+                for _ in range(2):
+                    q = []
+                    for node in nodes:
+                        if node.left:
+                            q.append(node.left)
+                        if node.right:
+                            q.append(node.right)
+                    nodes = q
+                nonlocal total
+                total += sum(node.val for node in nodes)
+            dfs(root.right)
+            dfs(root.left)
+
+        dfs(root)
+        return total
 # leetcode submit region end(Prohibit modification and deletion)
