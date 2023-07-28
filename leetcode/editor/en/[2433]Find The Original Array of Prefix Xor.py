@@ -45,5 +45,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findArray(self, pref: List[int]) -> List[int]:
-        
+        res = pref[:]
+        for i in range(1, len(res)):
+            res[i] ^= pref[i - 1]
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
