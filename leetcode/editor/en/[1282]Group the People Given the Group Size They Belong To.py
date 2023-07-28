@@ -44,10 +44,17 @@
 #  
 # 
 #  Related Topics Array Hash Table 👍 1611 👎 539
-
-
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import defaultdict
+
+
 class Solution:
     def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
-        
+        res = []
+        cnt = defaultdict(list)
+        for i, v in enumerate(groupSizes):
+            cnt[v].append(i)
+        for size, people in cnt.items():
+            res+=list(people[i:i+size] for i in range(0,len(people),size))
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
