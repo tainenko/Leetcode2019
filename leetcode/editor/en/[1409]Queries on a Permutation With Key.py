@@ -58,5 +58,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def processQueries(self, queries: List[int], m: int) -> List[int]:
-        
+        permutation = list(range(1, m + 1))
+        res = []
+        for query in queries:
+            i = permutation.index(query)
+            res.append(i)
+            permutation.pop(i)
+            permutation.insert(0, query)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
