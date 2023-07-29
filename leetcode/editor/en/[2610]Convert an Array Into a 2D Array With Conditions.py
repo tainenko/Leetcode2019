@@ -44,10 +44,19 @@
 #  
 # 
 #  Related Topics Array Hash Table 👍 375 👎 9
+from collections import Counter
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+
 class Solution:
     def findMatrix(self, nums: List[int]) -> List[List[int]]:
-        
+        cnt = Counter(nums)
+        most = max(cnt.values())
+        res = [[] for _ in range(most)]
+        for k, v in cnt.items():
+            for i in range(v):
+                res[i].append(k)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
