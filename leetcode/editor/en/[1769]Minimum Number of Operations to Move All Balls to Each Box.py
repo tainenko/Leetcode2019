@@ -47,5 +47,9 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minOperations(self, boxes: str) -> List[int]:
-        
+        res = [0] * len(boxes)
+        for i in range(len(boxes)):
+            res[i] = sum([abs(i - idx) for idx, v in enumerate(boxes) if v == '1'])
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
