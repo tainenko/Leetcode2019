@@ -54,5 +54,21 @@
 #         self.right = right
 class Solution:
     def averageOfSubtree(self, root: Optional[TreeNode]) -> int:
-        
+        total = 0
+
+        def dfs(root):
+            if not root:
+                return 0, 0
+            nonlocal total
+            left_val, left_cnt = dfs(root.left)
+            right_val, right_cnt = dfs(root.right)
+
+            total_val = root.val + left_val + right_val
+            total_cnt = 1 + left_cnt + right_cnt
+            if root.val == total_val // total_cnt:
+                total += 1
+            return total_val, total_cnt
+
+        dfs(root)
+        return total
 # leetcode submit region end(Prohibit modification and deletion)
