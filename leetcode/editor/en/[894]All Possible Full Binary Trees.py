@@ -32,6 +32,7 @@
 # 
 #  Related Topics Dynamic Programming Tree Recursion Memoization Binary Tree 👍 
 # 4671 👎 312
+from functools import cache
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
@@ -43,5 +44,17 @@
 #         self.right = right
 class Solution:
     def allPossibleFBT(self, n: int) -> List[Optional[TreeNode]]:
-        
+        @cache
+        def dfs(n) -> List[Optional[TreeNode]]:
+            if n == 1:
+                return [TreeNode()]
+            res = []
+            for i in range(n - 1):
+                j = n - 1 - i
+                for left in dfs(i):
+                    for right in dfs(j):
+                        res.append(TreeNode(0, left, right))
+            return res
+
+        return dfs(n)
 # leetcode submit region end(Prohibit modification and deletion)
