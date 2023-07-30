@@ -39,5 +39,22 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
-        
+        visited = set()
+        res = []
+        def dfs(path, curr):
+            if curr==len(graph)-1:
+                res.append(path.copy())
+                return
+            for node in graph[curr]:
+                if node not in visited:
+                    visited.add(node)
+                    path.append(node)
+                    dfs(path,node)
+                    visited.remove(node)
+                    path.pop()
+            return
+        path = [0]
+        dfs(path, 0)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
