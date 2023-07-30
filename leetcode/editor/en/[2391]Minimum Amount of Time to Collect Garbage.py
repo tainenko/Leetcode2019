@@ -69,7 +69,18 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from itertools import accumulate
+
+
 class Solution:
     def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
-        
+        dest = dict()
+        res = 0
+        for i, s in enumerate(garbage):
+            res += len(s)
+            for c in s:
+                dest[c] = i
+        s=list(accumulate(travel,initial=0))
+        res+=sum(s[i] for i in dest.values())
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
