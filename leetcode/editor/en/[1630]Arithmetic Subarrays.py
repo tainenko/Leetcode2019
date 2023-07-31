@@ -64,5 +64,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def checkArithmeticSubarrays(self, nums: List[int], l: List[int], r: List[int]) -> List[bool]:
-        
+        res = [False] * len(l)
+        for idx, (i, j) in enumerate(zip(l, r)):
+            tmp = nums[i:j + 1]
+            tmp.sort()
+            if len(tmp) == 1:
+                res[idx] = True
+                continue
+            diff = tmp[1] - tmp[0]
+            res[idx] = all(tmp[k] + diff == tmp[k + 1] for k in range(len(tmp) - 1))
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
