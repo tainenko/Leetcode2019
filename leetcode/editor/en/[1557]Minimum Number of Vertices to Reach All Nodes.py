@@ -48,5 +48,10 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
-        
+        starts = set()
+        ends = set()
+        for start, end in edges:
+            ends.add(end)
+            starts.add(start)
+        return list(starts.difference(ends))
 # leetcode submit region end(Prohibit modification and deletion)
