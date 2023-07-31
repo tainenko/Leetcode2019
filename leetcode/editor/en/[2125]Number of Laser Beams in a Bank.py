@@ -64,5 +64,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numberOfBeams(self, bank: List[str]) -> int:
-        
+        devices = [row.count("1") for row in bank if row.count("1") > 0]
+        if len(devices) <= 0:
+            return 0
+        res = 0
+        for i in range(len(devices) - 1):
+            res += devices[i] * devices[i + 1]
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
