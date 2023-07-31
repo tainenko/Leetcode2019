@@ -48,5 +48,12 @@
 #         self.right = right
 class Solution:
     def bstFromPreorder(self, preorder: List[int]) -> Optional[TreeNode]:
-        
+        if not preorder:
+            return None
+        root = TreeNode(preorder[0])
+        left = self.bstFromPreorder([num for num in preorder[1:] if num < preorder[0]])
+        right = self.bstFromPreorder([num for num in preorder[1:] if num > preorder[0]])
+        root.left = left
+        root.right = right
+        return root
 # leetcode submit region end(Prohibit modification and deletion)
