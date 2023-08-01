@@ -39,10 +39,12 @@
 #  
 # 
 #  Related Topics Array Math Bit Manipulation 👍 526 👎 149
+from _operator import or_
+from functools import reduce
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maximumXOR(self, nums: List[int]) -> int:
-        
+        return reduce(or_, nums)
 # leetcode submit region end(Prohibit modification and deletion)
