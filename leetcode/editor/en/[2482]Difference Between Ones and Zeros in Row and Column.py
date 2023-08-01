@@ -77,5 +77,19 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def onesMinusZeros(self, grid: List[List[int]]) -> List[List[int]]:
-        
+        m = len(grid)
+        n = len(grid[0])
+        row = [0] * m
+        col = [0] * n
+        for i in range(m):
+            for j in range(n):
+                row[i] += grid[i][j]
+                col[j] += grid[i][j]
+        diff = [[0] * n for _ in range(m)]
+        for i in range(m):
+            for j in range(n):
+                r = row[i]
+                c = col[j]
+                diff[i][j] = r + c - (m - r) - (n - c)
+        return diff
 # leetcode submit region end(Prohibit modification and deletion)
