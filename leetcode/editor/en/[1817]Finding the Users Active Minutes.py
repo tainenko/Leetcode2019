@@ -54,10 +54,19 @@
 #  
 # 
 #  Related Topics Array Hash Table 👍 731 👎 277
+from collections import defaultdict
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findingUsersActiveMinutes(self, logs: List[List[int]], k: int) -> List[int]:
-        
+        ans = [0] * k
+        cnt = defaultdict(set)
+        for user, min in logs:
+            cnt[user].add(min)
+
+        for times in cnt.values():
+            ans[len(times) - 1] += 1
+
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
