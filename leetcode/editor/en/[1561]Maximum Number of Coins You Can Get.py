@@ -59,5 +59,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxCoins(self, piles: List[int]) -> int:
-        
+        piles.sort(reverse=True)
+        res = 0
+        i = 1
+        j = len(piles) - 1
+        while i < j:
+            res += piles[i]
+            i += 2
+            j -= 1
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
