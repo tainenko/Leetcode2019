@@ -77,5 +77,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def wateringPlants(self, plants: List[int], capacity: int) -> int:
-        
+        curr = capacity
+        res = 0
+        for i, v in enumerate(plants):
+            res += 1
+            curr -= v
+            if i < len(plants) - 1 and curr < plants[i + 1]:
+                curr = capacity
+                res += 2 * (i + 1)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
