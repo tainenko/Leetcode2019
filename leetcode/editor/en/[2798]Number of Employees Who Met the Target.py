@@ -47,5 +47,5 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numberOfEmployeesWhoMetTarget(self, hours: List[int], target: int) -> int:
-        
+        return sum([hour >= target for hour in hours])
 # leetcode submit region end(Prohibit modification and deletion)
