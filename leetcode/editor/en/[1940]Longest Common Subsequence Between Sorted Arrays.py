@@ -51,5 +51,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def longestCommonSubsequence(self, arrays: List[List[int]]) -> List[int]:
-        
+        res = set(arrays[0])
+        for arr in arrays[1:]:
+            res.intersection_update(set(arr))
+        return sorted(list(res))
 # leetcode submit region end(Prohibit modification and deletion)
