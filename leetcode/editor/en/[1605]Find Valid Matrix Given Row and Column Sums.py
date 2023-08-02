@@ -50,5 +50,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def restoreMatrix(self, rowSum: List[int], colSum: List[int]) -> List[List[int]]:
-        
+        m = len(rowSum)
+        n = len(colSum)
+        grid = [[0] * n for _ in range(m)]
+        for i in range(m):
+            for j in range(n):
+                grid[i][j] = min(rowSum[i], colSum[j])
+                rowSum[i] -= grid[i][j]
+                colSum[j] -= grid[i][j]
+        return grid
+
 # leetcode submit region end(Prohibit modification and deletion)
