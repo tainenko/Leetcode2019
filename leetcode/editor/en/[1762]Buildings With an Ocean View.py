@@ -48,5 +48,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findBuildings(self, heights: List[int]) -> List[int]:
-        
+        obs = []
+        res = []
+        for i in range(len(heights) - 1, -1, -1):
+            if not obs or heights[i] > obs[-1]:
+                res.append(i)
+                obs.append(heights[i])
+        return res[::-1]
 # leetcode submit region end(Prohibit modification and deletion)
