@@ -43,10 +43,17 @@
 #  
 # 
 #  Related Topics Hash Table String Counting 👍 1877 👎 80
+from collections import Counter
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minSteps(self, s: str, t: str) -> int:
-        
+        cnt1 = Counter(s)
+        cnt2 = Counter(t)
+        res = 0
+        for k, v in cnt1.items():
+            res += v - min(v, cnt2.get(k, 0))
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
