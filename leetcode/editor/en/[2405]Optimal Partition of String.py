@@ -41,5 +41,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def partitionString(self, s: str) -> int:
-        
+        chars = set()
+        res = 0
+        for c in s:
+            if c in chars:
+                res += 1
+                chars = {c}
+            else:
+                chars.add(c)
+        return res + 1
 # leetcode submit region end(Prohibit modification and deletion)
