@@ -69,5 +69,20 @@
 #         self.right = right
 class Solution:
     def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        
+        q = [root]
+        level = 0
+        while q:
+            if level % 2 == 1:
+                for i in range(len(q) // 2):
+                    q[i].val, q[-i - 1].val = q[-i - 1].val, q[i].val
+            next_ = []
+            for node in q:
+                if node.left:
+                    next_.append(node.left)
+                if node.right:
+                    next_.append(node.right)
+            q = next_
+            level += 1
+        return root
+
 # leetcode submit region end(Prohibit modification and deletion)
