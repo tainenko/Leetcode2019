@@ -67,7 +67,16 @@ class Node:
         self.parent = None
 """
 
+
 class Solution:
     def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
-        
+        parents = set([p])
+        while p.parent:
+            parents.add(p.parent)
+            p = p.parent
+
+        while q not in parents:
+            q = q.parent
+
+        return q
 # leetcode submit region end(Prohibit modification and deletion)
