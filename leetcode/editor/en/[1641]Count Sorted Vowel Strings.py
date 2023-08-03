@@ -45,5 +45,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countVowelStrings(self, n: int) -> int:
-        
+        res = [1] * 5
+        for _ in range(n - 1):
+            total = 0
+            for j in range(5):
+                total += res[j]
+                res[j] = total
+        return sum(res)
 # leetcode submit region end(Prohibit modification and deletion)
