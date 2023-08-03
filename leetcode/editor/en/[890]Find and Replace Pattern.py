@@ -44,5 +44,20 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findAndReplacePattern(self, words: List[str], pattern: str) -> List[str]:
-        
+        res = []
+        for word in words:
+            m1 = dict()
+            m2 = dict()
+            for c1, c2 in zip(pattern, word):
+                if c1 not in m1 and c2 not in m2:
+                    m1[c1] = c2
+                    m2[c2] = c1
+                    continue
+                if m1.get(c1) == c2 and m2.get(c2) == c1:
+                    continue
+                break
+            else:
+                res.append(word)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
