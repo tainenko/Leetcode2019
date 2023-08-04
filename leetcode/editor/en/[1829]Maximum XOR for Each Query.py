@@ -54,10 +54,18 @@
 #  
 # 
 #  Related Topics Array Bit Manipulation Prefix Sum 👍 693 👎 51
+from _operator import xor
+from functools import reduce
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def getMaximumXor(self, nums: List[int], maximumBit: int) -> List[int]:
-        
+        k = 2 ** maximumBit - 1
+        prefix_sum = reduce(xor, nums)
+        res = [0] * len(nums)
+        for i in range(len(res)):
+            res[i] = k ^ prefix_sum
+            prefix_sum ^= nums[-i - 1]
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
