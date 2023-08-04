@@ -53,10 +53,26 @@
 #  
 # 
 #  Related Topics Array Backtracking Bit Manipulation 👍 530 👎 18
+from _operator import or_
+from functools import reduce
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countMaxOrSubsets(self, nums: List[int]) -> int:
-        
+        ors = reduce(or_, nums)
+        res = 0
+
+        def dfs(i, num):
+            if i == len(nums):
+                nonlocal res
+                if num == ors:
+                    res += 1
+                return
+            dfs(i + 1, num)
+            dfs(i + 1, num | nums[i])
+
+        dfs(0, 0)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
