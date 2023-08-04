@@ -53,5 +53,10 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findContestMatch(self, n: int) -> str:
-        
+        if n == 2:
+            return "(1,2)"
+        match = tuple((i + 1, n - i) for i in range(n // 2))
+        while len(match) > 2:
+            match = tuple((match[i], match[-i - 1]) for i in range((len(match)) // 2))
+        return str(match).replace(" ", "")
 # leetcode submit region end(Prohibit modification and deletion)
