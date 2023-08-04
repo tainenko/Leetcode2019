@@ -36,10 +36,25 @@
 #  
 # 
 #  Related Topics Hash Table String Backtracking Counting 👍 2317 👎 64
+from collections import Counter
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+
 class Solution:
     def numTilePossibilities(self, tiles: str) -> int:
-        
+        cnt = Counter(tiles)
+
+        def dfs(count: Dict[int, int]) -> int:
+            res = 0
+            for k, v in count.items():
+                if v == 0:
+                    continue
+                count[k] -= 1
+                res += 1 + dfs(count)
+                count[k] += 1
+            return res
+
+        return dfs(cnt)
+
 # leetcode submit region end(Prohibit modification and deletion)
