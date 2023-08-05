@@ -76,5 +76,18 @@
 #         self.right = right
 class Solution:
     def heightOfTree(self, root: Optional[TreeNode]) -> int:
-        
+        res = 0
+
+        def dfs(root, depth):
+            if not root:
+                return
+            nonlocal res
+            res = max(res, depth)
+            if root.left and root.left.right != root:
+                dfs(root.left, depth + 1)
+            if root.right and root.right.left != root:
+                dfs(root.right, depth + 1)
+
+        dfs(root, 0)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
