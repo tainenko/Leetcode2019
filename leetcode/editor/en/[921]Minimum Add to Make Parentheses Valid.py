@@ -46,5 +46,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minAddToMakeValid(self, s: str) -> int:
-        
+        total = 0
+        res = 0
+        for c in s:
+            if c == "(":
+                total += 1
+            else:
+                total -= 1
+            if total < 0:
+                total += 1
+                res += 1
+        return res + abs(total)
+
 # leetcode submit region end(Prohibit modification and deletion)
