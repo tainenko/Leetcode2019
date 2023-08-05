@@ -56,5 +56,16 @@
 #         self.next = next
 class Solution:
     def insertGreatestCommonDivisors(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        
+        curr = head
+        while curr and curr.next:
+            bcd = self.bcd(curr.val, curr.next.val)
+            new = ListNode(val=bcd, next=curr.next)
+            curr.next = new
+            curr = curr.next.next
+        return head
+
+    def bcd(self, a, b):
+        if a % b == 0:
+            return b
+        return self.bcd(b, a % b)
 # leetcode submit region end(Prohibit modification and deletion)
