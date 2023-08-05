@@ -55,7 +55,7 @@ class Solution:
 
             high = max(root.val, high)
             low = min(root.val, low)
-            
+
             res = max(abs(high - root.val), abs(low - root.val), res)
             dfs(root.left, high, low)
             dfs(root.right, high, low)
