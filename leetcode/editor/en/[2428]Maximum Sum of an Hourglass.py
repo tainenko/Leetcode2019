@@ -42,5 +42,22 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxSum(self, grid: List[List[int]]) -> int:
-        
+        m = len(grid)
+        n = len(grid[0])
+
+        for i in range(m):
+            for j in range(1, n):
+                grid[i][j] += grid[i][j - 1]
+        for i in range(m):
+            grid[i] = [0] + grid[i]
+        res = 0
+        for i in range(m - 2):
+            for j in range(1, n - 1):
+                res = max(
+                    res,
+                    grid[i][j + 2] - grid[i][j - 1] +
+                    grid[i + 1][j + 1] - grid[i + 1][j] +
+                    grid[i + 2][j + 2] - grid[i + 2][j - 1]
+                )
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
