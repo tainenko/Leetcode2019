@@ -30,10 +30,28 @@
 #  
 # 
 #  Related Topics Hash Table String Sliding Window 👍 525 👎 11
+from collections import Counter
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numKLenSubstrNoRepeats(self, s: str, k: int) -> int:
-        
+        cnt = Counter()
+        unique = 0
+        res = 0
+        for i, c in enumerate(s):
+            cnt[c] += 1
+            if cnt[c] == 1:
+                unique += 1
+
+            if i >= k:
+                cnt[s[i - k]] -= 1
+                if cnt[s[i - k]] == 0:
+                    unique -= 1
+
+            if unique == k:
+                res += 1
+
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
