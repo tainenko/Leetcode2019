@@ -57,5 +57,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def finalString(self, s: str) -> str:
-        
+        res = ""
+        for c in s:
+            if c == "i":
+                res = res[::-1]
+            else:
+                res += c
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
