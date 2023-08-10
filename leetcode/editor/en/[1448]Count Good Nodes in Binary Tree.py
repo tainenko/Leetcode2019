@@ -54,5 +54,19 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-        
+        total = 0
+
+        def dfs(root, highest):
+            if not root:
+                return
+            if root.val >= highest:
+                nonlocal total
+                total += 1
+            highest = max(root.val, highest)
+            dfs(root.left, highest)
+            dfs(root.right, highest)
+
+        dfs(root, float('-inf'))
+        return total
+
 # leetcode submit region end(Prohibit modification and deletion)
