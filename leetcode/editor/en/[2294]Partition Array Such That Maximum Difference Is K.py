@@ -71,5 +71,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def partitionArray(self, nums: List[int], k: int) -> int:
-        
+        nums.sort()
+        curr = nums[0]
+        res = 0
+        for num in nums:
+            if num - curr <= k:
+                continue
+            res += 1
+            curr = num
+        return res + 1
+
 # leetcode submit region end(Prohibit modification and deletion)
