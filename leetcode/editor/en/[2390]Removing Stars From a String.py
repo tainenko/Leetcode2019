@@ -55,6 +55,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def removeStars(self, s: str) -> str:
-        
-        
+        res = ""
+        cnt = 0
+        for c in s[::-1]:
+            if c == "*":
+                cnt += 1
+                continue
+            elif cnt > 0:
+                cnt -= 1
+                continue
+            res += c
+        return res[::-1]
+
 # leetcode submit region end(Prohibit modification and deletion)
