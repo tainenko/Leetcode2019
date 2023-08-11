@@ -56,5 +56,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numOfPairs(self, nums: List[str], target: str) -> int:
-        
+        cnt = Counter(nums)
+        res = 0
+        for i in range(len(target)):
+            prefix, suffix = target[:i], target[i:]
+            if prefix != suffix:
+                res += cnt[prefix] * cnt[suffix]
+            else:
+                res += cnt[prefix] * (cnt[prefix] - 1)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
