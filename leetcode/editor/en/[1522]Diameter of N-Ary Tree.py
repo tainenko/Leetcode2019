@@ -56,10 +56,30 @@ class Node:
         self.children = children if children is not None else []
 """
 
+
 class Solution:
+
     def diameter(self, root: 'Node') -> int:
         """
         :type root: 'Node'
         :rtype: int
         """
+
+        def dfs(root):
+            if not root:
+                return 0
+            m1, m2 = 0, 0
+            for child in root.children:
+                t = dfs(child)
+                if t > m1:
+                    m2, m1 = m1, t
+                elif t > m2:
+                    m2 = t
+            nonlocal res
+            res = max(res, m1 + m2)
+            return 1 + m1
+
+        res = 0
+        dfs(root)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
