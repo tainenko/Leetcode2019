@@ -57,5 +57,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minFlips(self, target: str) -> int:
-        
+        curr = "0"
+        res = 0
+        for letter in target:
+            if curr == letter:
+                continue
+            res += 1
+            curr = letter
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
