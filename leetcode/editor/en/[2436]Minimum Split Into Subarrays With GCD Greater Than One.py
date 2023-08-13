@@ -56,13 +56,13 @@ from fractions import gcd
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimumSplits(self, nums: List[int]) -> int:
-        res=1
-        g=0
+        res = 1
+        g = 0
         for num in nums:
-            g=gcd(g,num)
-            if g==1:
-                res+=1
-                g=num
+            g = gcd(g, num)
+            if g == 1:
+                res += 1
+                g = num
         return res
 
 # leetcode submit region end(Prohibit modification and deletion)
