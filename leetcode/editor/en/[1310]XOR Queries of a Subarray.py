@@ -43,10 +43,13 @@
 #  
 # 
 #  Related Topics Array Bit Manipulation Prefix Sum 👍 1379 👎 37
+from _operator import xor
+from itertools import accumulate
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def xorQueries(self, arr: List[int], queries: List[List[int]]) -> List[int]:
-        
+        pre_xor = [0] + list(accumulate(arr, xor))
+        return [xor(pre_xor[right + 1], pre_xor[left]) for left, right in queries]
 # leetcode submit region end(Prohibit modification and deletion)
