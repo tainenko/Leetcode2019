@@ -49,5 +49,15 @@
 #         self.right = right
 class Solution:
     def pruneTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        
+        def dfs(root: Optional[TreeNode]):
+            if not root:
+                return None
+            root.left = dfs(root.left)
+            root.right = dfs(root.right)
+            if root.val == 0 and not root.left and not root.right:
+                return None
+            return root
+
+        return dfs(root)
+
 # leetcode submit region end(Prohibit modification and deletion)
