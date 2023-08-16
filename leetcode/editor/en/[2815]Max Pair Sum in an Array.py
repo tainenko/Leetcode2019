@@ -40,5 +40,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxSum(self, nums: List[int]) -> int:
-        
+        res = -1
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if max(str(nums[i])) != max(str(nums[j])):
+                    continue
+                num = nums[i] + nums[j]
+                res = max(res, num)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
