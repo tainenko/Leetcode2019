@@ -46,5 +46,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def queensAttacktheKing(self, queens: List[List[int]], king: List[int]) -> List[List[int]]:
-
+        res = []
+        queens = set([tuple(queen) for queen in queens])
+        m, n = 8, 8
+        for x, y in [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, -1), (-1, 1)]:
+            i, j = king
+            while 0 <= i < m and 0 <= j < n:
+                if (i, j) in queens:
+                    res.append([i, j])
+                    break
+                i += x
+                j += y
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
