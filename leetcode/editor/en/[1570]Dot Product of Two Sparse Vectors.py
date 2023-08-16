@@ -50,6 +50,7 @@
 #  
 # 
 #  Related Topics Array Hash Table Two Pointers Design 👍 1088 👎 140
+from functools import reduce
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
@@ -59,12 +60,7 @@ class SparseVector:
 
     # Return the dotProduct of two sparse vectors
     def dotProduct(self, vec: 'SparseVector') -> int:
-        result = 0
-        for num1, num2 in zip(self.nums, vec.nums):
-            if num1 and num2:
-                result+=num1*num2
-        return result
-        
+        return sum(map(lambda x: x[0] * x[1], zip(self.nums, vec.nums)))
 
 # Your SparseVector object will be instantiated and called as such:
 # v1 = SparseVector(nums1)
