@@ -56,5 +56,18 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def reinitializePermutation(self, n: int) -> int:
-        
+        perm = [i for i in range(n)]
+        init = copy.copy(perm)
+        cnt = 0
+        while True:
+            cnt += 1
+            arr = [0] * n
+            for i in range(len(perm)):
+                if i % 2 == 0:
+                    arr[i] = perm[i // 2]
+                else:
+                    arr[i] = perm[n // 2 + (i - 1) // 2]
+            if arr == init:
+                return cnt
+            perm = arr
 # leetcode submit region end(Prohibit modification and deletion)
