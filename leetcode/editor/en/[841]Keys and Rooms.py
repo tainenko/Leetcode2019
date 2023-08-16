@@ -51,5 +51,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
-        
+        visited = set()
+        q = [0]
+        while q:
+            next_ = []
+            for room in q:
+                if room in visited:
+                    continue
+                visited.add(room)
+                for key in rooms[room]:
+                    next_.append(key)
+            q = next_
+        return len(visited) == len(rooms)
+
 # leetcode submit region end(Prohibit modification and deletion)
