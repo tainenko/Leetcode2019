@@ -60,5 +60,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
-        
+        winners = set()
+        cnt = Counter()
+        for winner, loser in matches:
+            winners.add(winner)
+            cnt[loser] += 1
+        return [sorted([winner for winner in winners if winner not in cnt]),
+                sorted([loser for loser, v in cnt.items() if v == 1])]
+
 # leetcode submit region end(Prohibit modification and deletion)
