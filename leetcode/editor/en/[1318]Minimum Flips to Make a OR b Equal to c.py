@@ -42,5 +42,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minFlips(self, a: int, b: int, c: int) -> int:
-        
+        res = 0
+        for i in range(32):
+            x = a >> i & 1
+            y = b >> i & 1
+            z = c >> i & 1
+            if x | y != z:
+                res += 2 if x == 1 and y == 1 else 1
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
