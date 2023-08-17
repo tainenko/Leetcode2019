@@ -51,10 +51,13 @@
 #  
 # 
 #  Related Topics Array Math Bit Manipulation 👍 299 👎 48
+from _operator import xor
+from functools import reduce
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def xorBeauty(self, nums: List[int]) -> int:
-        
+        return reduce(xor, nums)
+
 # leetcode submit region end(Prohibit modification and deletion)
