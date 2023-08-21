@@ -59,5 +59,20 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def equalizeWater(self, buckets: List[int], loss: int) -> float:
-        
+        left = 0
+        right = max(buckets) * 1.0
+        eps = 10 ** -5
+        while left < right - eps:
+            mid = left + (right - left) / 2
+            cnt = 0
+            for v in buckets:
+                if v > mid:
+                    cnt += v - mid
+                else:
+                    cnt -= (mid - v) * 100 / (100 - loss)
+            if cnt >= 0:
+                left = mid
+            else:
+                right = mid
+        return left
 # leetcode submit region end(Prohibit modification and deletion)
