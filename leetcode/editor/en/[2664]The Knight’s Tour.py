@@ -45,10 +45,27 @@
 #  
 # 
 #  Related Topics Array Backtracking Matrix 👍 21 👎 0
+from itertools import pairwise
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def tourOfKnight(self, m: int, n: int, r: int, c: int) -> List[List[int]]:
-        
+        grid = [[-1] * n for _ in range(m)]
+        grid[r][c] = 0
+
+        def dfs(r, c):
+            if grid[r][c] == m * n - 1:
+                return grid
+
+            for i, j in pairwise((-2, -1, 2, 1, -2, 1, 2, -1, -2)):
+                r2 = r + i
+                c2 = c + j
+                if 0 <= r2 <= m - 1 and 0 <= c2 <= n - 1 and grid[r2][c2] == -1:
+                    grid[r2][c2] = grid[r][c] + 1
+                    if dfs(r2, c2):
+                        return grid
+                    grid[r2][c2] = -1
+
+        return dfs(r, c)
 # leetcode submit region end(Prohibit modification and deletion)
