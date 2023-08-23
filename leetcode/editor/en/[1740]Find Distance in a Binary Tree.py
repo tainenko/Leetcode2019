@@ -49,5 +49,28 @@
 #         self.right = right
 class Solution:
     def findDistance(self, root: Optional[TreeNode], p: int, q: int) -> int:
-        
+        def lca(root, p, q):
+            if not root or root.val in (p, q):
+                return root
+            left = lca(root.left, p, q)
+            right = lca(root.right, p, q)
+            if not left:
+                return right
+            if not right:
+                return left
+            return root
+
+        def dfs(root, v):
+            if not root:
+                return -1
+            if root.val == v:
+                return 0
+            left = dfs(root.left, v)
+            right = dfs(root.right, v)
+            if left == right == -1:
+                return -1
+            return 1 + max(left, right)
+
+        g = lca(root, p, q)
+        return dfs(g, p) + dfs(g, q)
 # leetcode submit region end(Prohibit modification and deletion)
