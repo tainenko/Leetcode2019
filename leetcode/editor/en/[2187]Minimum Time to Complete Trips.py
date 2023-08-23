@@ -50,5 +50,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimumTime(self, time: List[int], totalTrips: int) -> int:
-        
+        l = 1
+        r = min(time) * totalTrips
+        while l < r:
+            mid = l + (r - l) // 2
+            total = sum(mid // t for t in time)
+            if total >= totalTrips:
+                r = mid
+            else:
+                l = mid + 1
+        return l
 # leetcode submit region end(Prohibit modification and deletion)
