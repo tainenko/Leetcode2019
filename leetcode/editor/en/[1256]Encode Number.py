@@ -33,5 +33,5 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def encode(self, num: int) -> str:
-        
+        return bin(num + 1)[3:]
 # leetcode submit region end(Prohibit modification and deletion)
