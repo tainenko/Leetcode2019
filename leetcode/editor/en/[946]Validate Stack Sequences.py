@@ -40,5 +40,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
-        
+        stack = []
+        i = j = 0
+        while i < len(pushed) and j < len(popped):
+            stack.append(pushed[i])
+            i += 1
+            while stack and stack[-1] == popped[j]:
+                stack.pop()
+                j += 1
+
+        return i == j
 # leetcode submit region end(Prohibit modification and deletion)
