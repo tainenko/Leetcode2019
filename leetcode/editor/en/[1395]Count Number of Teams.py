@@ -55,5 +55,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numTeams(self, rating: List[int]) -> int:
-        
+        res = 0
+        for i, v in enumerate(rating):
+            left = sum([1 for rate in rating[:i] if rate < v])
+            right = sum([1 for rate in rating[i + 1:] if rate > v])
+            res += left * right
+            left = sum([1 for rate in rating[:i] if rate > v])
+            right = sum([1 for rate in rating[i + 1:] if rate < v])
+            res += left * right
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
