@@ -53,7 +53,7 @@ class Solution:
         n = len(preorder)
         if n == 1:
             return root
-        
+
         left_node = preorder[1]
         length = postorder.index(left_node) + 1
 
