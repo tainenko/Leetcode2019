@@ -85,7 +85,21 @@
   
 """
 
+
 class Solution:
     def findSolution(self, customfunction: 'CustomFunction', z: int) -> List[List[int]]:
-        
+        res = []
+        x = 1
+        y = 1000
+        while x <= 1000 and y >= 1:
+            val = customfunction.f(x, y)
+            if val < z:
+                x += 1
+            elif val > z:
+                y -= 1
+            else:
+                res.append([x, y])
+                x += 1
+                y -= 1
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
