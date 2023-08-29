@@ -54,5 +54,5 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def furthestDistanceFromOrigin(self, moves: str) -> int:
-        
+        return abs(moves.count('L') - moves.count('R')) + moves.count('_')
 # leetcode submit region end(Prohibit modification and deletion)
