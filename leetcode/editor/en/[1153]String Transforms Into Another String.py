@@ -38,5 +38,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def canConvert(self, str1: str, str2: str) -> bool:
+        if str1 == str2:
+            return True
+        if len(set(str2)) == 26:
+            return False
+        map = dict()
+        for c1, c2 in zip(str1, str2):
+            if c1 not in map:
+                map[c1] = c2
+            elif map[c1]!=c2:
+                return False
 
+        return True
 # leetcode submit region end(Prohibit modification and deletion)
