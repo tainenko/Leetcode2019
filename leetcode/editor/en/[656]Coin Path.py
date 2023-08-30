@@ -36,10 +36,32 @@
 #  
 # 
 #  Related Topics Array Dynamic Programming 👍 237 👎 107
+from math import inf
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def cheapestJump(self, coins: List[int], maxJump: int) -> List[int]:
-        
+        if coins[-1] == -1:
+            return []
+        dp = [inf] * len(coins)
+        dp[-1] = coins[-1]
+        for i in range(len(coins) - 2, -1, -1):
+            if coins[i] == -1:
+                continue
+            for j in range(i + 1, min(len(coins), i + maxJump + 1)):
+                if dp[i] > dp[j] + coins[i]:
+                    dp[i] = dp[j] + coins[i]
+
+        if dp[0] == inf:
+            return []
+        path = []
+        coin = dp[0]
+        for i, v in enumerate(dp):
+            if v != coin:
+                continue
+            coin -= coins[i]
+            path.append(1 + i)
+        return path
+
 # leetcode submit region end(Prohibit modification and deletion)
