@@ -46,5 +46,18 @@
 #         self.right = right
 class Solution:
     def maximumAverageSubtree(self, root: Optional[TreeNode]) -> float:
-        
+        res = 0
+
+        def dfs(root, total, n):
+            if not root:
+                return 0, 0
+            l_total, l_n = dfs(root.left, total, n)
+            r_total, r_n = dfs(root.right, total, n)
+            nonlocal res
+            res = max(res, (root.val + l_total + r_total) / (1 + l_n + r_n))
+            return root.val + l_total + r_total, 1 + l_n + r_n
+
+        dfs(root, 0, 0)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
