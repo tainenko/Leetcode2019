@@ -35,10 +35,15 @@
 #  
 # 
 #  👍 119 👎 4
+from itertools import accumulate
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numberOfPoints(self, nums: List[List[int]]) -> int:
-        
+        d = [0] * 102
+        for start, end in nums:
+            d[start] += 1
+            d[end + 1] -= 1
+        return sum([s > 0 for s in accumulate(d)])
 # leetcode submit region end(Prohibit modification and deletion)
