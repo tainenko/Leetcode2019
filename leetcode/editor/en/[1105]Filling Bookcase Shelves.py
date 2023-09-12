@@ -57,17 +57,14 @@
 class Solution:
     def minHeightShelves(self, books: List[List[int]], shelfWidth: int) -> int:
         n = len(books)
-        dp = [100000] * (n + 1)
-        dp[0]=0
-        for i in range(1, n + 1):
-            w, h = 0, 0
-            j = i
-            while j > 0:
+        f = [0] * (n + 1)
+        for i, (w, h) in enumerate(books, 1):
+            f[i] = f[i - 1] + h
+            for j in range(i - 1, 0, -1):
                 w += books[j - 1][0]
                 if w > shelfWidth:
                     break
                 h = max(h, books[j - 1][1])
-                dp[i] = min(dp[i], dp[j - 1] + h)
-                j -= 1
-        return dp[-1]
+                f[i] = min(f[i], f[j - 1] + h)
+        return f[n]
 # leetcode submit region end(Prohibit modification and deletion)
