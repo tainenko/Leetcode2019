@@ -69,5 +69,14 @@
 
 class Solution:
     def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
-        
+        m,n=binaryMatrix.dimensions()
+        i,j=0,n-1
+        res=-1
+        while i<m and j>=0:
+            if binaryMatrix.get(i,j)==1:
+                res=j
+                j-=1
+            else:
+                i+=1
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
