@@ -40,25 +40,25 @@
 # 
 #  Related Topics Array Queue Sliding Window Heap (Priority Queue) Monotonic 
 # Queue 👍 17044 👎 583
-import heapq
+from collections import deque
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        cnt = Counter(nums[:k])
-        heap = [-num for num in nums[:k]]
-        heapq.heapify(heap)
-        res = [-heap[0]]
+        stack = deque()
+        for num in nums[:k]:
+            while stack and stack[-1] < num:
+                stack.pop()
+            stack.append(num)
+        res = [stack[0]]
         for i in range(k, len(nums)):
-            cnt[nums[i]] += 1
-            heapq.heappush(heap, -nums[i])
-            cnt[nums[i - k]] -= 1
-            if cnt[nums[i - k]] == 0:
-                del cnt[nums[i - k]]
-            while heap and -heap[0] not in cnt:
-                heapq.heappop(heap)
-            res.append(-heap[0])
+            if stack and nums[i - k] == stack[0]:
+                stack.popleft()
+            while stack and stack[-1] < nums[i]:
+                stack.pop()
+            stack.append(nums[i])
+            res.append(stack[0])
         return res
 
 # leetcode submit region end(Prohibit modification and deletion)
