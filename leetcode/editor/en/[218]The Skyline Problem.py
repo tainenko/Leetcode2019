@@ -61,7 +61,32 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from queue import PriorityQueue
+
+
 class Solution:
     def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
-        
+        skys = []
+        lines = []
+        pq = PriorityQueue()
+        for start, end, _ in buildings:
+            lines.extend(([start, end]))
+        lines.sort()
+        i = 0
+        for line in lines:
+            while i < len(buildings) and buildings[i][0] <= line:
+                pq.put([-buildings[i][2], buildings[i][0], buildings[i][1]])
+                i += 1
+
+            while not pq.empty() and pq.queue[0][2] <= line:
+                pq.get()
+
+            high = 0
+            if not pq.empty():
+                high = -pq.queue[0][0]
+            if skys and skys[-1][1] == high:
+                continue
+            skys.append([line, high])
+        return skys
+
 # leetcode submit region end(Prohibit modification and deletion)
