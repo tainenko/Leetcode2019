@@ -61,5 +61,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maximalNetworkRank(self, n: int, roads: List[List[int]]) -> int:
-        
+        grid = defaultdict(set)
+        for u, v in roads:
+            grid[u].add(v)
+            grid[v].add(u)
+        res = 0
+        for i in range(n):
+            for j in range(i + 1, n):
+                rank = len(grid[i]) + len(grid[j]) - (i in grid[j])
+                res = max(res, rank)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
