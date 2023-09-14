@@ -50,5 +50,20 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minDeletions(self, s: str) -> int:
-        
+        cnt = Counter(s)
+        values = Counter(cnt.values())
+        res = 0
+
+        for k, v in list(values.items()):
+            if v == 1:
+                continue
+            while values[k] > 1:
+                t = k
+                while values[t] > 0:
+                    t -= 1
+                values[k] -= 1
+                if t:
+                    values[t] += 1
+                res += (k - t)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
