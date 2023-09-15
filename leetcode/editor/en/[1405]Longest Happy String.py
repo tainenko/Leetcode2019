@@ -43,7 +43,32 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import heapq
+
+
 class Solution:
     def longestDiverseString(self, a: int, b: int, c: int) -> str:
-        
-# leetcode submit region end(Prohibit modification and deletion)
+        heap = []
+        if a > 0:
+            heapq.heappush(heap, (-a, 'a'))
+        if b > 0:
+            heapq.heappush(heap, (-b, 'b'))
+        if c > 0:
+            heapq.heappush(heap, (-c, 'c'))
+        res = ""
+        while heap:
+            cnt1, c1 = heapq.heappop(heap)
+            if len(res) >= 2 and c1 == res[-1] == res[-2]:
+                if not heap:
+                    break
+                cnt2, c2 = heapq.heappop(heap)
+                res += c2
+                cnt2 += 1
+                if cnt2 < 0:
+                    heapq.heappush(heap, (cnt2, c2))
+            res += c1
+            cnt1 += 1
+            if cnt1 < 0:
+                heapq.heappush(heap, (cnt1, c1))
+        return res
+        # leetcode submit region end(Prohibit modification and deletion)
