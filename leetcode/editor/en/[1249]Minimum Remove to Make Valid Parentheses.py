@@ -51,5 +51,22 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-        
+        s = list(s)
+        stack = []
+        remove = []
+        for i, v in enumerate(s):
+            if v == "(":
+                stack.append(("(", i))
+            elif v==")":
+                if stack and stack[-1][0] == "(":
+                    stack.pop()
+                    continue
+                else:
+                    remove.append((")", i))
+        remove += stack
+        for _,i in remove[::-1]:
+            del s[i]
+
+        return "".join(s)
+
 # leetcode submit region end(Prohibit modification and deletion)
