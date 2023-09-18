@@ -54,5 +54,29 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def closedIsland(self, grid: List[List[int]]) -> int:
-        
+        def dfs(x, y):
+            if x < 0 or x >= m or y < 0 or y >= n or grid[x][y] != 0:
+                return
+            grid[x][y] = 1
+            for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                dfs(x + dx, y + dy)
+
+        m = len(grid)
+        n = len(grid[0])
+        for i in [0, m - 1]:
+            for j in range(n):
+                dfs(i, j)
+
+        for i in range(m):
+            for j in [0, n - 1]:
+                dfs(i, j)
+
+        res = 0
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 0:
+                    res += 1
+                    dfs(i, j)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
