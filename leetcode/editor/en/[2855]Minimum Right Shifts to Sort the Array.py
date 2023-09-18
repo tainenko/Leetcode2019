@@ -47,5 +47,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimumRightShifts(self, nums: List[int]) -> int:
-        
+        idx = 0
+        for i in range(len(nums)):
+            if nums[i] < nums[i - 1]:
+                idx = i
+                break
+        for i in range(1, len(nums) - 1):
+            new_i = (idx + i) % len(nums)
+            if nums[new_i] < nums[new_i - 1]:
+                return -1
+        return (len(nums) - idx) % len(nums)
 # leetcode submit region end(Prohibit modification and deletion)
