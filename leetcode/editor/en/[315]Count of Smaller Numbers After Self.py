@@ -41,7 +41,36 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+class BinaryIndexedTree:
+    def __init__(self, n):
+        self.n = n
+        self.arr = [0] * (n + 1)
+
+    def lowbit(self, x):
+        return x & -x
+
+    def update(self, x, v):
+        while x <= self.n:
+            self.arr[x] += v
+            x += self.lowbit(x)
+
+    def range(self, x):
+        res = 0
+        while x > 0:
+            res += self.arr[x]
+            x -= self.lowbit(x)
+        return res
+
+
 class Solution:
     def countSmaller(self, nums: List[int]) -> List[int]:
-        
+        alls = sorted(set(nums))
+        m = {v: i for i, v in enumerate(alls, 1)}
+        tree = BinaryIndexedTree(len(m))
+        res = []
+        for num in nums[::-1]:
+            x = m[num]
+            tree.update(x, 1)
+            res.append(tree.range(x - 1))
+        return res[::-1]
 # leetcode submit region end(Prohibit modification and deletion)
