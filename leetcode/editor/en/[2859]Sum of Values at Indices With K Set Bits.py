@@ -55,5 +55,9 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def sumIndicesWithKSetBits(self, nums: List[int], k: int) -> int:
-        
+        res = 0
+        for i, v in enumerate(nums):
+            if bin(i).count('1') == k:
+                res += v
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
