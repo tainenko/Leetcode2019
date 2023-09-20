@@ -42,5 +42,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minSetSize(self, arr: List[int]) -> int:
-        
+        cnt = Counter(arr)
+        values = sorted(list(cnt.values()), reverse=True)
+        res = 0
+        n = len(arr) // 2
+        for v in values:
+            res += 1
+            if v >= n:
+                break
+            else:
+                n -= v
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
