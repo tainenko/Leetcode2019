@@ -38,5 +38,21 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-        
+        def fn(i, j, k):
+            if i >= m:
+                return nums2[j + k - 1]
+            if j >= n:
+                return nums1[i + k - 1]
+            if k == 1:
+                return min(nums1[i], nums2[j])
+            p = k // 2
+            x = nums1[i + p - 1] if i + p - 1 < m else inf
+            y = nums2[j + p - 1] if j + p - 1 < n else inf
+            return fn(i + p, j, k - p) if x < y else fn(i, j + p, k - p)
+
+        m = len(nums1)
+        n = len(nums2)
+        x = fn(0, 0, (m + n + 1) // 2)
+        y = fn(0, 0, (m + n + 2) // 2)
+        return (x + y) / 2
 # leetcode submit region end(Prohibit modification and deletion)
