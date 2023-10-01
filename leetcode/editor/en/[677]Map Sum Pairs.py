@@ -46,16 +46,37 @@
 #  
 #  Related Topics Hash Table String Design Trie 
 #  👍 985 👎 112
+from collections import defaultdict
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+
+class Trie:
+    def __init__(self):
+        self.children = defaultdict(Trie)
+        self.v = 0
+
+    def search(self, prefix):
+        node = self
+        for c in prefix:
+            node = node.children[c]
+        return node.v
+
+    def update(self, key, val):
+        node = self
+        for c in key:
+            node = node.children[c]
+            node.v += val
+
+
 class MapSum(object):
 
     def __init__(self):
         """
         Initialize your data structure here.
         """
-        
+        self.trie = Trie()
+        self.m = defaultdict(int)
 
     def insert(self, key, val):
         """
@@ -63,19 +84,19 @@ class MapSum(object):
         :type val: int
         :rtype: None
         """
-        
+        diff = val - self.m[key]
+        self.m[key] = val
+        self.trie.update(key, diff)
 
     def sum(self, prefix):
         """
         :type prefix: str
         :rtype: int
         """
-        
-
+        return self.trie.search(prefix)
 
 # Your MapSum object will be instantiated and called as such:
 # obj = MapSum()
 # obj.insert(key,val)
 # param_2 = obj.sum(prefix)
 # leetcode submit region end(Prohibit modification and deletion)
-
