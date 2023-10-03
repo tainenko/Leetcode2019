@@ -39,5 +39,19 @@
 #         self.right = right
 class Solution:
     def checkEqualTree(self, root: Optional[TreeNode]) -> bool:
-        
+        seen = list()
+
+        def dfs(root):
+            if not root:
+                return 0
+            v = root.val + dfs(root.left) + dfs(root.right)
+            seen.append(v)
+            return v
+
+        total = dfs(root)
+        if total % 2 == 1:
+            return False
+        seen.pop()
+        return total // 2 in seen
+
 # leetcode submit region end(Prohibit modification and deletion)
