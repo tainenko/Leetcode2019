@@ -49,5 +49,22 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def pathSum(self, nums: List[int]) -> int:
+        def dfs(node, total):
+            if node not in mp:
+                return
+            total += mp[node]
+            d, p = divmod(node, 10)
+            left = (d + 1) * 10 + (p * 2) - 1
+            right = left + 1
+            if left not in mp and right not in mp:
+                nonlocal res
+                res += total
+                return
+            dfs(left, total)
+            dfs(right, total)
 
+        mp = {num // 10: num % 10 for num in nums}
+        res = 0
+        dfs(11, 0)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
