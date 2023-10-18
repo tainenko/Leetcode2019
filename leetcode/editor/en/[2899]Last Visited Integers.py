@@ -60,5 +60,18 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def lastVisitedIntegers(self, words: List[str]) -> List[int]:
-        
+        res=[]
+        stack=[]
+        idx=-1
+        for word in words:
+            if word.isdigit():
+                stack.append(int(word))
+                idx=len(stack)-1
+                continue
+            if idx>=0:
+                res.append(stack[idx])
+                idx-=1
+            else:
+                res.append(-1)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
