@@ -58,7 +58,7 @@ class Solution:
 
             while stack and stack[-1] > 0 and asteroid < 0 and abs(stack[-1]) < abs(asteroid):
                 stack.pop()
-                
+
             if not stack:
                 stack.append(asteroid)
             elif -stack[-1] == asteroid:
