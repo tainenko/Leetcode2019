@@ -50,5 +50,21 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
-        
+        stack = [asteroids[0]]
+        for asteroid in asteroids[1:]:
+            if not stack or not (stack[-1] > 0 and asteroid < 0):
+                stack.append(asteroid)
+                continue
+
+            while stack and stack[-1] > 0 and asteroid < 0 and abs(stack[-1]) < abs(asteroid):
+                stack.pop()
+                
+            if not stack:
+                stack.append(asteroid)
+            elif -stack[-1] == asteroid:
+                stack.pop()
+            elif stack[-1] * asteroid > 0:
+                stack.append(asteroid)
+        return stack
+
 # leetcode submit region end(Prohibit modification and deletion)
