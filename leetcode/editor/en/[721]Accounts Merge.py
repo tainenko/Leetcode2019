@@ -63,5 +63,35 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
-        
+        def union(x, y):
+            uf[find(x)] = uf[find(y)]
+
+        def find(x):
+            if uf[x] != x:
+                uf[x] = find(uf[x])
+            return uf[x]
+
+        n = len(accounts)
+        uf = [i for i in range(n)]
+        emails = dict()
+        for i, account in enumerate(accounts):
+            for mail in account[1:]:
+                if mail not in emails:
+                    emails[mail] = i
+                else:
+                    union(emails[mail], i)
+        graphs = defaultdict(list)
+        for i in range(n):
+            graphs[find(i)].append(i)
+
+        res = []
+        for parent, child in graphs.items():
+            name = accounts[parent][0]
+            emails = set()
+            for i in child:
+                emails.update(accounts[i][1:])
+            res.append([name] + sorted(list(emails)))
+
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
