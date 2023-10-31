@@ -57,5 +57,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimumSum(self, nums: List[int]) -> int:
-        
+        result = float('inf')
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if nums[i] >= nums[j]:
+                    continue
+                for k in range(j + 1, len(nums)):
+                    if nums[j] <= nums[k]:
+                        continue
+                    result = min(result, nums[i] + nums[j] + nums[k])
+        return -1 if result == float('inf') else result
+
 # leetcode submit region end(Prohibit modification and deletion)
