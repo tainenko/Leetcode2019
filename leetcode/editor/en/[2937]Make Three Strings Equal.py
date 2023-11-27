@@ -44,5 +44,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findMinimumOperations(self, s1: str, s2: str, s3: str) -> int:
-        
+        if s1[0] != s2[0] or s2[0] != s3[0]: return -1
+        n = min(len(s1), len(s2), len(s3))
+        for i in range(1, n + 1):
+            if i >= len(s1) or i >= len(s2) or i >= len(s3): break
+            if s1[i] != s2[i] or s2[i] != s3[i]:
+                break
+        return len(s1) + len(s2) + len(s3) - 3 * i
 # leetcode submit region end(Prohibit modification and deletion)
