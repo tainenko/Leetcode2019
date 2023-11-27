@@ -49,5 +49,5 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findWordsContaining(self, words: List[str], x: str) -> List[int]:
-        
+        return [i for i, word in enumerate(words) if x in word]
 # leetcode submit region end(Prohibit modification and deletion)
