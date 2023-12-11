@@ -71,5 +71,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countTestedDevices(self, batteryPercentages: List[int]) -> int:
-        
+        res = 0
+        for i in range(len(batteryPercentages)):
+            if batteryPercentages[i] == 0:
+                continue
+            res += 1
+            for j in range(i + 1, len(batteryPercentages)):
+                batteryPercentages[j] = max(batteryPercentages[j] - 1, 0)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
