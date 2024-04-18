@@ -45,5 +45,5 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def scoreOfString(self, s: str) -> int:
-        
-# leetcode submit region end(Prohibit modification and deletion)
+        return sum([abs(ord(s[i]) - ord(s[i + 1])) for i in range(len(s) - 1)])
+        # leetcode submit region end(Prohibit modification and deletion)
