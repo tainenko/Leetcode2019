@@ -51,5 +51,35 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findLatestTime(self, s: str) -> str:
-        
+        res = ["", "", ":", "", ""]
+
+        if s[:2] == "??":
+            res[0] = "1"
+            res[1] = "1"
+        elif s[0] == "?":
+            if int(s[1]) <= 1:
+                res[0] = '1'
+            else:
+                res[0] = "0"
+            res[1] = s[1]
+        elif s[1] == "?":
+            if s[0] == "1":
+                res[1] = "1"
+            else:
+                res[1] = "9"
+            res[0] = s[0]
+        else:
+            res[0] = s[0]
+            res[1] = s[1]
+
+        if s[3] == "?":
+            res[3] = "5"
+        else:
+            res[3] = s[3]
+
+        if s[4] == "?":
+            res[4] = "9"
+        else:
+            res[4] = s[4]
+        return "".join(res)
 # leetcode submit region end(Prohibit modification and deletion)
