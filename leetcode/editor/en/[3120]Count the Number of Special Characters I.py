@@ -54,6 +54,7 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numberOfSpecialChars(self, word: str) -> int:
-        
-
+        uppers = set(letter for letter in word if letter.isupper())
+        lowers = set(letter for letter in word if letter.islower())
+        return len([letter for letter in uppers if letter.lower() in lowers])
 # leetcode submit region end(Prohibit modification and deletion)
