@@ -66,10 +66,22 @@
 #  
 # 
 #  👍 41 👎 72
+import string
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isValid(self, word: str) -> bool:
-        
+        if len(word) < 3:
+            return False
+        vowels = set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+        consonants = set(string.ascii_lowercase + string.ascii_uppercase) - vowels
+        if not any(c in vowels for c in word):
+            return False
+        if not any(c in consonants for c in word):
+            return False
+        if not all(c.isalnum() for c in word):
+            return False
+        return True
+
 # leetcode submit region end(Prohibit modification and deletion)
