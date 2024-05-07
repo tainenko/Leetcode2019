@@ -179,5 +179,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def canMakeSquare(self, grid: List[List[str]]) -> bool:
-        
+
+        m = len(grid)
+        n = len(grid[0])
+
+        for i in range(m - 1):
+            for j in range(n - 1):
+                cnt = f"{grid[i][j]}{grid[i + 1][j]}{grid[i][j + 1]}{grid[i + 1][j + 1]}".count("B")
+                if cnt <= 1 or cnt >= 3:
+                    return True
+        return False
 # leetcode submit region end(Prohibit modification and deletion)
