@@ -60,5 +60,6 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findPermutationDifference(self, s: str, t: str) -> int:
-        
+        cnt = {v: i for i, v in enumerate(s)}
+        return sum([abs(cnt[v] - i) for i, v in enumerate(t)])
 # leetcode submit region end(Prohibit modification and deletion)
