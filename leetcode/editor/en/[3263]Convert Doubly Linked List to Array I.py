@@ -49,7 +49,13 @@ class Node:
         self.prev = prev
         self.next = next
 """
+
+
 class Solution:
     def toArray(self, root: 'Optional[Node]') -> List[int]:
-        
+        res = []
+        while root:
+            res.append(root.val)
+            root = root.next
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
