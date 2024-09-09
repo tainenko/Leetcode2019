@@ -44,11 +44,7 @@
 class Solution:
     def validStrings(self, n: int) -> List[str]:
         res = ["0", "1"]
-
-        def helper(i):
-            nonlocal res
-            if i >= n:
-                return res
+        for _ in range(1, n):
             tmp = []
             for j in ["0", "1"]:
                 for k in range(len(res)):
@@ -56,9 +52,6 @@ class Solution:
                         continue
                     tmp.append(res[k] + j)
             res = tmp
-            helper(i + 1)
-
-        helper(1)
         return res
 
 # leetcode submit region end(Prohibit modification and deletion)
