@@ -64,5 +64,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def generateKey(self, num1: int, num2: int, num3: int) -> int:
-        
+        num1 = str(num1).zfill(4)
+        num2 = str(num2).zfill(4)
+        num3 = str(num3).zfill(4)
+        key = ""
+        for i, j, k in zip(num1, num2, num3):
+            key += min(i, j, k)
+        return int(key)
 # leetcode submit region end(Prohibit modification and deletion)
