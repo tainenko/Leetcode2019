@@ -63,5 +63,7 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def getSneakyNumbers(self, nums: List[int]) -> List[int]:
-        
+        cnt = collections.Counter(nums)
+        return [k for k, v in cnt.items() if v == 2]
+
 # leetcode submit region end(Prohibit modification and deletion)
