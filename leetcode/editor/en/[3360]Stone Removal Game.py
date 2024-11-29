@@ -55,5 +55,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def canAliceWin(self, n: int) -> bool:
-        
-# leetcode submit region end(Prohibit modification and deletion)
+        i = 10
+        win = False
+        while n >= i:
+            n -= i
+            win = not win
+            i -= 1
+        return win
+    # leetcode submit region end(Prohibit modification and deletion)
