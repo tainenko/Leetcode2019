@@ -82,5 +82,18 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countValidSelections(self, nums: List[int]) -> int:
-        
+        total = sum(nums)
+        left = 0
+        res = 0
+        for num in nums:
+            right = total - left - num
+            if num == 0:
+                if left == right:
+                    res += 2
+
+                elif abs(left - right) == 1:
+                    res += 1
+            left += num
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
