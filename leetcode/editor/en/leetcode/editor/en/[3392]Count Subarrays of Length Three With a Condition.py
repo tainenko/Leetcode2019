@@ -47,5 +47,11 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
+        k = 3
+        cnt = 0
+        for i in range(0, len(nums) - k + 1):
+            x, y, z = nums[i:i + k]
+            if (x + z) * 2 == y:
+                cnt += 1
+        return cnt
 # leetcode submit region end(Prohibit modification and deletion)
