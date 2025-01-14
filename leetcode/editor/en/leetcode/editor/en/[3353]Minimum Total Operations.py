@@ -66,6 +66,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        
-        
+        last = nums[-1]
+        cnt = 0
+        for i in range(len(nums) - 1, -1, -1):
+            if nums[i] != last:
+                cnt += 1
+            last = nums[i]
+        return cnt
+
 # leetcode submit region end(Prohibit modification and deletion)
