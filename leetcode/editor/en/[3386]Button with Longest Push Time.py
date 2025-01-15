@@ -69,5 +69,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def buttonWithLongestTime(self, events: List[List[int]]) -> int:
-        
+        prev = 0
+        max_time = 0
+        res = 0
+        for idx, time in events:
+            take_time = time - prev
+            if take_time > max_time:
+                res = idx
+                max_time = take_time
+            elif take_time == max_time:
+                res = min(res, idx)
+            prev = time
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
