@@ -69,5 +69,9 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minOperations(self, nums: List[int], k: int) -> int:
-        
+        min_ = min(nums)
+        if min_ < k:
+            return -1
+        return len(set(nums)) - int(min_ == k)
+
 # leetcode submit region end(Prohibit modification and deletion)
