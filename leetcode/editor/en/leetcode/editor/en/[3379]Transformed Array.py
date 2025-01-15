@@ -73,5 +73,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def constructTransformedArray(self, nums: List[int]) -> List[int]:
-        
+        n = len(nums)
+        result = [0] * n
+        for i, num in enumerate(nums):
+            if num==0:
+                continue
+            result[i] = nums[(i + num) % n]
+        return result
+
 # leetcode submit region end(Prohibit modification and deletion)
