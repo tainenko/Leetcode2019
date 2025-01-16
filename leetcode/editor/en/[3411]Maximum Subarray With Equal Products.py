@@ -65,5 +65,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxLength(self, nums: List[int]) -> int:
-        
+        res = 0
+        for i in range(len(nums)):
+            prod = 1
+            l = 1
+            g = 0
+            for j in range(i, len(nums)):
+                prod *= nums[j]
+                l = math.lcm(l, nums[j])
+                g = math.gcd(g, nums[j])
+                if prod == l * g:
+                    res = max(res, j - i + 1)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
