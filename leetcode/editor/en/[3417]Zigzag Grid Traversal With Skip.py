@@ -71,5 +71,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def zigzagTraversal(self, grid: List[List[int]]) -> List[int]:
-        
+        flag = True
+        res = []
+        for i, row in enumerate(grid):
+            if i % 2 == 1:
+                row = row[::-1]
+            for j, val in enumerate(row):
+                if flag:
+                    res.append(val)
+                flag = not flag
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
