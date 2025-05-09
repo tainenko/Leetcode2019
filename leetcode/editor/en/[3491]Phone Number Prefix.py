@@ -44,6 +44,19 @@
 class Solution:
     def phonePrefix(self, numbers: List[str]) -> bool:
         numbers.sort()
+        trie = dict()
+        for num in numbers:
+            node = trie
+            for n in num:
+                if n not in node:
+                    node[n] = dict()
+                node = node[n]
+                if "$" in node:
+                    return False
+            node["$"] = dict()
+        return True
+
+    def brue_force(self, numbers: List[str]) -> bool:
         for i in range(len(numbers)):
             for j in range(i + 1, len(numbers)):
                 if numbers[j].startswith(numbers[i]):
