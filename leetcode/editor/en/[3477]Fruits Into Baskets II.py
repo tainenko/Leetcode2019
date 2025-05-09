@@ -67,5 +67,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numOfUnplacedFruits(self, fruits: List[int], baskets: List[int]) -> int:
-        
+        cnt = 0
+        for fruit in fruits:
+            for i in range(len(baskets)):
+                if fruit <= baskets[i]:
+                    baskets[i] = 0
+                    break
+            else:
+                cnt += 1
+        return cnt
+
 # leetcode submit region end(Prohibit modification and deletion)
