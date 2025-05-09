@@ -56,5 +56,9 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def transformArray(self, nums: List[int]) -> List[int]:
-        
+        even = 0
+        for num in nums:
+            if num % 2 == 0:
+                even += 1
+        return [0] * even + [1] * (len(nums) - even)
 # leetcode submit region end(Prohibit modification and deletion)
