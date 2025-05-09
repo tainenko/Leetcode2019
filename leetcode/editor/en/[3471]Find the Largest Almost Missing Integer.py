@@ -78,5 +78,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def largestInteger(self, nums: List[int], k: int) -> int:
-        
+        if k == 1:
+            cnts = Counter(nums)
+
+            return max([k for k, v in cnts.items() if v == 1], default=-1)
+        elif k == len(nums):
+            return max(nums)
+        res = set([nums[0], nums[-1]]) - set(nums[1:-1])
+        if nums[0] == nums[-1] or not res:
+            return -1
+        return max(res)
 # leetcode submit region end(Prohibit modification and deletion)
