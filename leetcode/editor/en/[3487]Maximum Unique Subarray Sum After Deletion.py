@@ -64,5 +64,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxSum(self, nums: List[int]) -> int:
-        
+        positives = set([num for num in nums if num > 0])
+        if not positives:
+            return max(nums)
+        return sum(set([num for num in nums if num > 0]))
 # leetcode submit region end(Prohibit modification and deletion)
