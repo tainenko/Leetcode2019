@@ -48,5 +48,5 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxContainers(self, n: int, w: int, maxWeight: int) -> int:
-        
+        return min([n * n, maxWeight // w])
 # leetcode submit region end(Prohibit modification and deletion)
