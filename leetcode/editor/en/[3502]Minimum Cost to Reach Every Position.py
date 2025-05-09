@@ -67,5 +67,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minCosts(self, cost: List[int]) -> List[int]:
-        
+        res = [cost[0]] * len(cost)
+        curr = cost[0]
+        for i, v in enumerate(cost):
+            if v < curr:
+                curr = v
+            res[i] = curr
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
