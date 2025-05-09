@@ -113,5 +113,9 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def reverseDegree(self, s: str) -> int:
-        
+        res = 0
+        for i, v in enumerate(s):
+            res += (i + 1) * (-ord(v) + ord('z') + 1)
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
