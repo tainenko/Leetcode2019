@@ -63,7 +63,7 @@
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
-    def totalNumbers(self, digits: List[int]) -> int:
+    def totalNumbers2(self, digits: List[int]) -> int:
         digits = Counter(digits)
         cnt = 0
         for num in range(100, 999, 2):
@@ -74,4 +74,20 @@ class Solution:
             else:
                 cnt += 1
         return cnt
+
+    def totalNumbers(self, digits: List[int]) -> int:
+        res = set()
+        for i, u in enumerate(digits):
+            if u & 1:
+                continue
+            for j, v in enumerate(digits):
+                if i == j:
+                    continue
+                for k, w in enumerate(digits):
+                    if k == i or k == j:
+                        continue
+                    if w == 0:
+                        continue
+                    res.add(w * 100 + v * 10 + u)
+        return len(res)
 # leetcode submit region end(Prohibit modification and deletion)
