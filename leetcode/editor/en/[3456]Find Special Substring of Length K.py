@@ -61,5 +61,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def hasSpecialSubstring(self, s: str, k: int) -> bool:
-        
+        l = 0
+        r = 0
+        while l < len(s):
+            while r < len(s) and s[r] == s[l]:
+                r += 1
+            if r - l == k:
+                return True
+            l = r
+        return False
 # leetcode submit region end(Prohibit modification and deletion)
