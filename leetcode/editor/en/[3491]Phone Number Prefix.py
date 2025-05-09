@@ -43,5 +43,10 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def phonePrefix(self, numbers: List[str]) -> bool:
-        
+        numbers.sort()
+        for i in range(len(numbers)):
+            for j in range(i + 1, len(numbers)):
+                if numbers[j].startswith(numbers[i]):
+                    return False
+        return True
 # leetcode submit region end(Prohibit modification and deletion)
