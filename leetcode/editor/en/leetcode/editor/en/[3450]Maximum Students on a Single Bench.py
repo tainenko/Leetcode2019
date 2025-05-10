@@ -80,10 +80,19 @@
 #  
 # 
 #  Related Topics Array Hash Table 👍 11 👎 1
+from collections import defaultdict
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxStudentsOnBench(self, students: List[List[int]]) -> int:
-        
+        if not students:
+            return 0
+        cnt = defaultdict(set)
+        res = 0
+        for student_id, bench_id in students:
+            cnt[bench_id].add(student_id)
+            res = max(res, len(cnt[bench_id]))
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
