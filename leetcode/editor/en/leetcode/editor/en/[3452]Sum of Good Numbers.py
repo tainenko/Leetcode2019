@@ -47,5 +47,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def sumOfGoodNumbers(self, nums: List[int], k: int) -> int:
-        
+        res = 0
+        for i, v in enumerate(nums):
+            if i - k >= 0 and nums[i - k] >= v:
+                continue
+            if i + k < len(nums) and nums[i + k] >= v:
+                continue
+            res += v
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
