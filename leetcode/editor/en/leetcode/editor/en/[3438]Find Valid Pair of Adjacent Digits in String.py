@@ -64,5 +64,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findValidPair(self, s: str) -> str:
-        
+        cnt = Counter(s)
+        for i in range(len(s) - 1):
+            if s[i] == s[i + 1]:
+                continue
+            if cnt[s[i]] == int(s[i]) and cnt[s[i + 1]] == int(s[i + 1]):
+                return s[i:i + 2]
+        return ""
+
 # leetcode submit region end(Prohibit modification and deletion)
