@@ -60,5 +60,10 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxDifference(self, s: str) -> int:
-        
+        cnt = Counter(s)
+        even = max([v for v in cnt.values() if v % 2 == 0])
+        _even = min([v for v in cnt.values() if v % 2 == 0])
+        odd = max([v for v in cnt.values() if v % 2])
+        return max(odd - even, odd - _even)
+
 # leetcode submit region end(Prohibit modification and deletion)
