@@ -42,5 +42,10 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def smallestNumber(self, n: int, t: int) -> int:
-        
+        while True:
+            product = reduce(lambda x, y: x * y, [int(d) for d in str(n)])
+            if product % t == 0:
+                return n
+            n = n + 1
+
 # leetcode submit region end(Prohibit modification and deletion)
