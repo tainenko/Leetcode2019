@@ -67,5 +67,18 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxFreqSum(self, s: str) -> int:
+        vowels = Counter()
+        consonants = Counter()
+        for c in s:
+            if c in 'aeiou':
+                vowels[c] += 1
+            else:
+                consonants[c] += 1
+        total = 0
+        if vowels:
+            total += vowels.most_common(1)[0][1]
+        if consonants:
+            total += consonants.most_common(1)[0][1]
+        return total
         
 # leetcode submit region end(Prohibit modification and deletion)
