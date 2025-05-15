@@ -79,5 +79,6 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minDeletion(self, s: str, k: int) -> int:
-        
+        cnt = Counter(s)
+        return sum([v for k, v in cnt.most_common()[k:]])
 # leetcode submit region end(Prohibit modification and deletion)
