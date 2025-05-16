@@ -43,5 +43,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def permute(self, n: int) -> List[List[int]]:
-        
+        def helper(nums: list):
+            res = []
+            if not nums:
+                return [[]]
+            for i in range(len(nums)):
+                rest = nums[:i] + nums[i + 1:]
+                for p in helper(rest):
+                    if p and nums[i] & 1 == p[0] & 1:
+                        continue
+                    res.append([nums[i]] + p)
+            return res
+
+        return helper(list(range(1, n + 1)))
 # leetcode submit region end(Prohibit modification and deletion)
