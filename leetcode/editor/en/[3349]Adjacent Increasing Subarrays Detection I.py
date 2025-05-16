@@ -54,5 +54,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def hasIncreasingSubarrays(self, nums: List[int], k: int) -> bool:
-        
+        mx, curr, prev = 0, 0, 0
+        for i, num in enumerate(nums):
+            curr += 1
+            if i == len(nums) - 1 or num >= nums[i + 1]:
+                mx = max(mx, curr // 2, min(curr, prev))
+                prev, curr = curr, 0
+        return mx >= k
+
 # leetcode submit region end(Prohibit modification and deletion)
