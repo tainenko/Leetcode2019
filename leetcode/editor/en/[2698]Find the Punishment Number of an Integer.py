@@ -50,7 +50,23 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from typing import List
+
+
 class Solution:
     def punishmentNumber(self, n: int) -> int:
-        
+        return sum([num ** 2 for num in range(1, n + 1) if self.is_punishment(str(num ** 2), 0, num)])
+
+    def is_punishment(self, s: str, i: int, x: int):
+        n = len(s)
+        if i >= n:
+            return x == 0
+        y = 0
+        for j in range(i, n):
+            y = 10 * y + int(s[j])
+            if y > x:
+                return False
+            if self.is_punishment(s, j + 1, x - y):
+                return True
+        return False
 # leetcode submit region end(Prohibit modification and deletion)
