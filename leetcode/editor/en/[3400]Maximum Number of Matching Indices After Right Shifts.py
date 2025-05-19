@@ -50,5 +50,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maximumMatchingIndices(self, nums1: List[int], nums2: List[int]) -> int:
-        
+        res = 0
+        for i in range(len(nums1)):
+            curr = 0
+            for j in range(len(nums1)):
+                if nums1[(i + j) % len(nums1)] == nums2[j]:
+                    curr += 1
+            res = max(res, curr)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
