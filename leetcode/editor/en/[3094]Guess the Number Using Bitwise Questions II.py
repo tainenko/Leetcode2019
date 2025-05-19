@@ -38,5 +38,11 @@
 
 class Solution:
     def findNumber(self) -> int:
-        
+        res = 0
+        for i in range(32):
+            count1 = commonBits(1 << i)
+            count2 = commonBits(1 << i)
+            if count1 > count2:
+                res |= 1 << i
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
