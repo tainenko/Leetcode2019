@@ -66,5 +66,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minBitwiseArray(self, nums: List[int]) -> List[int]:
-        
+        res = [-1] * len(nums)
+        for idx, num in enumerate(nums):
+            if num % 2 == 0:
+                continue
+            for i in range(32):
+                if num >> i & 1 ^ 1:
+                    res[idx] = num ^ 1 << (i - 1)
+                    break
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
