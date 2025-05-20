@@ -57,5 +57,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
-        
+        res = 0
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                continue
+            if i + 2 >= len(nums):
+                return -1
+            res += 1
+            nums[i + 1] ^= 1
+            nums[i + 2] ^= 1
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
