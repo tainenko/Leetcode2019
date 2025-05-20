@@ -42,7 +42,19 @@ class Node:
         self.prev = prev
         self.next = next
 """
+
+
 class Solution:
     def toArray(self, node: 'Optional[Node]') -> List[int]:
-        
+        head = []
+        tail = []
+        curr = node
+        while curr:
+            tail.append(curr.val)
+            curr = curr.next
+        prev = node.prev
+        while prev:
+            head.append(prev.val)
+            prev = prev.prev
+        return head[::-1] + tail
 # leetcode submit region end(Prohibit modification and deletion)
