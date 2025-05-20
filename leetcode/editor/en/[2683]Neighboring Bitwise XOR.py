@@ -62,5 +62,5 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def doesValidArrayExist(self, derived: List[int]) -> bool:
-        
+        return reduce(xor, derived) == 0
 # leetcode submit region end(Prohibit modification and deletion)
