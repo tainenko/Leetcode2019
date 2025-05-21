@@ -76,5 +76,24 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def rotateTheBox(self, boxGrid: List[List[str]]) -> List[List[str]]:
-        
+        m = len(boxGrid)
+        n = len(boxGrid[0])
+        rotated = [[None] * m for _ in range(n)]
+        for i in range(m):
+            for j in range(n):
+                rotated[j][m - i - 1] = boxGrid[i][j]
+
+        for j in range(m):
+            q = collections.deque()
+            for i in range(n - 1, -1, -1):
+                if rotated[i][j] == '*':
+                    q.clear()
+                elif rotated[i][j] == '.':
+                    q.append(i)
+                elif q:
+                    rotated[q.popleft()][j] = '#'
+                    rotated[i][j] = '.'
+                    q.append(i)
+        return rotated
+
 # leetcode submit region end(Prohibit modification and deletion)
