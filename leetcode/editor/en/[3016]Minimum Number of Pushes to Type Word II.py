@@ -84,5 +84,9 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimumPushes(self, word: str) -> int:
-        
+        cnt = collections.Counter(word)
+        res = 0
+        for i, v in enumerate(sorted(cnt.values(), reverse=True)):
+            res += v * (i // 8 + 1)
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
