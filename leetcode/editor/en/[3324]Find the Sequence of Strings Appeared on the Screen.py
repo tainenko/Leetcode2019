@@ -60,5 +60,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def stringSequence(self, target: str) -> List[str]:
-        
+        res = ["a"]
+        while res[-1] != target:
+            curr = res[-1]
+            if target.startswith(curr):
+                res.append(curr + "a")
+            else:
+                res.append(curr[:-1] + chr((ord(curr[-1]) + 1 - ord('a')) % 26 + ord('a')))
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
