@@ -70,5 +70,18 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def applySubstitutions(self, replacements: List[List[str]], text: str) -> str:
-        
+        replacements = dict([(k, v) for k, v in replacements])
+
+        def dfs(s: str) -> str:
+            i = s.find("%")
+            if i == -1:
+                return s
+            j = s.find("%", i + 1)
+            if j == -1:
+                return s
+            replacement = dfs(replacements[s[i + 1:j]])
+            return s[:i] + replacement + dfs(s[j + 1:])
+
+        return dfs(text)
+
 # leetcode submit region end(Prohibit modification and deletion)
