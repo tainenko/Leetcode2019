@@ -46,10 +46,22 @@
 #  
 # 
 #  Related Topics Dynamic Programming 👍 3937 👎 486
+from collections import defaultdict
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def knightProbability(self, n: int, k: int, row: int, column: int) -> float:
-        
+        dp = dict()
+        dp[(row, column)] = 1
+
+        for _ in range(k):
+            nxt = defaultdict(int)
+            for dx, dy in [(1, 2), (2, 1), (2, -1), (1, -2), (-1, -2), (-2, -1), (-2, 1), (-1, 2)]:
+                for x, y in dp:
+                    if 0 <= x + dx < n and 0 <= y + dy < n:
+                        nxt[(x + dx, y + dy)] += dp[(x, y)] / 8
+            dp = nxt
+        return sum(dp.values())
+
 # leetcode submit region end(Prohibit modification and deletion)
