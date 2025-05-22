@@ -80,5 +80,24 @@
 
 class Solution:
     def findSecretWord(self, words: List[str], master: 'Master') -> None:
-        
+        for i in range(10):
+            guess = random.choice(words)
+            cnt = master.guess(guess)
+            if cnt == 6:
+                return
+            if cnt == -1:
+                words = words[1:]
+                continue
+            nxt = []
+            for word in words:
+                if self.match(word, guess) == cnt:
+                    nxt.append(word)
+            words = nxt
+
+    def match(self, word: str, secret: str) -> int:
+        res = 0
+        for m, n in zip(word, secret):
+            if m == n:
+                res += 1
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
