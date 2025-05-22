@@ -52,5 +52,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxScore(self, nums: List[int]) -> int:
-        
+        scores = [0] * len(nums)
+        for i in range(1, len(nums)):
+            scores[i] = max([(i - j) * nums[i] + scores[j] for j in range(i)])
+        return scores[-1]
 # leetcode submit region end(Prohibit modification and deletion)
