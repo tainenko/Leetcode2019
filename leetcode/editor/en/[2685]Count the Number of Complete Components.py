@@ -57,5 +57,30 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countCompleteComponents(self, n: int, edges: List[List[int]]) -> int:
-        
+        def dfs(i: int) -> (int, int):
+            visited[i] = True
+            cnt, edge = 1, len(g[i])
+            for j in g[i]:
+                if visited[j]:
+                    continue
+                ncnt, nedge = dfs(j)
+                cnt += ncnt
+                edge += nedge
+            return cnt, edge
+
+        g = defaultdict(list)
+        for start, end in edges:
+            g[start].append(end)
+            g[end].append(start)
+
+        visited = [False] * n
+        res = 0
+        for i in range(n):
+            if visited[i]:
+                continue
+            cnt, edge = dfs(i)
+            if cnt * (cnt - 1) == edge:
+                res += 1
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
