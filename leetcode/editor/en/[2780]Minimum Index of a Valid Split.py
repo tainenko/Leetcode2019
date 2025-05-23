@@ -74,5 +74,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimumIndex(self, nums: List[int]) -> int:
-        
+        x, times = collections.Counter(nums).most_common(1)[0]
+        cnt = 0
+        for i, num in enumerate(nums, 1):
+            if num != x:
+                continue
+            cnt += 1
+            if cnt * 2 > i and (times - cnt) * 2 > (len(nums) - i):
+                return i-1
+        return -1
 # leetcode submit region end(Prohibit modification and deletion)
