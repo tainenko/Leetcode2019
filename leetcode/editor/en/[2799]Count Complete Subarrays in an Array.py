@@ -45,5 +45,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countCompleteSubarrays(self, nums: List[int]) -> int:
-        
+        dists = set(nums)
+        res = 0
+        for w in range(len(dists), len(nums) + 1):
+            cnt = collections.Counter(nums[:w - 1])
+            for i in range(len(nums) - w + 1):
+                cnt[nums[i + w - 1]] += 1
+                if len(cnt) == len(dists):
+                    res += 1
+                cnt[nums[i]] -= 1
+                if cnt[nums[i]] == 0:
+                    del cnt[nums[i]]
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
