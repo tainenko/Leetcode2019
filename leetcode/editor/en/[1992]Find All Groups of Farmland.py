@@ -71,19 +71,16 @@ class Solution:
         n = len(land[0])
         for i in range(m):
             for j in range(n):
-                if land[i][j] != 1:
+                if (land[i][j] == 0
+                        or i > 0 and land[i - 1][j] == 1
+                        or j > 0 and land[i][j - 1] == 1):
                     continue
-                land[i][j] = 2
-                q = [(i, j)]
-                start, end = i, j
-                while q:
-                    x, y = q.pop()
-                    for dx, dy in [(1, 0), (0, 1)]:
-                        if 0 <= x + dx < m and 0 <= y + dy < n and land[x + dx][y + dy] == 1:
-                            q.append((x + dx, y + dy))
-                            land[x + dx][y + dy] = 2
-                            if (x + dx) ** 2 + (y + dy) ** 2 > start ** 2 + end ** 2:
-                                start, end = x + dx, y + dy
-                res.append([i, j, start, end])
+                x, y = i, j
+                while x + 1 < m and land[x + 1][y] == 1:
+                    x += 1
+                while y + 1 < n and land[x][y + 1] == 1:
+                    y += 1
+                res.append([i, j, x, y])
+
         return res
 # leetcode submit region end(Prohibit modification and deletion)
