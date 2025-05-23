@@ -63,5 +63,19 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def betterCompression(self, compressed: str) -> str:
-        
+        cnt = collections.Counter()
+        i = 0
+        while i < len(compressed):
+            c = compressed[i]
+            i += 1
+            num = ""
+            while i < len(compressed) and compressed[i].isdigit():
+                num += compressed[i]
+                i += 1
+            cnt[c] += int(num)
+
+        res = ""
+        for c in sorted(cnt.keys()):
+            res += c + str(cnt[c])
+        return res
 # leetcode submit region end(Prohibit modification and deletion)
