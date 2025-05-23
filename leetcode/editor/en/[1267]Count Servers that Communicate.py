@@ -55,13 +55,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def countServers(self, grid: List[List[int]]) -> int:
-        res = 0
         m = len(grid)
         n = len(grid[0])
+        row = [0] * m
+        col = [0] * n
         for i in range(m):
             for j in range(n):
                 if grid[i][j] == 1:
-                    if any([grid[i][y] for y in range(n) if y != j]) or any([grid[x][j] for x in range(m) if x != i]):
-                        res += 1
-        return res
+                    row[i] += 1
+                    col[j] += 1
+        return sum(grid[i][j] for i in range(m) for j in range(n) if row[i] > 1 or col[j] > 1)
 # leetcode submit region end(Prohibit modification and deletion)
