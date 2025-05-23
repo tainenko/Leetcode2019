@@ -57,5 +57,23 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def removeSubfolders(self, folder: List[str]) -> List[str]:
-        
-# leetcode submit region end(Prohibit modification and deletion)
+        folder.sort()
+        trie = dict()
+        res = []
+        for folder in folder:
+            if not self.is_sub(folder, trie):
+                res.append(folder)
+        return res
+
+    def is_sub(self, folder: str, trie: dict) -> bool:
+        curr = trie
+        for path in folder.split('/')[1:]:
+            if path not in curr:
+                curr[path] = dict()
+            else:
+                if "$" in curr[path]:
+                    return True
+            curr = curr[path]
+        curr["$"] = "$"
+        return False
+        # leetcode submit region end(Prohibit modification and deletion)
