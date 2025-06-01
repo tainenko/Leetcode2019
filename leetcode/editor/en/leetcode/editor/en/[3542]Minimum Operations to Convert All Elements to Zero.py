@@ -80,7 +80,22 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from itertools import groupby
+
+
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
-        
+        ans = 0
+        stack = []
+        for num in nums:
+            while stack and stack[-1] > num:
+                stack.pop()
+                ans += 1
+            if not stack or stack[-1] != num:
+                stack.append(num)
+
+        ans += len(stack)
+        if stack[0] == 0:
+            ans -= 1
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
