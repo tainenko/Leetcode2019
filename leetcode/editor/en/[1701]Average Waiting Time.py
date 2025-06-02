@@ -70,5 +70,10 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def averageWaitingTime(self, customers: List[List[int]]) -> float:
-        
+        chef = 0
+        ans = 0
+        for arrival, time in customers:
+            chef = max(chef, arrival) + time
+            ans += chef - arrival
+        return ans / len(customers)
 # leetcode submit region end(Prohibit modification and deletion)
