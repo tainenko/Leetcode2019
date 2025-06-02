@@ -56,5 +56,7 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def occurrencesOfElement(self, nums: List[int], queries: List[int], x: int) -> List[int]:
+        loc = [i for i, c in enumerate(nums) if c == x]
+        return [loc[q - 1] if q - 1 < len(loc) else -1 for q in queries]
 
 # leetcode submit region end(Prohibit modification and deletion)
