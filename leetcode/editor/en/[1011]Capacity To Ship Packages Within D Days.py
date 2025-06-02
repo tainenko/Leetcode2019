@@ -65,5 +65,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:
-        
+        def check(mx):
+            cnt = 1
+            ws = 0
+            for w in weights:
+                ws += w
+                if ws > mx:
+                    ws = w
+                    cnt += 1
+            return cnt <= days
+
+        left = max(weights)
+        right = sum(weights) + 1
+        return left + bisect.bisect_left(range(left, right), True, key=check)
 # leetcode submit region end(Prohibit modification and deletion)
