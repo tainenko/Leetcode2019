@@ -64,5 +64,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
-        
+        def helper(c: str) -> int:
+            cnt = 0
+            l = 0
+            for ch in answerKey:
+                cnt += ch == c
+                if cnt > k:
+                    cnt -= answerKey[l] == c
+                    l += 1
+            return len(answerKey) - l
+
+        return max(helper('T'), helper('F'))
+
 # leetcode submit region end(Prohibit modification and deletion)
