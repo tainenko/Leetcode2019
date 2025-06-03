@@ -72,5 +72,22 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minTimeToReach(self, moveTime: List[List[int]]) -> int:
-        
+        pq = [[0, 0, 0]]
+        n = len(moveTime)
+        m = len(moveTime[0])
+        dist = [[inf] * m for _ in range(n)]
+        while pq:
+            d, x, y = heapq.heappop(pq)
+            if x == n - 1 and y == m - 1:
+                return d
+            if d > dist[x][y]:
+                continue
+            for dx, dy in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+                if 0 > x + dx or 0 > y + dy or x + dx >= n or y + dy >= m:
+                    continue
+                t = max(d, moveTime[x + dx][y + dy]) + (x + y) % 2 + 1
+                if dist[x + dx][y + dy] > t:
+                    dist[x + dx][y + dy] = t
+                    heapq.heappush(pq, (t, x + dx, y + dy))
+
 # leetcode submit region end(Prohibit modification and deletion)
