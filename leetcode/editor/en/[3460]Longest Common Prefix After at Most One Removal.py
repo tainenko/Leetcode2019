@@ -70,5 +70,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def longestCommonPrefix(self, s: str, t: str) -> int:
-        
+        i = j = 0
+        remove = False
+        while i < len(s) and j < len(t):
+            if s[i] == t[j]:
+                i += 1
+                j += 1
+            elif not remove:
+                remove = True
+                i += 1
+            else:
+                break
+        return j
 # leetcode submit region end(Prohibit modification and deletion)
