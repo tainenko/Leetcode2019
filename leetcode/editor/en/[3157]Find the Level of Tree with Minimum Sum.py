@@ -63,5 +63,22 @@
 #         self.right = right
 class Solution:
     def minimumLevel(self, root: Optional[TreeNode]) -> int:
-        
+        level = 1
+        ans = 1
+        total = inf
+        q = [root]
+        while q:
+            nxt = []
+            total2 = sum([node.val for node in q])
+            if total2 < total:
+                total = total2
+                ans = level
+            level += 1
+            for node in q:
+                if node.left:
+                    nxt.append(node.left)
+                if node.right:
+                    nxt.append(node.right)
+            q = nxt
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
