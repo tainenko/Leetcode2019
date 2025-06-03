@@ -44,5 +44,28 @@
 #         self.right = right
 class Solution:
     def delNodes(self, root: Optional[TreeNode], to_delete: List[int]) -> List[TreeNode]:
-        
+        if not root:
+            return []
+        to_delete = set(to_delete)
+        q = deque()
+        ans = [root] if root.val not in to_delete else []
+        q.append(root)
+        while q:
+            node = q.popleft()
+            if node.left:
+                q.append(node.left)
+                if node.left.val in to_delete:
+                    node.left = None
+            if node.right:
+                q.append(node.right)
+                if node.right.val in to_delete:
+                    node.right = None
+            if node.val in to_delete:
+                if node.left:
+                    ans.append(node.left)
+                if node.right:
+                    ans.append(node.right)
+
+        return ans
+
 # leetcode submit region end(Prohibit modification and deletion)
