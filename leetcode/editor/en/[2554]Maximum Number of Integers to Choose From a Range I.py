@@ -56,5 +56,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxCount(self, banned: List[int], n: int, maxSum: int) -> int:
-        
+        ans = 0
+        banned = set(banned)
+        curr = 0
+        for i in range(1, n + 1):
+            if i in banned:
+                continue
+            curr += i
+            if curr > maxSum:
+                return ans
+            ans += 1
+        return ans
+
 # leetcode submit region end(Prohibit modification and deletion)
