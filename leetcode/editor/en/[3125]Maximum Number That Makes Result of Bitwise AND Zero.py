@@ -52,5 +52,5 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxNumber(self, n: int) -> int:
-        
+        return (1<<(n.bit_length()-1))-1
 # leetcode submit region end(Prohibit modification and deletion)
