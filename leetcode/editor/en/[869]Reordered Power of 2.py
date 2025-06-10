@@ -32,5 +32,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def reorderedPowerOf2(self, n: int) -> bool:
-        
+        def convert(n: int) -> list:
+            cnt = [0] * 10
+            while n:
+                n, v = divmod(n, 10)
+                cnt[v] += 1
+            return cnt
+
+        i, s = 1, convert(n)
+        while i <= 10 ** 9:
+            if s == convert(i):
+                return True
+            i <<= 1
+        return False
 # leetcode submit region end(Prohibit modification and deletion)
