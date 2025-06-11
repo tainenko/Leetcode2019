@@ -58,11 +58,24 @@
 class MyCalendarTwo:
 
     def __init__(self):
-        
+        self.booked = []
+        self.overlapped = []
 
     def book(self, startTime: int, endTime: int) -> bool:
-        
 
+        for os, oe in self.overlapped:
+            ss = max(startTime, os)
+            se = min(endTime, oe)
+            if ss < se:
+                return False
+
+        for bs, be in self.booked:
+            ss = max(startTime, bs)
+            se = min(endTime, be)
+            if ss < se:
+                self.overlapped.append((ss, se))
+        self.booked.append((startTime, endTime))
+        return True
 
 # Your MyCalendarTwo object will be instantiated and called as such:
 # obj = MyCalendarTwo()
