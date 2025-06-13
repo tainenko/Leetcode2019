@@ -45,5 +45,22 @@
 #         self.right = right
 class Solution:
     def maxLevelSum(self, root: Optional[TreeNode]) -> int:
-        
+        level = 1
+        ans = 1
+        total = -inf
+        node = [root]
+        while node:
+            _sum = sum([n.val for n in node])
+            if _sum > total:
+                ans = level
+                total = _sum
+            nxt = []
+            for n in node:
+                if n.left:
+                    nxt.append(n.left)
+                if n.right:
+                    nxt.append(n.right)
+            node = nxt
+            level += 1
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
