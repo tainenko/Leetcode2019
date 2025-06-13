@@ -65,5 +65,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def mincostTickets(self, days: List[int], costs: List[int]) -> int:
-        
+        dp = [0] * (365 + 1)
+        idx = 0
+        for day in range(1, 366):
+            if idx >= len(days) or day < days[idx]:
+                dp[day] = dp[day - 1]
+            else:
+                dp[day] = dp[day - 1] + costs[0]
+                dp[day] = min(dp[day], dp[day - 7] + costs[1])
+                dp[day] = min(dp[day], dp[day - 30] + costs[2])
+                idx += 1
+        return dp[-1]
 # leetcode submit region end(Prohibit modification and deletion)
