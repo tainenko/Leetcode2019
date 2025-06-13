@@ -74,5 +74,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxProfit(self, workers: List[int], tasks: List[List[int]]) -> int:
-        
+        workers = Counter(workers)
+        tasks.sort(key=lambda x: -x[1])
+        ans = 0
+        additional = True
+        for skill, profit in tasks:
+            if workers[skill] > 0:
+                workers[skill] -= 1
+                ans += profit
+            elif additional:
+                additional = False
+                ans += profit
+        return ans
+
 # leetcode submit region end(Prohibit modification and deletion)
