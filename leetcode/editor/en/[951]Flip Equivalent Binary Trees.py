@@ -51,5 +51,13 @@
 #         self.right = right
 class Solution:
     def flipEquiv(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
-        
+        def compare(root1, root2):
+            if root1 == root2 or (root1 is None and root2 is None):
+                return True
+            elif root1 is None or root2 is None or root1.val != root2.val:
+                return False
+            return (compare(root1.left, root2.left) and compare(root1.right, root2.right)) or (
+                        compare(root1.left, root2.right) and compare(root1.right, root2.left))
+
+        return compare(root1, root2)
 # leetcode submit region end(Prohibit modification and deletion)
