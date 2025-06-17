@@ -68,5 +68,21 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def generateTag(self, caption: str) -> str:
-        
+        ans = ["#"]
+        to_upper = False
+        for i, c in enumerate(caption):
+            if len(ans) > 99:
+                break
+            if c == " ":
+                to_upper = True
+            if not c.isalpha():
+                continue
+            if to_upper:
+                ans.append(c.upper())
+                to_upper = False
+            else:
+                ans.append(c.lower())
+            ans[1] = ans[1].lower()
+        return "".join(ans)
+
 # leetcode submit region end(Prohibit modification and deletion)
