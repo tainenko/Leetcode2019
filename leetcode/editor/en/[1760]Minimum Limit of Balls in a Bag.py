@@ -66,5 +66,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minimumSize(self, nums: List[int], maxOperations: int) -> int:
-        
+        def check(mx: int) -> bool:
+            return sum([(num - 1) // mx for num in nums]) <= maxOperations
+
+        return bisect.bisect_left(range(1, max(nums) + 1), True, key=check) + 1
 # leetcode submit region end(Prohibit modification and deletion)
