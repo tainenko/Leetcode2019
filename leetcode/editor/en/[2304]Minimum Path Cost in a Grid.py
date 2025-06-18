@@ -58,5 +58,14 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minPathCost(self, grid: List[List[int]], moveCost: List[List[int]]) -> int:
-        
+        m = len(grid)
+        n = len(grid[0])
+        dp = grid[0]
+        for i in range(1, m):
+            g = [inf] * n
+            for j in range(n):
+                for k in range(n):
+                    g[j] = min(g[j], dp[k] + moveCost[grid[i - 1][k]][j] + grid[i][j])
+            dp = g
+        return min(dp)
 # leetcode submit region end(Prohibit modification and deletion)
