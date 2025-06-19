@@ -49,5 +49,12 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxAverageRatio(self, classes: List[List[int]], extraStudents: int) -> float:
-        
+        q = [(a / b - (a + 1) / (b + 1), a, b) for a, b in classes]
+        heapq.heapify(q)
+        for _ in range(extraStudents):
+            _, a, b = heapq.heappop(q)
+            a += 1
+            b += 1
+            heapq.heappush(q, (a / b - (a + 1) / (b + 1), a, b))
+        return sum([a / b for _, a, b in q]) / len(classes)
 # leetcode submit region end(Prohibit modification and deletion)
