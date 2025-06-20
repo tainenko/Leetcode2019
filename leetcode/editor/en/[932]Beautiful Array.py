@@ -31,5 +31,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def beautifulArray(self, n: int) -> List[int]:
-        
+        if n == 1:
+            return [1]
+        left = self.beautifulArray((n + 1) // 2)
+        right = self.beautifulArray(n // 2)
+        left = [x * 2 - 1 for x in left]
+        right = [x * 2 for x in right]
+        return left + right
 # leetcode submit region end(Prohibit modification and deletion)
