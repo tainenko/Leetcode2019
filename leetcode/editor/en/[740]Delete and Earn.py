@@ -48,5 +48,13 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
-        
+        mx = max(nums)
+        total = [0] * (mx + 1)
+        for num in nums:
+            total[num] += num
+        first = total[0]
+        second = max(total[0], total[1])
+        for i in range(2, mx + 1):
+            first, second = second, max(first + total[i], second)
+        return second
 # leetcode submit region end(Prohibit modification and deletion)
