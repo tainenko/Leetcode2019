@@ -60,5 +60,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def checkPrimeFrequency(self, nums: List[int]) -> bool:
-        
+        cnt = collections.Counter(nums)
+        for v in cnt.values():
+            if self.is_prime(v):
+                return True
+        return False
+
+    def is_prime(self, v: int) -> bool:
+        if v == 1:
+            return False
+        for i in range(2, int(sqrt(v)) + 1):
+            if v % i == 0:
+                return False
+        return True
 # leetcode submit region end(Prohibit modification and deletion)
