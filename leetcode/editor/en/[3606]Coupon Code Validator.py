@@ -74,5 +74,19 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def validateCoupons(self, code: List[str], businessLine: List[str], isActive: List[bool]) -> List[str]:
-        
+        idx = []
+        cat = set(["electronics", "grocery", "pharmacy", "restaurant"])
+        for i, c, bus, act in zip(range(len(code)), code, businessLine, isActive):
+            if not c:
+                continue
+            if bus not in cat:
+                continue
+            if not act:
+                continue
+            if any([not (char.isalpha() or char.isdigit() or char == "_") for char in c]):
+                continue
+            idx.append(i)
+        idx = sorted(idx, key=lambda i: (businessLine[i], code[i]))
+        return list([code[i] for i in idx])
+
 # leetcode submit region end(Prohibit modification and deletion)
