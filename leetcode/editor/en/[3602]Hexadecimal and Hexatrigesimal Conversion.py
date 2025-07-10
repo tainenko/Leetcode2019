@@ -59,5 +59,20 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def concatHex36(self, n: int) -> str:
-        
+        ans = ""
+
+        ase36_chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+        tmp = n ** 3
+        while tmp:
+            ans = ase36_chars[tmp % 36] + ans
+            tmp //= 36
+
+        tmp = n ** 2
+        while tmp:
+            ans = ase36_chars[tmp % 16] + ans
+            tmp //= 16
+
+        return ans
+
 # leetcode submit region end(Prohibit modification and deletion)
