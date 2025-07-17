@@ -58,5 +58,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def totalReplacements(self, ranks: List[int]) -> int:
-        
+        ans = 0
+        curr = ranks[0]
+        for rank in ranks:
+            if rank < curr:
+                ans += 1
+                curr = rank
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
