@@ -174,5 +174,15 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def partitionString(self, s: str) -> List[str]:
-        
+        seen = set()
+        ans = []
+        i = 0
+        for j in range(1, len(s) + 1):
+            if s[i:j] in seen:
+                continue
+            ans.append(s[i:j])
+            seen.add(s[i:j])
+            i = j
+        return ans
+
 # leetcode submit region end(Prohibit modification and deletion)
