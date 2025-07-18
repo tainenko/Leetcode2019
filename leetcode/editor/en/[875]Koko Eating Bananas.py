@@ -49,5 +49,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-        
+        low = 1
+        high = max(piles)
+
+        def time(speed):
+            return sum([(p - 1) // speed + 1 for p in piles])
+
+        while low < high:
+            mid = low + (high - low) // 2
+            if time(mid) <= h:
+                high = mid
+            else:
+                low = mid + 1
+        return low
 # leetcode submit region end(Prohibit modification and deletion)
