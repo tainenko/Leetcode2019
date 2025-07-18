@@ -156,5 +156,20 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def findCoins(self, numWays: List[int]) -> List[int]:
-        
+        ans = []
+        n = len(numWays)
+        numWays = [0] + numWays
+        dp = [0] * (n + 1)
+        dp[0] = 1
+        for i in range(1, n + 1):
+            if dp[i] == numWays[i]:
+                continue
+            elif dp[i] == numWays[i] - 1:
+                ans.append(i)
+            else:
+                return []
+            for j in range(i, n + 1):
+                dp[j] += dp[j - i]
+        return ans
+
 # leetcode submit region end(Prohibit modification and deletion)
