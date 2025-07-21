@@ -48,5 +48,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def checkDivisibility(self, n: int) -> bool:
-        
+        n = str(n)
+        total = sum([int(i) for i in n])
+        product = reduce(lambda x, y: x * y, [int(i) for i in n])
+        return int(n) % (total + product) == 0
 # leetcode submit region end(Prohibit modification and deletion)
