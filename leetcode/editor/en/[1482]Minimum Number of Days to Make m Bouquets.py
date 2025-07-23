@@ -65,5 +65,32 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def minDays(self, bloomDay: List[int], m: int, k: int) -> int:
-        
-# leetcode submit region end(Prohibit modification and deletion)
+        if m * k > len(bloomDay):
+            return -1
+
+        left = 1
+        right = max(bloomDay) + 1
+
+        def bouquests(bloomDay, day, m, k) -> bool:
+            bouquets = 0
+            flowers = 0
+            for bloom in bloomDay:
+                if bloom <= day:
+                    flowers += 1
+                    if flowers == k:
+                        bouquets += 1
+                        flowers = 0
+                        if bouquets >= m:
+                            return True
+                else:
+                    flowers = 0
+            return bouquets >= m
+
+        while left < right:
+            mid = left + (right - left) // 2
+            if bouquests(bloomDay, mid, m, k):
+                right = mid
+            else:
+                left = mid + 1
+        return left
+        # leetcode submit region end(Prohibit modification and deletion)
