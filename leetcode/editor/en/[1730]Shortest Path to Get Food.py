@@ -71,5 +71,34 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def getFood(self, grid: List[List[str]]) -> int:
-        
+        m = len(grid)
+        n = len(grid[0])
+        visited = set()
+        q = []
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == "*":
+                    q.append((i, j))
+                    visited.add((i, j))
+        step = 0
+        while q:
+            step += 1
+            nxt = []
+            for x, y in q:
+                for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                    if not (0 <= x + dx < m and 0 <= y + dy < n):
+                        continue
+
+                    if (x + dx, y + dy) in visited:
+                        continue
+                    if grid[x + dx][y + dy] == "X":
+                        continue
+                    elif grid[x + dx][y + dy] == "#":
+                        return step
+                    elif grid[x + dx][y + dy] == "O":
+                        nxt.append((x + dx, y + dy))
+                        visited.add((x + dx, y + dy))
+            q = nxt
+
+        return -1
 # leetcode submit region end(Prohibit modification and deletion)
