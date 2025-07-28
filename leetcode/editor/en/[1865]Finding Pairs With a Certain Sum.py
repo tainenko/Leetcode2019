@@ -64,14 +64,24 @@
 class FindSumPairs:
 
     def __init__(self, nums1: List[int], nums2: List[int]):
-        
+        self.nums2 = nums2
+        self.cnt1 = collections.Counter(nums1)
+        self.cnt2 = collections.Counter(nums2)
 
     def add(self, index: int, val: int) -> None:
-        
+        self.cnt2[self.nums2[index]] -= 1
+        self.nums2[index] += val
+        self.cnt2[self.nums2[index]] += 1
 
     def count(self, tot: int) -> int:
-        
-
+        if tot == 1:
+            return 0
+        ans = 0
+        for k, v in self.cnt1.items():
+            if tot - k not in self.cnt2:
+                continue
+            ans += self.cnt2[tot - k] * v
+        return ans
 
 # Your FindSumPairs object will be instantiated and called as such:
 # obj = FindSumPairs(nums1, nums2)
