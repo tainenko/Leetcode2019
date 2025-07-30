@@ -38,5 +38,18 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maximumUniqueSubarray(self, nums: List[int]) -> int:
-        
+        cnt = collections.Counter()
+        ans = 0
+        total = 0
+        i = 0
+        for j in range(len(nums)):
+            cnt[nums[j]] += 1
+            total += nums[j]
+            while cnt[nums[j]] > 1:
+                total -= nums[i]
+                cnt[nums[i]] -= 1
+                i += 1
+            ans = max(ans, total)
+        return ans
+
 # leetcode submit region end(Prohibit modification and deletion)
