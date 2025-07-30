@@ -38,5 +38,18 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
-        
+        sum1, sum2 = 0, 0
+        head, tail = 0, 0
+        ans = 0
+        for i in range(len(nums)):
+            sum1 += nums[i]
+            sum2 += nums[i]
+            while sum1 > goal:
+                sum1 -= nums[head]
+                head += 1
+            while sum2 >= goal and tail <= i:
+                sum2 -= nums[tail]
+                tail += 1
+            ans += tail - head
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
