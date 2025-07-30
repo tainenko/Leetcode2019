@@ -51,5 +51,17 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def matchPlayersAndTrainers(self, players: List[int], trainers: List[int]) -> int:
-        
+        players.sort()
+        trainers.sort()
+        i = len(players) - 1
+        j = len(trainers) - 1
+        ans = 0
+        while i >= 0 and j >= 0:
+            if players[i] <= trainers[j]:
+                i -= 1
+                j -= 1
+                ans += 1
+            elif players[i] > trainers[j]:
+                i -= 1
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
