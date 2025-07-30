@@ -58,5 +58,26 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maximumGain(self, s: str, x: int, y: int) -> int:
-        
+        sub1 = "ab"
+        sub2 = "ba"
+        if x < y:
+            x, y = y, x
+            sub1, sub2 = sub2, sub1
+        ans = 0
+        high_stack = []
+        for c in s:
+            if high_stack and high_stack[-1] == sub1[0] and c == sub1[1]:
+                high_stack.pop()
+                ans += x
+            else:
+                high_stack.append(c)
+
+        low_stack = []
+        for c in high_stack:
+            if low_stack and low_stack[-1] == sub2[0] and c == sub2[1]:
+                low_stack.pop()
+                ans += y
+            else:
+                low_stack.append(c)
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
