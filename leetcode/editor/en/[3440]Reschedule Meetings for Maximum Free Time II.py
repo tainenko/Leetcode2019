@@ -93,5 +93,33 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def maxFreeTime(self, eventTime: int, startTime: List[int], endTime: List[int]) -> int:
-        
+        first, second, third = 0, 0, 0
+        startTime.append(eventTime)
+        endTime.append(eventTime)
+        pre = 0
+        for start, end in zip(startTime, endTime):
+            free = start - pre
+            if free > first:
+                first, second, third = free, first, second
+            elif free > second:
+                second, third = free, second
+            elif free > third:
+                third = free
+            pre = end
+
+        pre = 0
+        ans = 0
+        for i in range(len(startTime) - 1):
+            left = startTime[i] - pre
+            right = startTime[i + 1] - endTime[i]
+            move_length = endTime[i] - startTime[i]
+            ans = max(ans, left + right)
+            if max(left, right) < first and move_length <= first:
+                ans = max(ans, left + right + move_length)
+            elif max(left, right) < second and move_length <= second:
+                ans = max(ans, left + right + move_length)
+            elif move_length <= third:
+                ans = max(ans, left + right + move_length)
+            pre = endTime[i]
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
