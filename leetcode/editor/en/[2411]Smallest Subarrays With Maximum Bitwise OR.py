@@ -65,5 +65,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def smallestSubarrays(self, nums: List[int]) -> List[int]:
-        
+        ans = [1] * len(nums)
+        last_seen = [-1] * 32
+        for i in reversed(range(len(nums))):
+            max_size = 1
+            for j in range(32):
+                if (nums[i] >> j & 1):
+                    last_seen[j] = i
+                elif last_seen[j] != -1:
+                    max_size = max(max_size, last_seen[j] - i + 1)
+            ans[i] = max_size
+        return ans
+
 # leetcode submit region end(Prohibit modification and deletion)
