@@ -122,6 +122,17 @@
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
-    def earliestFinishTime(self, landStartTime: List[int], landDuration: List[int], waterStartTime: List[int], waterDuration: List[int]) -> int:
-        
+    def earliestFinishTime(self, landStartTime: List[int], landDuration: List[int], waterStartTime: List[int],
+                           waterDuration: List[int]) -> int:
+        ans = float('inf')
+        for land, dl in zip(landStartTime, landDuration):
+            for water, dw in zip(waterStartTime, waterDuration):
+                if land + dl <= water:
+                    ans = min(ans, water + dw)
+                elif water + dw <= land:
+                    ans = min(ans, land + dl)
+                else:
+                    ans = min(ans, min(water, land) + dw + dl)
+
+        return ans
 # leetcode submit region end(Prohibit modification and deletion)
