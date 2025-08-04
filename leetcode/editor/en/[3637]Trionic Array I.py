@@ -55,5 +55,21 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isTrionic(self, nums: List[int]) -> bool:
-        
+        p = 0
+        q = 0
+        for i in range(1, len(nums)):
+            if nums[i] <= nums[i - 1]:
+                p = i - 1
+                break
+        for i in range(p + 1, len(nums)):
+            if nums[i] >= nums[i - 1]:
+                q = i - 1
+                break
+
+        for i in range(q + 1, len(nums)):
+            if nums[i] <= nums[i - 1]:
+                return False
+
+        return 0 < p < q < len(nums) - 1
+
 # leetcode submit region end(Prohibit modification and deletion)
