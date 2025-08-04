@@ -50,5 +50,18 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def longestSubarray(self, nums: List[int]) -> int:
-        
+        ans = 0
+        mx = 0
+        tmp = 0
+        for num in nums:
+            if num > mx:
+                mx = num
+                ans = tmp = 1
+            elif num == mx:
+                tmp += 1
+                ans = max(ans, tmp)
+            else:
+                tmp = 0
+        return ans
+
 # leetcode submit region end(Prohibit modification and deletion)
