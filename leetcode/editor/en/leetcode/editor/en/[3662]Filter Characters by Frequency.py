@@ -57,10 +57,13 @@
 #  
 # 
 #  👍 2 👎 0
+import collections
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def filterCharacters(self, s: str, k: int) -> str:
-        
+        cnt = collections.Counter(s)
+        return "".join([c for c in s if cnt[c] < k])
+
 # leetcode submit region end(Prohibit modification and deletion)
