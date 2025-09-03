@@ -54,5 +54,7 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def recoverOrder(self, order: List[int], friends: List[int]) -> List[int]:
+        friends = set(friends)
+        return [x for x in order if x in friends]
         
 # leetcode submit region end(Prohibit modification and deletion)
